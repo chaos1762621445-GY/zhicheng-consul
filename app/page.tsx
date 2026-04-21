@@ -276,7 +276,7 @@ export default async function Home() {
         <div className="cta-banner-inner">
           <h2>立即了解您的补助金资格</h2>
           <p>3分钟问卷，精准匹配适合您企业的补助金方案，完全免费，无任何义务</p>
-          <Link href="/contact" className="btn-gold">开始免费自测 <IconArrow /></Link>
+          <Link href="/contact" className="btn-cta-white">开始免费自测 <IconArrow /></Link>
         </div>
       </div>
 

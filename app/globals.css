@@ -4,8 +4,8 @@
   --navy:       #0A1628;
   --blue:       #1B4F8A;
   --blue-light: #EBF2FF;
-  --gold:       #9A6E00;
-  --gold-light: #FDF6E3;
+  --gold:       #B8860B;
+  --gold-light: #FBF5E6;
   --text:       #111111;
   --text-2:     #444444;
   --text-3:     #888888;
@@ -112,13 +112,13 @@ body {
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--blue); color: #fff;
-  font-size: 15px; font-weight: 600; text-decoration: none;
+  background: #fff; color: var(--navy);
+  font-size: 15px; font-weight: 700; text-decoration: none;
   padding: 14px 32px; border-radius: var(--r);
-  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-  letter-spacing: 0.2px;
+  transition: background 0.15s, transform 0.15s;
+  letter-spacing: 0.1px;
 }
-.btn-primary:hover { background: #1a4578; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,79,138,0.40); }
+.btn-primary:hover { background: #EEF2F8; transform: translateY(-1px); }
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: #fff;
@@ -297,14 +297,15 @@ body {
   margin-bottom: 16px; letter-spacing: -0.3px;
 }
 .cta-banner p { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 36px; line-height: 1.7; }
-.btn-gold {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: #fff;
-  font-size: 15px; font-weight: 600; text-decoration: none;
+.btn-cta-white {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; color: var(--navy);
+  font-size: 16px; font-weight: 600; text-decoration: none;
   padding: 14px 36px; border-radius: var(--r);
-  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  transition: background 0.15s, transform 0.15s;
+  letter-spacing: 0.1px;
 }
-.btn-gold:hover { background: #7d5900; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(154,110,0,0.4); }
+.btn-cta-white:hover { background: #EEF2F8; transform: translateY(-1px); }
 
 /* ── FOOTER ── */
 .footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); padding: 48px 0 36px; }
