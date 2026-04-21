@@ -5,7 +5,7 @@ import NavClient from "./components/NavClient";
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
@@ -21,7 +21,7 @@ const IconArrow = () => (
 );
 
 const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -29,15 +29,15 @@ const IconDoc = () => (
   </svg>
 );
 const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="#2563EB"/>
-    <circle cx="15" cy="15" r="1" fill="#2563EB"/>
+    <circle cx="9" cy="15" r="1" fill="#533afd"/>
+    <circle cx="15" cy="15" r="1" fill="#533afd"/>
   </svg>
 );
 const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -45,26 +45,26 @@ const IconUsers = () => (
   </svg>
 );
 const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
   </svg>
 );
 const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
   </svg>
 );
 
 // Credential icons 32px
 const CIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -72,7 +72,7 @@ const CIconDoc = () => (
   </svg>
 );
 const CIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -80,14 +80,14 @@ const CIconUsers = () => (
   </svg>
 );
 const CIconScale = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <line x1="12" y1="3" x2="12" y2="21"/>
     <path d="M3 9l9-6 9 6"/>
     <path d="M3 15l6 4H3zM21 15l-6 4h6z"/>
   </svg>
 );
 const CIconAward = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <circle cx="12" cy="8" r="7"/>
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
   </svg>
@@ -95,31 +95,31 @@ const CIconAward = () => (
 
 // Panel icons 18px
 const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
   </svg>
 );
 const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8"/>
   </svg>
 );
 const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
   </svg>
 );
 const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
@@ -127,24 +127,24 @@ const PIconSnow = () => (
 
 // Why Us feature icons 20px
 const FIconGlobe = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <circle cx="12" cy="12" r="10"/>
     <line x1="2" y1="12" x2="22" y2="12"/>
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
   </svg>
 );
 const FIconShield = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
   </svg>
 );
 const FIconStar = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   </svg>
 );
 const FIconTrophy = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <polyline points="8 21 12 17 16 21"/>
     <path d="M17 4H7l1 7c0 2.2 1.8 4 4 4s4-1.8 4-4l1-7z"/>
     <path d="M3 7h1a3 3 0 0 0 3-3M21 7h-1a3 3 0 0 1-3-3"/>
