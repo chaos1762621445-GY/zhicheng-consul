@@ -374,19 +374,21 @@ export default async function HomePage() {
             }}>
               <div style={{
                 fontFamily:"'Playfair Display', Georgia, serif",
-                fontSize:'clamp(36px,3.5vw,52px)',
-                fontWeight:700,
-                color:'#ffffff',
-                letterSpacing:'-1px',
+                fontSize:'clamp(40px,4vw,58px)',
+                fontWeight:800,
+                color:'#FFD166',
+                letterSpacing:'-1.5px',
                 lineHeight:1,
-                marginBottom:12,
+                marginBottom:14,
+                textShadow:'0 2px 12px rgba(255,209,102,0.35)',
               }}>{s.num}</div>
               <div style={{
                 fontSize:14,
-                color:'rgba(255,255,255,0.85)',
-                fontWeight:500,
-                letterSpacing:'0.3px',
+                color:'rgba(255,255,255,0.92)',
+                fontWeight:600,
+                letterSpacing:'0.5px',
                 lineHeight:1.4,
+                textTransform:'uppercase' as const,
               }}>{s.label}</div>
             </div>
           ))}
