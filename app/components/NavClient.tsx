@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const NAV_ITEMS = [
@@ -37,26 +37,39 @@ const NAV_ITEMS = [
 
 export default function NavClient() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <>
       <style>{`
         .nav-item { position: relative; }
-        .nav-item:hover .nav-dropdown { display: block; }
         .nav-dropdown {
-          display: none;
+          opacity: 0;
+          pointer-events: none;
           position: absolute;
           top: calc(100% + 8px);
           left: 50%;
-          transform: translateX(-50%);
+          transform: translateX(-50%) translateY(-6px);
           min-width: 200px;
           background: #fff;
-          border: 1px solid var(--border);
-          border-radius: 6px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+          border: 1px solid rgba(0,0,0,0.08);
+          border-radius: 8px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
           padding: 6px 0;
           z-index: 200;
+          transition: opacity 0.18s cubic-bezier(.22,1,.36,1), transform 0.18s cubic-bezier(.22,1,.36,1);
+        }
+        .nav-item:hover .nav-dropdown {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateX(-50%) translateY(0);
         }
         .nav-dropdown::before {
           content: '';
@@ -64,22 +77,30 @@ export default function NavClient() {
           top: -6px; left: 50%; transform: translateX(-50%);
           width: 12px; height: 12px;
           background: #fff;
-          border-left: 1px solid var(--border);
-          border-top: 1px solid var(--border);
+          border-left: 1px solid rgba(0,0,0,0.08);
+          border-top: 1px solid rgba(0,0,0,0.08);
           rotate: 45deg;
         }
         .nav-dropdown-item {
           display: block;
-          padding: 9px 18px;
+          padding: 9px 18px 9px 20px;
           font-size: 14px;
           font-weight: 400;
           color: var(--label);
           text-decoration: none;
-          transition: background 0.12s, color 0.12s;
+          border-left: 2px solid transparent;
+          transition: background 0.12s, color 0.12s, border-color 0.15s;
           white-space: nowrap;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
         }
-        .nav-dropdown-item:hover { background: var(--bg-outer); color: var(--primary); }
-        .nav-dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+        .nav-dropdown-item:hover {
+          background: var(--bg-outer);
+          color: var(--primary);
+          border-left-color: var(--primary);
+        }
+        .nav-dropdown-divider { height: 1px; background: rgba(0,0,0,0.07); margin: 4px 0; }
         .nav-link-arrow {
           font-size: 10px;
           margin-left: 3px;
@@ -97,6 +118,9 @@ export default function NavClient() {
           padding: 8px 0;
           border-bottom: 1px solid var(--border);
           text-decoration: none;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
         }
         .nav-mobile-sublink:last-child { border-bottom: none; }
         .nav-mobile-group-label {
@@ -112,7 +136,7 @@ export default function NavClient() {
         }
       `}</style>
 
-      <nav className="nav">
+      <nav className={scrolled ? 'nav scrolled' : 'nav'}>
         <div className="nav-inner">
           <Link href="/" onClick={() => setOpen(false)}>
             <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block'}} />
@@ -159,7 +183,7 @@ export default function NavClient() {
                 {item.children ? (
                   <>
                     <div className="nav-mobile-group-label">
-                      <Link href={item.href} className="nav-mobile-link" style={{border:'none',padding:0,fontWeight:500,color:'var(--label)'}} onClick={() => setOpen(false)}>
+                      <Link href={item.href} className="nav-mobile-link" style={{border:'none',padding:0,fontWeight:500,color:'var(--label)',minHeight:'auto'}} onClick={() => setOpen(false)}>
                         {item.label}
                       </Link>
                     </div>

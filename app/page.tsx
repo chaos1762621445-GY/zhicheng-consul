@@ -4,9 +4,9 @@ import NavClient from "./components/NavClient";
 
 // ─── SVG Icons (stroke #533afd, strokeWidth 1.8, fill none) ──────────────────
 
-// Check icon (green #15be53, 14px)
+// Check icon (white for dark hero background)
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#15be53" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
@@ -95,33 +95,33 @@ const CIconAward = () => (
   </svg>
 );
 
-// Panel icons (18px, #533afd)
+// Panel icons (18px, white for glass panel)
 const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
   </svg>
 );
 const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8"/>
   </svg>
 );
 const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
   </svg>
 );
 const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
@@ -311,7 +311,7 @@ export default async function HomePage() {
               行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士
             </div>
             <h1 className="hero-h1 fade-up delay-1">
-              在日华人企业主{"\n"}政府补助金{"\n"}<em style={{color:'#533afd',fontStyle:'normal'}}>您申请了吗？</em>
+              在日华人企业主{"\n"}政府补助金{"\n"}<em style={{fontStyle:'normal',background:'linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #60a5fa 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>您申请了吗？</em>
             </h1>
             <p className="hero-sub fade-up delay-2">
               专业四士联合团队，全程中文，无成功不收费。<br/>
@@ -426,13 +426,71 @@ export default async function HomePage() {
         <div className="section-inner">
           <div className="feature-split">
             <div>
-              <img
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
-                alt="专业顾问团队"
-                loading="lazy"
-                style={{width:'100%',height:500,objectFit:'cover',borderRadius:6,boxShadow:'var(--sh3)',display:'block'}}
-                crossOrigin="anonymous"
-              />
+              {/* 数据可视化卡片组（替换 Unsplash 图片） */}
+              <div style={{
+                background: 'linear-gradient(145deg, #0f1035 0%, #1c1e54 60%, #2d1b69 100%)',
+                borderRadius: 12,
+                padding: '36px 32px',
+                boxShadow: 'var(--sh3)',
+                position: 'relative',
+                overflow: 'hidden',
+                minHeight: 460,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}>
+                {/* BG glow */}
+                <div style={{position:'absolute',top:'-60px',right:'-60px',width:280,height:280,background:'radial-gradient(circle,rgba(83,58,253,0.25) 0%,transparent 65%)',pointerEvents:'none'}} />
+                <div style={{position:'absolute',bottom:'-40px',left:'-40px',width:200,height:200,background:'radial-gradient(circle,rgba(249,107,238,0.15) 0%,transparent 65%)',pointerEvents:'none'}} />
+
+                {/* Header */}
+                <div style={{position:'relative',zIndex:1}}>
+                  <div style={{fontSize:11,fontWeight:400,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:'1.5px',marginBottom:6}}>
+                    累计实绩数据
+                  </div>
+                  <div style={{fontSize:15,fontWeight:400,color:'rgba(255,255,255,0.85)'}}>
+                    志成コンサル 核心指标
+                  </div>
+                </div>
+
+                {/* 3 big stats */}
+                <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,position:'relative',zIndex:1,marginTop:28}}>
+                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px'}}>
+                    <div style={{fontSize:36,fontWeight:250,color:'#ffffff',letterSpacing:'-2px',lineHeight:1}}>3,000<span style={{fontSize:22,color:'rgba(255,255,255,0.6)'}}>+</span></div>
+                    <div style={{fontSize:12,color:'rgba(255,255,255,0.5)',marginTop:8}}>成功申请案例</div>
+                    <div style={{marginTop:12,height:3,background:'linear-gradient(90deg,#533afd,#a78bfa)',borderRadius:2}} />
+                  </div>
+                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px'}}>
+                    <div style={{fontSize:36,fontWeight:250,color:'#ffffff',letterSpacing:'-2px',lineHeight:1}}>8.5<span style={{fontSize:22,color:'rgba(255,255,255,0.6)'}}>億円+</span></div>
+                    <div style={{fontSize:12,color:'rgba(255,255,255,0.5)',marginTop:8}}>累计获批总额</div>
+                    <div style={{marginTop:12,height:3,background:'linear-gradient(90deg,#ea2261,#f96bee)',borderRadius:2}} />
+                  </div>
+                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px',gridColumn:'1/-1'}}>
+                    <div style={{display:'flex',alignItems:'baseline',gap:8}}>
+                      <div style={{fontSize:52,fontWeight:250,color:'#ffffff',letterSpacing:'-3px',lineHeight:1}}>92<span style={{fontSize:28,color:'rgba(255,255,255,0.6)'}}>%</span></div>
+                      <div style={{fontSize:13,color:'rgba(255,255,255,0.6)',lineHeight:1.4}}>申请通过率<br/><span style={{fontSize:11,color:'rgba(255,255,255,0.35)'}}>行业平均约65%</span></div>
+                    </div>
+                    {/* progress bar */}
+                    <div style={{marginTop:14,background:'rgba(255,255,255,0.08)',borderRadius:4,height:6,overflow:'hidden'}}>
+                      <div style={{width:'92%',height:'100%',background:'linear-gradient(90deg,#533afd,#60a5fa)',borderRadius:4}} />
+                    </div>
+                    <div style={{display:'flex',justifyContent:'space-between',marginTop:4}}>
+                      <span style={{fontSize:10,color:'rgba(255,255,255,0.3)'}}>0%</span>
+                      <span style={{fontSize:10,color:'rgba(255,255,255,0.5)',fontWeight:500}}>92%</span>
+                      <span style={{fontSize:10,color:'rgba(255,255,255,0.3)'}}>100%</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom badge */}
+                <div style={{position:'relative',zIndex:1,marginTop:16,display:'flex',gap:8}}>
+                  {['行政书士','社会保険労務士','税理士','中小企業診断士'].map(t => (
+                    <div key={t} style={{background:'rgba(83,58,253,0.2)',border:'1px solid rgba(83,58,253,0.4)',borderRadius:5,padding:'4px 8px',fontSize:10,color:'rgba(255,255,255,0.75)',whiteSpace:'nowrap'}}>
+                      {t}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
             <div>
               <div className="section-label">选择我们的理由</div>
