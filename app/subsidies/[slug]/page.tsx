@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import NavClient from "../../components/NavClient";
+import Footer from "../../components/Footer";
 
 // ─────────────────────────────────────────────
 // Data
@@ -154,7 +156,7 @@ const subsidies: SubsidyData[] = [
       },
       {
         q: "gBizIDプライム账户是什么？怎么申请？",
-        a: "gBizIDプライムは日本政府的企业数字化身份认证账户，申请IT导入补助金时必须持有。申请需提交法人印감证明，审批约需1〜2周。建议尽早申请，我方可协助全程操作。",
+        a: "gBizIDプライムは日本政府的企业数字化身份认证账户，申请IT导入补助金时必须持有。申请需提交法人印鑑证明，审批约需1〜2周。建议尽早申请，我方可协助全程操作。",
       },
       {
         q: "为什么不能自己直接申请，必须通过IT支援事業者？",
@@ -381,8 +383,6 @@ const subsidies: SubsidyData[] = [
   },
 ];
 
-const allSlugs = subsidies.map((s) => s.slug);
-
 // ─────────────────────────────────────────────
 // generateStaticParams
 // ─────────────────────────────────────────────
@@ -438,20 +438,7 @@ export default async function SubsidyDetailPage({
 
   return (
     <main>
-      {/* ── Nav ── */}
-      <nav className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            <img src="/logo.png" alt="志成コンサル" style={{ height: 40 }} />
-          </Link>
-          <div className="nav-links">
-            <Link href="/subsidies" className="nav-link active">补助金种类</Link>
-            <Link href="/service" className="nav-link">服务流程</Link>
-            <Link href="/blog" className="nav-link">知识库</Link>
-            <Link href="/contact" className="nav-cta">免费咨询</Link>
-          </div>
-        </div>
-      </nav>
+      <NavClient />
 
       {/* ── Hero ── */}
       <div style={{
@@ -512,7 +499,7 @@ export default async function SubsidyDetailPage({
 
       {/* ── Main Content + Sidebar ── */}
       <div className="section-inner" style={{ padding: "64px 48px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: 48, alignItems: "start" }}>
+        <div className="subsidy-detail-layout">
 
           {/* ── Left column ── */}
           <div style={{ display: "flex", flexDirection: "column", gap: 56 }}>
@@ -678,7 +665,7 @@ export default async function SubsidyDetailPage({
           </div>
 
           {/* ── Sidebar ── */}
-          <aside style={{ display: "flex", flexDirection: "column", gap: 24, position: "sticky", top: 88 }}>
+          <aside className="subsidy-detail-sidebar" style={{ display: "flex", flexDirection: "column", gap: 24, position: "sticky", top: 88 }}>
 
             {/* Quick contact */}
             <div style={{
@@ -775,42 +762,7 @@ export default async function SubsidyDetailPage({
         </div>
       </div>
 
-      {/* ── Footer ── */}
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo-wrap">
-              <img src="/logo.png" alt="志成コンサル" style={{ height: 40, filter: "brightness(10)" }} />
-            </div>
-            <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
-          </div>
-          <div className="footer-nav">
-            <h4>快速导航</h4>
-            <div className="footer-nav-links">
-              <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
-              <Link href="/service" className="footer-nav-link">服务流程</Link>
-              <Link href="/blog" className="footer-nav-link">知识库</Link>
-              <Link href="/contact" className="footer-nav-link">免费咨询</Link>
-            </div>
-          </div>
-          <div className="footer-contact-col">
-            <h4>联系我们</h4>
-            <div className="footer-contact-row"><strong>微信：</strong>pr2024188</div>
-            <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
-            <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
-            <div className="footer-contact-row" style={{ flexDirection: "column", gap: 4 }}>
-              <strong>地址：</strong>
-              <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br />おおきに東心斎橋ビル301号室</span>
-            </div>
-            <div className="footer-qr">
-              <img src="/wechat-qr.jpg" alt="微信二维码" style={{ width: 80, height: 80, borderRadius: 4 }} />
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© 2025 株式会社志成コンサル 保留所有权利。</span>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

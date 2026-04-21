@@ -1,66 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NavClient from "../components/NavClient";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "成功案例",
   description: "志成コンサル补助金成功案例——餐饮、美容、IT、建设、零售、教育、制造、物流等多行业真实案例，最高获批3000万円，92%通过率。",
 };
-
-const Nav = () => (
-  <nav className="nav">
-    <div className="nav-inner">
-      <Link href="/" className="nav-logo">
-        <img src="/logo.png" alt="志成コンサル" style={{height:40}} />
-      </Link>
-      <div className="nav-links">
-        <Link href="/subsidies" className="nav-link">补助金种类</Link>
-        <Link href="/service" className="nav-link">服务流程</Link>
-        <Link href="/cases" className="nav-link active">成功案例</Link>
-        <Link href="/blog" className="nav-link">知识库</Link>
-        <Link href="/contact" className="nav-cta">免费咨询</Link>
-      </div>
-    </div>
-  </nav>
-);
-
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-inner">
-      <div>
-        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:"block",filter:"brightness(10)"}} />
-        <p className="footer-brand-desc">专为在日华人企业主提供日本政府补助金申请代办服务。行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。</p>
-      </div>
-      <div>
-        <div className="footer-col-title">快速导航</div>
-        <div className="footer-links">
-          {[
-            {href:"/subsidies",label:"补助金种类"},
-            {href:"/service",label:"服务流程"},
-            {href:"/cases",label:"成功案例"},
-            {href:"/faq",label:"常见问题"},
-            {href:"/about",label:"关于我们"},
-            {href:"/blog",label:"知识库"},
-            {href:"/contact",label:"免费咨询"},
-          ].map(l => (
-            <a key={l.href} href={l.href} className="footer-link">{l.label}</a>
-          ))}
-        </div>
-      </div>
-      <div>
-        <div className="footer-col-title">联系我们</div>
-        <div className="footer-contact-row"><strong className="footer-contact-label">微信：</strong><span>pr2024188</span></div>
-        <div className="footer-contact-row"><strong className="footer-contact-label">电话：</strong><span>03-6265-9756</span></div>
-        <div className="footer-contact-row"><strong className="footer-contact-label">邮箱：</strong><span>knakano.sekiyoshi@gmail.com</span></div>
-      </div>
-    </div>
-    <div className="footer-copy">
-      <div className="footer-copy-inner">
-        <span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span>
-        <span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
-      </div>
-    </div>
-  </footer>
-);
 
 const stats = [
   { num: "3,000+", label: "累计服务客户" },
@@ -344,7 +290,7 @@ export default function CasesPage() {
         }
       `}</style>
 
-      <Nav />
+      <NavClient />
 
       {/* Hero */}
       <div className="cases-hero">
@@ -460,3 +406,4 @@ export default function CasesPage() {
     </main>
   );
 }
+

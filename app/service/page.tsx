@@ -1,64 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NavClient from "../components/NavClient";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "服务流程",
   description: "志成コンサル的补助金申请服务流程详解——从初次咨询到资金到账，6步全程代办",
 };
-
-const Nav = () => (
-  <nav className="nav">
-    <div className="nav-inner">
-      <Link href="/" className="nav-logo">
-        <img src="/logo.png" alt="志成コンサル" style={{height:40}} />
-      </Link>
-      <div className="nav-links">
-        <Link href="/subsidies" className="nav-link">补助金种类</Link>
-        <Link href="/service" className="nav-link active">服务流程</Link>
-        <Link href="/blog" className="nav-link">知识库</Link>
-        <Link href="/contact" className="nav-cta">免费咨询</Link>
-      </div>
-    </div>
-  </nav>
-);
-
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-inner">
-      <div className="footer-brand">
-        <div className="footer-logo-wrap">
-          <img src="/logo.png" alt="志成コンサル" style={{height:40, filter:"brightness(10)"}} />
-        </div>
-        <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
-      </div>
-      <div className="footer-nav">
-        <h4>快速导航</h4>
-        <div className="footer-nav-links">
-          <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
-          <Link href="/service" className="footer-nav-link">服务流程</Link>
-          <Link href="/blog" className="footer-nav-link">知识库</Link>
-          <Link href="/contact" className="footer-nav-link">免费咨询</Link>
-        </div>
-      </div>
-      <div className="footer-contact-col">
-        <h4>联系我们</h4>
-        <div className="footer-contact-row"><strong>微信：</strong>pr2024188</div>
-        <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
-        <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
-        <div className="footer-contact-row" style={{flexDirection:"column",gap:4}}>
-          <strong>地址：</strong>
-          <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
-        </div>
-        <div className="footer-qr">
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:80,height:80,borderRadius:4}} />
-        </div>
-      </div>
-    </div>
-    <div className="footer-bottom">
-      <span>© 2026 株式会社志成コンサル 保留所有权利。</span>
-    </div>
-  </footer>
-);
 
 const steps = [
   {
@@ -135,7 +83,7 @@ const faqs = [
 export default function ServicePage() {
   return (
     <main>
-      <Nav />
+      <NavClient />
 
       <div className="page-hero">
         <div className="page-hero-inner">

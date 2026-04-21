@@ -47,6 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 a { text-decoration: none; color: inherit; }
 
@@ -747,6 +748,82 @@ a { text-decoration: none; color: inherit; }
   .credentials-grid { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+}
+
+/* ── Blog list grid (blog/page.tsx uses this class name) ── */
+.blog-list-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+@media (max-width: 900px) { .blog-list-grid { grid-template-columns: 1fr; } }
+
+/* ── Subsidy detail page two-column layout ── */
+.subsidy-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .subsidy-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .subsidy-detail-sidebar {
+    display: none;
+  }
+}
+
+/* ── FAQ category nav (mobile horizontal scroll) ── */
+.faq-cat-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.faq-cat-nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--label);
+  background: var(--bg-outer);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 36px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.faq-cat-nav-link:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+@media (max-width: 768px) {
+  .faq-cat-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .faq-cat-nav::-webkit-scrollbar { display: none; }
+}
+
+/* ── About company table overflow ── */
+.table-scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── CTA buttons mobile full-width ── */
+@media (max-width: 768px) {
+  .cta-section .cta-inner > div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-cta-white, .btn-cta-ghost {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ── Contact Info Grid ── */

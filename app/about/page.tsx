@@ -277,16 +277,18 @@ export default function AboutPage() {
         <div className="section-inner">
           <div className="section-label">会社概要</div>
           <h2 className="section-title">公司信息</h2>
-          <table className="about-company-table">
-            <tbody>
-              {companyInfo.map((row, i) => (
-                <tr key={i}>
-                  <td>{row.label}</td>
-                  <td>{row.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="table-scroll-wrap">
+            <table className="about-company-table">
+              <tbody>
+                {companyInfo.map((row, i) => (
+                  <tr key={i}>
+                    <td>{row.label}</td>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 

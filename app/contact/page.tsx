@@ -1,69 +1,17 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import NavClient from "../components/NavClient";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "免费咨询",
   description: "免费测试您的补助金申请资格——3分钟问卷，志成コンサル专业团队当日回复匹配方案",
 };
 
-const Nav = () => (
-  <nav className="nav">
-    <div className="nav-inner">
-      <Link href="/" className="nav-logo">
-        <img src="/logo.png" alt="志成コンサル" style={{height:40}} />
-      </Link>
-      <div className="nav-links">
-        <Link href="/subsidies" className="nav-link">补助金种类</Link>
-        <Link href="/service" className="nav-link">服务流程</Link>
-        <Link href="/blog" className="nav-link">知识库</Link>
-        <Link href="/contact" className="nav-cta">免费咨询</Link>
-      </div>
-    </div>
-  </nav>
-);
-
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-inner">
-      <div className="footer-brand">
-        <div className="footer-logo-wrap">
-          <img src="/logo.png" alt="志成コンサル" style={{height:40, filter:"brightness(10)"}} />
-        </div>
-        <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
-      </div>
-      <div className="footer-nav">
-        <h4>快速导航</h4>
-        <div className="footer-nav-links">
-          <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
-          <Link href="/service" className="footer-nav-link">服务流程</Link>
-          <Link href="/blog" className="footer-nav-link">知识库</Link>
-          <Link href="/contact" className="footer-nav-link">免费咨询</Link>
-        </div>
-      </div>
-      <div className="footer-contact-col">
-        <h4>联系我们</h4>
-        <div className="footer-contact-row"><strong>微信：</strong>pr2024188</div>
-        <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
-        <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
-        <div className="footer-contact-row" style={{flexDirection:"column",gap:4}}>
-          <strong>地址：</strong>
-          <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
-        </div>
-        <div className="footer-qr">
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:80,height:80,borderRadius:4}} />
-        </div>
-      </div>
-    </div>
-    <div className="footer-bottom">
-      <span>© 2026 株式会社志成コンサル 保留所有权利。</span>
-    </div>
-  </footer>
-);
-
 export default function ContactPage() {
   return (
     <main>
-      <Nav />
+      <NavClient />
 
       <div className="page-hero">
         <div className="page-hero-inner">
@@ -134,11 +82,11 @@ export default function ContactPage() {
             <div className="contact-qr-card">
               <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:160, height:160, borderRadius:8, flexShrink:0}} />
               <div>
-                <div style={{fontSize:18,fontWeight:700,color:"var(--navy)",marginBottom:8}}>扫码添加微信</div>
-                <div style={{fontSize:15,color:"var(--text-2)",lineHeight:1.75,marginBottom:12}}>
+                <div style={{fontSize:18,fontWeight:700,color:"var(--heading)",marginBottom:8}}>扫码添加微信</div>
+                <div style={{fontSize:15,color:"var(--body)",lineHeight:1.75,marginBottom:12}}>
                   添加微信 <strong>pr2024188</strong>，专业顾问将在当日（工作日）为您提供免费补助金诊断服务。
                 </div>
-                <div style={{fontSize:14,color:"var(--text-3)"}}>营业时间：周一〜周六 9:00〜18:00</div>
+                <div style={{fontSize:14,color:"var(--body)"}}>营业时间：周一〜周六 9:00〜18:00</div>
               </div>
             </div>
           </div>

@@ -127,7 +127,7 @@ const Footer = () => (
 
     <div className="footer-copy">
       <div className="footer-copy-inner">
-        <span className="footer-copy-text">© 2025 株式会社志成コンサル 保留所有权利。</span>
+        <span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span>
         <span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
       </div>
     </div>
