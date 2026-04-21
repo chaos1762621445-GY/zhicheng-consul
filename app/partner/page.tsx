@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 
 export const metadata: Metadata = {
-  title: "代理合作 | 志成コンサル",
+  title: "代理合作",
   description: "加入志成コンサル代理网络，享受60%透明分成。适合税理士、行政书士、社劳士、会计事务所、微信群主、留学中介、房产中介等人群。",
 };
 
@@ -29,7 +29,7 @@ const Footer = () => (
         <div className="footer-contact-row"><strong className="footer-contact-label">邮箱：</strong><span>knakano.sekiyoshi@gmail.com</span></div>
       </div>
     </div>
-    <div className="footer-copy"><div className="footer-copy-inner"><span className="footer-copy-text">© 2025 株式会社志成コンサル 保留所有权利。</span><span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span></div></div>
+    <div className="footer-copy"><div className="footer-copy-inner"><span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span><span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span></div></div>
   </footer>
 );
 
@@ -240,7 +240,7 @@ export default function PartnerPage() {
           <div className="partner-stats-row">
             {[
               { num: "86名", label: "现有合作代理", sub: "覆盖全日本主要都市" },
-              { num: "23都道府県", label: "代理网络覆盖", sub: "持续扩大中" },
+              { num: "23个都道府县", label: "代理网络覆盖", sub: "持续扩大中" },
               { num: "平均¥28万", label: "代理月均收入", sub: "最高月收入超100万円" },
             ].map((stat, i) => (
               <div key={i} style={{

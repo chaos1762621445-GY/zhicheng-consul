@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "常见问题 FAQ | 志成コンサル",
+  title: "常见问题",
   description: "在日华人补助金申请常见问题解答——申请资格、费用、流程、材料等全面解答，助您轻松了解日本政府补助金申请。",
 };
 
@@ -55,7 +55,7 @@ const Footer = () => (
     </div>
     <div className="footer-copy">
       <div className="footer-copy-inner">
-        <span className="footer-copy-text">© 2025 株式会社志成コンサル 保留所有权利。</span>
+        <span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span>
         <span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
       </div>
     </div>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 
 export const metadata: Metadata = {
-  title: "关于我们 | 志成コンサル",
+  title: "关于我们",
   description: "志成コンサル——专为在日华人企业主提供补助金申请代办服务。行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。",
 };
 
@@ -29,7 +29,7 @@ const Footer = () => (
         <div className="footer-contact-row"><strong className="footer-contact-label">邮箱：</strong><span>knakano.sekiyoshi@gmail.com</span></div>
       </div>
     </div>
-    <div className="footer-copy"><div className="footer-copy-inner"><span className="footer-copy-text">© 2025 株式会社志成コンサル 保留所有权利。</span><span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span></div></div>
+    <div className="footer-copy"><div className="footer-copy-inner"><span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span><span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span></div></div>
   </footer>
 );
 
@@ -48,7 +48,7 @@ const teamMembers = [
     en: "Yuko Tanaka",
     specialty: "雇用助成金·劳务管理专家",
     desc: "专注于员工转正助成金、人才开发支援助成金等劳务类助成金申请。同时提供劳动合同审查、就业规则制定等配套服务，助力企业在合规框架内最大化资金支持。",
-    color: "#ea2261",
+    color: "#7055ff",
   },
   {
     title: "税理士",
@@ -56,7 +56,7 @@ const teamMembers = [
     en: "Li Jianhua",
     specialty: "财务审查·税务申报专家",
     desc: "精通日本税务法规与中小企业财务管理，专为在日华人企业主提供税务规划与财务咨询。在补助金申请中负责财务资料准备和审查，确保数据准确无误，赢得审查机关信任。",
-    color: "#15be53",
+    color: "#8b75f5",
   },
   {
     title: "中小企業診断士",
@@ -64,7 +64,7 @@ const teamMembers = [
     en: "Wang Haoran",
     specialty: "事业计划·经营战略专家",
     desc: "国家资格中小企业诊断士，拥有深厚的经营战略与商业模式分析能力。负责事业重构补助金、制造业补助金等需要高质量事业计划书的申请，从战略层面提升申请竞争力。",
-    color: "#f96bee",
+    color: "#a090f0",
   },
 ];
 
@@ -72,10 +72,10 @@ const companyInfo = [
   { label: "商号", value: "株式会社志成コンサル" },
   { label: "設立", value: "2022年4月" },
   { label: "所在地", value: "〒542-0082 大阪府大阪市中央区島之内1-13-3 おおきに東心斎橋ビル301号室" },
-  { label: "事業内容", value: "補助金・助成金申請代行、経営コンサルティング、行政書士業務、税務申告支援" },
-  { label: "資質・許認可", value: "行政書士事務所登録 / 社会保険労務士事務所登録 / 税理士事務所登録 / 中小企業診断士登録" },
-  { label: "対応言語", value: "日本語・普通話（中国語）・広東語" },
-  { label: "営業時間", value: "月〜金 9:00〜18:00（土日祝日要予約）" },
+  { label: "业务内容", value: "補助金・助成金申請代行、経営コンサルティング、行政書士業務、税務申告支援" },
+  { label: "专业资质", value: "行政書士事務所登録 / 社会保険労務士事務所登録 / 税理士事務所登録 / 中小企業診断士登録" },
+  { label: "服务语言", value: "日本語・普通話（中国語）・広東語" },
+  { label: "营业时间", value: "月〜金 9:00〜18:00（土日祝日要予約）" },
 ];
 
 export default function AboutPage() {
@@ -177,9 +177,9 @@ export default function AboutPage() {
               padding: "48px 40px",
             }}>
               {[
-                { num: "200+", label: "累计服务企业数" },
-                { num: "¥3.2億", label: "协助企业获批总额" },
-                { num: "87%", label: "申请成功率" },
+                { num: "3,000+", label: "累计服务企业数" },
+                { num: "8.5億円", label: "协助企业获批总额" },
+                { num: "92%", label: "申请成功率" },
                 { num: "6+", label: "专业资质种类" },
               ].map((stat, i) => (
                 <div key={i} style={{
@@ -249,7 +249,7 @@ export default function AboutPage() {
             <div className="section-label">创业故事</div>
             <h2 className="section-title">从一次痛心的错过说起</h2>
             <div style={{
-              borderLeft: "3px solid var(--primary)",
+              borderLeft: "3px solid #533afd",
               paddingLeft: 28,
               marginBottom: 32,
               marginTop: 32,
@@ -266,7 +266,7 @@ export default function AboutPage() {
               创业初期，团队走访了大阪、东京、名古屋的数十家华人经营的企业。他们发现，许多企业主甚至不知道自己符合申请条件，更不知道这些补助金是真实存在、可以申请的。语言不通、信息缺失，让他们在不知不觉中与本该属于自己的资金擦肩而过。
             </p>
             <p style={{fontSize: 16, color: "var(--body)", lineHeight: 1.85}}>
-              如今，志成コンサル已累计服务200余家在日华人企业，协助获批补助金总额超过3.2亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。
+              如今，志成コンサル已累计服务3,000余家在日华人企业，协助获批补助金总额超过8.5亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。
             </p>
           </div>
         </div>

@@ -748,3 +748,11 @@ a { text-decoration: none; color: inherit; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
 }
+
+/* ── Contact Info Grid ── */
+.contact-info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.contact-card { display:flex; align-items:flex-start; gap:16px; background:#fff; border:1px solid #e5edf5; border-radius:8px; padding:20px; }
+.contact-card-label { font-size:12px; font-weight:500; color:var(--body); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+.contact-card-value { font-size:16px; font-weight:400; color:var(--heading); line-height:1.5; }
+.contact-qr-card { display:flex; align-items:center; gap:32px; background:#f8fafc; border:1px solid #e5edf5; border-radius:12px; padding:32px; margin-top:24px; }
+@media(max-width:768px){ .contact-info-grid{grid-template-columns:1fr;} .contact-qr-card{flex-direction:column;gap:20px;} }
