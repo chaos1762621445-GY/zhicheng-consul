@@ -176,9 +176,10 @@ const Footer = () => (
           <strong style={{color:'#ffffff',fontWeight:600}}>地址：</strong>
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
-        <div style={{marginTop:20}}>
-          <div style={{fontSize:12,color:'rgba(255,255,255,0.70)',marginBottom:8,fontWeight:500}}>微信扫码咨询</div>
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:180,height:180,borderRadius:8,display:'block',border:'3px solid rgba(255,255,255,0.3)',padding:4,background:'#ffffff'}} />
+        <div style={{marginTop:24,background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:12,padding:'20px',display:'inline-block'}}>
+          <div style={{fontSize:13,color:'#ffffff',fontWeight:600,marginBottom:12,textAlign:'center'}}>微信扫码咨询</div>
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:200,height:200,borderRadius:6,display:'block',background:'#ffffff',padding:6}} />
+          <div style={{fontSize:12,color:'rgba(255,255,255,0.80)',marginTop:10,textAlign:'center'}}>微信号：pr2024188</div>
         </div>
       </div>
 
