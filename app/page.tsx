@@ -153,25 +153,6 @@ const FIconTrophy = () => (
   </svg>
 );
 
-// Promise card icons (white for dark card)
-const PrIconShield = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  </svg>
-);
-const PrIconGlobe = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="2" y1="12" x2="22" y2="12"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-  </svg>
-);
-const PrIconStar = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-  </svg>
-);
-
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 const Nav = () => <NavClient />;
 
@@ -385,7 +366,6 @@ export default async function HomePage() {
           {[
             { num: "3,000+", label: "成功申请案例" },
             { num: "¥8.5億+", label: "累计获批总额" },
-            { num: "0円", label: "不成功不收费" },
           ].map((s, i) => (
             <div key={i} className={`stat-item fade-up`} style={{animationDelay:`${i*0.08}s`}}>
               <div className="stat-num">{s.num}</div>
@@ -449,35 +429,13 @@ export default async function HomePage() {
       <section style={{padding:'96px 0',background:'#ffffff'}}>
         <div className="section-inner">
           <div className="feature-split">
-            {/* 左侧：3条核心承诺卡片 */}
-            <div className="promise-card">
-              <div className="promise-card-header">我们的核心承诺</div>
-              <div className="promise-item">
-                <div className="promise-icon-circle"><PrIconShield /></div>
-                <div>
-                  <div className="promise-title">申请失败零费用</div>
-                  <p className="promise-desc">不成功则完全不收费，彻底消除您的财务风险。让您零风险尝试补助金申请。</p>
-                </div>
-              </div>
-              <div className="promise-item">
-                <div className="promise-icon-circle"><PrIconGlobe /></div>
-                <div>
-                  <div className="promise-title">全程中文无障碍</div>
-                  <p className="promise-desc">从初次咨询到最终获批，全程中文对接。日语文书翻译、官方手续全部由我们代劳。</p>
-                </div>
-              </div>
-              <div className="promise-item">
-                <div className="promise-icon-circle"><PrIconStar /></div>
-                <div>
-                  <div className="promise-title">当日回复，高效代办</div>
-                  <p className="promise-desc">咨询后当日内专业顾问回复，最快2周启动申请。3000+实绩支撑，高通过率有保障。</p>
-                </div>
-              </div>
-              <div className="promise-footer">
-                {['行政书士','社会保険労務士','税理士','中小企業診断士'].map(t => (
-                  <div key={t} className="promise-tag">{t}</div>
-                ))}
-              </div>
+            {/* 左侧：图片 */}
+            <div className="feature-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
+                alt="志成コンサル专业团队"
+                className="feature-img"
+              />
             </div>
 
             {/* 右侧：特点列表 */}
