@@ -235,7 +235,7 @@ export default function PartnerPage() {
       </div>
 
       {/* 数据展示 */}
-      <section style={{padding: "80px 0", background: "#ffffff"}}>
+      <section className="section-std" style={{background: "#ffffff"}}>
         <div className="section-inner">
           <div className="partner-stats-row">
             {[
@@ -260,7 +260,7 @@ export default function PartnerPage() {
       </section>
 
       {/* 适合人群 */}
-      <section style={{padding: "96px 0", background: "var(--bg-outer)"}}>
+      <section className="section-std" style={{background: "var(--bg-outer)"}}>
         <div className="section-inner">
           <div className="section-label">适合人群</div>
           <h2 className="section-title">哪些人适合成为代理？</h2>
@@ -293,9 +293,9 @@ export default function PartnerPage() {
       </section>
 
       {/* 分成机制 */}
-      <section id="how-it-works" style={{padding: "96px 0", background: "#ffffff"}}>
+      <section id="how-it-works" className="section-std" style={{background: "#ffffff"}}>
         <div className="section-inner">
-          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start"}}>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 80, alignItems: "start"}}>
             <div>
               <div className="section-label">分成机制</div>
               <h2 className="section-title">透明、公平、<br/>按时结算</h2>
@@ -374,7 +374,7 @@ export default function PartnerPage() {
       </section>
 
       {/* 合作流程 */}
-      <section style={{padding: "96px 0", background: "var(--bg-outer)"}}>
+      <section className="section-std" style={{background: "var(--bg-outer)"}}>
         <div className="section-inner">
           <div style={{textAlign: "center", marginBottom: 0}}>
             <div className="section-label">合作流程</div>
@@ -421,7 +421,7 @@ export default function PartnerPage() {
       </section>
 
       {/* FAQ */}
-      <section style={{padding: "96px 0", background: "#ffffff"}}>
+      <section className="section-std" style={{background: "#ffffff"}}>
         <div className="section-inner">
           <div className="section-label">常见问题</div>
           <h2 className="section-title">代理合作 FAQ</h2>

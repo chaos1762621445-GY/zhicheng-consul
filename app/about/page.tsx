@@ -154,9 +154,9 @@ export default function AboutPage() {
       </div>
 
       {/* 公司理念 */}
-      <section style={{padding: "96px 0", background: "#ffffff"}}>
+      <section className="section-std" style={{background: "#ffffff"}}>
         <div className="section-inner">
-          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center"}}>
+          <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 80, alignItems: "center"}}>
             <div>
               <div className="section-label">我们的理念</div>
               <h2 className="section-title">让语言不再成为<br/>机会的壁垒</h2>
@@ -197,7 +197,7 @@ export default function AboutPage() {
       </section>
 
       {/* 四士团队 */}
-      <section style={{padding: "96px 0", background: "var(--bg-outer)"}}>
+      <section className="section-std" style={{background: "var(--bg-outer)"}}>
         <div className="section-inner">
           <div style={{textAlign: "center", marginBottom: 0}}>
             <div className="section-label">专业团队</div>
@@ -243,7 +243,7 @@ export default function AboutPage() {
       </section>
 
       {/* 创业故事 */}
-      <section style={{padding: "96px 0", background: "#ffffff"}}>
+      <section className="section-std" style={{background: "#ffffff"}}>
         <div className="section-inner">
           <div style={{maxWidth: 760, margin: "0 auto"}}>
             <div className="section-label">创业故事</div>
@@ -273,7 +273,7 @@ export default function AboutPage() {
       </section>
 
       {/* 会社概要 */}
-      <section style={{padding: "96px 0", background: "var(--bg-outer)"}}>
+      <section className="section-std" style={{background: "var(--bg-outer)"}}>
         <div className="section-inner">
           <div className="section-label">会社概要</div>
           <h2 className="section-title">公司信息</h2>

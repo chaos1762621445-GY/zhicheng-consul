@@ -201,7 +201,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── WHY US ── */}
-      <section style={{padding:'96px 0',background:'#ffffff'}}>
+      <section className="section-std" style={{background: '#ffffff'}}>
         <div className="section-inner">
           <div className="feature-split">
             <MotionSection>
@@ -235,7 +235,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section style={{padding:'96px 0',background:'#F8FAFC'}}>
+      <section className="section-std" style={{background: '#F8FAFC'}}>
         <div className="section-inner">
           <MotionSection style={{maxWidth:520,marginBottom:56}}>
             <div className="section-label">申请流程</div>

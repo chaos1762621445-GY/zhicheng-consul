@@ -126,7 +126,7 @@ export default function ServicesSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section style={{ padding: '96px 0', background: '#ffffff' }}>
+    <section className="section-std" style={{ background: '#ffffff' }}>
       <div className="section-inner" ref={ref}>
         <motion.div
           style={{ maxWidth: 600, marginBottom: 56 }}
