@@ -3,86 +3,95 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "服务流程",
-  description: "志成コンサル补助金申请代办服务流程，全程中文，无成功不收费。",
+  description: "志成コンサル补助金申请代办全流程：免费咨询→签约→材料准备→提交申请→获批。全程中文，无成功不收费。",
 };
 
 const steps = [
-  { num: "01", title: "免费咨询 & 资格测试", desc: "填写问卷或直接联系我们，3分钟了解您的企业可以申请哪些补助金，以及预计可获得的金额。完全免费，无任何义务。" },
-  { num: "02", title: "签署委托合同", desc: "确认方案后签署服务合同。我们采用成功报酬制，申请未成功则不收取任何费用，零风险。" },
-  { num: "03", title: "资料收集 & 事业计划书制作", desc: "我们全程指导您准备所需材料，并由专业顾问撰写符合审查标准的事业计划书。全程中文沟通。" },
-  { num: "04", title: "提交申请", desc: "代理您向主管部门提交申请，负责所有日文材料的整理和提交手续。" },
-  { num: "05", title: "等待审查结果", desc: "审查期间保持跟进，如有补充材料要求立即响应，最大化通过概率。" },
-  { num: "06", title: "获批 & 实施", desc: "获批后指导您进行采购和实施，确保符合补助金使用规定，顺利完成报告。" },
+  { title: "免费咨询 & 资格判断", desc: "填写问卷或联系我们微信（pr2024188），3分钟了解您的企业适合哪种补助金，预计可获得多少金额。完全免费，无任何义务。" },
+  { title: "签署委托合同", desc: "确认方案后签署服务合同。我们采用成功报酬制——申请未成功则不收取任何费用，真正零风险。" },
+  { title: "材料收集 & 事业计划书制作", desc: "我们全程指导准备所需资料，由专业顾问撰写符合审查标准的事业计划书，全程中文沟通，日文材料我们负责。" },
+  { title: "提交申请", desc: "代理您向主管部门（中小企業庁/厚生労働省/东京都等）提交申请，负责所有日文材料的整理和电子申报。" },
+  { title: "审查跟进", desc: "审查期间持续跟进，如有补充材料要求立即响应，最大化通过概率。" },
+  { title: "获批 & 事后报告", desc: "获批后指导您进行设备采购/研修实施，确保符合补助金使用规定，协助完成实绩报告，顺利领取补助金。" },
 ];
 
 export default function ServicePage() {
   return (
     <main>
-      <nav style={{ background: "#fff", borderBottom: "1px solid #e5e7eb", position: "sticky", top: 0, zIndex: 50 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          <Link href="/" style={{ fontWeight: 800, fontSize: 18, color: "#1a56db", textDecoration: "none" }}>志成コンサル</Link>
-          <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-            <Link href="/subsidies" style={{ color: "#374151", textDecoration: "none", fontSize: 14 }}>补助金种类</Link>
-            <Link href="/service" style={{ color: "#1a56db", textDecoration: "none", fontSize: 14, fontWeight: 600 }}>服务流程</Link>
-            <Link href="/blog" style={{ color: "#374151", textDecoration: "none", fontSize: 14 }}>知识库</Link>
-            <Link href="/contact" style={{ background: "#1a56db", color: "#fff", padding: "8px 20px", borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600 }}>免费咨询</Link>
+      <nav className="nav">
+        <div className="nav-inner">
+          <Link href="/" className="nav-logo">志成コンサル</Link>
+          <div className="nav-links">
+            <Link href="/subsidies" className="nav-link">补助金种类</Link>
+            <Link href="/service" className="nav-link active">服务流程</Link>
+            <Link href="/blog" className="nav-link">知识库</Link>
+            <Link href="/contact" className="btn-primary">免费咨询</Link>
           </div>
         </div>
       </nav>
 
-      <section style={{ background: "#f9fafb", padding: "48px 24px", textAlign: "center" }}>
-        <h1 style={{ fontSize: 36, marginBottom: 12 }}>服务流程</h1>
-        <p style={{ color: "#6b7280", fontSize: 16 }}>从咨询到获批，全程中文，无成功不收费</p>
+      <section className="section-light" style={{padding:"48px 24px", textAlign:"center"}}>
+        <h1 style={{fontSize:36, fontWeight:300, color:"var(--heading)", letterSpacing:"-0.5px", marginBottom:12}}>服务流程</h1>
+        <p style={{color:"var(--body)", fontSize:16}}>从咨询到获批，全程中文，无成功不收费</p>
       </section>
 
-      <section style={{ padding: "64px 24px" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          {steps.map((step, i) => (
-            <div key={i} style={{ display: "flex", gap: 24, marginBottom: 48 }}>
-              <div style={{ flexShrink: 0 }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#1a56db", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 16 }}>
-                  {step.num}
+      <section className="section">
+        <div className="section-inner">
+          <div className="process-list">
+            {steps.map((step, i) => (
+              <div key={i} className="process-item">
+                <div>
+                  <div className="process-num">{String(i+1).padStart(2,'0')}</div>
+                  {i < steps.length-1 && <div className="process-line" />}
                 </div>
-                {i < steps.length - 1 && (
-                  <div style={{ width: 2, background: "#e5e7eb", margin: "8px auto 0", height: 40 }} />
-                )}
-              </div>
-              <div style={{ paddingTop: 12 }}>
-                <h3 style={{ fontSize: 18, marginBottom: 10 }}>{step.title}</h3>
-                <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.8 }}>{step.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ background: "#f9fafb", padding: "48px 24px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontSize: 28, marginBottom: 32 }}>为什么选择志成コンサル？</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24 }}>
-            {[
-              { icon: "🀄", title: "全程中文", desc: "母语沟通，无语言障碍" },
-              { icon: "✅", title: "无成功不收费", desc: "零风险，获批再付款" },
-              { icon: "📋", title: "专业团队", desc: "行政書士・税理士联合" },
-              { icon: "⚡", title: "高通过率", desc: "业界领先成功率" },
-            ].map((f, i) => (
-              <div key={i} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, padding: 24 }}>
-                <div style={{ fontSize: 32, marginBottom: 12 }}>{f.icon}</div>
-                <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 8, color: "#111928" }}>{f.title}</div>
-                <div style={{ fontSize: 13, color: "#6b7280" }}>{f.desc}</div>
+                <div className="process-body">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ background: "#1e3a8a", padding: "72px 24px", textAlign: "center" }}>
-        <h2 style={{ color: "#fff", fontSize: 28, marginBottom: 16 }}>立即开始第一步</h2>
-        <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: 32 }}>免费咨询，3分钟了解您的补助金资格</p>
-        <Link href="/contact" style={{ background: "#fbbf24", color: "#111928", padding: "14px 40px", borderRadius: 8, textDecoration: "none", fontSize: 16, fontWeight: 700, display: "inline-block" }}>
-          开始免费咨询 →
-        </Link>
+      <section className="section-dark">
+        <div className="section-inner">
+          <div className="section-head">
+            <h2>服务优势</h2>
+            <p>在日华人企业专属顾问，不只是代办，是真正的专业伙伴</p>
+          </div>
+          <div className="feature-grid">
+            {[
+              { fi:"🀄", title:"全程中文", desc:"母语沟通，所有日文材料由我们处理" },
+              { fi:"✅", title:"无成功不收费", desc:"申请未通过则零收费，真正零风险" },
+              { fi:"📋", title:"专业持证团队", desc:"行政书士·税理士联合，材料合规" },
+              { fi:"🔄", title:"一站式全包", desc:"从判断→申请→事后报告，全程包办" },
+            ].map((f,i) => (
+              <div key={i} className="feature-card">
+                <div className="fi">{f.fi}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
+
+      <section className="section">
+        <div className="section-inner">
+          <div className="cta-block" style={{maxWidth:560, margin:"0 auto"}}>
+            <h2>立即开始第一步</h2>
+            <p>免费咨询，了解您的企业适合哪种补助金</p>
+            <div className="cta-btns">
+              <Link href="/contact" className="btn-primary-lg">开始免费咨询 →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>© 2025 株式会社志成コンサル. All rights reserved.</p>
+      </footer>
     </main>
   );
 }

@@ -7,159 +7,139 @@ export default async function Home() {
 
   return (
     <main>
-      {/* NAV */}
-      <nav style={{ background: "#fff", borderBottom: "1px solid #e5e7eb", position: "sticky", top: 0, zIndex: 50 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          <Link href="/" style={{ fontWeight: 800, fontSize: 18, color: "#1a56db", textDecoration: "none" }}>
-            志成コンサル
-          </Link>
-          <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-            <Link href="/subsidies" style={{ color: "#374151", textDecoration: "none", fontSize: 14 }}>补助金种类</Link>
-            <Link href="/service" style={{ color: "#374151", textDecoration: "none", fontSize: 14 }}>服务流程</Link>
-            <Link href="/blog" style={{ color: "#374151", textDecoration: "none", fontSize: 14 }}>知识库</Link>
-            <Link href="/contact" style={{
-              background: "#1a56db", color: "#fff", padding: "8px 20px",
-              borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600
-            }}>免费咨询</Link>
+      <nav className="nav">
+        <div className="nav-inner">
+          <Link href="/" className="nav-logo">志成コンサル</Link>
+          <div className="nav-links">
+            <Link href="/subsidies" className="nav-link">补助金种类</Link>
+            <Link href="/service" className="nav-link">服务流程</Link>
+            <Link href="/blog" className="nav-link">知识库</Link>
+            <Link href="/contact" className="btn-primary">免费咨询</Link>
           </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section style={{ background: "linear-gradient(135deg, #1e3a8a 0%, #1a56db 60%, #2563eb 100%)", color: "#fff", padding: "80px 24px 100px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", borderRadius: 20, padding: "6px 16px", fontSize: 13, marginBottom: 24 }}>
-            🎌 专为在日华人企业主服务
-          </div>
-          <h1 style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 800, color: "#fff", marginBottom: 20, lineHeight: 1.2 }}>
-            在日本经营，<br />政府补助金<span style={{ color: "#fbbf24" }}>你拿到了吗？</span>
-          </h1>
-          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.7 }}>
-            株式会社志成コンサル 专注在日华人企业补助金申请代办<br />
-            成功率业界领先 · 无成功不收费 · 全程中文服务
+      <section className="hero">
+        <div className="hero-inner">
+          <div className="hero-badge">🎌 专为在日华人企业主服务</div>
+          <h1>在日本经营，<br />政府补助金<em>你拿到了吗？</em></h1>
+          <p className="hero-sub">
+            株式会社志成コンサル · 专注在日华人企业补助金申请代办<br />
+            全程中文沟通 · 无成功不收费 · 省力化/AI/转正/培训多种补助
           </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{
-              background: "#fbbf24", color: "#111928", padding: "14px 32px",
-              borderRadius: 8, textDecoration: "none", fontSize: 16, fontWeight: 700
-            }}>
-              免费测试补助金资格 →
-            </Link>
-            <Link href="/subsidies" style={{
-              background: "rgba(255,255,255,0.15)", color: "#fff", padding: "14px 32px",
-              borderRadius: 8, textDecoration: "none", fontSize: 16, border: "1px solid rgba(255,255,255,0.3)"
-            }}>
-              了解补助金种类
-            </Link>
+          <div className="hero-cta">
+            <Link href="/contact" className="btn-gold">免费测试补助金资格 →</Link>
+            <Link href="/subsidies" className="btn-ghost" style={{color:"rgba(255,255,255,0.85)", borderColor:"rgba(255,255,255,0.25)"}}>了解补助金种类</Link>
           </div>
         </div>
       </section>
 
       {/* STATS */}
-      <section style={{ background: "#f9fafb", padding: "48px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, textAlign: "center" }}>
-          {[
-            { num: "500+", label: "成功申请案例" },
-            { num: "¥8.5億+", label: "累计获批补助金额" },
-            { num: "无成功", label: "不收费", sub: "零风险保障" },
-          ].map((s, i) => (
-            <div key={i} style={{ padding: "24px 16px" }}>
-              <div style={{ fontSize: 36, fontWeight: 800, color: "#1a56db", marginBottom: 8 }}>{s.num}</div>
-              <div style={{ fontSize: 15, color: "#374151", fontWeight: 600 }}>{s.label}</div>
-              {s.sub && <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 4 }}>{s.sub}</div>}
-            </div>
-          ))}
+      <section className="stats">
+        <div className="stats-inner">
+          <div><div className="stat-num">500+</div><div className="stat-label">成功申请案例</div></div>
+          <div><div className="stat-num">¥8.5億+</div><div className="stat-label">累计获批补助金额</div></div>
+          <div><div className="stat-num">无成功</div><div className="stat-label">不收费 · 零风险保障</div></div>
         </div>
       </section>
 
-      {/* SUBSIDIES */}
-      <section style={{ padding: "72px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ textAlign: "center", fontSize: 28, marginBottom: 8 }}>主要补助金种类</h2>
-          <p style={{ textAlign: "center", color: "#6b7280", marginBottom: 48 }}>华人企业主最常申请的三大补助金</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+      {/* SERVICES */}
+      <section className="section">
+        <div className="section-inner">
+          <div className="section-head">
+            <h2>我们代办的补助金种类</h2>
+            <p>6种主要补助金，覆盖在日华人企业最常见的需求场景</p>
+          </div>
+          <div className="card-grid">
             {[
-              {
-                icon: "💻", title: "IT导入补助金",
-                desc: "引入会计软件、ERP、收银系统等IT工具最高补助75万円，补助率最高3/4",
-                tag: "申请难度低"
-              },
-              {
-                icon: "🏪", title: "小型事业者持续化补助金",
-                desc: "广告宣传、展会出展、设备购置等最高补助250万円，个人事业主也可申请",
-                tag: "最受欢迎"
-              },
-              {
-                icon: "🏭", title: "事业再构筑补助金",
-                desc: "业务转型、新领域进入最高补助1.5億円，大规模事业变革的最佳选择",
-                tag: "金额最大"
-              },
-            ].map((item, i) => (
-              <div key={i} style={{
-                border: "1px solid #e5e7eb", borderRadius: 12, padding: 28,
-                background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
-              }}>
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{item.icon}</div>
-                <div style={{ display: "inline-block", background: "#eff6ff", color: "#1a56db", fontSize: 11, padding: "3px 10px", borderRadius: 10, marginBottom: 12, fontWeight: 600 }}>{item.tag}</div>
-                <h3 style={{ fontSize: 18, marginBottom: 12 }}>{item.title}</h3>
-                <p style={{ fontSize: 14, color: "#6b7280", lineHeight: 1.7 }}>{item.desc}</p>
+              { icon:"🤖", tag:"最高1,500万円", title:"省力化补助金", amount:"最高1,500万円", rate:"补助率最大50%", desc:"IoT·机器人·DX系统导入，人手不足企业的最佳选择。收银系统、库存管理、顾客AI均可申请。" },
+              { icon:"🧠", tag:"最高350万円", title:"AI导入补助金", amount:"最高350万円", rate:"补助率1/2〜2/3", desc:"AI营销工具、CRM、自动化软件、云服务。赤字企业、新设企业均可申请，无从业规模限制。" },
+              { icon:"👔", tag:"最高80万円/人", title:"员工转正助成金", amount:"最高80万円/人", rate:"全额由厚生劳动省支给", desc:"将兼职/合同社员转为正社员，每人最高获得80万円政府助成金，无需企业垫付。" },
+              { icon:"📚", tag:"最高75%培训费", title:"员工培训助成金", amount:"经费最高75%", rate:"＋时薪960円补贴", desc:"AI营销/运营/数据分析研修，培训费大部分由政府承担。可与转正助成金同时申请，效果翻倍。" },
+              { icon:"❄️", tag:"东京限定", title:"空调省能更新补助", amount:"自费极少", rate:"东京都环境局支持", desc:"将旧空调更换为高效省能空调，补助比例极高，餐饮店、民宿、学习塾、办公室均适用。" },
+              { icon:"🤝", tag:"分成60%", title:"代理合作", amount:"介绍报酬60%分成", rate:"零加盟费", desc:"已有客户资源？将客户推荐给我们即可获得60%分成报酬，无需自己处理申请手续。" },
+            ].map((s,i) => (
+              <div key={i} className="card">
+                <div className="card-icon">{s.icon}</div>
+                <span className="card-tag">{s.tag}</span>
+                <h3>{s.title}</h3>
+                <div className="card-amount">{s.amount}</div>
+                <div className="card-rate">{s.rate}</div>
+                <p>{s.desc}</p>
               </div>
             ))}
           </div>
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <Link href="/subsidies" style={{ color: "#1a56db", textDecoration: "none", fontWeight: 600, fontSize: 15 }}>查看全部补助金种类 →</Link>
+          <div style={{textAlign:"center", marginTop:36}}>
+            <Link href="/subsidies" className="nav-link" style={{color:"var(--primary)", fontWeight:500}}>查看各补助金详细条件 →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="section-dark">
+        <div className="section-inner">
+          <div className="section-head">
+            <h2>为什么选择志成コンサル？</h2>
+            <p>在日华人企业专属，不是中介，是全程陪跑的顾问团队</p>
+          </div>
+          <div className="feature-grid">
+            {[
+              { fi:"🀄", title:"全程中文", desc:"母语沟通，所有日文材料由我们处理，您只需提供信息" },
+              { fi:"✅", title:"无成功不收费", desc:"申请未通过则零收费，真正的零风险委托" },
+              { fi:"📋", title:"行政书士·税理士联合", desc:"专业持证团队，材料合规、申请成功率业界领先" },
+              { fi:"⚡", title:"一站式服务", desc:"从资格判断→材料准备→提交申请→事后报告，全程包办" },
+            ].map((f,i) => (
+              <div key={i} className="feature-card">
+                <div className="fi">{f.fi}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* RECENT POSTS */}
       {recentPosts.length > 0 && (
-        <section style={{ background: "#f9fafb", padding: "72px 24px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <h2 style={{ textAlign: "center", fontSize: 28, marginBottom: 8 }}>最新补助金资讯</h2>
-            <p style={{ textAlign: "center", color: "#6b7280", marginBottom: 48 }}>每周更新日本最新补助金政策解读</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
-              {recentPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                  <div style={{
-                    background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12,
-                    padding: 24, height: "100%", transition: "box-shadow 0.2s",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
-                  }}>
-                    <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 12 }}>{post.date}</div>
-                    <h3 style={{ fontSize: 17, marginBottom: 12, color: "#111928", lineHeight: 1.5 }}>{post.title}</h3>
-                    <p style={{ fontSize: 13, color: "#6b7280", lineHeight: 1.6 }}>{post.excerpt}</p>
-                    <div style={{ marginTop: 16, color: "#1a56db", fontSize: 13, fontWeight: 600 }}>阅读全文 →</div>
-                  </div>
+        <section className="section-light">
+          <div className="section-inner">
+            <div className="section-head">
+              <h2>最新补助金资讯</h2>
+              <p>每天更新日本最新补助金政策解读，帮你第一时间掌握申请机会</p>
+            </div>
+            <div className="card-grid">
+              {recentPosts.map(post => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
+                  <div className="date">{post.date}</div>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                  <div className="read-more">阅读全文 →</div>
                 </Link>
               ))}
             </div>
-            <div style={{ textAlign: "center", marginTop: 40 }}>
-              <Link href="/blog" style={{ color: "#1a56db", textDecoration: "none", fontWeight: 600, fontSize: 15 }}>查看全部文章 →</Link>
+            <div style={{textAlign:"center", marginTop:32}}>
+              <Link href="/blog" style={{color:"var(--primary)", fontWeight:500, fontSize:14, textDecoration:"none"}}>查看全部文章 →</Link>
             </div>
           </div>
         </section>
       )}
 
       {/* CTA */}
-      <section style={{ background: "#1e3a8a", padding: "72px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2 style={{ color: "#fff", fontSize: 28, marginBottom: 16 }}>立即测试您的补助金资格</h2>
-          <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: 32, lineHeight: 1.7 }}>
-            3分钟问卷，了解您的企业可以申请哪些补助金<br />完全免费，无任何义务
-          </p>
-          <Link href="/contact" style={{
-            background: "#fbbf24", color: "#111928", padding: "14px 40px",
-            borderRadius: 8, textDecoration: "none", fontSize: 16, fontWeight: 700, display: "inline-block"
-          }}>
-            开始免费自测 →
-          </Link>
+      <section className="section">
+        <div className="section-inner">
+          <div className="cta-block" style={{maxWidth:600, margin:"0 auto"}}>
+            <h2>立即测试您的补助金资格</h2>
+            <p>3分钟问卷，了解您的企业可以申请哪些补助金及预计可获金额，完全免费</p>
+            <div className="cta-btns">
+              <Link href="/contact" className="btn-primary-lg">开始免费自测 →</Link>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ background: "#111928", color: "rgba(255,255,255,0.5)", padding: "32px 24px", textAlign: "center", fontSize: 13 }}>
-        <p>© 2025 株式会社志成コンサル. All rights reserved.</p>
+      <footer className="footer">
+        <p>© 2025 株式会社志成コンサル. All rights reserved. | 微信：pr2024188</p>
       </footer>
     </main>
   );
