@@ -171,7 +171,7 @@ const Footer = () => (
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
         <div className="footer-qr">
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:140,height:140,borderRadius:8,display:'block',marginTop:12}} />
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:180,height:180,borderRadius:8,display:'block',marginTop:12,border:'3px solid rgba(255,255,255,0.2)',padding:4,background:'#fff'}} />
         </div>
       </div>
     </div>
