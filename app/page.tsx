@@ -135,49 +135,57 @@ const Nav = () => (
 
 // ─── Footer Component ───────────────────────────────────────────────────────
 const Footer = () => (
-  <footer className="footer">
-    <div className="footer-inner">
-      <div className="footer-brand">
-        <div className="footer-logo-wrap">
-          <img src="/logo.png" alt="志成コンサル" style={{height:40, filter:"brightness(10)"}} />
+  <footer style={{background:'#0A1628', paddingTop:64}}>
+    <div style={{maxWidth:1280,margin:'0 auto',padding:'0 48px 48px',display:'grid',gridTemplateColumns:'1.2fr 0.8fr 1fr',gap:56}}>
+
+      {/* 左列：品牌 */}
+      <div>
+        <div style={{marginBottom:20}}>
+          <img src="/logo.png" alt="志成コンサル" style={{height:40,filter:'brightness(10)',display:'block'}} />
         </div>
-        <p className="footer-tagline">
+        <p style={{fontSize:14,color:'rgba(255,255,255,0.82)',lineHeight:1.85,maxWidth:280}}>
           专为在日华人企业主提供日本政府补助金申请代办服务。
           行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。
         </p>
       </div>
-      <div className="footer-nav">
-        <h4>快速导航</h4>
-        <div className="footer-nav-links">
-          <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
-          <Link href="/service" className="footer-nav-link">服务流程</Link>
-          <Link href="/blog" className="footer-nav-link">知识库</Link>
-          <Link href="/contact" className="footer-nav-link">免费咨询</Link>
+
+      {/* 中列：导航 */}
+      <div>
+        <h4 style={{fontSize:11,fontWeight:700,color:'#ffffff',textTransform:'uppercase',letterSpacing:2,marginBottom:20}}>快速导航</h4>
+        <div style={{display:'flex',flexDirection:'column',gap:12}}>
+          {[{href:'/subsidies',label:'补助金种类'},{href:'/service',label:'服务流程'},{href:'/blog',label:'知识库'},{href:'/contact',label:'免费咨询'}].map(l=>(
+            <Link key={l.href} href={l.href} style={{fontSize:15,color:'rgba(255,255,255,0.88)',textDecoration:'none'}}>{l.label}</Link>
+          ))}
         </div>
       </div>
-      <div className="footer-contact-col">
-        <h4>联系我们</h4>
-        <div className="footer-contact-row">
-          <strong>微信：</strong>pr2024188
-        </div>
-        <div className="footer-contact-row">
-          <strong>电话：</strong>03-6265-9756
-        </div>
-        <div className="footer-contact-row">
-          <strong>邮箱：</strong>knakano.sekiyoshi@gmail.com
-        </div>
-        <div className="footer-contact-row" style={{flexDirection:"column", gap:4}}>
-          <strong>地址：</strong>
+
+      {/* 右列：联系 */}
+      <div>
+        <h4 style={{fontSize:11,fontWeight:700,color:'#ffffff',textTransform:'uppercase',letterSpacing:2,marginBottom:20}}>联系我们</h4>
+        {[
+          {label:'微信', value:'pr2024188'},
+          {label:'电话', value:'03-6265-9756'},
+          {label:'邮箱', value:'knakano.sekiyoshi@gmail.com'},
+        ].map(r=>(
+          <div key={r.label} style={{display:'flex',gap:8,marginBottom:12,fontSize:14,color:'rgba(255,255,255,0.92)',lineHeight:1.6}}>
+            <strong style={{color:'#ffffff',fontWeight:600,flexShrink:0}}>{r.label}：</strong>
+            <span>{r.value}</span>
+          </div>
+        ))}
+        <div style={{display:'flex',flexDirection:'column',gap:4,marginBottom:12,fontSize:14,color:'rgba(255,255,255,0.92)',lineHeight:1.7}}>
+          <strong style={{color:'#ffffff',fontWeight:600}}>地址：</strong>
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
-        <div className="footer-qr">
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:180,height:180,borderRadius:8,display:'block',marginTop:12,border:'3px solid rgba(255,255,255,0.2)',padding:4,background:'#fff'}} />
+        <div style={{marginTop:20}}>
+          <div style={{fontSize:12,color:'rgba(255,255,255,0.70)',marginBottom:8,fontWeight:500}}>微信扫码咨询</div>
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:180,height:180,borderRadius:8,display:'block',border:'3px solid rgba(255,255,255,0.3)',padding:4,background:'#ffffff'}} />
         </div>
       </div>
+
     </div>
-    <div className="footer-bottom">
-      <span>© 2025 株式会社志成コンサル 保留所有权利。</span>
-      <span style={{color:"rgba(255,255,255,0.25)"}}>行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
+    <div style={{maxWidth:1280,margin:'0 auto',padding:'20px 48px',borderTop:'1px solid rgba(255,255,255,0.15)',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+      <span style={{fontSize:13,color:'rgba(255,255,255,0.70)'}}>© 2025 株式会社志成コンサル 保留所有权利。</span>
+      <span style={{fontSize:12,color:'rgba(255,255,255,0.60)'}}>行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
     </div>
   </footer>
 );
