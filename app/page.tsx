@@ -2,11 +2,10 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import NavClient from "./components/NavClient";
 
-// ─── SVG Icons (stroke #533afd, strokeWidth 1.8, fill none) ──────────────────
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
 
-// Check icon (dark for light hero background)
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
@@ -21,9 +20,8 @@ const IconArrow = () => (
   </svg>
 );
 
-// Service icons 24px
 const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -31,15 +29,15 @@ const IconDoc = () => (
   </svg>
 );
 const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="#533afd"/>
-    <circle cx="15" cy="15" r="1" fill="#533afd"/>
+    <circle cx="9" cy="15" r="1" fill="#2563EB"/>
+    <circle cx="15" cy="15" r="1" fill="#2563EB"/>
   </svg>
 );
 const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -47,26 +45,26 @@ const IconUsers = () => (
   </svg>
 );
 const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
   </svg>
 );
 const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
     <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
   </svg>
 );
 
-// Credential icons 32px (light purple #b9b9f9)
+// Credential icons 32px
 const CIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#b9b9f9" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -74,7 +72,7 @@ const CIconDoc = () => (
   </svg>
 );
 const CIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#b9b9f9" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -82,46 +80,46 @@ const CIconUsers = () => (
   </svg>
 );
 const CIconScale = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#b9b9f9" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <line x1="12" y1="3" x2="12" y2="21"/>
     <path d="M3 9l9-6 9 6"/>
     <path d="M3 15l6 4H3zM21 15l-6 4h6z"/>
   </svg>
 );
 const CIconAward = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#b9b9f9" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <circle cx="12" cy="8" r="7"/>
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
   </svg>
 );
 
-// Panel icons (18px, #533afd on white panel)
+// Panel icons 18px
 const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
   </svg>
 );
 const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8"/>
   </svg>
 );
 const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
   </svg>
 );
 const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
@@ -129,24 +127,24 @@ const PIconSnow = () => (
 
 // Why Us feature icons 20px
 const FIconGlobe = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <circle cx="12" cy="12" r="10"/>
     <line x1="2" y1="12" x2="22" y2="12"/>
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
   </svg>
 );
 const FIconShield = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
   </svg>
 );
 const FIconStar = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   </svg>
 );
 const FIconTrophy = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <polyline points="8 21 12 17 16 21"/>
     <path d="M17 4H7l1 7c0 2.2 1.8 4 4 4s4-1.8 4-4l1-7z"/>
     <path d="M3 7h1a3 3 0 0 0 3-3M21 7h-1a3 3 0 0 1-3-3"/>
@@ -160,7 +158,6 @@ const Nav = () => <NavClient />;
 const Footer = () => (
   <footer className="footer">
     <div className="footer-inner">
-      {/* 品牌列 */}
       <div>
         <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block',filter:'brightness(10)'}} />
         <p className="footer-brand-desc">
@@ -169,7 +166,6 @@ const Footer = () => (
         </p>
       </div>
 
-      {/* 快速导航 */}
       <div>
         <div className="footer-col-title">快速导航</div>
         <div className="footer-links">
@@ -184,7 +180,6 @@ const Footer = () => (
         </div>
       </div>
 
-      {/* 联系方式 */}
       <div>
         <div className="footer-col-title">联系我们</div>
         <div className="footer-contact-row">
@@ -282,16 +277,16 @@ export default async function HomePage() {
   ];
 
   const credentials = [
-    { icon: <CIconDoc />, name: "行政书士", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
-    { icon: <CIconUsers />, name: "社会保险劳务士", desc: "专业负责雇佣关系助成金申请及劳务管理" },
-    { icon: <CIconScale />, name: "税理士", desc: "专业负责财务会计及税务申报业务" },
-    { icon: <CIconAward />, name: "中小企业诊断士", desc: "专业负责经营战略制定及事业计划书撰写" },
+    { icon: <CIconDoc />, name: "行政书士", role: "申请材料专家", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
+    { icon: <CIconUsers />, name: "社会保険労務士", role: "雇佣关系专家", desc: "专业负责雇佣关系助成金申请及劳务管理" },
+    { icon: <CIconScale />, name: "税理士", role: "税务财务专家", desc: "专业负责财务会计及税务申报业务" },
+    { icon: <CIconAward />, name: "中小企業診断士", role: "经营规划专家", desc: "专业负责经营战略制定及事业计划书撰写" },
   ];
 
   const whyUs = [
     { icon: <FIconGlobe />, title: "全程中文无障碍", desc: "从初次咨询到最终审批，全程中文对接，语言障碍由我们完全承担。" },
     { icon: <FIconShield />, title: "无成功不收费", desc: "申请失败则无需支付任何费用，彻底消除您的财务风险。" },
-    { icon: <FIconStar />, title: "四士联合专业团队", desc: "行政书士·社会保险劳务士·税理士·中小企业诊断士四大专业资质联合，确保申请质量。" },
+    { icon: <FIconStar />, title: "四类国家持牌专家", desc: "行政书士·劳务士·税理士·经营诊断士，四类国家持牌专家分工协作，确保申请全程合规精准。" },
     { icon: <FIconTrophy />, title: "实绩3000+案例支撑", desc: "累计成功案例超过3000件，获批总额超过8.5亿日元，实绩可靠。" },
   ];
 
@@ -311,14 +306,12 @@ export default async function HomePage() {
       {/* ── HERO ── */}
       <section className="hero-section">
         <div className="hero-inner">
-          {/* 左侧 */}
           <div>
             <h1 className="hero-h1 fade-up delay-1">
-              在日华人企业主{"\n"}政府补助金{"\n"}<em style={{fontStyle:'normal',color:'#533afd'}}>您申请了吗？</em>
+              日本政府补助金，{"\n"}全程中文代办
             </h1>
             <p className="hero-sub fade-up delay-2">
-              专业四士联合团队，全程中文，无成功不收费。<br/>
-              为在日华人中小企业精准匹配补助金，从申请到获批全程代办。
+              专业顾问团队，已协助3000+在日华人企业主申请成功，累计获批8.5亿日元。
             </p>
             <div className="hero-actions fade-up delay-3">
               <Link href="/contact" className="btn-primary">
@@ -366,8 +359,9 @@ export default async function HomePage() {
           {[
             { num: "3,000+", label: "成功申请案例" },
             { num: "¥8.5億+", label: "累计获批总额" },
+            { num: "4种", label: "持牌专业资质" },
           ].map((s, i) => (
-            <div key={i} className={`stat-item fade-up`} style={{animationDelay:`${i*0.08}s`}}>
+            <div key={i} className="stat-item fade-up" style={{animationDelay:`${i*0.08}s`}}>
               <div className="stat-num">{s.num}</div>
               <div className="stat-label">{s.label}</div>
             </div>
@@ -407,16 +401,17 @@ export default async function HomePage() {
       <section className="credentials-section">
         <div className="section-inner">
           <div style={{textAlign:'center',maxWidth:700,margin:'0 auto 48px'}}>
-            <div className="section-label" style={{color:'rgba(255,255,255,0.5)'}}>专业资质</div>
-            <h2 className="section-title" style={{color:'#ffffff'}}>四士联合专业团队</h2>
-            <p className="section-desc" style={{color:'rgba(255,255,255,0.7)',margin:'0 auto'}}>
-              行政书士·社会保险劳务士·税理士·中小企业诊断士，四大专业资质强强联合，为您的申请保驾护航。
+            <div className="section-label">专业资质</div>
+            <h2 className="section-title">持牌专业团队，全程合规操办</h2>
+            <p className="section-desc" style={{maxWidth:560,margin:'0 auto'}}>
+              四类国家持牌专家分工协作，每个申请环节合规精准，让您的资金申请有保障。
             </p>
           </div>
           <div className="credentials-grid">
             {credentials.map((c, i) => (
               <div key={i} className="credential-card">
                 <div className="credential-icon">{c.icon}</div>
+                <div className="credential-role">{c.role}</div>
                 <div className="credential-name">{c.name}</div>
                 <p className="credential-desc">{c.desc}</p>
               </div>
@@ -429,7 +424,6 @@ export default async function HomePage() {
       <section style={{padding:'96px 0',background:'#ffffff'}}>
         <div className="section-inner">
           <div className="feature-split">
-            {/* 左侧：图片 */}
             <div className="feature-img-wrap">
               <img
                 src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
@@ -437,8 +431,6 @@ export default async function HomePage() {
                 className="feature-img"
               />
             </div>
-
-            {/* 右侧：特点列表 */}
             <div>
               <div className="section-label">选择我们的理由</div>
               <h2 className="section-title">为什么选择志成コンサル？</h2>
@@ -461,7 +453,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section style={{padding:'96px 0',background:'#ffffff'}}>
+      <section style={{padding:'96px 0',background:'#F8FAFC'}}>
         <div className="section-inner">
           <div style={{maxWidth:520,marginBottom:56}}>
             <div className="section-label">申请流程</div>
