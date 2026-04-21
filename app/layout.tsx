@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "./components/SplashScreen";
+import WechatFloat from "./components/WechatFloat";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SplashScreen />
         {children}
+        <WechatFloat />
       </body>
     </html>
   );

@@ -69,7 +69,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0, ease }}
           >
-            日本政府补助金，{'\n'}全程中文代办
+            在日本经营，{'\n'}政府有钱可以拿
           </motion.h1>
 
           <motion.p
@@ -78,7 +78,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease }}
           >
-            专业顾问团队，已协助3000+在日华人企业主申请成功，累计获批8.5亿日元。
+            很多华人老板不知道：日本政府每年有大量补助金，专门给中小企业。我们帮你查清楚、申请下来，拿不到不收费。
           </motion.p>
 
           <motion.div
@@ -105,7 +105,11 @@ export default function HeroSection() {
           >
             <div className="hero-trust-item">
               <IconCheck />
-              申请失败零费用承诺
+              拿不到补助金，一分钱不收
+            </div>
+            <div className="hero-trust-item">
+              <IconCheck />
+              已帮 3,000+ 华人老板成功申请
             </div>
           </motion.div>
         </div>
@@ -116,7 +120,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.4, ease }}
         >
-          <div className="hero-panel-title">主要补助金一览</div>
+          <div className="hero-panel-title">你可能可以申请的补助金</div>
           {panelItems.map((item, i) => (
             <div key={i} className="hero-panel-item">
               <div className="hero-panel-left">
@@ -126,6 +130,9 @@ export default function HeroSection() {
               <span className="hero-panel-amount">{item.amount}</span>
             </div>
           ))}
+          <div style={{marginTop:16,paddingTop:14,borderTop:'1px solid var(--border)'}}>
+            <a href="/contact" style={{fontSize:13,color:'var(--primary)',textDecoration:'none',fontWeight:500}}>→ 不清楚从哪申请？先微信咨询</a>
+          </div>
         </motion.div>
       </div>
     </section>

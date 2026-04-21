@@ -53,7 +53,7 @@ const IconArrowRight = () => (
 const services = [
   {
     icon: <IconDoc />,
-    badge: '最高1亿円',
+    badge: '整体上限极高',
     name: '省力化补助金',
     amount: '最高1,500万円',
     rate: '补助率最高50%',
@@ -62,7 +62,7 @@ const services = [
   },
   {
     icon: <IconRobot />,
-    badge: '无员工规模限制',
+    badge: '个人也能申请',
     name: 'AI导入补助金',
     amount: '最高350万円',
     rate: '个人事业主亦可申请',
@@ -71,7 +71,7 @@ const services = [
   },
   {
     icon: <IconUsers />,
-    badge: '首次转正非新卒',
+    badge: '员工转正有补贴',
     name: '员工转正助成金',
     amount: '最高80万円/人',
     rate: '在职半年以上转正补助',
@@ -80,7 +80,7 @@ const services = [
   },
   {
     icon: <IconGraduate />,
-    badge: 'AI实战研修补贴',
+    badge: '员工培训有补贴',
     name: '员工培训助成金',
     amount: '最高1亿円',
     rate: '同步转正申请翻倍',
@@ -89,7 +89,7 @@ const services = [
   },
   {
     icon: <IconSnow />,
-    badge: '东京最高1,000万円',
+    badge: '以旧换新省大钱',
     name: '空调省能更新补助',
     amount: '最高1,000万円',
     rate: '东京政府补助2/3',
@@ -98,7 +98,7 @@ const services = [
   },
   {
     icon: <IconHandshake />,
-    badge: '零加盟费，合规正规',
+    badge: '推荐客户得分成',
     name: '代理合作',
     amount: '60% 分成',
     rate: '周期短、回流稳',
@@ -134,9 +134,9 @@ export default function ServicesSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="section-label">服务项目</div>
-          <h2 className="section-title">主要补助金与助成金</h2>
-          <p className="section-desc">为在日华人中小企业和个人事业主精准匹配补助金，从申请到获批全程代办。</p>
+          <div className="section-label">你能申请什么</div>
+          <h2 className="section-title">主要补助金种类</h2>
+          <p className="section-desc">以下是在日华人企业最常申请的补助金，我们为你全程操办。</p>
         </motion.div>
 
         <motion.div
@@ -164,6 +164,7 @@ export default function ServicesSection() {
                   <span className="service-link-arrow"><IconArrowRight /></span>
                 </Link>
               )}
+              <div style={{marginTop:12,paddingTop:10,borderTop:'1px solid var(--border)',fontSize:12,color:'var(--body)'}}>→ 微信咨询：pr2024188</div>
             </motion.div>
           ))}
         </motion.div>

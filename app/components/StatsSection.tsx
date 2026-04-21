@@ -47,19 +47,19 @@ export default function StatsSection() {
           <div className="stat-num">
             <CountUp target={3000} suffix="+" />
           </div>
-          <div className="stat-label">成功申请案例</div>
+          <div className="stat-label">华人老板成功申请</div>
         </div>
         <div className="stat-item">
           <div className="stat-num">
             <CountUp target={8.5} decimals={1} prefix="¥" suffix="億+" />
           </div>
-          <div className="stat-label">累计获批总额</div>
+          <div className="stat-label">已到账补助金总额</div>
         </div>
         <div className="stat-item">
           <div className="stat-num">
             <CountUp target={4} suffix="种" />
           </div>
-          <div className="stat-label">持牌专业资质</div>
+          <div className="stat-label">国家认定专业资质</div>
         </div>
       </div>
     </section>

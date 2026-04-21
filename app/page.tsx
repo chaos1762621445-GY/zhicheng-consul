@@ -147,19 +147,19 @@ export default async function HomePage() {
   ];
 
   const whyUs = [
-    { icon: <FIconGlobe />, title: "全程中文无障碍", desc: "从初次咨询到最终审批，全程中文对接，语言障碍由我们完全承担。" },
-    { icon: <FIconShield />, title: "无成功不收费", desc: "申请失败则无需支付任何费用，彻底消除您的财务风险。" },
-    { icon: <FIconStar />, title: "四类国家持牌专家", desc: "行政书士·劳务士·税理士·经营诊断士，四类国家持牌专家分工协作，确保申请全程合规精准。" },
-    { icon: <FIconTrophy />, title: "实绩3000+案例支撑", desc: "累计成功案例超过3000件，获批总额超过8.5亿日元，实绩可靠。" },
+    { icon: <FIconGlobe />, title: "全中文，不用学日语", desc: "从第一次咨询到拿到钱，全程中文沟通，我们处理所有日语文件。" },
+    { icon: <FIconShield />, title: "拿不到钱不收费", desc: "如果申请不成功，你不需要支付任何费用，零风险。" },
+    { icon: <FIconStar />, title: "四类国家认证专家", desc: "不是普通中介，是有国家认证资格的专业人士：行政书士、社劳士、税理士、经营诊断士全部配齐。" },
+    { icon: <FIconTrophy />, title: "3,000+ 真实成功案例", desc: "不是吹的，3,000+ 在日华人老板已经通过我们拿到补助金。" },
   ];
 
   const steps = [
-    { step: "STEP 01", title: "免费咨询", desc: "通过微信或电话联系我们，3分钟快速了解您的基本情况。" },
-    { step: "STEP 02", title: "补助金诊断", desc: "专业顾问根据您的业种、规模，匹配最适合的补助金种类。" },
-    { step: "STEP 03", title: "申请方案制定", desc: "制定详细申请计划，确认申请要件与必要资料清单。" },
-    { step: "STEP 04", title: "资料收集与整理", desc: "专业团队协助收集、整理、翻译所有必要申请文件。" },
-    { step: "STEP 05", title: "提交申请", desc: "由持牌专业人员代为提交申请，确保格式合规、按时递交。" },
-    { step: "STEP 06", title: "跟进审查与资金到账", desc: "全程跟踪审查进度，获批后协助完成后续手续与资金交付。" },
+    { step: "STEP 01", title: "免费咨询", desc: "微信联系我们，3分钟说清楚你的情况。" },
+    { step: "STEP 02", title: "补助金诊断", desc: "我们告诉你能申请哪些、大概能拿多少。" },
+    { step: "STEP 03", title: "方案确认", desc: "确认申请方向，你签字同意。" },
+    { step: "STEP 04", title: "资料整理", desc: "你提供基础资料，我们负责翻译和整理。" },
+    { step: "STEP 05", title: "专业递交", desc: "持牌专家代为递交，格式合规。" },
+    { step: "STEP 06", title: "等待到账", desc: "审核通过后，资金直接到你账户。" },
   ];
 
   return (
@@ -179,10 +179,10 @@ export default async function HomePage() {
       <section className="credentials-section">
         <div className="section-inner">
           <MotionSection style={{textAlign:'center',maxWidth:700,margin:'0 auto 48px'}}>
-            <div className="section-label">专业资质</div>
-            <h2 className="section-title">持牌专业团队，全程合规操办</h2>
+            <div className="section-label">为什么放心交给我们</div>
+            <h2 className="section-title">持牌专家团队，你不用懂日语</h2>
             <p className="section-desc" style={{maxWidth:560,margin:'0 auto'}}>
-              四类国家持牌专家分工协作，每个申请环节合规精准，让您的资金申请有保障。
+              四类国家认证资格持有者分工合作，从材料准备到递交审核，你只需要配合提供资料，其他全交给我们。
             </p>
           </MotionSection>
           <div className="credentials-grid">
@@ -216,7 +216,7 @@ export default async function HomePage() {
             <div>
               <MotionSection>
                 <div className="section-label">选择我们的理由</div>
-                <h2 className="section-title">为什么选择志成コンサル？</h2>
+                <h2 className="section-title">我们和其他中介有什么不同</h2>
               </MotionSection>
               <div className="feature-list">
                 {whyUs.map((item, i) => (
@@ -239,8 +239,8 @@ export default async function HomePage() {
         <div className="section-inner">
           <MotionSection style={{maxWidth:520,marginBottom:56}}>
             <div className="section-label">申请流程</div>
-            <h2 className="section-title">6步全程代办</h2>
-            <p className="section-desc">从初次咨询到资金到账，我们全程陪伴，让申请变得简单。</p>
+            <h2 className="section-title">申请流程很简单</h2>
+            <p className="section-desc">整个过程你需要做的很少，主要是配合提供资料，其他全程由我们处理。</p>
           </MotionSection>
           <div className="process-grid">
             {steps.map((s, i) => (
@@ -295,9 +295,9 @@ export default async function HomePage() {
       {/* ── CTA ── */}
       <section className="cta-section">
         <div className="cta-inner">
-          <h2 className="cta-title">立即获取免费补助金诊断</h2>
+          <h2 className="cta-title">不知道能拿多少？先问一下没有损失</h2>
           <p className="cta-desc">
-            专业顾问为您量身匹配最适合的补助金方案，全程中文无障碍
+            微信联系我们，免费告诉你能申请哪些补助金、大概能拿多少。
           </p>
           <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/contact" className="btn-cta-white">
