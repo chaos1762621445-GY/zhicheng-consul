@@ -126,7 +126,7 @@ const Footer = () => (
         </div>
         <p className="footer-tagline">
           专为在日华人企业主提供日本政府补助金申请代办服务。
-          行政书士·社労士·税理士·中小企業診断士联合专业团队，全程中文无障碍。
+          行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。
         </p>
       </div>
       <div className="footer-nav">
@@ -159,8 +159,8 @@ const Footer = () => (
       </div>
     </div>
     <div className="footer-bottom">
-      <span>© 2025 株式会社志成コンサル. All rights reserved.</span>
-      <span style={{color:"rgba(255,255,255,0.25)"}}>行政書士・社労士・税理士・中小企業診断士</span>
+      <span>© 2025 株式会社志成コンサル 保留所有权利。</span>
+      <span style={{color:"rgba(255,255,255,0.25)"}}>行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
     </div>
   </footer>
 );
@@ -173,84 +173,84 @@ export default async function HomePage() {
   const services = [
     {
       icon: <IconDoc />,
-      name: "省力化補助金",
-      amount: "最大1,500万円",
-      rate: "補助率 1/2〜2/3",
-      desc: "機械設備・ITシステム導入による生産性向上を強力支援。製造業・サービス業問わず申請可能。",
+      name: "省力化补助金",
+      amount: "最高1,500万円",
+      rate: "补助率 1/2〜2/3",
+      desc: "导入机械设备和IT系统，提升生产效率。制造业、服务业均可申请，无行业限制。",
     },
     {
       icon: <IconRobot />,
-      name: "AI・IT導入補助金",
-      amount: "最大450万円",
-      rate: "補助率 最大2/3",
-      desc: "AIシステム・業務ソフト導入費を最大2/3補助。インボイス対応ITツールも対象。",
+      name: "AI·IT导入补助金",
+      amount: "最高450万円",
+      rate: "补助率 最高2/3",
+      desc: "AI系统与业务软件导入费用最高补助2/3，发票应对IT工具亦在补助范围内。",
     },
     {
       icon: <IconUsers />,
-      name: "キャリアアップ助成金",
-      amount: "最大80万円/人",
-      rate: "正社員転換支援",
-      desc: "非正規社員の正規転換に対して一人当たり最大80万円。継続的な人材確保に。",
+      name: "员工转正助成金",
+      amount: "最高80万円/人",
+      rate: "正社员转换支援",
+      desc: "将兼职或合同员工转为正社员，每人最高获得80万円助成，助力企业稳定人才队伍。",
     },
     {
       icon: <IconStore />,
-      name: "小規模事業者持続化補助金",
-      amount: "最大250万円",
-      rate: "補助率 2/3",
-      desc: "販路開拓・マーケティング・HP制作等に活用可能。個人事業主も申請対象。",
+      name: "小规模持续化补助金",
+      amount: "最高250万円",
+      rate: "补助率 2/3",
+      desc: "可用于开拓销售渠道、营销推广、官网建设等，个人事业主同样可以申请。",
     },
     {
       icon: <IconBriefcase />,
-      name: "事業再構築補助金",
-      amount: "最大7,000万円",
-      rate: "補助率 1/2〜2/3",
-      desc: "新事業展開・業態転換を大規模支援。売上減少企業の事業変革に最適。",
+      name: "事业重构补助金",
+      amount: "最高7,000万円",
+      rate: "补助率 1/2〜2/3",
+      desc: "大力支持新业务拓展和业态转换，适合营业额下降企业的经营变革。",
     },
     {
       icon: <IconTrendUp />,
-      name: "ものづくり補助金",
-      amount: "最大4,000万円",
-      rate: "補助率 1/2〜2/3",
-      desc: "革新的サービス開発・試作品開発・生産プロセス改善を強力バックアップ。",
+      name: "制造业补助金",
+      amount: "最高4,000万円",
+      rate: "补助率 1/2〜2/3",
+      desc: "大力支持创新服务开发、试制品研发及生产流程改善。",
     },
   ];
 
   const whyUs = [
     { title: "全程中文无障碍", desc: "从初次咨询到最终审批，全程中文对接，语言障碍由我们完全承担。" },
     { title: "无成功不收费", desc: "申请失败则无需支付任何费用，彻底消除您的财务风险。" },
-    { title: "四士联合专业团队", desc: "行政书士·社労士·税理士·中小企業診断士四大专业资质联合，确保申请质量。" },
+    { title: "四士联合专业团队", desc: "行政书士·社会保险劳务士·税理士·中小企业诊断士四大专业资质联合，确保申请质量。" },
     { title: "实绩3000+案例支撑", desc: "累计成功案例超过3000件，获批总额超过8.5亿日元，实绩可靠。" },
   ];
 
   const steps = [
-    { step: "STEP 01", title: "免费咨询", desc: "通过微信或电话联系我们，3分钟快速了解您的基本情况。" },
-    { step: "STEP 02", title: "补助金诊断", desc: "专业顾问根据您的业种・规模，匹配最适合的补助金种类。" },
-    { step: "STEP 03", title: "申请方案制定", desc: "制定详细申请计划，确认申请要件与必要资料清单。" },
-    { step: "STEP 04", title: "资料收集・作成", desc: "专业团队协助收集、整理、翻译所有必要申请文件。" },
-    { step: "STEP 05", title: "提交申请", desc: "由持牌专业人员代为提交申请，确保格式合规、按时递交。" },
-    { step: "STEP 06", title: "审查对应・交付", desc: "全程跟踪审查进度，获批后协助完成后续手续与资金交付。" },
+    { step: "第一步", title: "免费咨询", desc: "通过微信或电话联系我们，3分钟快速了解您的基本情况。" },
+    { step: "第二步", title: "补助金诊断", desc: "专业顾问根据您的业种、规模，匹配最适合的补助金种类。" },
+    { step: "第三步", title: "申请方案制定", desc: "制定详细申请计划，确认申请要件与必要资料清单。" },
+    { step: "第四步", title: "资料收集与整理", desc: "专业团队协助收集、整理、翻译所有必要申请文件。" },
+    { step: "第五步", title: "提交申请", desc: "由持牌专业人员代为提交申请，确保格式合规、按时递交。" },
+    { step: "第六步", title: "跟进审查与资金到账", desc: "全程跟踪审查进度，获批后协助完成后续手续与资金交付。" },
   ];
 
   const credentials = [
     {
       icon: <IconDoc />,
-      name: "行政書士",
-      desc: "補助金申請書類作成・許認可手続きの専門家",
+      name: "行政书士",
+      desc: "专业负责补助金申请书类制作及各类行政许可手续",
     },
     {
       icon: <IconUsers />,
-      name: "社会保険労務士",
-      desc: "雇用関係助成金・労務管理の専門家",
+      name: "社会保险劳务士",
+      desc: "专业负责雇佣关系助成金申请及劳务管理",
     },
     {
       icon: <IconScale />,
       name: "税理士",
-      desc: "財務・会計・税務申告の専門家",
+      desc: "专业负责财务会计及税务申报业务",
     },
     {
       icon: <IconAward />,
-      name: "中小企業診断士",
-      desc: "経営戦略・事業計画策定の専門家",
+      name: "中小企业诊断士",
+      desc: "专业负责经营战略制定及事业计划书撰写",
     },
   ];
 
@@ -259,11 +259,40 @@ export default async function HomePage() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section className="hero">
+      <section style={{
+        background: 'linear-gradient(135deg, #F8FAFF 0%, #EEF4FF 40%, #F5F8FF 100%)',
+        padding: '80px 0',
+        position: 'relative',
+        overflow: 'hidden',
+        borderBottom: '1px solid #E2E8F0'
+      }}>
+        {/* 装饰性几何图形背景 */}
+        <div style={{
+          position: 'absolute', top: -100, right: -100,
+          width: 600, height: 600,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,87,184,0.06) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        <div style={{
+          position: 'absolute', bottom: -50, left: '30%',
+          width: 300, height: 300,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(0,87,184,0.04) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        {/* 右侧装饰背景图 */}
+        <div style={{
+          position: 'absolute', top: 0, right: 0, bottom: 0,
+          width: '42%',
+          background: 'url("https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1000&q=80") center/cover',
+          opacity: 0.12,
+          pointerEvents: 'none'
+        }} />
         <div className="hero-inner">
           <div className="hero-left">
             <div className="hero-tag">
-              行政书士 · 社労士 · 税理士 · 中小企業診断士 联合
+              行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士 联合
             </div>
             <h1>{"在日华人企业，\n政府补助金\n您申请了吗？"}</h1>
             <p className="hero-sub">专业四士联合团队，全程中文，无成功不收费</p>
@@ -288,13 +317,13 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="hero-panel">
-            <div className="hero-panel-title">主要対応補助金一覧</div>
+            <div className="hero-panel-title">主要补助金一览</div>
             {[
-              { icon: <IconDoc />, name: "省力化補助金", amount: "最大1,500万円" },
-              { icon: <IconRobot />, name: "AI・IT導入補助金", amount: "最大450万円" },
-              { icon: <IconUsers />, name: "キャリアアップ助成金", amount: "最大80万円/人" },
-              { icon: <IconStore />, name: "小規模持続化補助金", amount: "最大250万円" },
-              { icon: <IconBriefcase />, name: "事業再構築補助金", amount: "最大7,000万円" },
+              { icon: <IconDoc />, name: "省力化补助金", amount: "最高1,500万円" },
+              { icon: <IconRobot />, name: "AI·IT导入补助金", amount: "最高450万円" },
+              { icon: <IconUsers />, name: "员工转正助成金", amount: "最高80万円/人" },
+              { icon: <IconStore />, name: "小规模持续化补助金", amount: "最高250万円" },
+              { icon: <IconBriefcase />, name: "事业重构补助金", amount: "最高7,000万円" },
             ].map((item, i) => (
               <div key={i} className="hero-panel-item">
                 <div className="hero-panel-icon">{item.icon}</div>
@@ -307,17 +336,21 @@ export default async function HomePage() {
       </section>
 
       {/* ── STATS ── */}
-      <section className="stats">
+      <section style={{
+        background: 'linear-gradient(135deg, #0D2137 0%, #1a3a5c 100%)',
+        padding: '56px 0',
+        borderBottom: '1px solid rgba(255,255,255,0.08)'
+      }}>
         <div className="stats-inner">
           {[
-            { num: "3,000+", label: "成功申請案例" },
+            { num: "3,000+", label: "成功申请案例" },
             { num: "¥8.5億+", label: "获批总额" },
-            { num: "6種", label: "主要補助金対応" },
-            { num: "0円", label: "不成功不收費" },
+            { num: "6种", label: "主要补助金对应" },
+            { num: "0円", label: "不成功不收费" },
           ].map((s, i) => (
-            <div key={i} className="stat-item">
-              <div className="stat-num">{s.num}</div>
-              <div className="stat-label">{s.label}</div>
+            <div key={i} className="stat-item" style={{background:'transparent', borderLeft:'3px solid rgba(255,255,255,0.3)', boxShadow:'none'}}>
+              <div className="stat-num" style={{color:'#ffffff'}}>{s.num}</div>
+              <div className="stat-label" style={{color:'rgba(255,255,255,0.7)'}}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -327,9 +360,9 @@ export default async function HomePage() {
       <section className="section">
         <div className="section-inner">
           <div className="section-head">
-            <div className="section-label">SERVICES</div>
-            <h2 className="section-title">主要対応補助金・助成金</h2>
-            <p className="section-desc">中小企業・個人事業主の皆様に最適な補助金をご提案。申請から交付まで完全サポートいたします。</p>
+            <div className="section-label">服务项目</div>
+            <h2 className="section-title">主要补助金与助成金</h2>
+            <p className="section-desc">为在日华人中小企业和个人事业主精准匹配补助金，从申请到获批全程代办。</p>
           </div>
           <div className="service-grid">
             {services.map((s, i) => (
@@ -346,11 +379,14 @@ export default async function HomePage() {
       </section>
 
       {/* ── CREDENTIALS ── */}
-      <section className="section-alt">
+      <section style={{
+        padding: '96px 0',
+        background: 'linear-gradient(135deg, #F0F4FF 0%, #E8F0FE 100%)'
+      }}>
         <div className="section-inner">
           <div className="section-head-centered">
-            <div className="section-label">OUR EXPERTISE</div>
-            <h2 className="section-title">行政书士 · 社労士 · 税理士 · 中小企業診断士 联合</h2>
+            <div className="section-label">专业资质</div>
+            <h2 className="section-title">行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士 联合</h2>
             <p className="section-desc">四大专业资质联合，为您提供全方位的补助金申请与经营支援服务。</p>
           </div>
           <div className="credentials-grid">
@@ -371,14 +407,14 @@ export default async function HomePage() {
           <div className="feature-split">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
-                alt="专业咨询服务"
-                className="feature-split-img"
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=90"
+                alt="专业顾问团队"
+                style={{width:'100%', height:'480px', objectFit:'cover', borderRadius:'12px', display:'block'}}
                 crossOrigin="anonymous"
               />
             </div>
             <div>
-              <div className="section-label">WHY CHOOSE US</div>
+              <div className="section-label">选择我们的理由</div>
               <h2 className="section-title" style={{marginBottom:36}}>为什么选择志成コンサル？</h2>
               <div className="feature-list">
                 {whyUs.map((item, i) => (
@@ -400,14 +436,14 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="section-inner">
           <div className="section-head-centered">
-            <div className="section-label">PROCESS</div>
+            <div className="section-label">申请流程</div>
             <h2 className="section-title">申请流程 — 6步全程代办</h2>
             <p className="section-desc">从初次咨询到资金到账，我们全程陪同，省心省力。</p>
           </div>
           <div className="process-grid">
             {steps.map((s, i) => (
               <div key={i} className="process-item">
-                <div className="process-circle">{i + 1}</div>
+                <div className="process-circle" style={{background:'linear-gradient(135deg, #0057B8, #0D2137)', border:'none'}}>{i + 1}</div>
                 <div className="process-body">
                   <div className="process-step-label">{s.step}</div>
                   <div className="process-step-title">{s.title}</div>
@@ -425,7 +461,7 @@ export default async function HomePage() {
           <div className="section-inner">
             <div className="section-head" style={{display:"flex", justifyContent:"space-between", alignItems:"flex-end"}}>
               <div>
-                <div className="section-label">INSIGHTS</div>
+                <div className="section-label">最新资讯</div>
                 <h2 className="section-title" style={{marginBottom:0}}>最新资讯</h2>
               </div>
               <Link href="/blog" className="link-arrow">
@@ -447,10 +483,27 @@ export default async function HomePage() {
       )}
 
       {/* ── CTA BANNER ── */}
-      <section className="cta-banner">
-        <div className="cta-banner-inner">
-          <h2>立即测试您的补助金申请资格</h2>
-          <p>3分钟问卷，专业顾问当日回复，完全免费，无任何购买义务</p>
+      <section style={{
+        background: 'linear-gradient(135deg, #0D2137 0%, #0a3060 50%, #0D2137 100%)',
+        padding: '88px 0',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* 网格装饰 */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          pointerEvents: 'none'
+        }} />
+        <div className="cta-banner-inner" style={{position:'relative'}}>
+          <h2 style={{fontFamily:"var(--font-serif)",fontSize:"clamp(26px,3vw,38px)",fontWeight:700,color:"#fff",marginBottom:16,letterSpacing:"-0.3px",lineHeight:1.3}}>
+            立即测试您的补助金申请资格
+          </h2>
+          <p style={{fontSize:16,color:"rgba(255,255,255,0.70)",marginBottom:40,lineHeight:1.75}}>
+            3分钟问卷，专业顾问当日回复，完全免费，无任何购买义务
+          </p>
           <Link href="/contact" className="btn-cta-outline">
             开始免费诊断
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>

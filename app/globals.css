@@ -18,8 +18,9 @@
   --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
   --shadow:      0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
   --shadow-lg:   0 8px 32px rgba(0,0,0,0.10), 0 24px 56px rgba(0,0,0,0.08);
-  --font:        'Noto Sans SC', -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
-  --font-serif:  'Noto Serif SC', 'Georgia', serif;
+  --font:        'Noto Sans SC', -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-serif:  'Playfair Display', 'Noto Serif SC', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -46,6 +47,8 @@ body {
 .nav-logo {
   display: flex; align-items: center; gap: 0;
   text-decoration: none; flex-shrink: 0;
+  font-family: 'Noto Serif SC', var(--font-serif);
+  font-weight: 600;
 }
 .nav-logo img { height: 40px; width: auto; display: block; }
 .nav-links { display: flex; align-items: center; gap: 36px; }
@@ -81,10 +84,10 @@ body {
   border: 1px solid rgba(0,87,184,0.25);
 }
 .hero h1 {
-  font-family: var(--font-serif);
+  font-family: 'Noto Serif SC', var(--font-serif);
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 700; color: var(--navy);
-  letter-spacing: -0.5px; line-height: 1.2;
+  letter-spacing: -0.02em; line-height: 1.2;
   margin-bottom: 20px;
   white-space: pre-line;
 }
@@ -142,8 +145,9 @@ body {
 .hero-panel-icon svg { width: 18px; height: 18px; }
 .hero-panel-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
 .hero-panel-amount {
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', var(--font-serif);
   font-size: 16px; font-weight: 700; color: var(--gold);
+  font-style: italic;
 }
 
 /* ── STATS ── */
@@ -161,9 +165,9 @@ body {
   box-shadow: var(--shadow-sm);
 }
 .stat-num {
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', var(--font-serif);
   font-size: clamp(26px, 2.5vw, 38px);
-  font-weight: 700; color: var(--gold);
+  font-weight: 600; color: var(--gold);
   letter-spacing: -0.5px; line-height: 1;
   margin-bottom: 8px;
 }
@@ -180,9 +184,9 @@ body {
   color: var(--blue); margin-bottom: 12px;
 }
 .section-title {
-  font-family: var(--font-serif);
+  font-family: 'Noto Serif SC', var(--font-serif);
   font-size: clamp(24px, 2.8vw, 34px);
-  font-weight: 700; color: var(--navy);
+  font-weight: 600; color: var(--navy);
   letter-spacing: -0.3px; line-height: 1.25;
   margin-bottom: 14px;
 }
@@ -211,8 +215,9 @@ body {
 .service-icon svg { width: 22px; height: 22px; }
 .service-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .service-amount {
-  font-family: var(--font-serif);
+  font-family: 'Playfair Display', var(--font-serif);
   font-size: 24px; font-weight: 700; color: var(--gold);
+  font-style: italic;
   margin-bottom: 4px;
 }
 .service-rate { font-size: 12px; color: var(--text-3); margin-bottom: 12px; }

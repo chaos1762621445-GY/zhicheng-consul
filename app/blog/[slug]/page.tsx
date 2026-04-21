@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 株式会社志成コンサル. All rights reserved.</span>
+          <span>© 2025 株式会社志成コンサル 保留所有权利。</span>
         </div>
       </footer>
     </main>
