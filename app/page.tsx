@@ -3,17 +3,17 @@ import { getAllPosts } from "@/lib/posts";
 
 // ─── SVG Icons ───────────────────────────────────────────────────────────────
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#1447CC" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
 const IconChevron = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:12,height:12}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:12,height:12}}>
     <path d="M9 18l6-6-6-6"/>
   </svg>
 );
 const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -21,15 +21,15 @@ const IconDoc = () => (
   </svg>
 );
 const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="currentColor"/>
-    <circle cx="15" cy="15" r="1" fill="currentColor"/>
+    <circle cx="9" cy="15" r="1" fill="#0052ff"/>
+    <circle cx="15" cy="15" r="1" fill="#0052ff"/>
   </svg>
 );
 const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -37,33 +37,83 @@ const IconUsers = () => (
   </svg>
 );
 const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
   </svg>
 );
 const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
   </svg>
 );
 const IconScale = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <line x1="12" y1="3" x2="12" y2="21"/>
     <path d="M3 9l9-6 9 6"/>
     <path d="M3 15l6 4H3zM21 15l-6 4h6z"/>
   </svg>
 );
 const IconAward = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <circle cx="12" cy="8" r="7"/>
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+  </svg>
+);
+
+// Panel icons (20px)
+const PIconDoc = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+  </svg>
+);
+const PIconRobot = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
+    <rect x="3" y="11" width="18" height="10" rx="2"/>
+    <path d="M12 3v8M8 3h8"/>
+  </svg>
+);
+const PIconUsers = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+  </svg>
+);
+const PIconGraduate = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
+    <path d="M2 10l10-5 10 5-10 5z"/>
+    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+  </svg>
+);
+const PIconSnow = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
+    <line x1="12" y1="2" x2="12" y2="22"/>
+    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
+  </svg>
+);
+
+// Credential icons (32px)
+const CIconDoc = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+  </svg>
+);
+const CIconUsers = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
   </svg>
 );
 
@@ -90,7 +140,7 @@ const Footer = () => (
     <div className="footer-inner">
       {/* 品牌列 */}
       <div>
-        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block'}} />
+        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block',filter:'brightness(10)'}} />
         <p className="footer-brand-desc">
           专为在日华人企业主提供日本政府补助金申请代办服务。
           行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。
@@ -115,24 +165,25 @@ const Footer = () => (
       {/* 联系方式 */}
       <div>
         <div className="footer-col-title">联系我们</div>
-        {[
-          {label:'微信', value:'pr2024188'},
-          {label:'电话', value:'03-6265-9756'},
-          {label:'邮箱', value:'knakano.sekiyoshi@gmail.com'},
-        ].map(r => (
-          <div key={r.label} className="footer-contact-row">
-            <span className="footer-contact-label">{r.label}：</span>
-            <span>{r.value}</span>
-          </div>
-        ))}
+        <div className="footer-contact-row">
+          <strong className="footer-contact-label">微信：</strong>
+          <span>pr2024188</span>
+        </div>
+        <div className="footer-contact-row">
+          <strong className="footer-contact-label">电话：</strong>
+          <span>03-6265-9756</span>
+        </div>
+        <div className="footer-contact-row">
+          <strong className="footer-contact-label">邮箱：</strong>
+          <span>knakano.sekiyoshi@gmail.com</span>
+        </div>
         <div className="footer-contact-row" style={{flexDirection:'column',gap:2}}>
-          <span className="footer-contact-label">地址：</span>
+          <strong className="footer-contact-label">地址：</strong>
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
-        <div className="footer-qr-wrap">
-          <div className="footer-qr-caption">微信扫码咨询</div>
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:200,height:200,borderRadius:6,display:'block'}} />
-          <div style={{fontSize:12,color:'#6B7280',textAlign:'center',marginTop:8}}>微信号：pr2024188</div>
+        <div style={{marginTop:20,display:'inline-block',background:'#fff',borderRadius:8,padding:10}}>
+          <p style={{fontSize:11,color:'#5b616e',textAlign:'center',marginBottom:8,fontWeight:600}}>微信扫码咨询</p>
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:160,height:160,display:'block'}} />
         </div>
       </div>
     </div>
@@ -197,8 +248,8 @@ export default async function HomePage() {
   ];
 
   const credentials = [
-    { icon: <IconDoc />, name: "行政书士", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
-    { icon: <IconUsers />, name: "社会保险劳务士", desc: "专业负责雇佣关系助成金申请及劳务管理" },
+    { icon: <CIconDoc />, name: "行政书士", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
+    { icon: <CIconUsers />, name: "社会保险劳务士", desc: "专业负责雇佣关系助成金申请及劳务管理" },
     { icon: <IconScale />, name: "税理士", desc: "专业负责财务会计及税务申报业务" },
     { icon: <IconAward />, name: "中小企业诊断士", desc: "专业负责经营战略制定及事业计划书撰写" },
   ];
@@ -232,14 +283,14 @@ export default async function HomePage() {
               行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士
             </div>
             <h1 className="hero-h1 fade-up delay-1">{`在日华人企业主\n政府补助金\n您申请了吗？`}</h1>
-            <p className="hero-sub">
+            <p className="hero-sub fade-up delay-2">
               专业四士联合团队，全程中文，无成功不收费。<br/>
               为在日华人中小企业精准匹配补助金，从申请到获批全程代办。
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions fade-up delay-3">
               <Link href="/contact" className="btn-primary">
                 立即免费咨询
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
@@ -248,7 +299,7 @@ export default async function HomePage() {
                 <IconChevron />
               </Link>
             </div>
-            <div className="hero-trust">
+            <div className="hero-trust fade-up delay-3">
               {["成功申请3000+案例实绩", "申请失败零费用承诺", "当日回复，中文全程对接"].map((t, i) => (
                 <div key={i} className="hero-trust-item">
                   <IconCheck />
@@ -259,14 +310,14 @@ export default async function HomePage() {
           </div>
 
           {/* 右侧面板 */}
-          <div className="hero-panel">
+          <div className="hero-panel fade-up delay-3">
             <div className="hero-panel-title">主要补助金一览</div>
             {[
-              { icon: <IconDoc />, name: "省力化补助金", amount: "最高1,500万円" },
-              { icon: <IconRobot />, name: "AI导入补助金", amount: "最高350万円" },
-              { icon: <IconUsers />, name: "员工转正助成金", amount: "最高80万円/人" },
-              { icon: <IconGraduate />, name: "员工培训助成金", amount: "最高1亿円" },
-              { icon: <IconSnow />, name: "空调省能更新补助", amount: "最高1,000万円" },
+              { icon: <PIconDoc />, name: "省力化补助金", amount: "最高1,500万円" },
+              { icon: <PIconRobot />, name: "AI导入补助金", amount: "最高350万円" },
+              { icon: <PIconUsers />, name: "员工转正助成金", amount: "最高80万円/人" },
+              { icon: <PIconGraduate />, name: "员工培训助成金", amount: "最高1亿円" },
+              { icon: <PIconSnow />, name: "空调省能更新补助", amount: "最高1,000万円" },
             ].map((item, i) => (
               <div key={i} className="hero-panel-item">
                 <div className="hero-panel-icon">{item.icon}</div>
@@ -305,7 +356,7 @@ export default async function HomePage() {
           </div>
           <div className="service-grid">
             {services.map((s, i) => (
-              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.08}s`}}>
+              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.07}s`}}>
                 <div className="service-icon">{s.icon}</div>
                 <div className="service-name">{s.name}</div>
                 <div className="service-amount">{s.amount}</div>
@@ -321,9 +372,8 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="section-inner">
           <div className="section-head-centered">
-            <div className="section-label">专业资质</div>
-            <h2 className="section-title">四士联合专业团队</h2>
-            <p className="section-desc">四大专业资质联合，为您提供全方位的补助金申请与经营支援服务。</p>
+            <div className="section-label-light">专业资质</div>
+            <h2 className="section-title-light">四士联合专业团队</h2>
           </div>
           <div className="credentials-grid">
             {credentials.map((c, i) => (
@@ -345,18 +395,20 @@ export default async function HomePage() {
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
                 alt="专业顾问团队"
-                style={{width:'100%', height:'480px', objectFit:'cover', borderRadius:'12px', display:'block'}}
+                style={{width:'100%',height:480,objectFit:'cover',borderRadius:16,display:'block'}}
                 crossOrigin="anonymous"
               />
             </div>
             <div>
               <div className="section-label">选择我们的理由</div>
-              <h2 className="section-title" style={{marginBottom:36}}>为什么选择志成コンサル？</h2>
+              <h2 style={{fontFamily:'var(--font)',fontSize:40,fontWeight:300,letterSpacing:'-1px',color:'#0a0b0d',marginBottom:40,lineHeight:1.1}}>
+                为什么选择志成コンサル？
+              </h2>
               <div className="feature-list">
                 {whyUs.map((item, i) => (
                   <div key={i} className="feature-item">
                     <div className="feature-num">{i + 1}</div>
-                    <div className="feature-body">
+                    <div>
                       <div className="feature-title">{item.title}</div>
                       <p className="feature-desc">{item.desc}</p>
                     </div>
@@ -372,19 +424,15 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="section-inner">
           <div className="section-head-centered">
-            <div className="section-label">申请流程</div>
-            <h2 className="section-title">申请流程 — 6步全程代办</h2>
-            <p className="section-desc">从初次咨询到资金到账，我们全程陪同，省心省力。</p>
+            <div className="section-label-light">申请流程</div>
+            <h2 className="section-title-light">申请流程 — 6步全程代办</h2>
           </div>
           <div className="process-grid">
             {steps.map((s, i) => (
-              <div key={i} className="process-item">
-                <div className="process-circle">{i + 1}</div>
-                <div className="process-body">
-                  <div className="process-step-label">{s.step}</div>
-                  <div className="process-step-title">{s.title}</div>
-                  <p className="process-step-desc">{s.desc}</p>
-                </div>
+              <div key={i} className="process-card">
+                <div className="process-step-label">{s.step}</div>
+                <div className="process-step-title">{s.title}</div>
+                <p className="process-step-desc">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -415,7 +463,7 @@ export default async function HomePage() {
               ))}
             </div>
           ) : (
-            <div style={{textAlign:'center',padding:'48px 0',color:'#6B7280',fontSize:15}}>
+            <div style={{textAlign:'center',padding:'48px 0',color:'#5b616e',fontSize:15}}>
               文章加载中...
             </div>
           )}
@@ -430,17 +478,16 @@ export default async function HomePage() {
         <div style={{maxWidth:640,margin:'0 auto',padding:'0 48px'}}>
           <h2 className="cta-title">立即获取免费补助金诊断</h2>
           <p className="cta-desc">
-            专业顾问为您量身匹配最适合的补助金方案，全程中文无障碍。<br/>
-            申请失败零费用，无风险咨询。
+            专业顾问为您量身匹配最适合的补助金方案，全程中文无障碍
           </p>
           <div style={{display:'flex',gap:16,justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/contact" className="btn-primary">
               立即免费咨询
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
-            <Link href="/subsidies" className="btn-secondary">
+            <Link href="/subsidies" className="btn-ghost">
               了解补助金种类
             </Link>
           </div>
