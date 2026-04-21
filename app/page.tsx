@@ -358,16 +358,36 @@ export default async function HomePage() {
         padding: '56px 0',
         borderBottom: '1px solid rgba(255,255,255,0.08)'
       }}>
-        <div className="stats-inner">
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 48px',display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:24}}>
           {[
             { num: "3,000+", label: "成功申请案例" },
-            { num: "¥8.5億+", label: "获批总额" },
-            { num: "6种", label: "主要补助金对应" },
+            { num: "¥8.5億+", label: "累计获批总额" },
+            { num: "6项", label: "主要补助金类型" },
             { num: "0円", label: "不成功不收费" },
           ].map((s, i) => (
-            <div key={i} className="stat-item" style={{background:'transparent', borderLeft:'3px solid rgba(255,255,255,0.3)', boxShadow:'none'}}>
-              <div className="stat-num" style={{color:'#ffffff'}}>{s.num}</div>
-              <div className="stat-label" style={{color:'rgba(255,255,255,0.7)'}}>{s.label}</div>
+            <div key={i} style={{
+              textAlign:'center',
+              padding:'32px 24px',
+              borderRadius:12,
+              background:'rgba(255,255,255,0.06)',
+              border:'1px solid rgba(255,255,255,0.12)',
+            }}>
+              <div style={{
+                fontFamily:"'Playfair Display', Georgia, serif",
+                fontSize:'clamp(36px,3.5vw,52px)',
+                fontWeight:700,
+                color:'#ffffff',
+                letterSpacing:'-1px',
+                lineHeight:1,
+                marginBottom:12,
+              }}>{s.num}</div>
+              <div style={{
+                fontSize:14,
+                color:'rgba(255,255,255,0.85)',
+                fontWeight:500,
+                letterSpacing:'0.3px',
+                lineHeight:1.4,
+              }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -501,7 +521,7 @@ export default async function HomePage() {
 
       {/* ── CTA BANNER ── */}
       <section style={{
-        background: 'linear-gradient(135deg, #0D2137 0%, #0a3060 50%, #0D2137 100%)',
+        background: 'linear-gradient(135deg, #0D3A6E 0%, #0057B8 50%, #0D3A6E 100%)',
         padding: '88px 0',
         textAlign: 'center',
         position: 'relative',
@@ -518,7 +538,7 @@ export default async function HomePage() {
           <h2 style={{fontFamily:"var(--font-serif)",fontSize:"clamp(26px,3vw,38px)",fontWeight:700,color:"#fff",marginBottom:16,letterSpacing:"-0.3px",lineHeight:1.3}}>
             立即测试您的补助金申请资格
           </h2>
-          <p style={{fontSize:16,color:"rgba(255,255,255,0.70)",marginBottom:40,lineHeight:1.75}}>
+          <p style={{fontSize:17,color:"rgba(255,255,255,0.95)",marginBottom:40,lineHeight:1.75}}>
             3分钟问卷，专业顾问当日回复，完全免费，无任何购买义务
           </p>
           <Link href="/contact" className="btn-cta-outline">

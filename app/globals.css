@@ -166,12 +166,12 @@ body {
 }
 .stat-num {
   font-family: 'Playfair Display', var(--font-serif);
-  font-size: clamp(26px, 2.5vw, 38px);
-  font-weight: 600; color: var(--gold);
-  letter-spacing: -0.5px; line-height: 1;
-  margin-bottom: 8px;
+  font-size: clamp(36px, 3.5vw, 52px);
+  font-weight: 700; color: var(--gold);
+  letter-spacing: -1px; line-height: 1;
+  margin-bottom: 12px; display: block;
 }
-.stat-label { font-size: 13px; color: var(--text-2); font-weight: 400; line-height: 1.45; }
+.stat-label { font-size: 14px; color: var(--text-2); font-weight: 500; line-height: 1.4; letter-spacing: 0.2px; }
 
 /* ── SECTION ── */
 .section { padding: 96px 0; background: var(--bg); }
@@ -365,8 +365,8 @@ body {
   line-height: 1.5;
 }
 .footer-contact-row strong { color: rgba(255,255,255,0.85); margin-right: 2px; }
-.footer-qr { margin-top: 16px; }
-.footer-qr img { width: 80px; height: 80px; border-radius: 4px; display: block; }
+.footer-qr { margin-top: 20px; }
+.footer-qr img { width: 160px; height: 160px; border-radius: 8px; display: block; border: 3px solid rgba(255,255,255,0.15); padding: 4px; background: #fff; }
 .footer-bottom {
   max-width: 1280px; margin: 0 auto; padding: 20px 48px;
   border-top: 1px solid rgba(255,255,255,0.08);
