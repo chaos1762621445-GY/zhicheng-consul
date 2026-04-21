@@ -83,14 +83,9 @@ async function generateArticle(topic) {
   return data.content[0].text;
 }
 
-function slugify(title) {
-  const map = { "？": "", "！": "", "：": "", "、": "-", " ": "-", "（": "", "）": "", "？": "" };
-  return title
-    .replace(/[？！：、（）\s]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .substring(0, 60)
-    + "-" + Date.now();
+function slugify(_title) {
+  // Use ASCII-only slug to avoid URL encoding issues on Vercel
+  return "post-" + Date.now();
 }
 
 async function main() {
