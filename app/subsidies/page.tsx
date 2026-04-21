@@ -68,6 +68,7 @@ const IconCheck = () => (
 
 const subsidies = [
   {
+    slug: "seiryoka",
     tag: "省力化",
     name: "省力化补助金",
     amount: "最高1,500万円",
@@ -95,6 +96,7 @@ const subsidies = [
     ],
   },
   {
+    slug: "ai-it",
     tag: "IT导入",
     name: "AI·IT导入补助金",
     amount: "最高450万円",
@@ -122,6 +124,7 @@ const subsidies = [
     ],
   },
   {
+    slug: "career-up",
     tag: "助成金",
     name: "员工转正助成金",
     amount: "最高80万円/人",
@@ -282,6 +285,19 @@ export default function SubsidiesPage() {
                       </ul>
                     </div>
                   </div>
+                  {s.slug && (
+                    <div style={{marginTop:16,paddingTop:16,borderTop:"1px solid var(--border)",display:"flex",justifyContent:"flex-end"}}>
+                      <Link href={`/subsidies/${s.slug}`} style={{
+                        display:"inline-flex",alignItems:"center",gap:6,
+                        fontSize:13,color:"var(--primary)",fontWeight:500,
+                      }}>
+                        查看详情
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:12,height:12}}>
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
