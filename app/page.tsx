@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
-// ─── SVG Icons ───────────────────────────────────────────────────────────────
+// ─── SVG Icons (stroke #146ef5, strokeWidth 2, fill none) ────────────────────
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
@@ -12,8 +12,13 @@ const IconChevron = () => (
     <path d="M9 18l6-6-6-6"/>
   </svg>
 );
+const IconArrow = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </svg>
+);
 const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -21,15 +26,15 @@ const IconDoc = () => (
   </svg>
 );
 const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="#0052ff"/>
-    <circle cx="15" cy="15" r="1" fill="#0052ff"/>
+    <circle cx="9" cy="15" r="1" fill="#146ef5"/>
+    <circle cx="15" cy="15" r="1" fill="#146ef5"/>
   </svg>
 );
 const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -37,71 +42,37 @@ const IconUsers = () => (
   </svg>
 );
 const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
   </svg>
 );
 const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:28,height:28}}>
     <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
   </svg>
 );
 const IconScale = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <line x1="12" y1="3" x2="12" y2="21"/>
     <path d="M3 9l9-6 9 6"/>
     <path d="M3 15l6 4H3zM21 15l-6 4h6z"/>
   </svg>
 );
 const IconAward = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <circle cx="12" cy="8" r="7"/>
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
   </svg>
 );
-
-// Panel icons (20px)
-const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-  </svg>
-);
-const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
-    <rect x="3" y="11" width="18" height="10" rx="2"/>
-    <path d="M12 3v8M8 3h8"/>
-  </svg>
-);
-const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-  </svg>
-);
-const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
-    <path d="M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-);
-const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20,flexShrink:0}}>
-    <line x1="12" y1="2" x2="12" y2="22"/>
-    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
-  </svg>
-);
-
-// Credential icons (32px)
 const CIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
     <line x1="16" y1="13" x2="8" y2="13"/>
@@ -109,11 +80,43 @@ const CIconDoc = () => (
   </svg>
 );
 const CIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#0052ff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
     <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
     <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </svg>
+);
+
+// Panel icons (18px)
+const PIconDoc = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+  </svg>
+);
+const PIconRobot = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+    <rect x="3" y="11" width="18" height="10" rx="2"/>
+    <path d="M12 3v8M8 3h8"/>
+  </svg>
+);
+const PIconUsers = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+  </svg>
+);
+const PIconGraduate = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+    <path d="M2 10l10-5 10 5-10 5z"/>
+    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+  </svg>
+);
+const PIconSnow = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="#146ef5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+    <line x1="12" y1="2" x2="12" y2="22"/>
+    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
 );
 
@@ -140,7 +143,7 @@ const Footer = () => (
     <div className="footer-inner">
       {/* 品牌列 */}
       <div>
-        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block',filter:'brightness(10)'}} />
+        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block'}} />
         <p className="footer-brand-desc">
           专为在日华人企业主提供日本政府补助金申请代办服务。
           行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。
@@ -181,9 +184,9 @@ const Footer = () => (
           <strong className="footer-contact-label">地址：</strong>
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
-        <div style={{marginTop:20,display:'inline-block',background:'#fff',borderRadius:8,padding:10}}>
-          <p style={{fontSize:11,color:'#5b616e',textAlign:'center',marginBottom:8,fontWeight:600}}>微信扫码咨询</p>
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:160,height:160,display:'block'}} />
+        <div className="footer-qr-wrap">
+          <p className="footer-qr-caption">微信扫码咨询</p>
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:200,height:200,display:'block'}} />
         </div>
       </div>
     </div>
@@ -290,11 +293,9 @@ export default async function HomePage() {
             <div className="hero-actions fade-up delay-3">
               <Link href="/contact" className="btn-primary">
                 立即免费咨询
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <IconArrow />
               </Link>
-              <Link href="/subsidies" className="btn-secondary">
+              <Link href="/subsidies" className="btn-outline">
                 了解补助金种类
                 <IconChevron />
               </Link>
@@ -320,8 +321,10 @@ export default async function HomePage() {
               { icon: <PIconSnow />, name: "空调省能更新补助", amount: "最高1,000万円" },
             ].map((item, i) => (
               <div key={i} className="hero-panel-item">
-                <div className="hero-panel-icon">{item.icon}</div>
-                <span className="hero-panel-name">{item.name}</span>
+                <div className="hero-panel-left">
+                  {item.icon}
+                  <span className="hero-panel-name">{item.name}</span>
+                </div>
                 <span className="hero-panel-amount">{item.amount}</span>
               </div>
             ))}
@@ -349,14 +352,14 @@ export default async function HomePage() {
       {/* ── SERVICES ── */}
       <section className="section">
         <div className="section-inner">
-          <div className="section-head">
+          <div style={{maxWidth:600,marginBottom:56}}>
             <div className="section-label">服务项目</div>
             <h2 className="section-title">主要补助金与助成金</h2>
             <p className="section-desc">为在日华人中小企业和个人事业主精准匹配补助金，从申请到获批全程代办。</p>
           </div>
           <div className="service-grid">
             {services.map((s, i) => (
-              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.07}s`}}>
+              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.06}s`}}>
                 <div className="service-icon">{s.icon}</div>
                 <div className="service-name">{s.name}</div>
                 <div className="service-amount">{s.amount}</div>
@@ -369,11 +372,11 @@ export default async function HomePage() {
       </section>
 
       {/* ── CREDENTIALS ── */}
-      <section className="section-alt">
+      <section className="section">
         <div className="section-inner">
-          <div className="section-head-centered">
-            <div className="section-label-light">专业资质</div>
-            <h2 className="section-title-light">四士联合专业团队</h2>
+          <div style={{textAlign:'center',maxWidth:700,margin:'0 auto 56px'}}>
+            <div className="section-label">专业资质</div>
+            <h2 className="section-title">四士联合专业团队</h2>
           </div>
           <div className="credentials-grid">
             {credentials.map((c, i) => (
@@ -388,22 +391,20 @@ export default async function HomePage() {
       </section>
 
       {/* ── WHY US ── */}
-      <section className="section">
+      <section className="section-alt">
         <div className="section-inner">
           <div className="feature-split">
             <div>
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
                 alt="专业顾问团队"
-                style={{width:'100%',height:480,objectFit:'cover',borderRadius:16,display:'block'}}
+                style={{width:'100%',height:480,objectFit:'cover',borderRadius:12,display:'block'}}
                 crossOrigin="anonymous"
               />
             </div>
             <div>
               <div className="section-label">选择我们的理由</div>
-              <h2 style={{fontFamily:'var(--font)',fontSize:40,fontWeight:300,letterSpacing:'-1px',color:'#0a0b0d',marginBottom:40,lineHeight:1.1}}>
-                为什么选择志成コンサル？
-              </h2>
+              <h2 className="section-title">为什么选择志成コンサル？</h2>
               <div className="feature-list">
                 {whyUs.map((item, i) => (
                   <div key={i} className="feature-item">
@@ -423,9 +424,9 @@ export default async function HomePage() {
       {/* ── PROCESS ── */}
       <section className="section-alt">
         <div className="section-inner">
-          <div className="section-head-centered">
-            <div className="section-label-light">申请流程</div>
-            <h2 className="section-title-light">申请流程 — 6步全程代办</h2>
+          <div style={{textAlign:'center',maxWidth:700,margin:'0 auto 56px'}}>
+            <div className="section-label">申请流程</div>
+            <h2 className="section-title">申请流程 — 6步全程代办</h2>
           </div>
           <div className="process-grid">
             {steps.map((s, i) => (
@@ -442,7 +443,7 @@ export default async function HomePage() {
       {/* ── BLOG ── */}
       <section className="section">
         <div className="section-inner">
-          <div className="section-head">
+          <div style={{maxWidth:560,marginBottom:56}}>
             <div className="section-label">知识库</div>
             <h2 className="section-title">最新文章</h2>
             <p className="section-desc">深度解析日本政府补助金政策，为在日华人企业主提供实用指南。</p>
@@ -463,12 +464,12 @@ export default async function HomePage() {
               ))}
             </div>
           ) : (
-            <div style={{textAlign:'center',padding:'48px 0',color:'#5b616e',fontSize:15}}>
+            <div style={{textAlign:'center',padding:'48px 0',color:'#ababab',fontSize:15}}>
               文章加载中...
             </div>
           )}
           <div style={{textAlign:'center',marginTop:40}}>
-            <Link href="/blog" className="btn-secondary">查看全部文章 <IconChevron /></Link>
+            <Link href="/blog" className="btn-outline">查看全部文章 <IconChevron /></Link>
           </div>
         </div>
       </section>
@@ -483,11 +484,9 @@ export default async function HomePage() {
           <div style={{display:'flex',gap:16,justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/contact" className="btn-primary">
               立即免费咨询
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <IconArrow />
             </Link>
-            <Link href="/subsidies" className="btn-ghost">
+            <Link href="/subsidies" className="btn-outline">
               了解补助金种类
             </Link>
           </div>
