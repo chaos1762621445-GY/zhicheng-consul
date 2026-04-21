@@ -1,5 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  variable: "--font-source-sans",
+});
 
 export const metadata: Metadata = {
   title: { default: "株式会社志成コンサル | 在日华人补助金申请代办", template: "%s | 志成コンサル" },
@@ -7,17 +15,14 @@ export const metadata: Metadata = {
   keywords: ["在日华人补助金", "省力化補助金", "AI導入補助金", "キャリアアップ助成金", "在日华人创业", "行政书士", "社労士", "税理士", "中小企業診断士"],
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="zh-CN" className={sourceSans.variable}>
       <body>{children}</body>
     </html>
   );

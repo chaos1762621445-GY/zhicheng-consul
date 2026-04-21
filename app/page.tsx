@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import NavClient from "./components/NavClient";
 
 // ─── SVG Icons (stroke #533afd, strokeWidth 1.8, fill none) ──────────────────
 
@@ -153,21 +154,7 @@ const FIconTrophy = () => (
 );
 
 // ─── Nav ─────────────────────────────────────────────────────────────────────
-const Nav = () => (
-  <nav className="nav">
-    <div className="nav-inner">
-      <Link href="/">
-        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block'}} />
-      </Link>
-      <div className="nav-links">
-        <Link href="/subsidies" className="nav-link">补助金种类</Link>
-        <Link href="/service" className="nav-link">服务流程</Link>
-        <Link href="/blog" className="nav-link">知识库</Link>
-        <Link href="/contact" className="nav-cta">免费咨询</Link>
-      </div>
-    </div>
-  </nav>
-);
+const Nav = () => <NavClient />;
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 const Footer = () => (
@@ -442,6 +429,7 @@ export default async function HomePage() {
               <img
                 src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
                 alt="专业顾问团队"
+                loading="lazy"
                 style={{width:'100%',height:500,objectFit:'cover',borderRadius:6,boxShadow:'var(--sh3)',display:'block'}}
                 crossOrigin="anonymous"
               />
