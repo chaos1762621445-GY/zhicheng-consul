@@ -4,9 +4,9 @@ import NavClient from "./components/NavClient";
 
 // ─── SVG Icons (stroke #533afd, strokeWidth 1.8, fill none) ──────────────────
 
-// Check icon (white for dark hero background)
+// Check icon (dark for light hero background)
 const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
     <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
@@ -95,33 +95,33 @@ const CIconAward = () => (
   </svg>
 );
 
-// Panel icons (18px, white for glass panel)
+// Panel icons (18px, #533afd on white panel)
 const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
     <polyline points="14 2 14 8 20 8"/>
   </svg>
 );
 const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <rect x="3" y="11" width="18" height="10" rx="2"/>
     <path d="M12 3v8M8 3h8"/>
   </svg>
 );
 const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
     <circle cx="9" cy="7" r="4"/>
   </svg>
 );
 const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <path d="M2 10l10-5 10 5-10 5z"/>
     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
   </svg>
 );
 const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
     <line x1="12" y1="2" x2="12" y2="22"/>
     <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
@@ -150,6 +150,25 @@ const FIconTrophy = () => (
     <polyline points="8 21 12 17 16 21"/>
     <path d="M17 4H7l1 7c0 2.2 1.8 4 4 4s4-1.8 4-4l1-7z"/>
     <path d="M3 7h1a3 3 0 0 0 3-3M21 7h-1a3 3 0 0 1-3-3"/>
+  </svg>
+);
+
+// Promise card icons (white for dark card)
+const PrIconShield = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </svg>
+);
+const PrIconGlobe = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+);
+const PrIconStar = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   </svg>
 );
 
@@ -232,6 +251,7 @@ export default async function HomePage() {
       amount: "最高1,500万円",
       rate: "补助率最高50%",
       desc: "导入DX系统、自动化设备实现降本增效。6〜20人企业最高1,500万円，5人以下最高750万円，整体上限1亿円。",
+      slug: "seiryoka",
     },
     {
       icon: <IconRobot />,
@@ -240,6 +260,7 @@ export default async function HomePage() {
       amount: "最高350万円",
       rate: "个人事业主亦可申请",
       desc: "AI软件采购、系统定制开发、部署调试费用均可申请。个人事业主、赤字企业均可，门槛宽松。",
+      slug: "ai-it",
     },
     {
       icon: <IconUsers />,
@@ -248,6 +269,7 @@ export default async function HomePage() {
       amount: "最高80万円/人",
       rate: "在职半年以上转正补助",
       desc: "将兼职或合同员工转为正社员。在职半年以上转正补助40万円/人，首次转正非新卒最高80万円/人。",
+      slug: "career-up",
     },
     {
       icon: <IconGraduate />,
@@ -256,6 +278,7 @@ export default async function HomePage() {
       amount: "最高1亿円",
       rate: "同步转正申请翻倍",
       desc: "同步转正申请，补贴资金翻倍。AI营销获客、运营自动化、数据分析等课程，每人百万级支持。",
+      slug: "training",
     },
     {
       icon: <IconSnow />,
@@ -264,6 +287,7 @@ export default async function HomePage() {
       amount: "最高1,000万円",
       rate: "东京政府补助2/3",
       desc: "旧空调以旧换新：东京政府补助2/3+我社补贴1/3=几乎零负担。大阪最高500万円，全国最高3亿円。",
+      slug: "aircon",
     },
     {
       icon: <IconHandshake />,
@@ -272,6 +296,7 @@ export default async function HomePage() {
       amount: "60% 分成",
       rate: "周期短、回流稳",
       desc: "将您的存量客户与我们对接，即可获得60%透明分成。周期短、回流稳，无需缴纳任何加盟费用。",
+      slug: null,
     },
   ];
 
@@ -307,11 +332,8 @@ export default async function HomePage() {
         <div className="hero-inner">
           {/* 左侧 */}
           <div>
-            <div className="hero-badge fade-up">
-              行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士
-            </div>
             <h1 className="hero-h1 fade-up delay-1">
-              在日华人企业主{"\n"}政府补助金{"\n"}<em style={{fontStyle:'normal',background:'linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #60a5fa 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>您申请了吗？</em>
+              在日华人企业主{"\n"}政府补助金{"\n"}<em style={{fontStyle:'normal',color:'#533afd'}}>您申请了吗？</em>
             </h1>
             <p className="hero-sub fade-up delay-2">
               专业四士联合团队，全程中文，无成功不收费。<br/>
@@ -328,12 +350,10 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="hero-trust fade-up delay-3">
-              {["成功申请3000+案例实绩", "申请失败零费用承诺", "当日回复，中文全程对接"].map((t, i) => (
-                <div key={i} className="hero-trust-item">
-                  <IconCheck />
-                  {t}
-                </div>
-              ))}
+              <div className="hero-trust-item">
+                <IconCheck />
+                申请失败零费用承诺
+              </div>
             </div>
           </div>
 
@@ -365,7 +385,6 @@ export default async function HomePage() {
           {[
             { num: "3,000+", label: "成功申请案例" },
             { num: "¥8.5億+", label: "累计获批总额" },
-            { num: "6项", label: "主要补助金类型" },
             { num: "0円", label: "不成功不收费" },
           ].map((s, i) => (
             <div key={i} className={`stat-item fade-up`} style={{animationDelay:`${i*0.08}s`}}>
@@ -393,6 +412,11 @@ export default async function HomePage() {
                 <div className="service-amount">{s.amount}</div>
                 <div className="service-rate">{s.rate}</div>
                 <p className="service-desc">{s.desc}</p>
+                {s.slug && (
+                  <Link href={`/subsidies/${s.slug}`} className="service-link">
+                    查看详情 <IconChevron />
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -425,73 +449,38 @@ export default async function HomePage() {
       <section style={{padding:'96px 0',background:'#ffffff'}}>
         <div className="section-inner">
           <div className="feature-split">
-            <div>
-              {/* 数据可视化卡片组（替换 Unsplash 图片） */}
-              <div style={{
-                background: 'linear-gradient(145deg, #0f1035 0%, #1c1e54 60%, #2d1b69 100%)',
-                borderRadius: 12,
-                padding: '36px 32px',
-                boxShadow: 'var(--sh3)',
-                position: 'relative',
-                overflow: 'hidden',
-                minHeight: 460,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}>
-                {/* BG glow */}
-                <div style={{position:'absolute',top:'-60px',right:'-60px',width:280,height:280,background:'radial-gradient(circle,rgba(83,58,253,0.25) 0%,transparent 65%)',pointerEvents:'none'}} />
-                <div style={{position:'absolute',bottom:'-40px',left:'-40px',width:200,height:200,background:'radial-gradient(circle,rgba(249,107,238,0.15) 0%,transparent 65%)',pointerEvents:'none'}} />
-
-                {/* Header */}
-                <div style={{position:'relative',zIndex:1}}>
-                  <div style={{fontSize:11,fontWeight:400,color:'rgba(255,255,255,0.45)',textTransform:'uppercase',letterSpacing:'1.5px',marginBottom:6}}>
-                    累计实绩数据
-                  </div>
-                  <div style={{fontSize:15,fontWeight:400,color:'rgba(255,255,255,0.85)'}}>
-                    志成コンサル 核心指标
-                  </div>
-                </div>
-
-                {/* 3 big stats */}
-                <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,position:'relative',zIndex:1,marginTop:28}}>
-                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px'}}>
-                    <div style={{fontSize:36,fontWeight:250,color:'#ffffff',letterSpacing:'-2px',lineHeight:1}}>3,000<span style={{fontSize:22,color:'rgba(255,255,255,0.6)'}}>+</span></div>
-                    <div style={{fontSize:12,color:'rgba(255,255,255,0.5)',marginTop:8}}>成功申请案例</div>
-                    <div style={{marginTop:12,height:3,background:'linear-gradient(90deg,#533afd,#a78bfa)',borderRadius:2}} />
-                  </div>
-                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px'}}>
-                    <div style={{fontSize:36,fontWeight:250,color:'#ffffff',letterSpacing:'-2px',lineHeight:1}}>8.5<span style={{fontSize:22,color:'rgba(255,255,255,0.6)'}}>億円+</span></div>
-                    <div style={{fontSize:12,color:'rgba(255,255,255,0.5)',marginTop:8}}>累计获批总额</div>
-                    <div style={{marginTop:12,height:3,background:'linear-gradient(90deg,#ea2261,#f96bee)',borderRadius:2}} />
-                  </div>
-                  <div style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.12)',borderRadius:8,padding:'20px 18px',gridColumn:'1/-1'}}>
-                    <div style={{display:'flex',alignItems:'baseline',gap:8}}>
-                      <div style={{fontSize:52,fontWeight:250,color:'#ffffff',letterSpacing:'-3px',lineHeight:1}}>92<span style={{fontSize:28,color:'rgba(255,255,255,0.6)'}}>%</span></div>
-                      <div style={{fontSize:13,color:'rgba(255,255,255,0.6)',lineHeight:1.4}}>申请通过率<br/><span style={{fontSize:11,color:'rgba(255,255,255,0.35)'}}>行业平均约65%</span></div>
-                    </div>
-                    {/* progress bar */}
-                    <div style={{marginTop:14,background:'rgba(255,255,255,0.08)',borderRadius:4,height:6,overflow:'hidden'}}>
-                      <div style={{width:'92%',height:'100%',background:'linear-gradient(90deg,#533afd,#60a5fa)',borderRadius:4}} />
-                    </div>
-                    <div style={{display:'flex',justifyContent:'space-between',marginTop:4}}>
-                      <span style={{fontSize:10,color:'rgba(255,255,255,0.3)'}}>0%</span>
-                      <span style={{fontSize:10,color:'rgba(255,255,255,0.5)',fontWeight:500}}>92%</span>
-                      <span style={{fontSize:10,color:'rgba(255,255,255,0.3)'}}>100%</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom badge */}
-                <div style={{position:'relative',zIndex:1,marginTop:16,display:'flex',gap:8}}>
-                  {['行政书士','社会保険労務士','税理士','中小企業診断士'].map(t => (
-                    <div key={t} style={{background:'rgba(83,58,253,0.2)',border:'1px solid rgba(83,58,253,0.4)',borderRadius:5,padding:'4px 8px',fontSize:10,color:'rgba(255,255,255,0.75)',whiteSpace:'nowrap'}}>
-                      {t}
-                    </div>
-                  ))}
+            {/* 左侧：3条核心承诺卡片 */}
+            <div className="promise-card">
+              <div className="promise-card-header">我们的核心承诺</div>
+              <div className="promise-item">
+                <div className="promise-icon-circle"><PrIconShield /></div>
+                <div>
+                  <div className="promise-title">申请失败零费用</div>
+                  <p className="promise-desc">不成功则完全不收费，彻底消除您的财务风险。让您零风险尝试补助金申请。</p>
                 </div>
               </div>
+              <div className="promise-item">
+                <div className="promise-icon-circle"><PrIconGlobe /></div>
+                <div>
+                  <div className="promise-title">全程中文无障碍</div>
+                  <p className="promise-desc">从初次咨询到最终获批，全程中文对接。日语文书翻译、官方手续全部由我们代劳。</p>
+                </div>
+              </div>
+              <div className="promise-item">
+                <div className="promise-icon-circle"><PrIconStar /></div>
+                <div>
+                  <div className="promise-title">当日回复，高效代办</div>
+                  <p className="promise-desc">咨询后当日内专业顾问回复，最快2周启动申请。3000+实绩支撑，高通过率有保障。</p>
+                </div>
+              </div>
+              <div className="promise-footer">
+                {['行政书士','社会保険労務士','税理士','中小企業診断士'].map(t => (
+                  <div key={t} className="promise-tag">{t}</div>
+                ))}
+              </div>
             </div>
+
+            {/* 右侧：特点列表 */}
             <div>
               <div className="section-label">选择我们的理由</div>
               <h2 className="section-title">为什么选择志成コンサル？</h2>
