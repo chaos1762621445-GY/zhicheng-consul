@@ -224,14 +224,14 @@ export default async function HomePage() {
       <Nav />
 
       {/* ── HERO ── */}
-      <section style={{background:'#FFFFFF', borderBottom:'1px solid #E5E7EB'}}>
+      <section className="hero-section">
         <div className="hero-inner">
           {/* 左侧 */}
           <div>
-            <div className="hero-tag">
+            <div className="hero-tag fade-up">
               行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士
             </div>
-            <h1 className="hero-h1">{`在日华人企业主\n政府补助金\n您申请了吗？`}</h1>
+            <h1 className="hero-h1 fade-up delay-1">{`在日华人企业主\n政府补助金\n您申请了吗？`}</h1>
             <p className="hero-sub">
               专业四士联合团队，全程中文，无成功不收费。<br/>
               为在日华人中小企业精准匹配补助金，从申请到获批全程代办。
@@ -305,7 +305,7 @@ export default async function HomePage() {
           </div>
           <div className="service-grid">
             {services.map((s, i) => (
-              <div key={i} className="service-card">
+              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.08}s`}}>
                 <div className="service-icon">{s.icon}</div>
                 <div className="service-name">{s.name}</div>
                 <div className="service-amount">{s.amount}</div>
