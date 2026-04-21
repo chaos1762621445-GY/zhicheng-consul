@@ -263,11 +263,18 @@ a { text-decoration: none; color: inherit; }
   position: relative;
 }
 .service-card:hover {
-  box-shadow: rgba(50,50,93,0.15) 0px 20px 40px -10px, rgba(0,0,0,0.08) 0px 10px 20px -10px;
+  box-shadow: rgba(50,50,93,0.20) 0px 28px 48px -10px, rgba(0,0,0,0.10) 0px 14px 28px -10px;
   border-left-color: var(--primary);
-  transform: translateY(-3px);
 }
 .service-icon { margin-bottom: 18px; display: flex; }
+.service-icon-wrap {
+  width: 52px; height: 52px;
+  background: rgba(83,58,253,0.08);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
 .service-badge {
   display: inline-block;
   background: rgba(21,190,83,0.10);
@@ -287,7 +294,7 @@ a { text-decoration: none; color: inherit; }
 .service-amount {
   font-family: var(--font);
   font-feature-settings: 'tnum','ss01';
-  font-size: 28px; font-weight: 600; color: var(--primary);
+  font-size: 28px; font-weight: 300; color: var(--primary);
   letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px;
 }
 .service-rate {
@@ -301,13 +308,16 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.7;
 }
 .service-link {
-  display: inline-flex; align-items: center; gap: 4px;
+  display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 500; color: var(--primary);
   font-feature-settings: 'ss01';
   margin-top: 14px;
-  transition: gap 0.15s;
 }
-.service-link:hover { gap: 7px; }
+.service-link-arrow {
+  display: inline-flex; align-items: center;
+  transition: transform 0.15s ease;
+}
+.service-link:hover .service-link-arrow { transform: translateX(4px); }
 
 /* ── CREDENTIALS ── */
 .credentials-section {

@@ -1,64 +1,16 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import NavClient from "./components/NavClient";
+import HeroSection from "./components/HeroSection";
+import StatsSection from "./components/StatsSection";
+import ServicesSection from "./components/ServicesSection";
+import MotionSection from "./components/MotionSection";
 
-// ─── SVG Icons ────────────────────────────────────────────────────────────────
+// ─── Icons (credentials / feature / shared) ───────────────────────────────────
 
-const IconCheck = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-);
 const IconChevron = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:12,height:12}}>
     <path d="M9 18l6-6-6-6"/>
-  </svg>
-);
-const IconArrow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-);
-
-const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-    <line x1="16" y1="13" x2="8" y2="13"/>
-    <line x1="16" y1="17" x2="8" y2="17"/>
-  </svg>
-);
-const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <rect x="3" y="11" width="18" height="10" rx="2"/>
-    <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="#533afd"/>
-    <circle cx="15" cy="15" r="1" fill="#533afd"/>
-  </svg>
-);
-const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-  </svg>
-);
-const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-);
-const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <line x1="12" y1="2" x2="12" y2="22"/>
-    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
-  </svg>
-);
-const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
   </svg>
 );
 
@@ -90,38 +42,6 @@ const CIconAward = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <circle cx="12" cy="8" r="7"/>
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-  </svg>
-);
-
-// Panel icons 18px
-const PIconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-  </svg>
-);
-const PIconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
-    <rect x="3" y="11" width="18" height="10" rx="2"/>
-    <path d="M12 3v8M8 3h8"/>
-  </svg>
-);
-const PIconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-  </svg>
-);
-const PIconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
-    <path d="M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-);
-const PIconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:18,height:18,flexShrink:0}}>
-    <line x1="12" y1="2" x2="12" y2="22"/>
-    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5"/>
   </svg>
 );
 
@@ -219,63 +139,6 @@ export default async function HomePage() {
   const posts = await getAllPosts();
   const recentPosts = posts.slice(0, 3);
 
-  const services = [
-    {
-      icon: <IconDoc />,
-      badge: "最高1亿円",
-      name: "省力化补助金",
-      amount: "最高1,500万円",
-      rate: "补助率最高50%",
-      desc: "导入DX系统、自动化设备实现降本增效。6〜20人企业最高1,500万円，5人以下最高750万円，整体上限1亿円。",
-      slug: "seiryoka",
-    },
-    {
-      icon: <IconRobot />,
-      badge: "无员工规模限制",
-      name: "AI导入补助金",
-      amount: "最高350万円",
-      rate: "个人事业主亦可申请",
-      desc: "AI软件采购、系统定制开发、部署调试费用均可申请。个人事业主、赤字企业均可，门槛宽松。",
-      slug: "ai-it",
-    },
-    {
-      icon: <IconUsers />,
-      badge: "首次转正非新卒",
-      name: "员工转正助成金",
-      amount: "最高80万円/人",
-      rate: "在职半年以上转正补助",
-      desc: "将兼职或合同员工转为正社员。在职半年以上转正补助40万円/人，首次转正非新卒最高80万円/人。",
-      slug: "career-up",
-    },
-    {
-      icon: <IconGraduate />,
-      badge: "AI实战研修补贴",
-      name: "员工培训助成金",
-      amount: "最高1亿円",
-      rate: "同步转正申请翻倍",
-      desc: "同步转正申请，补贴资金翻倍。AI营销获客、运营自动化、数据分析等课程，每人百万级支持。",
-      slug: "training",
-    },
-    {
-      icon: <IconSnow />,
-      badge: "东京最高1,000万円",
-      name: "空调省能更新补助",
-      amount: "最高1,000万円",
-      rate: "东京政府补助2/3",
-      desc: "旧空调以旧换新：东京政府补助2/3+我社补贴1/3=几乎零负担。大阪最高500万円，全国最高3亿円。",
-      slug: "aircon",
-    },
-    {
-      icon: <IconHandshake />,
-      badge: "零加盟费，合规正规",
-      name: "代理合作",
-      amount: "60% 分成",
-      rate: "周期短、回流稳",
-      desc: "将您的存量客户与我们对接，即可获得60%透明分成。周期短、回流稳，无需缴纳任何加盟费用。",
-      slug: null,
-    },
-  ];
-
   const credentials = [
     { icon: <CIconDoc />, name: "行政书士", role: "申请材料专家", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
     { icon: <CIconUsers />, name: "社会保険労務士", role: "雇佣关系专家", desc: "专业负责雇佣关系助成金申请及劳务管理" },
@@ -303,118 +166,35 @@ export default async function HomePage() {
     <main>
       <Nav />
 
-      {/* ── HERO ── */}
-      <section className="hero-section">
-        <div className="hero-inner">
-          <div>
-            <h1 className="hero-h1 fade-up delay-1">
-              日本政府补助金，{"\n"}全程中文代办
-            </h1>
-            <p className="hero-sub fade-up delay-2">
-              专业顾问团队，已协助3000+在日华人企业主申请成功，累计获批8.5亿日元。
-            </p>
-            <div className="hero-actions fade-up delay-3">
-              <Link href="/contact" className="btn-primary">
-                立即免费咨询
-                <IconArrow />
-              </Link>
-              <Link href="/subsidies" className="btn-ghost">
-                了解补助金种类
-                <IconChevron />
-              </Link>
-            </div>
-            <div className="hero-trust fade-up delay-3">
-              <div className="hero-trust-item">
-                <IconCheck />
-                申请失败零费用承诺
-              </div>
-            </div>
-          </div>
+      {/* ── HERO (client component with sequenced animation) ── */}
+      <HeroSection />
 
-          {/* 右侧面板 */}
-          <div className="hero-panel fade-up delay-3">
-            <div className="hero-panel-title">主要补助金一览</div>
-            {[
-              { icon: <PIconDoc />, name: "省力化补助金", amount: "最高1,500万円" },
-              { icon: <PIconRobot />, name: "AI导入补助金", amount: "最高350万円" },
-              { icon: <PIconUsers />, name: "员工转正助成金", amount: "最高80万円/人" },
-              { icon: <PIconGraduate />, name: "员工培训助成金", amount: "最高1亿円" },
-              { icon: <PIconSnow />, name: "空调省能更新补助", amount: "最高1,000万円" },
-            ].map((item, i) => (
-              <div key={i} className="hero-panel-item">
-                <div className="hero-panel-left">
-                  {item.icon}
-                  <span className="hero-panel-name">{item.name}</span>
-                </div>
-                <span className="hero-panel-amount">{item.amount}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── STATS (client component with CountUp) ── */}
+      <StatsSection />
 
-      {/* ── STATS ── */}
-      <section className="stats-section">
-        <div className="stats-inner">
-          {[
-            { num: "3,000+", label: "成功申请案例" },
-            { num: "¥8.5億+", label: "累计获批总额" },
-            { num: "4种", label: "持牌专业资质" },
-          ].map((s, i) => (
-            <div key={i} className="stat-item fade-up" style={{animationDelay:`${i*0.08}s`}}>
-              <div className="stat-num">{s.num}</div>
-              <div className="stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── SERVICES ── */}
-      <section style={{padding:'96px 0',background:'#ffffff'}}>
-        <div className="section-inner">
-          <div style={{maxWidth:600,marginBottom:56}}>
-            <div className="section-label">服务项目</div>
-            <h2 className="section-title">主要补助金与助成金</h2>
-            <p className="section-desc">为在日华人中小企业和个人事业主精准匹配补助金，从申请到获批全程代办。</p>
-          </div>
-          <div className="service-grid">
-            {services.map((s, i) => (
-              <div key={i} className="service-card fade-up" style={{animationDelay:`${i*0.07}s`}}>
-                <div className="service-icon">{s.icon}</div>
-                <div className="service-badge">{s.badge}</div>
-                <div className="service-name">{s.name}</div>
-                <div className="service-amount">{s.amount}</div>
-                <div className="service-rate">{s.rate}</div>
-                <p className="service-desc">{s.desc}</p>
-                {s.slug && (
-                  <Link href={`/subsidies/${s.slug}`} className="service-link">
-                    查看详情 <IconChevron />
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── SERVICES (client component with stagger cards) ── */}
+      <ServicesSection />
 
       {/* ── CREDENTIALS ── */}
       <section className="credentials-section">
         <div className="section-inner">
-          <div style={{textAlign:'center',maxWidth:700,margin:'0 auto 48px'}}>
+          <MotionSection style={{textAlign:'center',maxWidth:700,margin:'0 auto 48px'}}>
             <div className="section-label">专业资质</div>
             <h2 className="section-title">持牌专业团队，全程合规操办</h2>
             <p className="section-desc" style={{maxWidth:560,margin:'0 auto'}}>
               四类国家持牌专家分工协作，每个申请环节合规精准，让您的资金申请有保障。
             </p>
-          </div>
+          </MotionSection>
           <div className="credentials-grid">
             {credentials.map((c, i) => (
-              <div key={i} className="credential-card">
-                <div className="credential-icon">{c.icon}</div>
-                <div className="credential-role">{c.role}</div>
-                <div className="credential-name">{c.name}</div>
-                <p className="credential-desc">{c.desc}</p>
-              </div>
+              <MotionSection key={i} delay={i * 0.08}>
+                <div className="credential-card">
+                  <div className="credential-icon">{c.icon}</div>
+                  <div className="credential-role">{c.role}</div>
+                  <div className="credential-name">{c.name}</div>
+                  <p className="credential-desc">{c.desc}</p>
+                </div>
+              </MotionSection>
             ))}
           </div>
         </div>
@@ -424,27 +204,29 @@ export default async function HomePage() {
       <section style={{padding:'96px 0',background:'#ffffff'}}>
         <div className="section-inner">
           <div className="feature-split">
-            <div className="feature-img-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
-                alt="志成コンサル专业团队"
-                className="feature-img"
-              />
-            </div>
+            <MotionSection>
+              <div className="feature-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
+                  alt="志成コンサル专业团队"
+                  className="feature-img"
+                />
+              </div>
+            </MotionSection>
             <div>
-              <div className="section-label">选择我们的理由</div>
-              <h2 className="section-title">为什么选择志成コンサル？</h2>
+              <MotionSection>
+                <div className="section-label">选择我们的理由</div>
+                <h2 className="section-title">为什么选择志成コンサル？</h2>
+              </MotionSection>
               <div className="feature-list">
                 {whyUs.map((item, i) => (
-                  <div key={i} className="feature-item">
-                    <div className="feature-icon-circle">
-                      {item.icon}
-                    </div>
+                  <MotionSection key={i} delay={i * 0.08} className="feature-item">
+                    <div className="feature-icon-circle">{item.icon}</div>
                     <div>
                       <div className="feature-title">{item.title}</div>
                       <p className="feature-desc">{item.desc}</p>
                     </div>
-                  </div>
+                  </MotionSection>
                 ))}
               </div>
             </div>
@@ -455,18 +237,20 @@ export default async function HomePage() {
       {/* ── PROCESS ── */}
       <section style={{padding:'96px 0',background:'#F8FAFC'}}>
         <div className="section-inner">
-          <div style={{maxWidth:520,marginBottom:56}}>
+          <MotionSection style={{maxWidth:520,marginBottom:56}}>
             <div className="section-label">申请流程</div>
             <h2 className="section-title">6步全程代办</h2>
             <p className="section-desc">从初次咨询到资金到账，我们全程陪伴，让申请变得简单。</p>
-          </div>
+          </MotionSection>
           <div className="process-grid">
             {steps.map((s, i) => (
-              <div key={i} className="process-card fade-up" style={{animationDelay:`${i*0.07}s`}}>
-                <div className="process-step-label">{s.step}</div>
-                <div className="process-step-title">{s.title}</div>
-                <p className="process-step-desc">{s.desc}</p>
-              </div>
+              <MotionSection key={i} delay={i * 0.07}>
+                <div className="process-card">
+                  <div className="process-step-label">{s.step}</div>
+                  <div className="process-step-title">{s.title}</div>
+                  <p className="process-step-desc">{s.desc}</p>
+                </div>
+              </MotionSection>
             ))}
           </div>
         </div>
@@ -475,24 +259,26 @@ export default async function HomePage() {
       {/* ── BLOG ── */}
       <section className="blog-section">
         <div className="section-inner">
-          <div style={{maxWidth:560,marginBottom:56}}>
+          <MotionSection style={{maxWidth:560,marginBottom:56}}>
             <div className="section-label">知识库</div>
             <h2 className="section-title">最新文章</h2>
             <p className="section-desc">深度解析日本政府补助金政策，为在日华人企业主提供实用指南。</p>
-          </div>
+          </MotionSection>
           {recentPosts.length > 0 ? (
             <div className="blog-grid">
-              {recentPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} style={{textDecoration:'none',color:'inherit'}}>
-                  <div className="blog-card">
-                    <div className="blog-date">{post.date}</div>
-                    <div className="blog-title">{post.title}</div>
-                    <p className="blog-excerpt">{post.excerpt?.slice(0, 80)}...</p>
-                    <div className="blog-more">
-                      阅读更多 <IconChevron />
+              {recentPosts.map((post, i) => (
+                <MotionSection key={post.slug} delay={i * 0.08}>
+                  <Link href={`/blog/${post.slug}`} style={{textDecoration:'none',color:'inherit',display:'block'}}>
+                    <div className="blog-card">
+                      <div className="blog-date">{post.date}</div>
+                      <div className="blog-title">{post.title}</div>
+                      <p className="blog-excerpt">{post.excerpt?.slice(0, 80)}...</p>
+                      <div className="blog-more">
+                        阅读更多 <IconChevron />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </MotionSection>
               ))}
             </div>
           ) : (
@@ -516,7 +302,6 @@ export default async function HomePage() {
           <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
             <Link href="/contact" className="btn-cta-white">
               立即免费咨询
-              <IconArrow />
             </Link>
             <Link href="/subsidies" className="btn-cta-ghost">
               了解补助金种类
