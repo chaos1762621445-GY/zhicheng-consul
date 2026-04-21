@@ -76,6 +76,23 @@ const IconTrendUp = () => (
     <polyline points="17 6 23 6 23 12"/>
   </svg>
 );
+const IconGraduate = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+  </svg>
+);
+const IconSnow = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="2" x2="12" y2="22"/>
+    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
+  </svg>
+);
+const IconHandshake = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
+  </svg>
+);
 const IconPhone = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.71a16 16 0 0 0 7.34 7.34l1.88-1.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -154,7 +171,7 @@ const Footer = () => (
           <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
         </div>
         <div className="footer-qr">
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:80,height:80,borderRadius:4}} />
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:140,height:140,borderRadius:8,display:'block',marginTop:12}} />
         </div>
       </div>
     </div>
@@ -175,43 +192,43 @@ export default async function HomePage() {
       icon: <IconDoc />,
       name: "省力化补助金",
       amount: "最高1,500万円",
-      rate: "补助率 1/2〜2/3",
-      desc: "导入机械设备和IT系统，提升生产效率。制造业、服务业均可申请，无行业限制。",
+      rate: "补助率最高50%",
+      desc: "导入DX系统、自动化设备实现降本增效。6〜20人企业最高1,500万円，5人以下最高750万円，整体上限1亿円。",
     },
     {
       icon: <IconRobot />,
-      name: "AI·IT导入补助金",
-      amount: "最高450万円",
-      rate: "补助率 最高2/3",
-      desc: "AI系统与业务软件导入费用最高补助2/3，发票应对IT工具亦在补助范围内。",
+      name: "AI导入补助金",
+      amount: "最高350万円",
+      rate: "无员工规模限制",
+      desc: "AI软件采购、系统定制开发、部署调试费用均可申请。个人事业主、赤字企业均可，门槛宽松。",
     },
     {
       icon: <IconUsers />,
       name: "员工转正助成金",
       amount: "最高80万円/人",
-      rate: "正社员转换支援",
-      desc: "将兼职或合同员工转为正社员，每人最高获得80万円助成，助力企业稳定人才队伍。",
+      rate: "首次转正非新卒",
+      desc: "将兼职或合同员工转为正社员。在职半年以上转正补助40万円/人，首次转正非新卒最高80万円/人。",
     },
     {
-      icon: <IconStore />,
-      name: "小规模持续化补助金",
-      amount: "最高250万円",
-      rate: "补助率 2/3",
-      desc: "可用于开拓销售渠道、营销推广、官网建设等，个人事业主同样可以申请。",
+      icon: <IconGraduate />,
+      name: "员工培训助成金",
+      amount: "最高1亿円",
+      rate: "补贴AI实战研修",
+      desc: "同步转正申请，补贴资金翻倍。AI营销获客、运营自动化、数据分析、行情决策等课程，每人百万级支持。",
     },
     {
-      icon: <IconBriefcase />,
-      name: "事业重构补助金",
-      amount: "最高7,000万円",
-      rate: "补助率 1/2〜2/3",
-      desc: "大力支持新业务拓展和业态转换，适合营业额下降企业的经营变革。",
+      icon: <IconSnow />,
+      name: "空调省能更新补助",
+      amount: "最高1,000万円",
+      rate: "东京最高1,000万円",
+      desc: "旧空调以旧换新：东京政府补助2/3+我社补贴1/3=几乎零负担。大阪最高500万円，全国最高3亿円。",
     },
     {
-      icon: <IconTrendUp />,
-      name: "制造业补助金",
-      amount: "最高4,000万円",
-      rate: "补助率 1/2〜2/3",
-      desc: "大力支持创新服务开发、试制品研发及生产流程改善。",
+      icon: <IconHandshake />,
+      name: "代理合作",
+      amount: "60% 分成",
+      rate: "零加盟费，合规正规",
+      desc: "将您的存量客户与我们对接，即可获得60%透明分成。周期短、回流稳，无需缴纳任何加盟费用。",
     },
   ];
 
@@ -320,10 +337,10 @@ export default async function HomePage() {
             <div className="hero-panel-title">主要补助金一览</div>
             {[
               { icon: <IconDoc />, name: "省力化补助金", amount: "最高1,500万円" },
-              { icon: <IconRobot />, name: "AI·IT导入补助金", amount: "最高450万円" },
+              { icon: <IconRobot />, name: "AI导入补助金", amount: "最高350万円" },
               { icon: <IconUsers />, name: "员工转正助成金", amount: "最高80万円/人" },
-              { icon: <IconStore />, name: "小规模持续化补助金", amount: "最高250万円" },
-              { icon: <IconBriefcase />, name: "事业重构补助金", amount: "最高7,000万円" },
+              { icon: <IconGraduate />, name: "员工培训助成金", amount: "最高1亿円" },
+              { icon: <IconSnow />, name: "空调省能更新补助", amount: "最高1,000万円" },
             ].map((item, i) => (
               <div key={i} className="hero-panel-item">
                 <div className="hero-panel-icon">{item.icon}</div>
