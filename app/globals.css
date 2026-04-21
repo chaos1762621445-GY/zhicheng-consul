@@ -56,7 +56,7 @@ a { text-decoration: none; color: inherit; }
 .nav-cta {
   font-size: 14px; font-weight: 600; font-family: var(--font);
   color: #ffffff; background: var(--blue);
-  padding: 10px 24px; border-radius: 56px; text-decoration: none;
+  padding: 10px 28px; border-radius: 9999px; text-decoration: none;
   transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--blue-hover); }
@@ -96,10 +96,11 @@ a { text-decoration: none; color: inherit; }
 
 /* ── BUTTONS ── */
 .btn-primary {
+  letter-spacing: 0.1px;
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--blue); color: #ffffff;
   font-size: 16px; font-weight: 600; font-family: var(--font);
-  padding: 14px 32px; border-radius: 56px; text-decoration: none;
+  padding: 14px 36px; border-radius: 9999px; text-decoration: none;
   transition: background 0.2s;
 }
 .btn-primary:hover { background: var(--blue-hover); }
@@ -108,7 +109,7 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--gray); color: #0a0b0d;
   font-size: 16px; font-weight: 600; font-family: var(--font);
-  padding: 14px 32px; border-radius: 56px; text-decoration: none;
+  padding: 14px 36px; border-radius: 9999px; text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
 .btn-secondary:hover { background: var(--blue-hover); color: #ffffff; }
@@ -117,7 +118,7 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: #ffffff;
   font-size: 16px; font-weight: 600; font-family: var(--font);
-  padding: 14px 32px; border-radius: 56px; text-decoration: none;
+  padding: 14px 32px; border-radius: 9999px; text-decoration: none;
   border: 1px solid rgba(255,255,255,0.3);
   transition: background 0.2s;
 }
