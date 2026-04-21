@@ -11,12 +11,7 @@ const Nav = () => (
   <nav className="nav">
     <div className="nav-inner">
       <Link href="/" className="nav-logo">
-        <span className="nav-logo-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
-        </span>
-        志成コンサル
+        <img src="/logo.png" alt="志成コンサル" style={{height:40}} />
       </Link>
       <div className="nav-links">
         <Link href="/subsidies" className="nav-link">补助金种类</Link>
@@ -26,6 +21,44 @@ const Nav = () => (
       </div>
     </div>
   </nav>
+);
+
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-inner">
+      <div className="footer-brand">
+        <div className="footer-logo-wrap">
+          <img src="/logo.png" alt="志成コンサル" style={{height:40, filter:"brightness(10)"}} />
+        </div>
+        <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
+      </div>
+      <div className="footer-nav">
+        <h4>快速导航</h4>
+        <div className="footer-nav-links">
+          <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
+          <Link href="/service" className="footer-nav-link">服务流程</Link>
+          <Link href="/blog" className="footer-nav-link">知识库</Link>
+          <Link href="/contact" className="footer-nav-link">免费咨询</Link>
+        </div>
+      </div>
+      <div className="footer-contact-col">
+        <h4>联系我们</h4>
+        <div className="footer-contact-row"><strong>微信：</strong>pr2024188</div>
+        <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
+        <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
+        <div className="footer-contact-row" style={{flexDirection:"column",gap:4}}>
+          <strong>地址：</strong>
+          <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
+        </div>
+        <div className="footer-qr">
+          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:80,height:80,borderRadius:4}} />
+        </div>
+      </div>
+    </div>
+    <div className="footer-bottom">
+      <span>© 2025 株式会社志成コンサル. All rights reserved.</span>
+    </div>
+  </footer>
 );
 
 const IconChevron = () => (
@@ -62,7 +95,7 @@ export default async function BlogPage() {
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
                   <div className="blog-date">{post.date}</div>
                   <div className="blog-title">{post.title}</div>
-                  <p className="blog-excerpt">{post.excerpt}</p>
+                  <p className="blog-excerpt">{(post.excerpt || "").slice(0, 100)}...</p>
                   <div className="blog-more">阅读全文 <IconChevron /></div>
                 </Link>
               ))}
@@ -71,19 +104,7 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo">株式会社志成コンサル</div>
-            <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
-          </div>
-          <div className="footer-contact">
-            <h4>联系我们</h4>
-            <div className="footer-contact-item">微信：<strong>pr2024188</strong></div>
-          </div>
-        </div>
-        <div className="footer-bottom">© 2025 株式会社志成コンサル. All rights reserved.</div>
-      </footer>
+      <Footer />
     </main>
   );
 }
