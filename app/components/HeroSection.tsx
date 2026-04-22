@@ -1,109 +1,123 @@
-'use client';
 import Link from 'next/link';
-import {
-  ArrowRightIcon, ChevronRightIcon, CheckCircleIcon,
-  FileTextIcon, BotIcon, UsersIcon, GraduationCapIcon, SnowflakeIcon,
-} from 'lucide-react';
 
-const panelItems = [
-  { Icon: FileTextIcon, name: '省力化补助金', amount: '最高1,500万円' },
-  { Icon: BotIcon, name: 'AI导入补助金', amount: '最高350万円' },
-  { Icon: UsersIcon, name: '员工转正助成金', amount: '最高80万円/人' },
-  { Icon: GraduationCapIcon, name: '员工培训助成金', amount: '最高1亿円' },
-  { Icon: SnowflakeIcon, name: '空调省能更新补助', amount: '最高1,000万円' },
+const subsidies = [
+  { name: '省力化补助金', amount: '最高1,500万円' },
+  { name: 'AI导入补助金', amount: '最高350万円' },
+  { name: '员工转正助成金', amount: '最高80万円/人' },
+  { name: '员工培训助成金', amount: '最高1亿円' },
+  { name: '空调省能更新补助', amount: '最高1,000万円' },
 ];
 
 export default function HeroSection() {
   return (
-    <section className="bg-white relative overflow-hidden py-24">
-      {/* Radial gradient halo */}
+    <section className="relative bg-white overflow-hidden" style={{ paddingTop: 80, paddingBottom: 80 }}>
+      {/* Subtle bg decoration */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(83,58,253,0.10) 0%, transparent 60%)' }}
-      />
-      {/* Decorative orb top-right */}
-      <div
-        className="absolute top-[-100px] right-[-150px] w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'rgba(83,58,253,0.08)', filter: 'blur(80px)' }}
+        style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse 70% 60% at 60% -10%, rgba(83,58,253,0.07) 0%, transparent 60%)',
+        }}
       />
 
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_420px] gap-16 items-center relative z-10">
+      <div className="page-wrap relative">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: 64, alignItems: 'center' }}
+          className="max-md:grid-cols-1 max-md:gap-12">
 
-        {/* Left content */}
-        <div>
-          <div className="inline-flex items-center bg-[rgba(83,58,253,0.08)] text-[#533afd] text-xs px-3 py-1.5 rounded-full font-medium mb-6 tracking-wide">
-            在日本政府认定补助金代办
+          {/* Left */}
+          <div>
+            <div className="label-tag">在日本政府认定补助金代办</div>
+
+            <h1 style={{
+              fontSize: 'clamp(36px, 5vw, 52px)',
+              fontWeight: 800,
+              color: '#0f172a',
+              lineHeight: 1.1,
+              letterSpacing: '-0.5px',
+              marginBottom: 20,
+            }}>
+              在日本经营，<br />政府有钱可以拿
+            </h1>
+
+            <p style={{ fontSize: 17, color: '#475569', lineHeight: 1.75, maxWidth: 460, marginBottom: 36 }}>
+              很多华人老板不知道：日本政府每年有大量补助金，专门给中小企业。
+              我们帮你查清楚、申请下来，<strong style={{ color: '#0f172a', fontWeight: 600 }}>拿不到不收费</strong>。
+            </p>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
+              <Link href="/contact" className="btn-primary">
+                立即免费咨询
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link href="/subsidies" className="btn-secondary">
+                查看补助金种类
+              </Link>
+            </div>
+
+            {/* Trust */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 24px' }}>
+              {['拿不到不收费，零风险', '3,000+ 华人老板成功申请', '全程中文，无需懂日语'].map(t => (
+                <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#64748b' }}>
+                  <svg width="15" height="15" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="rgba(34,197,94,0.15)" />
+                    <path d="M8 12l3 3 5-5" stroke="#16a34a" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <h1
-            className="font-light text-[#061b31] text-center md:text-left"
-            style={{ fontSize: 'clamp(40px,5.5vw,56px)', letterSpacing: '-1.2px', lineHeight: 1.08 }}
+          {/* Right panel */}
+          <div
+            className="hidden md:block"
+            style={{
+              background: '#fff',
+              border: '1px solid #e2e8f0',
+              borderRadius: 16,
+              padding: '28px 28px 24px',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05)',
+            }}
           >
-            在日本经营，<br />政府有钱可以拿
-          </h1>
-
-          <p className="text-[17px] text-[#64748d] leading-[1.8] mt-6 max-w-[480px] text-center md:text-left mx-auto md:mx-0">
-            很多华人老板不知道：日本政府每年有大量补助金，专门给中小企业。我们帮你查清楚、申请下来，拿不到不收费。
-          </p>
-
-          <div className="flex gap-3 items-center mt-9 flex-wrap justify-center md:justify-start">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[#533afd] text-white px-7 py-3.5 rounded-lg font-medium text-[15px] hover:bg-[#4434d4] transition-all shadow-[0_4px_14px_rgba(83,58,253,0.35)] hover:shadow-[0_6px_20px_rgba(83,58,253,0.45)] hover:-translate-y-0.5"
-            >
-              立即免费咨询
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/subsidies"
-              className="inline-flex items-center gap-2 bg-white text-[#533afd] border border-[#d6d9fc] px-7 py-3.5 rounded-lg font-medium text-[15px] hover:bg-[rgba(83,58,253,0.04)] transition-all hover:-translate-y-0.5"
-            >
-              了解补助金种类
-              <ChevronRightIcon className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap gap-5 mt-8 justify-center md:justify-start">
-            <div className="flex items-center gap-2 text-[13px] text-[#64748d]">
-              <CheckCircleIcon className="w-4 h-4 text-[#15be53] flex-shrink-0" strokeWidth={2.5} />
-              拿不到不收费，零风险
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: 20 }}>
+              你可能可以申请的补助金
             </div>
-            <div className="flex items-center gap-2 text-[13px] text-[#64748d]">
-              <CheckCircleIcon className="w-4 h-4 text-[#15be53] flex-shrink-0" strokeWidth={2.5} />
-              3,000+ 华人老板成功申请
-            </div>
-            <div className="flex items-center gap-2 text-[13px] text-[#64748d]">
-              <CheckCircleIcon className="w-4 h-4 text-[#15be53] flex-shrink-0" strokeWidth={2.5} />
-              全程中文，四类持牌专家
-            </div>
-          </div>
-        </div>
 
-        {/* Right panel */}
-        <div
-          className="hidden md:block bg-white border border-[#e5edf5] rounded-2xl p-7"
-          style={{ boxShadow: 'rgba(50,50,93,0.15) 0px 30px 60px -12px, rgba(0,0,0,0.08) 0px 18px 36px -18px' }}
-        >
-          <div className="text-[11px] font-semibold text-[#64748d] uppercase tracking-[1.5px] mb-5">你可能可以申请的补助金</div>
-          {panelItems.map(({ Icon, name, amount }, i) => (
-            <div
-              key={i}
-              className={`flex items-center justify-between py-3.5${i < panelItems.length - 1 ? ' border-b border-[#f0f4f8]' : ''}`}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[rgba(83,58,253,0.08)] flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 text-[#533afd]" strokeWidth={1.8} />
-                </div>
-                <span className="text-sm font-medium text-[#273951]">{name}</span>
+            {subsidies.map((s, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '12px 0',
+                  borderBottom: i < subsidies.length - 1 ? '1px solid #f1f5f9' : 'none',
+                }}
+              >
+                <span style={{ fontSize: 14, fontWeight: 500, color: '#334155' }}>{s.name}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: '#533afd', whiteSpace: 'nowrap', marginLeft: 12 }}>{s.amount}</span>
               </div>
-              <span className="text-sm font-bold text-[#533afd] whitespace-nowrap ml-3">{amount}</span>
+            ))}
+
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid #f1f5f9' }}>
+              <Link
+                href="/contact"
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  background: 'rgba(83,58,253,0.06)',
+                  color: '#533afd',
+                  padding: '10px 16px',
+                  borderRadius: 8,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  transition: 'background 0.15s',
+                }}
+              >
+                微信咨询能申请哪些
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
-          ))}
-          <div className="mt-5 pt-4 border-t border-[#f0f4f8]">
-            <a href="/contact" className="inline-flex items-center gap-1.5 text-[13px] text-[#533afd] font-medium hover:underline">
-              <ArrowRightIcon className="w-3.5 h-3.5" />
-              不清楚能申请什么？先微信咨询
-            </a>
           </div>
         </div>
       </div>
