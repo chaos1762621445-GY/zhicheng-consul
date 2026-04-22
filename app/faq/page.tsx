@@ -1,7 +1,8 @@
 'use client';
-import Link from "next/link";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
+import CtaSection from "../components/CtaSection";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { HelpCircleIcon } from "lucide-react";
 
@@ -113,18 +114,11 @@ export default function FaqPage() {
     <main>
       <NavClient />
 
-      {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
-        <div className="page-wrap">
-          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>FAQ · 常见问题</div>
-          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
-            补助金申请<br />常见问题解答
-          </h1>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
-            汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="FAQ · 常见问题"
+        title={<>补助金申请<br /><span style={{ color: 'var(--brand)' }}>常见问题解答</span></>}
+        desc="汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。"
+      />
 
       {/* FAQ Content */}
       <section className="section" style={{ background: "#fff" }}>
@@ -171,22 +165,12 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "inline-block", fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 14 }}>还有疑问？</div>
-          <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>没找到您想要的答案？</h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。</p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
-              免费咨询顾问
-            </Link>
-            <Link href="/cases" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
-              查看成功案例
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title={<>没找到您想要的答案？<br /><span style={{ color: 'var(--brand)' }}>免费咨询顾问</span></>}
+        desc="直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。"
+        primary={{ href: '/contact', label: '免费咨询顾问' }}
+        secondary={{ href: '/cases', label: '查看成功案例' }}
+      />
 
       <Footer />
     </main>

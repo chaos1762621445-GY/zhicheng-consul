@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
+import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
   title: "代理合作",
@@ -128,31 +130,21 @@ export default function PartnerPage() {
     <main>
       <NavClient />
 
-      {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
-        <div className="page-wrap">
-          <div style={{ maxWidth: 680 }}>
-            <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>代理合作计划</div>
-            <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
-              与我们合作<br />60% 透明分成
-            </h1>
-            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520, marginBottom: 36 }}>
-              无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您获得服务费的60%。
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
-                立即报名成为代理
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14 }}>
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <a href="#how-it-works" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
-                了解合作机制
-              </a>
-            </div>
-          </div>
+      <PageHero
+        eyebrow="代理合作计划"
+        title={<>与我们合作<br /><span style={{ color: 'var(--brand)' }}>60% 透明分成</span></>}
+        desc="无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您获得服务费的 60%。"
+      >
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 36, position: 'relative' }}>
+          <Link href="/contact" className="btn btn-fill">
+            立即报名成为代理
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14 }}>
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+          <a href="#how-it-works" className="btn btn-ghost">了解合作机制</a>
         </div>
-      </section>
+      </PageHero>
 
       {/* 数据展示 */}
       <section className="section" style={{ background: "#fff" }}>
@@ -307,27 +299,12 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
-          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff", display: "inline-block", marginBottom: 24 }}>零风险·60%分成·月结</div>
-          <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>
-            现在报名，<br />开始您的代理合作之旅
-          </h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>填写简单的报名表，我们会在1个工作日内联系您，为您安排专属培训和对接。</p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
-              立即报名成为代理
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14 }}>
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <Link href="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
-              了解我们的团队
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title={<>现在报名<br /><span style={{ color: 'var(--brand)' }}>开始您的代理合作之旅</span></>}
+        desc="填写简单的报名表，我们会在1个工作日内联系您，为您安排专属培训和对接。"
+        primary={{ href: '/contact', label: '立即报名成为代理' }}
+        secondary={{ href: '/about', label: '了解我们的团队' }}
+      />
 
       <Footer />
     </main>

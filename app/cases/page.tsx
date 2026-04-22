@@ -1,7 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
+import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
   title: "成功案例",
@@ -105,30 +106,25 @@ export default function CasesPage() {
     <main>
       <NavClient />
 
-      {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
-        <div className="page-wrap">
-          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>Success Cases · 成功案例</div>
-          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
-            客户成功案例
-          </h1>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
-            来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。
-          </p>
+      <PageHero
+        eyebrow="Success Cases · 成功案例"
+        title={<>客户<span style={{ color: 'var(--brand)' }}>成功案例</span></>}
+        desc="来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。"
+      />
+
+      {/* Stats Bar — premium light */}
+      <section className="stats-wrap">
+        <div className="wrap">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 0 }} className="grid-stats-4">
+            {stats.map((s, i) => (
+              <div key={s.label} style={{ textAlign: 'center', padding: '40px 20px', position: 'relative', borderRight: i < stats.length - 1 ? '1px solid var(--line)' : 'none' }}>
+                <div className="amount" style={{ fontSize: 'clamp(36px,4.2vw,52px)', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
+                <div style={{ fontSize: 13, color: 'var(--ink-3)', fontWeight: 500 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* Stats Bar */}
-      <div style={{ background: "#0f172a", padding: "48px 0" }}>
-        <div className="page-wrap" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
-          {stats.map((s) => (
-            <div key={s.label} style={{ textAlign: "center", padding: "16px" }}>
-              <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#1e40af", letterSpacing: "-1px", lineHeight: 1 }}>{s.num}</div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 8 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Cases Grid */}
       <section className="section" style={{ background: "#f8fafc" }}>
@@ -187,23 +183,12 @@ export default function CasesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "inline-block", fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 14 }}>下一步</div>
-          <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>您的企业也能获得补助金</h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
-              立即免费咨询
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-            </Link>
-            <Link href="/faq" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
-              查看常见问题
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title={<>您的企业也能<span style={{ color: 'var(--brand)' }}>获得补助金</span></>}
+        desc="免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。"
+        primary={{ href: '/contact', label: '立即免费咨询' }}
+        secondary={{ href: '/faq', label: '查看常见问题' }}
+      />
 
       <Footer />
     </main>

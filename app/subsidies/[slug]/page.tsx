@@ -440,62 +440,38 @@ export default async function SubsidyDetailPage({
     <main>
       <NavClient />
 
-      {/* ── Hero ── */}
-      <div style={{
-        background: "linear-gradient(135deg, var(--dark) 0%, #2d1b8e 100%)",
-        padding: "80px 0 72px",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        <div style={{
-          position: "absolute", inset: 0, opacity: 0.06,
-          backgroundImage: "radial-gradient(circle at 70% 50%, #fff 0%, transparent 60%)",
-          pointerEvents: "none",
-        }} />
-        <div className="section-inner">
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 20 }}>
-            <Link href="/subsidies" style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              fontSize: 13, color: "rgba(255,255,255,0.55)",
-              textDecoration: "none",
-            }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 13, height: 13 }}>
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              补助金种类一览
-            </Link>
-          </div>
-          <div style={{
-            display: "inline-block", background: "var(--primary)", color: "#fff",
-            fontSize: 11, fontWeight: 400, letterSpacing: 1, textTransform: "uppercase",
-            padding: "4px 12px", borderRadius: 3, marginBottom: 20,
-          }}>
-            {data.tag}
-          </div>
-          <h1 style={{
-            fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 300,
-            color: "#fff", letterSpacing: "-0.5px", lineHeight: 1.15,
-            marginBottom: 12,
-          }}>
+      {/* ── Hero ── premium light */}
+      <section className="page-hero">
+        <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/subsidies" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--muted)', marginBottom: 24, fontWeight: 500 }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 13, height: 13 }}>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            补助金种类一览
+          </Link>
+          <div className="eyebrow">{data.tag}</div>
+          <h1 className="display" style={{ fontSize: 'clamp(32px,4.6vw,52px)', marginBottom: 10 }}>
             {data.name}
           </h1>
-          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
+          <p style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 20, letterSpacing: '.02em' }}>
             {data.nameJa}
           </p>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.75, maxWidth: 640, marginBottom: 36 }}>
+          <p className="sub" style={{ fontSize: 17, marginBottom: 32, maxWidth: 680 }}>
             {data.heroDesc}
           </p>
-          {/* Amount badge */}
+          {/* Premium amount badge — gold */}
           <div style={{
-            display: "inline-flex", alignItems: "center", gap: 12,
-            background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)",
-            borderRadius: 8, padding: "14px 24px",
+            display: 'inline-flex', alignItems: 'center', gap: 16,
+            background: '#fff',
+            border: '1px solid var(--line)',
+            borderRadius: 14, padding: '16px 24px',
+            boxShadow: 'var(--shadow-md)',
           }}>
-            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}>最高补助金额</span>
-            <span style={{ fontSize: 28, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px" }}>{data.amount}</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-3)', fontWeight: 600 }}>最高补助金额</span>
+            <span className="amount" style={{ fontSize: 30, letterSpacing: '-0.5px' }}>{data.amount}</span>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ── Main Content + Sidebar ── */}
       <div className="section-inner" style={{ padding: "64px 48px" }}>
@@ -734,33 +710,36 @@ export default async function SubsidyDetailPage({
       </div>
 
       {/* ── Bottom CTA ── */}
-      <div style={{
-        background: "linear-gradient(135deg, var(--dark) 0%, #2d1b8e 100%)",
-        padding: "72px 0",
+      <section style={{
+        position: 'relative',
+        padding: '96px 0',
+        textAlign: 'center',
+        overflow: 'hidden',
+        background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%)',
+        borderTop: '1px solid var(--line)',
       }}>
-        <div className="section-inner" style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>免费服务</div>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 300, color: "#fff", marginBottom: 16, lineHeight: 1.3 }}>
-            {data.name}申请，<br />从咨询到领取全程代办
+        <div className="hero-orb" style={{ width: 480, height: 480, background: 'rgba(30,64,175,0.08)', top: -140, right: -80 }} />
+        <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -100, left: -60, filter: 'blur(70px)' }} />
+        <div className="wrap" style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div className="eyebrow" style={{ margin: '0 auto 20px' }}>免费服务</div>
+          <h2 className="h2" style={{ marginBottom: 18 }}>
+            {data.name}申请<br />
+            <span style={{ color: 'var(--brand)' }}>从咨询到领取全程代办</span>
           </h2>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", marginBottom: 36, lineHeight: 1.75, maxWidth: 540, margin: "0 auto 36px" }}>
-            行政书士·社会保険労務士·税理士组成的专业团队，全程中文无障碍。无成功不收费，风险为零。
+          <p style={{ fontSize: 17, color: 'var(--body)', lineHeight: 1.75, marginBottom: 36, maxWidth: 540, margin: '0 auto 36px' }}>
+            行政书士·社会保险劳务士·税理士组成的专业团队，全程中文无障碍。不获批不收费，风险为零。
           </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn-primary" style={{ fontSize: 16, padding: "14px 36px", display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/contact" className="btn btn-fill">
               立即免费咨询
               <IconArrow />
             </Link>
-            <Link href="/subsidies" style={{
-              fontSize: 16, padding: "14px 36px", borderRadius: 4,
-              border: "1px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)",
-              display: "inline-flex", alignItems: "center", gap: 8,
-            }}>
+            <Link href="/subsidies" className="btn btn-ghost">
               查看其他补助金
             </Link>
           </div>
         </div>
-      </div>
+      </section>
 
       <Footer />
     </main>

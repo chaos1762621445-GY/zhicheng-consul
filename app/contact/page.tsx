@@ -1,7 +1,7 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
+import PageHero from "../components/PageHero";
 
 export const metadata: Metadata = {
   title: "免费咨询",
@@ -20,18 +20,11 @@ export default function ContactPage() {
     <main>
       <NavClient />
 
-      {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
-        <div className="page-wrap">
-          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>免费咨询</div>
-          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16, maxWidth: 560 }}>
-            免费补助金资格诊断
-          </h1>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 480 }}>
-            填写下方问卷，专业顾问当日为您匹配最适合的补助金方案。完全免费，无任何购买义务。
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="免费咨询"
+        title={<>免费补助金<span style={{ color: 'var(--brand)' }}>资格诊断</span></>}
+        desc="填写下方问卷，专业顾问当日为您匹配最适合的补助金方案。完全免费，无任何购买义务。"
+      />
 
       {/* Main content */}
       <section className="section" style={{ background: "#fff" }}>
