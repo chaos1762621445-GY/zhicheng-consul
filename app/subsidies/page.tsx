@@ -139,7 +139,7 @@ export default function SubsidiesPage() {
       <PageHero
         eyebrow="补助金种类 · Subsidies"
         title={<>主要补助金<br /><span style={{ color: 'var(--brand)' }}>与助成金一览</span></>}
-        desc="志成咨询代办的6种主要补助金·助成金详细介绍。申请条件及使用方法欢迎随时咨询。"
+        desc="志成コンサル代办的6种主要补助金·助成金详细介绍。申请条件及使用方法欢迎随时咨询。"
       />
 
       <section className="section" style={{ background: "#f8fafc" }}>

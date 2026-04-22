@@ -30,7 +30,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <img src="/logo.png" alt="志成咨询" style={{ height: 30, marginBottom: 20 }} />
+            <img src="/logo.png" alt="株式会社 志成コンサル" style={{ height: 44, marginBottom: 20 }} />
             <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.8, maxWidth: 260, marginBottom: 24 }}>
               专为在日华人企业主提供日本政府补助金全程代办服务。四类国家认证专家联合团队，全程中文，不获批不收费。
             </p>
@@ -99,7 +99,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div style={{ marginTop: 28, paddingTop: 22, borderTop: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-          <span style={{ fontSize: 13, color: 'var(--muted)' }}>© 2026 株式会社志成咨询 保留所有权利</span>
+          <span style={{ fontSize: 13, color: 'var(--muted)' }}>© 2026 株式会社 志成コンサル 保留所有权利</span>
           <span style={{ fontSize: 13, color: 'var(--muted)' }}>行政书士 · 社会保险劳务士 · 税理士 · 中小企业诊断士</span>
         </div>
       </div>

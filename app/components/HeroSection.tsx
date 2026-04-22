@@ -98,10 +98,11 @@ export default function HeroSection() {
                   <div key={i} style={{
                     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                     padding: '13px 0',
+                    gap: 12,
                     borderBottom: i < items.length - 1 ? '1px solid var(--surface-3)' : 'none',
                   }}>
-                    <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink-2)' }}>{it.name}</span>
-                    <span className="amount" style={{ fontSize: 14, marginLeft: 16, whiteSpace: 'nowrap' }}>{it.amount}</span>
+                    <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink-2)', flexShrink: 0 }}>{it.name}</span>
+                    <span className="amount" style={{ fontSize: 13.5, textAlign: 'right', lineHeight: 1.3 }}>{it.amount}</span>
                   </div>
                 ))}
 

@@ -6,17 +6,17 @@ import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
   title: "关于我们",
-  description: "志成咨询——专为在日华人企业主提供补助金申请代办服务。行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。",
+  description: "志成コンサル——专为在日华人企业主提供补助金申请代办服务。行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。",
 };
 
 const teamMembers = [
   {
     title: "行政书士",
-    name: "李 忠良",
-    en: "Li Zhongliang",
+    name: "佐藤 健一",
+    en: "Kenichi Sato",
     specialty: "补助金申请书类制作专家",
-    desc: "拥有10年以上行政书士经验，专精各类补助金及助成金申请书的制作与提交。精通中日双语，能将复杂的事业计划书以准确、有力的日语表达，大幅提升申请通过率。",
-    initial: "李",
+    desc: "拥有10年以上行政书士经验，专精各类补助金及助成金申请书的制作与提交。擅长以准确、有力的日语表达复杂的事业计划书，大幅提升申请通过率。",
+    initial: "佐藤",
   },
   {
     title: "社会保险劳务士",
@@ -45,7 +45,7 @@ const teamMembers = [
 ];
 
 const companyInfo = [
-  { label: "商号", value: "株式会社志成咨询" },
+  { label: "商号", value: "株式会社 志成コンサル" },
   { label: "成立时间", value: "2022年4月" },
   { label: "所在地", value: "〒542-0082 大阪府大阪市中央区島之内1-13-3 おおきに東心斎橋ビル301号室" },
   { label: "业务内容", value: "补助金·助成金申请代办、经营咨询、行政书士业务、税务申报支援" },
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 日本政府每年提供超过数千亿日元的补助金与助成金，专门用于扶持中小企业创新、雇用与发展。然而，对于大多数在日华人企业主而言，这些资金往往因为语言门槛和繁琐的申请程序而遥不可及。
               </p>
               <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
-                我们相信，每一位用心经营、努力创业的在日华人，都应当平等地获得这些政策支持。志成咨询成立的初衷，正是要消除这道语言与文化的屏障，让补助金申请变得简单、透明、真正可及。
+                我们相信，每一位用心经营、努力创业的在日华人，都应当平等地获得这些政策支持。志成コンサル成立的初衷，正是要消除这道语言与文化的屏障，让补助金申请变得简单、透明、真正可及。
               </p>
               <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9 }}>
                 全程中文对接，不获批不收费——这不只是我们的服务承诺，更是我们对在日华人社区责任与信任的体现。
@@ -146,11 +146,14 @@ export default function AboutPage() {
                 <div style={{
                   width: 64, height: 64, borderRadius: '50%',
                   background: 'linear-gradient(135deg, var(--brand) 0%, var(--brand-soft) 100%)',
-                  color: '#fff', fontSize: 24, fontWeight: 700,
+                  color: '#fff',
+                  fontSize: m.initial.length > 1 ? 18 : 24,
+                  fontWeight: 700,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: 20,
                   boxShadow: '0 4px 12px rgba(30,64,175,.25)',
-                  letterSpacing: 0,
+                  letterSpacing: m.initial.length > 1 ? '-0.02em' : 0,
+                  flexShrink: 0,
                 }}>
                   {m.initial}
                 </div>
@@ -188,13 +191,13 @@ export default function AboutPage() {
             <div className="quote-attr">—— 创始人 李 忠良</div>
           </div>
           <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
-            2022年，李忠良与几位志同道合的专业人士共同创立了志成咨询。他们有一个共同的信念：在日华人企业主所面临的，不是能力不足，而是信息不对称和语言障碍所造成的机会不平等。
+            2022年，李忠良与几位志同道合的专业人士共同创立了志成コンサル。他们有一个共同的信念：在日华人企业主所面临的，不是能力不足，而是信息不对称和语言障碍所造成的机会不平等。
           </p>
           <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
             创业初期，团队走访了大阪、东京、名古屋的数十家华人经营的企业。他们发现，许多企业主甚至不知道自己符合申请条件，更不知道这些补助金是真实存在、可以申请的。语言不通、信息缺失，让他们在不知不觉中与本该属于自己的资金擦肩而过。
           </p>
           <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9 }}>
-            如今，志成咨询已累计服务 3,000 余家在日华人企业，协助获批补助金总额超过 8.5 亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。
+            如今，志成コンサル已累计服务 3,000 余家在日华人企业，协助获批补助金总额超过 8.5 亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。
           </p>
         </div>
       </section>

@@ -60,7 +60,7 @@ export default function NavClient() {
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/logo.png" alt="志成咨询" style={{ height: 34, width: 'auto' }} />
+          <img src="/logo.png" alt="株式会社 志成コンサル" style={{ height: 44, width: 'auto' }} />
         </Link>
 
         {/* Desktop nav */}

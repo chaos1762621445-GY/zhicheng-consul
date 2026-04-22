@@ -30,7 +30,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <img src="/logo.png" alt="志成コンサル" style={{height:40}} />
+            <img src="/logo.png" alt="志成コンサル" style={{height:52}} />
           </Link>
           <div className="nav-links">
             <Link href="/subsidies" className="nav-link">补助金种类</Link>
@@ -76,7 +76,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className="footer-inner">
           <div className="footer-brand">
             <div className="footer-logo-wrap">
-              <img src="/logo.png" alt="志成コンサル" style={{height:40, filter:"brightness(10)"}} />
+              <img src="/logo.png" alt="志成コンサル" style={{height:52, filter:"brightness(10)"}} />
             </div>
             <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
           </div>
@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 株式会社志成コンサル 保留所有权利。</span>
+          <span>© 2025 株式会社 志成コンサル 保留所有权利。</span>
         </div>
       </footer>
     </main>
