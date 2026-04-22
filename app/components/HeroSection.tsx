@@ -5,7 +5,7 @@ const items = [
   { name: 'AI 导入补助金',   amount: '最高 350万円' },
   { name: '员工转正助成金',  amount: '最高 80万円/人' },
   { name: '员工培训助成金',  amount: '最高 1亿円' },
-  { name: '空调省能更新补助', amount: '最高 1,000万円' },
+  { name: '空调节能补助',    amount: '东京最高 1,000万 / 全国最高 3亿' },
 ];
 
 export default function HeroSection() {

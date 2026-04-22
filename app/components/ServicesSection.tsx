@@ -34,12 +34,12 @@ const IconShake = () => (
 );
 
 const services = [
-  { Icon: IconDoc,   tag: '整体上限极高',   name: '省力化补助金',   amount: '最高 1,500万円', rate: '补助率最高 50%', desc: '导入 DX 系统、自动化设备实现降本增效。6〜20 人企业最高 1,500 万円，整体上限 1 亿円。', slug: 'seiryoka' },
-  { Icon: IconBot,   tag: '个人亦可申请',   name: 'AI 导入补助金',  amount: '最高 350万円',   rate: '个人事业主亦可',  desc: 'AI 软件采购、系统定制开发、部署调试均可申请。赤字企业、个人事业主门槛宽松。',         slug: 'ai-it' },
-  { Icon: IconUsers, tag: '雇用关系优化',   name: '员工转正助成金', amount: '最高 80万円/人', rate: '在职半年以上',    desc: '将非正规员工转为正社员，最高 80 万円/人。支持企业合规用工，降低后续法律风险。',      slug: 'career-up' },
-  { Icon: IconGrad,  tag: '同步申请翻倍',   name: '员工培训助成金', amount: '最高 1亿円',     rate: '与转正同步可翻倍', desc: 'AI 营销、运营自动化等课程纳入范围，同步转正申请时补贴金额翻倍，每人百万级支持。',   slug: 'training' },
-  { Icon: IconSnow,  tag: '以旧换新',        name: '空调省能补助',   amount: '最高 1,000万円', rate: '东京政府补 2/3', desc: '旧设备以旧换新：政府最高补贴 2/3，企业几乎零负担完成节能升级，大阪最高 500 万円。', slug: 'aircon' },
-  { Icon: IconShake, tag: '60% 透明分成',   name: '代理合作',       amount: '60% 分成',       rate: '零加盟费用',     desc: '将您的存量客户与我们对接，即享 60% 透明分成。周期短、回流稳，无须缴纳任何加盟费。', slug: null },
+  { Icon: IconDoc,   tag: '整体上限 1 亿',   name: '省力化补助金（一般型）',   amount: '最高 1,500万円', rate: '补助率最高 50%', desc: '导入 DX 系统、自动化设备实现降本增效。6〜20 人企业最高 1,500 万円，5 人以下企业最高 750 万円，整体上限 1 亿円。', slug: 'seiryoka' },
+  { Icon: IconBot,   tag: '个人亦可申请',   name: 'AI 导入补助金',  amount: '最高 350万円',   rate: '无员工规模限制',  desc: 'AI 软件采购、系统定制开发、部署调试均可申请。赤字企业、个人事业主门槛宽松。',         slug: 'ai-it' },
+  { Icon: IconUsers, tag: '两档补助',       name: '员工转正助成金', amount: '最高 80万円/人', rate: '半年以上 40万／非新卒首次 80万',    desc: '半年以上员工转正每人 40 万日元，非新卒首次转正每人 80 万日元，与培训助成金同步申请时翻倍。',      slug: 'career-up' },
+  { Icon: IconGrad,  tag: '同步申请翻倍',   name: '员工培训助成金', amount: '最高 1亿円',     rate: '每人百万级支持', desc: 'AI 营销、AI 运营自动化、AI 效率工具、AI 行情分析课程纳入范围，同步转正申请时补贴翻倍。',   slug: 'training' },
+  { Icon: IconSnow,  tag: '东京零负担',      name: '空调节能补助',   amount: '东京 1,000万 / 全国 3亿', rate: '政府 2/3 + 我社 1/3', desc: '东京限定：政府补 2/3、我社补 1/3，零负担换新；其他地区政府补贴 1/2，大阪最高 500 万円。', slug: 'aircon' },
+  { Icon: IconShake, tag: '最高 60% 分成',  name: '代理合作',       amount: '最高 60% 分成',  rate: '零加盟费用',     desc: '将您的存量客户与我们对接，即享最高 60% 透明分成。周期短、回流稳，无须缴纳任何加盟费。', slug: null },
 ];
 
 const ArrowIcon = () => (

@@ -741,6 +741,14 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
 }
 
+/* Footer link hover */
+.footer-link {
+  font-size: 14px;
+  color: var(--ink-3);
+  transition: color .15s ease;
+}
+.footer-link:hover { color: var(--brand); }
+
 /* ─────────────────────────────────────────
    SHADCN BASE
 ───────────────────────────────────────── */

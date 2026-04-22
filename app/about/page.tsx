@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 const teamMembers = [
   {
     title: "行政书士",
-    name: "中野 健二",
-    en: "Kenji Nakano",
+    name: "李 忠良",
+    en: "Li Zhongliang",
     specialty: "补助金申请书类制作专家",
     desc: "拥有10年以上行政书士经验，专精各类补助金及助成金申请书的制作与提交。精通中日双语，能将复杂的事业计划书以准确、有力的日语表达，大幅提升申请通过率。",
-    initial: "中",
+    initial: "李",
   },
   {
     title: "社会保险劳务士",
@@ -28,11 +28,11 @@ const teamMembers = [
   },
   {
     title: "税理士",
-    name: "李 建华",
-    en: "Li Jianhua",
+    name: "陈 建华",
+    en: "Chen Jianhua",
     specialty: "财务审查·税务申报专家",
     desc: "精通日本税务法规与中小企业财务管理，专为在日华人企业主提供税务规划与财务咨询。在补助金申请中负责财务资料准备和审查，确保数据准确无误，赢得审查机关信任。",
-    initial: "李",
+    initial: "陈",
   },
   {
     title: "中小企业诊断士",
@@ -185,10 +185,10 @@ export default function AboutPage() {
             <p className="quote-text">
               我亲眼看到一位认识多年的华人朋友，因为看不懂日语申请指南，错过了最高可获 500 万円事业重构补助金的申请截止日期。那一刻，我意识到——这不是个案，而是整个在日华人创业群体面临的系统性困境。
             </p>
-            <div className="quote-attr">—— 创始人 中野 健二</div>
+            <div className="quote-attr">—— 创始人 李 忠良</div>
           </div>
           <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
-            2022年，中野健二与几位志同道合的专业人士共同创立了志成咨询。他们有一个共同的信念：在日华人企业主所面临的，不是能力不足，而是信息不对称和语言障碍所造成的机会不平等。
+            2022年，李忠良与几位志同道合的专业人士共同创立了志成咨询。他们有一个共同的信念：在日华人企业主所面临的，不是能力不足，而是信息不对称和语言障碍所造成的机会不平等。
           </p>
           <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
             创业初期，团队走访了大阪、东京、名古屋的数十家华人经营的企业。他们发现，许多企业主甚至不知道自己符合申请条件，更不知道这些补助金是真实存在、可以申请的。语言不通、信息缺失，让他们在不知不觉中与本该属于自己的资金擦肩而过。

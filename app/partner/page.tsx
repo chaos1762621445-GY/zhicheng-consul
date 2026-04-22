@@ -7,7 +7,7 @@ import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
   title: "代理合作",
-  description: "加入志成コンサル代理网络，享受60%透明分成。适合税理士、行政书士、社劳士、会计事务所、微信群主、留学中介、房产中介等人群。",
+  description: "加入志成コンサル代理网络，享受最高 60% 透明分成。适合税理士、行政书士、社劳士、会计事务所、微信群主、留学中介、房产中介等人群。",
 };
 
 const targetGroups = [
@@ -44,7 +44,7 @@ const targetGroups = [
       </svg>
     ),
     title: "微信群主·社群运营者",
-    desc: "如果您运营在日华人社群、企业家群或商会，您的社交影响力就是最有价值的资产。每成功推荐一家企业，即可获得60%的服务费分成。",
+    desc: "如果您运营在日华人社群、企业家群或商会，您的社交影响力就是最有价值的资产。每成功推荐一家企业，即可获得最高 60% 的服务费分成。",
   },
   {
     icon: (
@@ -98,7 +98,7 @@ const steps = [
   {
     num: "04",
     title: "月结获得分成",
-    desc: "每月固定结算，获批补助金资金到账后，您将获得服务费的60%。全程透明，实时查看收益明细。",
+    desc: "每月固定结算，获批补助金资金到账后，您最高可获得服务费的 60%。全程透明，实时查看收益明细。",
   },
 ];
 
@@ -108,8 +108,8 @@ const faqs = [
     a: "没有任何资格限制。无论您是专业人士（税理士、行政书士等）还是社群运营者、普通介绍人，只要您能接触到有需求的在日华人企业主，都可以申请成为我们的合作代理。",
   },
   {
-    q: "60%分成是如何计算的？",
-    a: "我们向客户收取的服务费（成功报酬）通常为获批补助金额的10%〜20%。其中60%归代理所有，40%归志成コンサル。例如，客户获批500万円补助金，服务费15%即75万円，代理可获得75万×60%=45万円。",
+    q: "最高 60% 分成是如何计算的？",
+    a: "我们向客户收取的服务费（成功报酬）通常为获批补助金额的10%〜20%。其中最高 60% 归代理所有，40%归志成コンサル。例如，客户获批500万円补助金，服务费 15% 即 75 万円，代理最高可获得 75 万 × 60% = 45 万円。",
   },
   {
     q: "如果客户申请失败，我需要承担损失吗？",
@@ -132,8 +132,8 @@ export default function PartnerPage() {
 
       <PageHero
         eyebrow="代理合作计划"
-        title={<>与我们合作<br /><span style={{ color: 'var(--brand)' }}>60% 透明分成</span></>}
-        desc="无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您获得服务费的 60%。"
+        title={<>与我们合作<br /><span style={{ color: 'var(--brand)' }}>最高 60% 透明分成</span></>}
+        desc="无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您最高可获得服务费的 60%。"
       >
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 36, position: 'relative' }}>
           <Link href="/contact" className="btn btn-fill">
@@ -198,7 +198,7 @@ export default function PartnerPage() {
                 我们相信透明是最好的合作基础。分成比例、结算周期、计算方式，全部在合同中明文规定，没有任何隐藏条款。
               </p>
               {[
-                { label: "分成比例", value: "60%", desc: "您获得服务费的60%，无任何上限" },
+                { label: "分成比例", value: "最高 60%", desc: "您最高可获得服务费的 60%，无任何上限" },
                 { label: "结算周期", value: "月结", desc: "每月固定结算，补助金到账后7个工作日内打款" },
                 { label: "失败风险", value: "零风险", desc: "申请失败时，您和客户均无需支付任何费用" },
                 { label: "最低起步", value: "1单", desc: "没有业绩要求，1个成功案例即可结算" },
@@ -233,7 +233,7 @@ export default function PartnerPage() {
                       <span style={{ fontWeight: 600, color: "#0f172a" }}>{ex.rate}</span>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid #e2e8f0" }}>
-                      <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>您的收入（60%）</span>
+                      <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>您的收入（最高 60%）</span>
                       <span style={{ fontSize: 18, fontWeight: 700, color: "#1e40af" }}>{ex.income}</span>
                     </div>
                   </div>
