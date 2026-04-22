@@ -3,105 +3,105 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const NAV = [
-  {
-    label: '补助金种类',
-    href: '/subsidies',
-    children: [
-      { label: '省力化补助金', href: '/subsidies/seiryoka', desc: '最高1,500万円' },
-      { label: 'AI·IT导入补助金', href: '/subsidies/ai-it', desc: '最高350万円' },
-      { label: '员工转正助成金', href: '/subsidies/career-up', desc: '最高80万円/人' },
-      { label: '员工培训助成金', href: '/subsidies/training', desc: '最高1亿円' },
-      { label: '空调省能更新补助', href: '/subsidies/aircon', desc: '最高1,000万円' },
-    ],
-  },
+  { label: '补助金种类', href: '/subsidies', children: [
+    { label: '省力化补助金', href: '/subsidies/seiryoka' },
+    { label: 'AI 导入补助金', href: '/subsidies/ai-it' },
+    { label: '员工转正助成金', href: '/subsidies/career-up' },
+    { label: '员工培训助成金', href: '/subsidies/training' },
+    { label: '空调省能补助', href: '/subsidies/aircon' },
+  ]},
   { label: '服务流程', href: '/service' },
-  {
-    label: '关于我们',
-    href: '/about',
-    children: [
-      { label: '成功案例', href: '/cases', desc: '3000+ 真实案例' },
-      { label: '关于志成', href: '/about', desc: '四类持牌专家团队' },
-      { label: '常见问题', href: '/faq', desc: '快速答疑' },
-      { label: '知识库', href: '/blog', desc: '政策深度解析' },
-    ],
-  },
-  { label: '代理合作', href: '/partner' },
+  { label: '成功案例', href: '/cases' },
+  { label: '关于我们', href: '/about', children: [
+    { label: '公司介绍', href: '/about' },
+    { label: '代理合作', href: '/partner' },
+    { label: '常见问题', href: '/faq' },
+    { label: '知识库', href: '/blog' },
+  ]},
 ];
 
 export default function NavClient() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState<string | null>(null);
-  const dropRef = useRef<HTMLDivElement>(null);
+  const [drop, setDrop] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const h = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
   }, []);
 
   useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
-        setDropdown(null);
-      }
+    const h = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setDrop(null);
     };
-    document.addEventListener('mousedown', onClick);
-    return () => document.removeEventListener('mousedown', onClick);
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
   }, []);
 
   return (
-    <nav
-      className="sticky top-0 z-50 w-full transition-all duration-200"
-      style={{
-        background: 'rgba(255,255,255,0.95)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: scrolled ? '1px solid #e2e8f0' : '1px solid transparent',
-        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.06)' : 'none',
-      }}
-    >
-      <div className="page-wrap flex items-center justify-between h-16">
+    <nav style={{
+      position: 'sticky', top: 0, zIndex: 50,
+      background: 'rgba(255,255,255,.94)',
+      backdropFilter: 'blur(14px)',
+      borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
+      boxShadow: scrolled ? '0 2px 24px rgba(12,21,37,.07)' : 'none',
+      transition: 'box-shadow .2s, border-color .2s',
+    }}>
+      <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="志成コンサル" className="h-8 w-auto" />
+        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.png" alt="志成咨询" style={{ height: 32, width: 'auto' }} />
         </Link>
 
-        {/* Desktop nav */}
-        <div ref={dropRef} className="hidden md:flex items-center gap-1">
+        {/* Desktop */}
+        <div ref={ref} style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="max-md:hidden">
           {NAV.map(item => (
-            <div key={item.href} className="relative">
+            <div key={item.href} style={{ position: 'relative' }}>
               {item.children ? (
                 <>
                   <button
-                    onClick={() => setDropdown(dropdown === item.label ? null : item.label)}
-                    className="flex items-center gap-1 px-4 py-2 rounded-lg text-[14px] font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+                    onClick={() => setDrop(drop === item.label ? null : item.label)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 4,
+                      padding: '8px 14px', borderRadius: 8, border: 'none',
+                      background: 'transparent', cursor: 'pointer',
+                      fontSize: 14, fontWeight: 500, color: 'var(--ink-3)',
+                    }}
                   >
                     {item.label}
-                    <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${dropdown === item.label ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                      style={{ transition: 'transform .18s', transform: drop === item.label ? 'rotate(180deg)' : 'none' }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
-                  {dropdown === item.label && (
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 rounded-xl bg-white border border-slate-200 shadow-lg overflow-hidden"
-                      style={{ boxShadow: '0 16px 40px rgba(0,0,0,0.12)' }}
-                    >
-                      {item.children.map(child => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setDropdown(null)}
-                          className="flex items-center justify-between px-4 py-3 hover:bg-slate-50 transition-colors border-b border-slate-100 last:border-0"
+                  {drop === item.label && (
+                    <div style={{
+                      position: 'absolute', top: 'calc(100% + 8px)',
+                      left: '50%', transform: 'translateX(-50%)',
+                      background: '#fff', border: '1px solid var(--line)',
+                      borderRadius: 14, minWidth: 180,
+                      boxShadow: '0 16px 48px rgba(12,21,37,.12)',
+                      overflow: 'hidden',
+                    }}>
+                      {item.children.map(c => (
+                        <Link key={c.href} href={c.href} onClick={() => setDrop(null)}
+                          style={{ display: 'block', padding: '11px 18px', fontSize: 14, fontWeight: 500, color: 'var(--ink-3)', borderBottom: '1px solid var(--surface-3)', transition: 'background .12s, color .12s' }}
+                          onMouseEnter={e => { (e.target as HTMLElement).style.background = 'var(--surface-2)'; (e.target as HTMLElement).style.color = 'var(--brand)'; }}
+                          onMouseLeave={e => { (e.target as HTMLElement).style.background = ''; (e.target as HTMLElement).style.color = 'var(--ink-3)'; }}
                         >
-                          <span className="text-[14px] font-medium text-slate-700">{child.label}</span>
-                          <span className="text-[12px] text-slate-400">{child.desc}</span>
+                          {c.label}
                         </Link>
                       ))}
                     </div>
                   )}
                 </>
               ) : (
-                <Link href={item.href} className="px-4 py-2 rounded-lg text-[14px] font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">
+                <Link href={item.href} style={{ display: 'block', padding: '8px 14px', borderRadius: 8, fontSize: 14, fontWeight: 500, color: 'var(--ink-3)', transition: 'color .15s' }}
+                  onMouseEnter={e => ((e.target as HTMLElement).style.color = 'var(--brand)')}
+                  onMouseLeave={e => ((e.target as HTMLElement).style.color = 'var(--ink-3)')}
+                >
                   {item.label}
                 </Link>
               )}
@@ -109,58 +109,53 @@ export default function NavClient() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link href="/contact" className="btn-primary text-sm py-2.5 px-5">
-            免费咨询
+        {/* CTA + hamburger */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Link href="/contact" className="btn btn-fill" style={{ padding: '9px 20px', fontSize: 14 }} data-hide-mobile>
+            免费诊断
           </Link>
+          <button
+            className="max-md:flex md:hidden"
+            style={{ display: 'none', padding: 8, border: 'none', background: 'transparent', cursor: 'pointer', borderRadius: 8 }}
+            onClick={() => setOpen(!open)}
+            aria-label="菜单"
+          >
+            <div style={{ width: 22, height: 16, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(45deg) translate(5px,6px)' : 'none' }} />
+              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', opacity: open ? 0 : 1 }} />
+              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
+            </div>
+          </button>
         </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
-          onClick={() => setOpen(!open)}
-          aria-label="菜单"
-        >
-          <div className="w-5 h-4 flex flex-col justify-between">
-            <span className={`block h-0.5 bg-slate-700 transition-all duration-200 ${open ? 'rotate-45 translate-y-1.5' : ''}`} />
-            <span className={`block h-0.5 bg-slate-700 transition-all duration-200 ${open ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 bg-slate-700 transition-all duration-200 ${open ? '-rotate-45 -translate-y-1.5' : ''}`} />
-          </div>
-        </button>
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t border-slate-100 pb-4">
-          {NAV.map(item => (
-            <div key={item.href}>
-              <Link
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="block px-6 py-3 text-[15px] font-medium text-slate-700 hover:text-[#533afd] hover:bg-slate-50"
-              >
-                {item.label}
-              </Link>
-              {item.children?.map(child => (
-                <Link
-                  key={child.href}
-                  href={child.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-10 py-2 text-[14px] text-slate-500 hover:text-[#533afd] hover:bg-slate-50"
-                >
-                  {child.label}
-                </Link>
-              ))}
-            </div>
-          ))}
-          <div className="px-6 pt-3">
-            <Link href="/contact" onClick={() => setOpen(false)} className="btn-primary w-full justify-center">
-              免费咨询
+      <div style={{
+        display: open ? 'block' : 'none',
+        background: '#fff',
+        borderTop: '1px solid var(--surface-3)',
+        padding: '12px 0 16px',
+      }}>
+        {NAV.map(item => (
+          <div key={item.href}>
+            <Link href={item.href} onClick={() => setOpen(false)}
+              style={{ display: 'block', padding: '12px 24px', fontSize: 15, fontWeight: 600, color: 'var(--ink-2)' }}>
+              {item.label}
             </Link>
+            {item.children?.map(c => (
+              <Link key={c.href} href={c.href} onClick={() => setOpen(false)}
+                style={{ display: 'block', padding: '9px 40px', fontSize: 14, color: 'var(--body)' }}>
+                {c.label}
+              </Link>
+            ))}
           </div>
+        ))}
+        <div style={{ padding: '12px 24px 4px' }}>
+          <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-fill" style={{ width: '100%', justifyContent: 'center' }}>
+            免费诊断
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

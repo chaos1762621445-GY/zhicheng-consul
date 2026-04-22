@@ -5,33 +5,38 @@ import HeroSection from "./components/HeroSection";
 import StatsSection from "./components/StatsSection";
 import ServicesSection from "./components/ServicesSection";
 import Footer from "./components/Footer";
+import Reveal from "./components/Reveal";
 
 const credentials = [
-  { emoji: "📋", name: "行政书士", role: "申请材料专家", desc: "专业负责补助金申请书类制作及各类行政许可手续" },
-  { emoji: "👷", name: "社会保険労務士", role: "雇佣关系专家", desc: "专业负责雇佣关系助成金申请及劳务管理" },
-  { emoji: "📊", name: "税理士", role: "税务财务专家", desc: "专业负责财务会计及税务申报业务" },
-  { emoji: "🏢", name: "中小企業診断士", role: "经营规划专家", desc: "专业负责经营战略制定及事业计划书撰写" },
+  { emoji: "📋", name: "行政书士", role: "申请材料专家", desc: "负责补助金申请书类制作与各类行政许可手续，确保材料规范、提交准时。" },
+  { emoji: "👷", name: "社会保险劳务士", role: "雇用关系专家", desc: "专精员工转正助成金、劳务管理合规，助力企业在规范用工中最大化补贴收益。" },
+  { emoji: "📊", name: "税理士",     role: "财务税务专家", desc: "负责财务资料审查与税务申报，确保申请数据准确可信，提升获批可能性。" },
+  { emoji: "🏢", name: "中小企业诊断士", role: "经营战略专家", desc: "制定事业计划书与经营战略，以专业的商业逻辑打动审查机关。" },
 ];
 
-const whyUs = [
-  { emoji: "💬", title: "全中文，不用学日语", desc: "从第一次咨询到拿到钱，全程中文沟通，我们处理所有日语文件。" },
-  { emoji: "🛡️", title: "拿不到钱不收费", desc: "申请不成功无需支付任何费用，零风险承诺。" },
-  { emoji: "✅", title: "四类国家认证专家", desc: "行政书士、社劳士、税理士、经营诊断士全部配齐，正规持牌。" },
-  { emoji: "🏆", title: "3,000+ 真实成功案例", desc: "3,000+ 在日华人老板已通过我们拿到补助金，案例可查。" },
+const reasons = [
+  { icon: "💬", title: "全程中文，无语言障碍",   desc: "从初次咨询到资金到账，所有日语文件由我们的专业人员处理，您只需提供企业信息。" },
+  { icon: "🛡️", title: "不获批不收费，零风险",   desc: "申请不成功无需支付任何费用，包括资料制作费与咨询费，风险由我们承担。" },
+  { icon: "✅", title: "四类国家认证专家全程操办", desc: "行政书士、社劳士、税理士、经营诊断士分工协作，覆盖补助金申请全环节。" },
+  { icon: "🏆", title: "3,000+ 真实成功案例",    desc: "累计服务超过 3,000 家在日华人企业，覆盖餐饮、IT、制造、美容等多个行业。" },
 ];
 
 const steps = [
-  { n: "01", title: "免费咨询", desc: "微信联系我们，3分钟说清楚你的情况。" },
-  { n: "02", title: "补助金诊断", desc: "我们告诉你能申请哪些、大概能拿多少。" },
-  { n: "03", title: "方案确认", desc: "确认申请方向，你签字同意即可。" },
-  { n: "04", title: "资料整理", desc: "你提供基础资料，我们负责翻译和整理。" },
-  { n: "05", title: "专业递交", desc: "持牌专家代为递交，格式合规。" },
-  { n: "06", title: "等待到账", desc: "审核通过后，补助金直接打入你的账户。" },
+  { n: "01", title: "免费诊断",   desc: "微信联系，3 分钟说清企业情况，专家当日回复匹配方案。" },
+  { n: "02", title: "方案制定",   desc: "从 6 种以上补助金中筛选最优组合，预估可获批金额。" },
+  { n: "03", title: "资料整备",   desc: "专业团队代为收集、整理、翻译所有申请材料。" },
+  { n: "04", title: "专业递交",   desc: "持牌专家代为提交，格式合规，审查期间进度定期汇报。" },
+  { n: "05", title: "获批到账",   desc: "资金到账后按约定支付成功服务费，全程透明。" },
 ];
 
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+  </svg>
+);
+
 export default async function HomePage() {
-  const posts = await getAllPosts();
-  const recent = posts.slice(0, 3);
+  const posts = (await getAllPosts()).slice(0, 3);
 
   return (
     <main>
@@ -40,176 +45,143 @@ export default async function HomePage() {
       <StatsSection />
       <ServicesSection />
 
-      {/* ── Credentials ── */}
-      <section className="section" style={{ background: "#f8fafc" }}>
-        <div className="page-wrap">
-          <div style={{ textAlign: "center", maxWidth: 620, margin: "0 auto 56px" }}>
-            <div className="label-tag">为什么放心交给我们</div>
-            <h2 className="section-heading">持牌专家团队，你不用懂日语</h2>
-            <p className="section-sub" style={{ margin: "0 auto" }}>
-              四类国家认证资格持有者分工合作，从材料准备到递交审核，全程代办。
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }} className="max-lg:grid-cols-2 max-sm:grid-cols-1">
+      {/* ── 专家团队 ── */}
+      <section className="sec" style={{ background: 'var(--surface-2)' }}>
+        <div className="wrap">
+          <Reveal>
+            <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 52px' }}>
+              <div className="eyebrow">四类持牌专家</div>
+              <h2 className="h2" style={{ marginBottom: 12 }}>专业团队，你不用懂日语</h2>
+              <p className="sub" style={{ margin: '0 auto' }}>国家认证资格持有者分工合作，从材料准备到递交审核，全程代办。</p>
+            </div>
+          </Reveal>
+          <div className="grid-4">
             {credentials.map((c, i) => (
-              <div key={i} style={{
-                background: "#fff",
-                border: "1px solid #e2e8f0",
-                borderRadius: 16,
-                padding: "32px 24px",
-                textAlign: "center",
-                transition: "box-shadow 0.2s, transform 0.2s",
-              }}
-
-              >
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{c.emoji}</div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", marginBottom: 6 }}>{c.role}</div>
-                <div style={{ display: "inline-block", fontSize: 11, fontWeight: 600, color: "#533afd", background: "rgba(83,58,253,0.08)", padding: "3px 10px", borderRadius: 100, marginBottom: 12 }}>{c.name}</div>
-                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.65 }}>{c.desc}</p>
-              </div>
+              <Reveal key={i} delay={(i % 4) as 0|1|2|3|4|5}>
+                <div className="card" style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 36, marginBottom: 16 }}>{c.emoji}</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 6 }}>{c.role}</div>
+                  <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'var(--brand-bg)', padding: '3px 10px', borderRadius: 100, marginBottom: 14 }}>{c.name}</div>
+                  <p style={{ fontSize: 13, color: 'var(--body)', lineHeight: 1.7 }}>{c.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Why Us ── */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="page-wrap">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="max-md:grid-cols-1 max-md:gap-12">
-            <div className="max-md:hidden" style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.12)" }}>
-              <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80"
-                alt="专业团队"
-                style={{ width: "100%", height: 480, objectFit: "cover" }}
-              />
-            </div>
-            <div>
-              <div className="label-tag">选择我们的理由</div>
-              <h2 className="section-heading">我们和其他中介有什么不同</h2>
-              <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 28 }}>
-                {whyUs.map((w, i) => (
-                  <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                    <div style={{ width: 44, height: 44, background: "rgba(83,58,253,0.08)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
-                      {w.emoji}
-                    </div>
+      {/* ── 为什么选我们 ── */}
+      <section className="sec" style={{ background: 'var(--surface)' }}>
+        <div className="wrap">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="max-md:grid-cols-1 max-md:gap-12">
+            <Reveal direction="left">
+              <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }} className="max-md:hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80"
+                  alt="专业团队"
+                  style={{ width: '100%', height: 460, objectFit: 'cover' }}
+                />
+              </div>
+            </Reveal>
+            <Reveal direction="right">
+              <div className="eyebrow">选择我们的理由</div>
+              <h2 className="h2" style={{ marginBottom: 36 }}>与其他中介的本质区别</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+                {reasons.map((r, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                    <div className="icon-circle" style={{ fontSize: 20, flexShrink: 0 }}>{r.icon}</div>
                     <div>
-                      <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", marginBottom: 4 }}>{w.title}</div>
-                      <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.65 }}>{w.desc}</p>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink)', marginBottom: 5 }}>{r.title}</div>
+                      <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.7 }}>{r.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ── Process ── */}
-      <section className="section" style={{ background: "#f8fafc" }}>
-        <div className="page-wrap">
-          <div style={{ maxWidth: 520, marginBottom: 48 }}>
-            <div className="label-tag">申请流程</div>
-            <h2 className="section-heading">申请流程很简单</h2>
-            <p className="section-sub">整个过程你需要做的很少，主要是配合提供资料，其他全程由我们处理。</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }} className="max-md:grid-cols-1 max-lg:grid-cols-2">
+      {/* ── 申请流程 ── */}
+      <section className="sec" style={{ background: 'var(--surface-2)' }}>
+        <div className="wrap">
+          <Reveal>
+            <div style={{ maxWidth: 520, marginBottom: 52 }}>
+              <div className="eyebrow">申请流程</div>
+              <h2 className="h2" style={{ marginBottom: 12 }}>五步完成全程代办</h2>
+              <p className="sub">整个过程，您需要做的极少，主要是配合提供资料，其余全程由我们处理。</p>
+            </div>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16 }}>
             {steps.map((s, i) => (
-              <div key={i} style={{
-                background: "#fff",
-                border: "1px solid #e2e8f0",
-                borderLeft: "3px solid #533afd",
-                borderRadius: 16,
-                padding: "28px 24px",
-                transition: "box-shadow 0.2s, transform 0.2s",
-              }}
-
-              >
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", background: "#533afd", color: "#fff", fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 6, marginBottom: 16, letterSpacing: "0.05em" }}>
-                  STEP {s.n}
+              <Reveal key={i} delay={(i % 5) as 0|1|2|3|4|5}>
+                <div className="card" style={{ borderLeft: '3px solid var(--brand)' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--brand)', color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 10px', borderRadius: 6, marginBottom: 16, letterSpacing: '.05em' }}>
+                    STEP {s.n}
+                  </div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 10 }}>{s.title}</div>
+                  <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.7 }}>{s.desc}</p>
                 </div>
-                <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a", marginBottom: 8 }}>{s.title}</div>
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.65 }}>{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Blog ── */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="page-wrap">
-          <div style={{ maxWidth: 520, marginBottom: 48 }}>
-            <div className="label-tag">知识库</div>
-            <h2 className="section-heading">最新文章</h2>
-            <p className="section-sub">深度解析日本政府补助金政策，为在日华人企业主提供实用指南。</p>
-          </div>
-          {recent.length > 0 ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }} className="max-md:grid-cols-1 max-lg:grid-cols-2">
-              {recent.map(post => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} style={{ display: "block" }}>
-                  <div style={{
-                    background: "#fff",
-                    border: "1px solid #e2e8f0",
-                    borderRadius: 16,
-                    padding: "28px",
-                    height: "100%",
-                    transition: "box-shadow 0.2s, transform 0.2s, border-color 0.2s",
-                  }}
-
-
-                  >
-                    <div style={{ fontSize: 12, color: "#94a3b8", marginBottom: 12 }}>{post.date}</div>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", lineHeight: 1.4, marginBottom: 12 }}>{post.title}</div>
-                    <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.65 }}>{post.excerpt?.slice(0, 80)}...</p>
-                    <div style={{ marginTop: 16, fontSize: 13, fontWeight: 600, color: "#533afd", display: "flex", alignItems: "center", gap: 4 }}>
-                      阅读更多
-                      <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+      {/* ── 最新文章 ── */}
+      {posts.length > 0 && (
+        <section className="sec" style={{ background: 'var(--surface)' }}>
+          <div className="wrap">
+            <Reveal>
+              <div style={{ maxWidth: 520, marginBottom: 48 }}>
+                <div className="eyebrow">知识库</div>
+                <h2 className="h2" style={{ marginBottom: 12 }}>补助金政策深度解析</h2>
+                <p className="sub">为在日华人企业主提供最新的补助金政策解读与申请指南。</p>
+              </div>
+            </Reveal>
+            <div className="grid-3">
+              {posts.map((post, i) => (
+                <Reveal key={post.slug} delay={(i % 3) as 0|1|2|3|4|5}>
+                  <Link href={`/blog/${post.slug}`} style={{ display: 'block' }}>
+                    <div className="card">
+                      <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 12 }}>{post.date}</div>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', lineHeight: 1.4, marginBottom: 12 }}>{post.title}</div>
+                      <p style={{ fontSize: 13, color: 'var(--body)', lineHeight: 1.7 }}>{post.excerpt?.slice(0, 80)}...</p>
+                      <div style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 13, fontWeight: 600, color: 'var(--brand)' }}>
+                        阅读全文 <ArrowIcon />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </Reveal>
               ))}
             </div>
-          ) : null}
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <Link href="/blog" className="btn-secondary">查看全部文章</Link>
+            <div style={{ textAlign: 'center', marginTop: 40 }}>
+              <Link href="/blog" className="btn btn-ghost">查看全部文章</Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── CTA ── */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
-        <div className="page-wrap" style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, color: "#fff", lineHeight: 1.2, marginBottom: 16, letterSpacing: "-0.3px" }}>
-            不知道能拿多少？
-            <br />先问一下没有损失
-          </h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 36 }}>
-            微信联系我们，免费告诉你能申请哪些补助金、大概能拿多少。
-          </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "#fff", color: "#533afd",
-              padding: "14px 28px", borderRadius: 10,
-              fontSize: 15, fontWeight: 700,
-              boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
-              transition: "opacity 0.15s, transform 0.15s",
-            }}>
-              立即免费咨询
-            </Link>
-            <Link href="/subsidies" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "transparent", color: "#fff",
-              padding: "14px 28px", borderRadius: 10,
-              fontSize: 15, fontWeight: 600,
-              border: "1.5px solid rgba(255,255,255,0.35)",
-              transition: "background 0.15s",
-            }}>
-              了解补助金种类
-            </Link>
-          </div>
+      <section style={{ background: 'linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)', padding: '88px 0', textAlign: 'center' }}>
+        <div className="wrap" style={{ maxWidth: 580, margin: '0 auto' }}>
+          <Reveal>
+            <h2 style={{ fontSize: 'clamp(26px,4vw,42px)', fontWeight: 800, color: '#fff', lineHeight: 1.2, marginBottom: 18, letterSpacing: '-.3px' }}>
+              不确定能申请哪些？<br />免费诊断，当日回复
+            </h2>
+            <p style={{ fontSize: 17, color: 'rgba(255,255,255,.8)', lineHeight: 1.75, marginBottom: 36 }}>
+              专家团队为您精准匹配最优补助金方案，完全免费，无任何购买义务。
+            </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn btn-white">
+                立即免费诊断
+                <ArrowIcon />
+              </Link>
+              <Link href="/subsidies" className="btn btn-outline-white">
+                查看补助金种类
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
