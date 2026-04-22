@@ -10,8 +10,32 @@ const items = [
 
 export default function HeroSection() {
   return (
-    <section className="hero-bg" style={{ paddingTop: 88, paddingBottom: 96 }}>
-      <div className="wrap">
+    <section className="hero-bg" style={{ paddingTop: 88, paddingBottom: 96, position: 'relative', overflow: 'hidden' }}>
+      {/* Orb decorations */}
+      <div
+        className="hero-orb"
+        style={{
+          width: 600,
+          height: 600,
+          background: 'rgba(83,58,253,0.12)',
+          top: -160,
+          right: -120,
+          filter: 'blur(80px)',
+        }}
+      />
+      <div
+        className="hero-orb"
+        style={{
+          width: 400,
+          height: 400,
+          background: 'rgba(139,92,246,0.08)',
+          bottom: -100,
+          left: -80,
+          filter: 'blur(60px)',
+        }}
+      />
+
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero-grid">
 
           {/* Left */}
@@ -20,7 +44,7 @@ export default function HeroSection() {
 
             <h1 className="display" style={{ marginBottom: 24 }}>
               在日经营，<br />政府补助金<br />
-              <span style={{ color: 'var(--brand)' }}>全程代办到账</span>
+              <span className="gradient-text">全程代办到账</span>
             </h1>
 
             <p className="sub" style={{ marginBottom: 36 }}>
@@ -56,13 +80,16 @@ export default function HeroSection() {
 
           {/* Right panel */}
           <div className="hero-panel-col">
-            <div style={{
-              background: '#fff',
-              border: '1px solid var(--line)',
-              borderRadius: 20,
-              padding: '28px 28px 24px',
-              boxShadow: '0 24px 64px rgba(12,21,37,.10), 0 4px 16px rgba(12,21,37,.06)',
-            }}>
+            <div
+              className="card-glow"
+              style={{
+                background: '#fff',
+                border: '1px solid var(--line)',
+                borderRadius: 20,
+                padding: '28px 28px 24px',
+                boxShadow: '0 24px 64px rgba(12,21,37,.10), 0 4px 16px rgba(12,21,37,.06)',
+              }}
+            >
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 20 }}>
                 适合您的补助金
               </div>

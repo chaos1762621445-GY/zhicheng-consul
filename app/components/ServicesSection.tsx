@@ -63,7 +63,18 @@ export default function ServicesSection() {
         <div className="grid-3">
           {services.map((s, i) => (
             <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
-              <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div
+                className="card card-glow"
+                style={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderLeft: '3px solid transparent',
+                  transition: 'box-shadow .25s ease, transform .22s ease, border-color .22s ease, border-left-color .22s ease',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = '#533afd'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = 'transparent'; }}
+              >
                 {/* Top row */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
                   <div className="icon-circle"><s.Icon /></div>
@@ -71,7 +82,7 @@ export default function ServicesSection() {
                 </div>
 
                 <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 6 }}>{s.name}</div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--brand)', letterSpacing: '-0.5px', marginBottom: 4, fontVariantNumeric: 'tabular-nums' }}>{s.amount}</div>
+                <div className="gradient-text" style={{ fontSize: 26, fontWeight: 800, letterSpacing: '-0.5px', marginBottom: 4, fontVariantNumeric: 'tabular-nums' }}>{s.amount}</div>
                 <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 16 }}>{s.rate}</div>
                 <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.7, flex: 1 }}>{s.desc}</p>
 

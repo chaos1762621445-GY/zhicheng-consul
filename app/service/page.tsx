@@ -32,13 +32,16 @@ export default function ServicePage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
-        <div className="page-wrap">
+      <section style={{ position: 'relative', background: '#0c1525', padding: '80px 0 72px', overflow: 'hidden' }}>
+        {/* Orb decorations */}
+        <div className="hero-orb" style={{ width: 500, height: 500, background: 'rgba(83,58,253,0.20)', top: -160, right: -100, filter: 'blur(80px)' }} />
+        <div className="hero-orb" style={{ width: 350, height: 350, background: 'rgba(139,92,246,0.12)', bottom: -80, left: -60, filter: 'blur(60px)' }} />
+        <div className="page-wrap" style={{ position: 'relative', zIndex: 1 }}>
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>服务流程</div>
-          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16, maxWidth: 600 }}>
+          <h1 className="gradient-text" style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16, maxWidth: 600 }}>
             6步全程代办服务
           </h1>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.75)", lineHeight: 1.75, maxWidth: 520 }}>
             从初次咨询到资金到账，全程中文陪同。<strong style={{ color: "#fff" }}>无成功不收费</strong>，彻底消除申请风险。
           </p>
         </div>
@@ -66,7 +69,7 @@ export default function ServicePage() {
                     {s.n}
                   </div>
                   {i < steps.length - 1 && (
-                    <div style={{ width: 2, flex: 1, minHeight: 32, background: "#e2e8f0", margin: "8px 0" }} />
+                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #533afd, #e2e8f0)", margin: "8px 0" }} />
                   )}
                 </div>
                 {/* Right: content */}
@@ -120,11 +123,13 @@ export default function ServicePage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
-        <div className="page-wrap" style={{ maxWidth: 560, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>立即开始免费咨询</h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 36 }}>3分钟问诊，精准推荐最优补助金方案。完全免费，无任何购买义务。</p>
-          <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 10, fontSize: 16, fontWeight: 700, boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}>
+      <section style={{ position: 'relative', background: "#0c1525", padding: "80px 0", textAlign: "center", overflow: 'hidden' }}>
+        <div className="hero-orb" style={{ width: 400, height: 400, background: 'rgba(83,58,253,0.18)', top: -100, right: -60, filter: 'blur(80px)' }} />
+        <div className="hero-orb" style={{ width: 300, height: 300, background: 'rgba(139,92,246,0.12)', bottom: -80, left: -40, filter: 'blur(60px)' }} />
+        <div className="page-wrap" style={{ maxWidth: 560, margin: "0 auto", position: 'relative', zIndex: 1 }}>
+          <h2 className="gradient-text" style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, lineHeight: 1.2, marginBottom: 16 }}>立即开始免费咨询</h2>
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: 36 }}>3分钟问诊，精准推荐最优补助金方案。完全免费，无任何购买义务。</p>
+          <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 10, fontSize: 16, fontWeight: 700, boxShadow: "0 8px 32px rgba(83,58,253,0.35), 0 2px 8px rgba(0,0,0,0.15)" }}>
             申请免费咨询
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>

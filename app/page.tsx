@@ -163,17 +163,24 @@ export default async function HomePage() {
       )}
 
       {/* ── CTA ── */}
-      <section style={{ background: 'linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%)', padding: '88px 0', textAlign: 'center' }}>
-        <div className="wrap" style={{ maxWidth: 580, margin: '0 auto' }}>
+      <section style={{ position: 'relative', background: '#0c1525', padding: '88px 0', textAlign: 'center', overflow: 'hidden' }}>
+        {/* Orb decorations */}
+        <div className="hero-orb" style={{ width: 500, height: 500, background: 'rgba(83,58,253,0.18)', top: -150, right: -80, filter: 'blur(80px)' }} />
+        <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(139,92,246,0.12)', bottom: -100, left: -60, filter: 'blur(60px)' }} />
+        <div className="wrap" style={{ maxWidth: 580, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <Reveal>
-            <h2 style={{ fontSize: 'clamp(26px,4vw,42px)', fontWeight: 800, color: '#fff', lineHeight: 1.2, marginBottom: 18, letterSpacing: '-.3px' }}>
+            <h2 className="gradient-text" style={{ fontSize: 'clamp(26px,4vw,42px)', fontWeight: 800, lineHeight: 1.2, marginBottom: 18, letterSpacing: '-.3px' }}>
               不确定能申请哪些？<br />免费诊断，当日回复
             </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,.8)', lineHeight: 1.75, marginBottom: 36 }}>
+            <p style={{ fontSize: 17, color: 'rgba(255,255,255,.7)', lineHeight: 1.75, marginBottom: 36 }}>
               专家团队为您精准匹配最优补助金方案，完全免费，无任何购买义务。
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn btn-white">
+              <Link
+                href="/contact"
+                className="btn btn-white"
+                style={{ boxShadow: '0 8px 32px rgba(83,58,253,0.35), 0 2px 8px rgba(0,0,0,0.15)' }}
+              >
                 立即免费诊断
                 <ArrowIcon />
               </Link>

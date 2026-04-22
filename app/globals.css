@@ -360,6 +360,63 @@ img { max-width: 100%; display: block; }
 }
 
 /* ─────────────────────────────────────────
+   GRADIENT TEXT
+───────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #533afd, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────
+   STATS NUMBER ANIMATION
+───────────────────────────────────────── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─────────────────────────────────────────
+   CARD GLOW HOVER
+───────────────────────────────────────── */
+.card-glow {
+  transition: box-shadow .25s ease, transform .22s ease, border-color .22s ease, border-left-color .22s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 20px 60px rgba(83,58,253,0.15), 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ─────────────────────────────────────────
+   HERO ORB DECORATIONS
+───────────────────────────────────────── */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   TIMELINE LINE ANIMATION
+───────────────────────────────────────── */
+@keyframes line-grow {
+  from { transform: scaleY(0); transform-origin: top; }
+  to   { transform: scaleY(1); transform-origin: top; }
+}
+.timeline-line {
+  animation: line-grow 0.6s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE OVERRIDES
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-orb { display: none; }
+  .display { font-size: clamp(32px, 9vw, 44px); }
+}
+
+/* ─────────────────────────────────────────
    SHADCN BASE LAYER OVERRIDE
 ───────────────────────────────────────── */
 @layer base {
