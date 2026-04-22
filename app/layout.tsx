@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3, Geist } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "./components/SplashScreen";
 import WechatFloat from "./components/WechatFloat";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -24,7 +27,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN" className={sourceSans.variable}>
+    <html lang="zh-CN" className={cn("font-sans", geist.variable)}>
       <body>
         <SplashScreen />
         {children}
