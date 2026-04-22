@@ -910,14 +910,40 @@ img { max-width: 100%; display: block; }
 h1, h2, h3, .display, .h2, .h3 {
   word-break: normal;
   overflow-wrap: break-word;
-  /* 优先在标点处换行，而非英文单词中间 */
+  /* 中文不在标点以外的位置断开 */
   line-break: strict;
+  word-wrap: break-word;
 }
+/* 中文关键词避免断词（keep-all 在中日文中保留词组） */
+.display, h1, h2.h2 { word-break: keep-all; }
 
 /* 中文内容里常见的长 inline 英文 / 数字不挤坏排版 */
 .sub, .card p, .card-premium p, .info-value, .quote-text {
   word-break: normal;
   overflow-wrap: anywhere;
+}
+
+/* Stats 大数字必须整体，禁止拆分 */
+.amount,
+.stats-item > div:first-of-type + div,
+[style*="fontVariantNumeric"] {
+  white-space: nowrap;
+}
+
+/* 但手机窄屏下 .amount 长字符串（如"东京1000万/全国3亿"）允许换行 */
+@media (max-width: 480px) {
+  .amount {
+    white-space: normal;
+    line-height: 1.25;
+  }
+}
+
+/* 邮箱等长英文在窄屏要能断 */
+@media (max-width: 640px) {
+  footer a, footer span, footer div {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 /* 按钮组在小屏自动全宽避免挤压 */
@@ -926,37 +952,15 @@ h1, h2, h3, .display, .h2, .h3 {
     padding: 13px 20px;
     font-size: 14.5px;
   }
-  /* 一个容器内多个按钮时堆叠 */
-  .btn-stack-mobile {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100%;
-  }
-  .btn-stack-mobile .btn { width: 100%; }
 }
 
-/* Hero panel amount 在手机上允许换行、不截断 */
-@media (max-width: 480px) {
-  .amount {
-    white-space: normal !important;
-    line-height: 1.25;
-  }
-  /* Hero panel 项目：label 占 1fr、amount 右对齐但允许折行 */
-  .hero-panel-row-amount {
-    flex-basis: auto;
-    text-align: right;
-    font-size: 13px !important;
-    max-width: 55%;
-  }
-}
-
-/* 表格手机端可横滑或单列 */
+/* 表格手机端压缩 */
 @media (max-width: 520px) {
   .info-table td.info-label { width: auto; min-width: 90px; }
   .info-table td { font-size: 13.5px; }
 }
 
-/* card-premium 手机端内边距压缩、avatar 不漂移 */
+/* card-premium 手机端内边距压缩 */
 @media (max-width: 480px) {
   .card, .card-premium { padding: 22px 20px; }
   .sec { padding: 56px 0; }
@@ -967,10 +971,15 @@ h1, h2, h3, .display, .h2, .h3 {
   nav img[alt*="志成"] { height: 36px !important; }
 }
 
-/* 统一防止手机端超长 inline 标签撑破容器 */
+/* eyebrow/label 小屏字号 */
 @media (max-width: 480px) {
   .eyebrow { font-size: 10.5px; padding: 5px 11px; }
   .label-tag, .section-label { font-size: 10.5px; padding: 5px 11px; }
+}
+
+/* 首页 Hero Stats 区块 3 列在手机上堆叠且数字不换行 */
+@media (max-width: 768px) {
+  .stats-wrap .amount { white-space: nowrap; }
 }
 
 /* ─────────────────────────────────────────
