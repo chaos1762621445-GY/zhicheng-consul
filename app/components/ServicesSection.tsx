@@ -1,6 +1,11 @@
+'use client';
 import Link from 'next/link';
-import { FileTextIcon, BotIcon, UsersIcon, GraduationCapIcon, SnowflakeIcon, HeartHandshakeIcon, ArrowRightIcon } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import {
+  FileTextIcon, BotIcon, UsersIcon, GraduationCapIcon,
+  SnowflakeIcon, HeartHandshakeIcon, ArrowRightIcon,
+} from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const services = [
@@ -60,7 +65,20 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+};
+
 export default function ServicesSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+
   return (
     <section className="section-std bg-white">
       <div className="section-inner">
@@ -69,34 +87,41 @@ export default function ServicesSection() {
           <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">主要补助金种类</h2>
           <p className="text-base text-[#64748d] leading-7">以下是在日华人企业最常申请的补助金，我们为你全程操办。</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
           {services.map(({ Icon, badge, name, amount, rate, desc, slug }, i) => (
-            <Card
+            <motion.div
               key={i}
-              className="border-l-[3px] border-l-transparent hover:border-l-[#533afd] hover:shadow-2xl transition-all duration-300 rounded-lg"
+              variants={cardVariants}
+              whileHover={{ y: -4 }}
+              className="bg-white border border-[#e5edf5] rounded-xl p-7 shadow-[rgba(23,23,23,0.06)_0px_3px_6px] hover:shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px] hover:[border-left-color:#533afd] [border-left-width:3px] [border-left-color:transparent] transition-[box-shadow,border-color] duration-300"
             >
-              <CardContent className="p-7">
-                <div className="w-[52px] h-[52px] bg-[rgba(83,58,253,0.08)] rounded-full flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-[#533afd]" strokeWidth={1.8} />
-                </div>
-                <Badge className="mb-2.5 text-[10px] font-normal bg-[rgba(21,190,83,0.1)] text-[#108c3d] border border-[rgba(21,190,83,0.25)] hover:bg-[rgba(21,190,83,0.1)]">
-                  {badge}
-                </Badge>
-                <div className="text-[17px] font-semibold text-[#061b31] mb-2">{name}</div>
-                <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none mb-1 tabular-nums">{amount}</div>
-                <div className="text-xs text-[#64748d] mb-3.5">{rate}</div>
-                <p className="text-sm text-[#64748d] leading-7">{desc}</p>
-                {slug && (
-                  <Link href={`/subsidies/${slug}`} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#533afd] mt-3.5 group">
-                    查看详情
-                    <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                )}
-                <div className="mt-3 pt-2.5 border-t border-gray-100 text-xs text-[#64748d]">→ 微信咨询：pr2024188</div>
-              </CardContent>
-            </Card>
+              <div className="w-12 h-12 bg-[rgba(83,58,253,0.08)] rounded-full flex items-center justify-center mb-4">
+                <Icon className="w-6 h-6 text-[#533afd]" strokeWidth={1.8} />
+              </div>
+              <Badge className="mb-3 text-[10px] font-normal bg-[rgba(21,190,83,0.1)] text-[#108c3d] border border-[rgba(21,190,83,0.25)] hover:bg-[rgba(21,190,83,0.1)]">
+                {badge}
+              </Badge>
+              <div className="text-[17px] font-semibold text-[#061b31] mb-2">{name}</div>
+              <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none mb-1 tabular-nums">{amount}</div>
+              <div className="text-xs text-[#64748d] mb-4">{rate}</div>
+              <p className="text-sm text-[#64748d] leading-7">{desc}</p>
+              {slug && (
+                <Link href={`/subsidies/${slug}`} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#533afd] mt-3.5 group">
+                  查看详情
+                  <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-[3px] transition-transform" />
+                </Link>
+              )}
+              <div className="mt-3 pt-2.5 border-t border-[#f0f4f8] text-xs text-[#64748d]">→ 微信咨询：pr2024188</div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -110,11 +110,13 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {credentials.map((c, i) => (
               <MotionSection key={i} delay={i * 0.08}>
-                <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                  <div className="mb-4 flex justify-center">{c.icon}</div>
-                  <div className="text-lg font-semibold text-[#0F172A] mb-2">{c.role}</div>
-                  <div className="text-xs font-medium text-[#2563EB] bg-blue-50 px-3 py-0.5 rounded-full mb-3 inline-block">{c.name}</div>
-                  <p className="text-[13px] text-[#64748B] leading-[1.65] mt-2">{c.desc}</p>
+                <div className="bg-white border border-[#e5edf5] rounded-xl p-8 text-center hover:shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px] hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-14 h-14 bg-[rgba(83,58,253,0.08)] rounded-full mx-auto mb-4 flex items-center justify-center">
+                    {c.icon}
+                  </div>
+                  <div className="text-lg font-semibold text-[#061b31] mb-2">{c.role}</div>
+                  <div className="text-xs bg-[rgba(83,58,253,0.08)] text-[#533afd] px-3 py-0.5 rounded-full inline-block mb-3">{c.name}</div>
+                  <p className="text-[13px] text-[#64748d] leading-[1.65] mt-2">{c.desc}</p>
                 </div>
               </MotionSection>
             ))}
@@ -127,7 +129,10 @@ export default async function HomePage() {
         <div className="section-inner">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <MotionSection>
-              <div className="rounded-xl overflow-hidden shadow-2xl min-h-[460px] hidden md:block">
+              <div
+                className="rounded-2xl overflow-hidden min-h-[460px] hidden md:block"
+                style={{ boxShadow: 'rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px' }}
+              >
                 <img
                   src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
                   alt="志成コンサル专业团队"
@@ -138,12 +143,12 @@ export default async function HomePage() {
             <div>
               <MotionSection>
                 <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">选择我们的理由</div>
-                <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">我们和其他中介有什么不同</h2>
+                <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-8">我们和其他中介有什么不同</h2>
               </MotionSection>
               <div className="flex flex-col">
                 {whyUs.map((item, i) => (
                   <MotionSection key={i} delay={i * 0.08} className="flex gap-4 items-start mb-7">
-                    <div className="flex-shrink-0 w-11 h-11 bg-[rgba(83,58,253,0.05)] rounded-full flex items-center justify-center">
+                    <div className="flex-shrink-0 w-11 h-11 bg-[rgba(83,58,253,0.08)] rounded-full flex items-center justify-center">
                       {item.icon}
                     </div>
                     <div>
@@ -169,8 +174,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((s, i) => (
               <MotionSection key={i} delay={i * 0.07}>
-                <div className="bg-white border-l-[3px] border-l-[#533afd] border border-gray-200 rounded-lg p-7 hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                  <div className="inline-flex items-center justify-center bg-[#533afd] text-white rounded px-2.5 py-1 text-xs font-medium mb-3.5">{s.step}</div>
+                <div className="bg-white border border-[#e5edf5] border-l-4 border-l-[#533afd] rounded-xl p-7 hover:shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px] hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="inline-flex items-center justify-center bg-[#533afd] text-white rounded px-2.5 py-1 text-xs font-medium mb-4">{s.step}</div>
                   <div className="text-[17px] font-semibold text-[#061b31] mb-2.5">{s.title}</div>
                   <p className="text-sm text-[#64748d] leading-7">{s.desc}</p>
                 </div>
@@ -193,7 +198,7 @@ export default async function HomePage() {
               {recentPosts.map((post, i) => (
                 <MotionSection key={post.slug} delay={i * 0.08}>
                   <Link href={`/blog/${post.slug}`} className="block">
-                    <div className="bg-white border border-gray-200 rounded-lg p-7 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div className="bg-white border border-[#e5edf5] rounded-xl p-7 hover:shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px] hover:-translate-y-0.5 transition-all duration-300">
                       <div className="text-xs text-[#64748d] mb-3">{post.date}</div>
                       <div className="text-base font-semibold text-[#061b31] leading-[1.45] mb-2.5 hover:text-[#533afd] transition-colors">{post.title}</div>
                       <p className="text-[13px] text-[#64748d] leading-7">{post.excerpt?.slice(0, 80)}...</p>
@@ -209,7 +214,7 @@ export default async function HomePage() {
             <div className="text-center py-12 text-[#64748d] text-[15px]">文章加载中...</div>
           )}
           <div className="text-center mt-10">
-            <Link href="/blog" className="inline-flex items-center gap-2 bg-white text-[#533afd] border border-blue-200 px-6 py-3 rounded-md font-medium text-base hover:bg-blue-50 transition-colors">
+            <Link href="/blog" className="inline-flex items-center gap-2 bg-white text-[#533afd] border border-[#b9b9f9] px-6 py-3 rounded-md font-medium text-base hover:bg-[rgba(83,58,253,0.05)] transition-colors">
               查看全部文章 <ChevronRightIcon className="w-3 h-3" />
             </Link>
           </div>
@@ -217,7 +222,16 @@ export default async function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
+      <section className="py-24 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #533afd 0%, #1c1e54 100%)' }}>
+        {/* Decorative orbs */}
+        <div
+          className="absolute top-[-60px] left-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute bottom-[-60px] right-[-80px] w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)' }}
+        />
         <div className="relative z-10 max-w-[640px] mx-auto px-6">
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">
             不知道能拿多少？先问一下没有损失

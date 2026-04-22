@@ -26,6 +26,8 @@
   --sh2: rgba(23,23,23,0.08) 0px 15px 35px;
   --sh3: rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px;
   --font: var(--font-source-sans), system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(83,58,253,0.15) 0%, transparent 60%);
+  --gradient-purple: linear-gradient(135deg, #533afd 0%, #7c3aed 100%);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -74,6 +76,9 @@ a { text-decoration: none; color: inherit; }
 .section-inner { max-width: 1200px; margin: auto; padding: 0 24px; }
 .section-std { padding: 80px 0; }
 @media (max-width: 768px) { .section-std { padding: 60px 0; } }
+
+.hover-lift { transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s; }
+.hover-lift:hover { transform: translateY(-4px); }
 
 @theme inline {
   --font-heading: var(--font-sans);
