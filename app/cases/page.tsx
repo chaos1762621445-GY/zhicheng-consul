@@ -17,7 +17,6 @@ const stats = [
 
 type CaseItem = {
   industry: string;
-  industryTag: string;
   company: string;
   subsidy: string;
   amount: string;
@@ -29,7 +28,6 @@ type CaseItem = {
 const cases: CaseItem[] = [
   {
     industry: "餐饮业",
-    industryTag: "飲食",
     company: "大阪某中华料理餐厅",
     subsidy: "事業再構築補助金",
     amount: "2,000万円",
@@ -39,7 +37,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "美容行业",
-    industryTag: "美容",
     company: "东京某美甲美睫沙龙",
     subsidy: "IT導入補助金",
     amount: "450万円",
@@ -49,7 +46,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "IT·软件",
-    industryTag: "IT",
     company: "福冈某系统开发公司",
     subsidy: "ものづくり補助金",
     amount: "1,000万円",
@@ -59,7 +55,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "建设·装修",
-    industryTag: "建設",
     company: "埼玉某华人内装工程公司",
     subsidy: "小規模事業者持続化補助金",
     amount: "200万円",
@@ -69,7 +64,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "零售·电商",
-    industryTag: "小売",
     company: "名古屋某日本酒·土产零售店",
     subsidy: "事業再構築補助金",
     amount: "1,500万円",
@@ -79,7 +73,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "教育·培训",
-    industryTag: "教育",
     company: "京都某华人日语学校",
     subsidy: "IT導入補助金",
     amount: "350万円",
@@ -89,7 +82,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "制造·加工",
-    industryTag: "製造",
     company: "爱知县某食品加工工厂",
     subsidy: "ものづくり補助金",
     amount: "3,000万円",
@@ -99,7 +91,6 @@ const cases: CaseItem[] = [
   },
   {
     industry: "物流·运输",
-    industryTag: "物流",
     company: "横滨某货物运输公司",
     subsidy: "事業再構築補助金",
     amount: "1,800万円",
@@ -112,292 +103,109 @@ const cases: CaseItem[] = [
 export default function CasesPage() {
   return (
     <main>
-      <style>{`
-        .cases-hero {
-          background: var(--dark);
-          padding: 88px 0 72px;
-          position: relative;
-          overflow: hidden;
-        }
-        .cases-hero::before {
-          content: '';
-          position: absolute;
-          top: -100px; right: -100px;
-          width: 500px; height: 500px;
-          background: radial-gradient(ellipse, rgba(83,58,253,0.28) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .cases-hero::after {
-          content: '';
-          position: absolute;
-          bottom: -60px; left: 5%;
-          width: 600px; height: 300px;
-          background: radial-gradient(ellipse, rgba(234,34,97,0.2) 0%, rgba(249,107,238,0.1) 50%, transparent 70%);
-          filter: blur(30px);
-          pointer-events: none;
-        }
-        .cases-hero-inner {
-          max-width: 1200px; margin: 0 auto; padding: 0 48px;
-          position: relative; z-index: 1;
-        }
-        .cases-hero-label {
-          display: inline-block;
-          font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.55);
-          text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;
-          border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
-          padding: 4px 12px;
-        }
-        .cases-hero-title {
-          font-size: clamp(32px, 4.5vw, 52px); font-weight: 300; color: #ffffff;
-          letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px;
-        }
-        .cases-hero-desc {
-          font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.7);
-          line-height: 1.75; max-width: 560px;
-        }
-
-        .cases-stats-section {
-          background: rgba(28,30,84,0.95);
-          padding: 48px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .cases-stats-inner {
-          max-width: 1200px; margin: 0 auto; padding: 0 48px;
-          display: grid; grid-template-columns: repeat(4,1fr);
-        }
-        .cases-stat-item {
-          text-align: center;
-          padding: 0 24px;
-          border-right: 1px solid rgba(255,255,255,0.12);
-        }
-        .cases-stat-item:last-child { border-right: none; }
-        .cases-stat-num {
-          font-size: clamp(32px,4vw,44px); font-weight: 300; color: #ffffff;
-          letter-spacing: -1px; line-height: 1;
-        }
-        .cases-stat-label {
-          font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6);
-          margin-top: 8px;
-        }
-
-        .cases-section {
-          background: var(--bg-outer);
-          padding: 80px 0;
-        }
-        .cases-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px;
-          margin-top: 48px;
-        }
-        .case-card {
-          background: #ffffff;
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          padding: 28px;
-          transition: box-shadow 0.2s, transform 0.2s;
-          position: relative;
-          overflow: hidden;
-        }
-        .case-card:hover {
-          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-          transform: translateY(-2px);
-        }
-        .case-card-accent {
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 3px;
-        }
-        .case-card-header {
-          display: flex; align-items: flex-start;
-          justify-content: space-between; gap: 12px;
-          margin-bottom: 20px;
-        }
-        .case-industry-tag {
-          display: inline-block;
-          font-size: 11px; font-weight: 400;
-          padding: 3px 10px; border-radius: 4px;
-          letter-spacing: 0.5px;
-        }
-        .case-company {
-          font-size: 15px; font-weight: 500; color: var(--heading);
-          margin-top: 8px;
-          line-height: 1.4;
-        }
-        .case-amount {
-          font-size: 28px; font-weight: 300; color: var(--primary);
-          letter-spacing: -0.5px; line-height: 1;
-          white-space: nowrap;
-        }
-        .case-amount-label {
-          font-size: 11px; color: var(--body); margin-top: 4px;
-          text-align: right;
-        }
-        .case-meta {
-          display: flex; gap: 12px; flex-wrap: wrap;
-          margin-bottom: 16px;
-        }
-        .case-meta-item {
-          display: flex; align-items: center; gap: 6px;
-          font-size: 12px; color: var(--body);
-          background: var(--bg-outer);
-          border: 1px solid var(--border);
-          border-radius: 4px; padding: 4px 10px;
-        }
-        .case-meta-dot {
-          width: 6px; height: 6px; border-radius: 50%;
-          background: var(--primary); flex-shrink: 0;
-        }
-        .case-divider {
-          border: none; border-top: 1px solid var(--border); margin: 16px 0;
-        }
-        .case-quote {
-          font-size: 13px; font-weight: 300; color: var(--body);
-          line-height: 1.8;
-          padding-left: 12px;
-          border-left: 2px solid var(--border);
-        }
-        .case-quote-mark {
-          font-size: 20px; color: var(--primary-light);
-          line-height: 1; display: block; margin-bottom: 6px;
-        }
-
-        @media (max-width: 900px) {
-          .cases-hero { padding: 64px 0 48px; }
-          .cases-hero-inner { padding: 0 20px; }
-          .cases-hero-desc { font-size: 16px; }
-          .cases-stats-inner {
-            grid-template-columns: repeat(2,1fr);
-            padding: 0 20px; gap: 0;
-          }
-          .cases-stat-item {
-            border-right: none;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
-            padding: 20px 16px;
-          }
-          .cases-stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.12); }
-          .cases-stat-item:nth-child(3),
-          .cases-stat-item:nth-child(4) { border-bottom: none; }
-          .cases-section { padding: 48px 0; }
-          .cases-grid {
-            grid-template-columns: 1fr;
-            margin-top: 32px;
-          }
-        }
-        @media (max-width: 600px) {
-          .case-card { padding: 20px; }
-          .case-amount { font-size: 22px; }
-        }
-      `}</style>
-
       <NavClient />
 
       {/* Hero */}
-      <div className="cases-hero">
-        <div className="cases-hero-inner">
-          <div className="cases-hero-label">Success Cases · 成功案例</div>
-          <h1 className="cases-hero-title">客户成功案例</h1>
-          <p className="cases-hero-desc">来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。</p>
+      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
+        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-[radial-gradient(ellipse,rgba(83,58,253,0.28)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-[-60px] left-[5%] w-[600px] h-[300px] bg-[radial-gradient(ellipse,rgba(234,34,97,0.2)_0%,rgba(249,107,238,0.1)_50%,transparent_70%)] blur-[30px] pointer-events-none" />
+        <div className="section-inner relative z-10">
+          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
+            Success Cases · 成功案例
+          </div>
+          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+            客户成功案例
+          </h1>
+          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+            来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。
+          </p>
         </div>
       </div>
 
       {/* Stats Bar */}
-      <div className="cases-stats-section">
-        <div className="cases-stats-inner">
+      <div className="bg-[rgba(28,30,84,0.95)] py-12 border-b border-white/[0.08]">
+        <div className="section-inner grid grid-cols-2 md:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="cases-stat-item">
-              <div className="cases-stat-num">{s.num}</div>
-              <div className="cases-stat-label">{s.label}</div>
+            <div key={s.label} className="text-center py-4 px-4">
+              <div className="text-[clamp(32px,4vw,44px)] font-light text-white tracking-[-1px] leading-none">{s.num}</div>
+              <div className="text-[13px] text-white/60 mt-2">{s.label}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Cases Grid */}
-      <section className="cases-section">
+      <section className="section-std bg-[#f6f9fc]">
         <div className="section-inner">
-          <div style={{textAlign:"center",marginBottom:8}}>
-            <span className="section-label">真实案例 · 匿名脱敏处理</span>
+          <div className="text-center mb-2">
+            <div className="inline-block text-[11px] font-light text-[#64748d] uppercase tracking-[2px]">真实案例 · 匿名脱敏处理</div>
           </div>
-          <h2 className="section-title" style={{textAlign:"center"}}>各行业获批实例</h2>
-          <p className="section-desc" style={{textAlign:"center",maxWidth:560,margin:"0 auto"}}>
+          <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4 text-center">各行业获批实例</h2>
+          <p className="text-base text-[#64748d] leading-7 text-center max-w-[560px] mx-auto">
             以下案例均来自我们服务过的真实客户，已做匿名化处理，补助金金额及周期均为实际数据。
           </p>
 
-          <div className="cases-grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {cases.map((c, i) => (
-              <div key={i} className="case-card">
-                <div className="case-card-accent" style={{background:c.color}}></div>
-                <div className="case-card-header">
+              <div key={i} className="bg-white border border-[#e5edf5] rounded-lg p-7 relative overflow-hidden transition-all hover:shadow-xl hover:-translate-y-0.5">
+                <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: c.color }} />
+                <div className="flex items-start justify-between gap-3 mb-5">
                   <div>
                     <span
-                      className="case-industry-tag"
-                      style={{
-                        background: `${c.color}18`,
-                        color: c.color,
-                        border: `1px solid ${c.color}40`,
-                      }}
+                      className="inline-block text-[11px] font-normal px-2.5 py-0.5 rounded tracking-[0.5px]"
+                      style={{ background: `${c.color}18`, color: c.color, border: `1px solid ${c.color}40` }}
                     >
                       {c.industry}
                     </span>
-                    <div className="case-company">{c.company}</div>
+                    <div className="text-[15px] font-medium text-[#061b31] mt-2 leading-[1.4]">{c.company}</div>
                   </div>
-                  <div style={{textAlign:"right",flexShrink:0}}>
-                    <div className="case-amount">{c.amount}</div>
-                    <div className="case-amount-label">获批金额</div>
+                  <div className="text-right flex-shrink-0">
+                    <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none">{c.amount}</div>
+                    <div className="text-[11px] text-[#64748d] mt-1">获批金额</div>
                   </div>
                 </div>
 
-                <div className="case-meta">
-                  <div className="case-meta-item">
-                    <div className="case-meta-dot"></div>
+                <div className="flex gap-3 flex-wrap mb-4">
+                  <div className="flex items-center gap-1.5 text-xs text-[#64748d] bg-[#f6f9fc] border border-[#e5edf5] rounded px-2.5 py-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#533afd] flex-shrink-0" />
                     <span>{c.subsidy}</span>
                   </div>
-                  <div className="case-meta-item">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div className="flex items-center gap-1.5 text-xs text-[#64748d] bg-[#f6f9fc] border border-[#e5edf5] rounded px-2.5 py-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                     <span>申请周期 {c.period}</span>
                   </div>
                 </div>
 
-                <hr className="case-divider" />
+                <hr className="border-0 border-t border-[#e5edf5] my-4" />
 
-                <div className="case-quote">
-                  <span className="case-quote-mark">"</span>
+                <div className="text-[13px] font-light text-[#64748d] leading-[1.8] pl-3 border-l-2 border-[#e5edf5]">
+                  <span className="text-xl text-[#533afd]/30 leading-none block mb-1.5">"</span>
                   {c.quote}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Disclaimer */}
-          <p style={{
-            textAlign:"center",
-            fontSize:12,
-            color:"var(--body)",
-            marginTop:40,
-            padding:"16px 24px",
-            background:"#ffffff",
-            border:"1px solid var(--border)",
-            borderRadius:6,
-            lineHeight:1.8,
-          }}>
+          <p className="text-center text-xs text-[#64748d] mt-10 px-6 py-4 bg-white border border-[#e5edf5] rounded-md leading-[1.8]">
             ※ 以上案例均已征得客户同意并做匿名化处理，补助金获批金额因企业规模、申请内容、审查年度等因素而异，不代表所有申请均可达到相同金额。具体可获批额度请咨询我们进行个案评估。
           </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta-section">
-        <div className="cta-inner">
-          <div className="section-label" style={{color:"rgba(255,255,255,0.55)"}}>下一步</div>
-          <h2 className="cta-title">您的企业也能获得补助金</h2>
-          <p className="cta-desc">免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
-          <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-            <Link href="/contact" className="btn-cta-white">
+      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
+        <div className="relative z-10 max-w-[640px] mx-auto px-6">
+          <div className="inline-block text-[11px] font-medium text-white/55 uppercase tracking-[1.5px] mb-3.5">下一步</div>
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">您的企业也能获得补助金</h2>
+          <p className="text-lg text-white/85 mb-10 leading-[1.75]">免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
+          <div className="flex gap-3 justify-center flex-wrap">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
               立即免费咨询
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
-            <Link href="/faq" className="btn-cta-ghost">查看常见问题</Link>
+            <Link href="/faq" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/40 px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-colors">
+              查看常见问题
+            </Link>
           </div>
         </div>
       </section>
@@ -406,4 +214,3 @@ export default function CasesPage() {
     </main>
   );
 }
-

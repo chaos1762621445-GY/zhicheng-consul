@@ -85,50 +85,54 @@ export default function ServicePage() {
     <main>
       <NavClient />
 
-      <div className="page-hero">
-        <div className="page-hero-inner">
-          <div className="page-hero-label">服务流程</div>
-          <h1>6步全程代办服务</h1>
-          <p>从初次咨询到资金到账，我们全程以中文陪同。无成功不收费，彻底消除您的申请风险。</p>
+      {/* Hero */}
+      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_70%_50%,rgba(83,58,253,0.25)_0%,transparent_60%),radial-gradient(ellipse_at_20%_80%,rgba(234,34,97,0.15)_0%,transparent_50%)]" />
+        <div className="section-inner relative z-10">
+          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
+            服务流程
+          </div>
+          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+            6步全程代办服务
+          </h1>
+          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+            从初次咨询到资金到账，我们全程以中文陪同。无成功不收费，彻底消除您的申请风险。
+          </p>
         </div>
       </div>
 
       {/* Process Steps */}
-      <section className="section">
+      <section className="section-std bg-white">
         <div className="section-inner">
-          <div className="section-head-centered">
-            <div className="section-label">申请流程</div>
-            <h2 className="section-title">申请流程详解</h2>
-            <p className="section-desc">清晰透明的6步流程，让您随时掌握申请进度。</p>
+          <div className="text-center mb-14">
+            <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">申请流程</div>
+            <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">申请流程详解</h2>
+            <p className="text-base text-[#64748d] leading-7">清晰透明的6步流程，让您随时掌握申请进度。</p>
           </div>
 
-          <div style={{maxWidth:900,margin:"0 auto"}}>
+          <div className="max-w-[900px] mx-auto">
             {steps.map((s, i) => (
-              <div key={i} style={{display:"flex",gap:32,marginBottom:i < steps.length - 1 ? 0 : 0,position:"relative"}}>
+              <div key={i} className="flex gap-8 relative">
                 {/* Number + Line */}
-                <div style={{display:"flex",flexDirection:"column",alignItems:"center",flexShrink:0}}>
-                  <div style={{
-                    width:56,height:56,borderRadius:"50%",
-                    background:"var(--navy)",color:"#fff",
-                    fontFamily:"var(--font-serif)",fontSize:18,fontWeight:700,
-                    display:"flex",alignItems:"center",justifyContent:"center",
-                    border:"2px solid var(--navy)",flexShrink:0
-                  }}>{i + 1}</div>
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-[#1c1e54] text-white text-lg font-bold flex items-center justify-center flex-shrink-0 border-2 border-[#1c1e54]">
+                    {i + 1}
+                  </div>
                   {i < steps.length - 1 && (
-                    <div style={{width:2,flex:1,minHeight:40,background:"var(--border)",margin:"8px 0"}} />
+                    <div className="w-0.5 flex-1 min-h-10 bg-[#e5edf5] my-2" />
                   )}
                 </div>
                 {/* Content */}
-                <div style={{flex:1,paddingBottom:i < steps.length - 1 ? 40 : 0,paddingTop:8}}>
-                  <div style={{fontSize:11,fontWeight:600,letterSpacing:"1px",textTransform:"uppercase",color:"var(--blue)",marginBottom:4}}>{s.step}</div>
-                  <div style={{fontFamily:"var(--font-serif)",fontSize:20,fontWeight:700,color:"var(--navy)",marginBottom:4}}>{s.title}</div>
-                  <div style={{fontSize:12,color:"var(--text-3)",marginBottom:12}}>参考周期：{s.duration}</div>
-                  <p style={{fontSize:15,color:"var(--text-2)",lineHeight:1.8,marginBottom:16}}>{s.desc}</p>
-                  <div style={{display:"flex",flexDirection:"column",gap:8}}>
+                <div className={`flex-1 pt-2 ${i < steps.length - 1 ? "pb-10" : ""}`}>
+                  <div className="text-[11px] font-semibold tracking-[1px] uppercase text-[#533afd] mb-1">{s.step}</div>
+                  <div className="text-xl font-bold text-[#1c1e54] mb-1">{s.title}</div>
+                  <div className="text-xs text-[#94a3b8] mb-3">参考周期：{s.duration}</div>
+                  <p className="text-[15px] text-[#64748d] leading-[1.8] mb-4">{s.desc}</p>
+                  <div className="flex flex-col gap-2">
                     {s.points.map((p, j) => (
-                      <div key={j} style={{display:"flex",alignItems:"center",gap:8,fontSize:14,color:"var(--text-2)"}}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,color:"var(--blue)",flexShrink:0}}>
-                          <polyline points="20 6 9 17 4 12"/>
+                      <div key={j} className="flex items-center gap-2 text-sm text-[#64748d]">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 flex-shrink-0">
+                          <polyline points="20 6 9 17 4 12" />
                         </svg>
                         {p}
                       </div>
@@ -142,38 +146,38 @@ export default function ServicePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-alt">
+      <section className="section-std bg-[#f6f9fc]">
         <div className="section-inner">
-          <div className="section-head-centered">
-            <div className="section-label">FAQ</div>
-            <h2 className="section-title">常见问题解答</h2>
-            <p className="section-desc">关于补助金申请，您最常问到的问题，我们一一解答。</p>
+          <div className="text-center mb-14">
+            <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">FAQ</div>
+            <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">常见问题解答</h2>
+            <p className="text-base text-[#64748d] leading-7">关于补助金申请，您最常问到的问题，我们一一解答。</p>
           </div>
-          <div style={{maxWidth:800,margin:"0 auto"}}>
-            <div className="faq-list">
-              {faqs.map((faq, i) => (
-                <div key={i} className="faq-item">
-                  <div className="faq-q">
-                    <span className="faq-q-mark">Q</span>
-                    {faq.q}
+          <div className="max-w-[800px] mx-auto">
+            {faqs.map((faq, i) => (
+              <div key={i} className="border-b border-[#e5edf5] pb-7 mb-7 last:border-0 last:pb-0 last:mb-0">
+                <div className="flex items-start gap-4 mb-3">
+                  <div className="flex-shrink-0 w-7 h-7 rounded bg-[rgba(83,58,253,0.1)] text-[#533afd] flex items-center justify-center text-sm font-semibold">
+                    Q
                   </div>
-                  <p className="faq-a">{faq.a}</p>
+                  <div className="text-[15px] font-medium text-[#061b31] leading-[1.5]">{faq.q}</div>
                 </div>
-              ))}
-            </div>
+                <p className="text-[15px] text-[#64748d] leading-[1.8] pl-11">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta-banner">
-        <div className="cta-banner-inner">
-          <h2>立即开始免费咨询</h2>
-          <p>3分钟问诊，为您的企业精准推荐最优补助金方案。完全免费，无任何购买义务。</p>
-          <Link href="/contact" className="btn-cta-outline">
+      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
+        <div className="relative z-10 max-w-[640px] mx-auto px-6">
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">立即开始免费咨询</h2>
+          <p className="text-lg text-white/85 mb-10 leading-[1.75]">3分钟问诊，为您的企业精准推荐最优补助金方案。完全免费，无任何购买义务。</p>
+          <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
             申请免费咨询
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}>
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </Link>
         </div>
