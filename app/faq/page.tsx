@@ -1,6 +1,5 @@
 'use client';
 import Link from "next/link";
-import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -115,32 +114,28 @@ export default function FaqPage() {
       <NavClient />
 
       {/* Hero */}
-      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
-        <div className="absolute top-[-120px] right-[-80px] w-[480px] h-[480px] rounded-full bg-[radial-gradient(ellipse,rgba(83,58,253,0.28)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-[-80px] left-[10%] w-[500px] h-[250px] bg-[radial-gradient(ellipse,rgba(234,34,97,0.22)_0%,rgba(249,107,238,0.12)_50%,transparent_70%)] blur-[30px] pointer-events-none" />
-        <div className="section-inner relative z-10">
-          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
-            FAQ · 常见问题
-          </div>
-          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+        <div className="page-wrap">
+          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>FAQ · 常见问题</div>
+          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
             补助金申请<br />常见问题解答
           </h1>
-          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
             汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。
           </p>
         </div>
-      </div>
+      </section>
 
       {/* FAQ Content */}
-      <section className="section-std bg-white">
-        <div className="section-inner">
+      <section className="section" style={{ background: "#fff" }}>
+        <div className="page-wrap">
           {/* Category nav */}
-          <nav className="flex gap-2 mb-10 flex-wrap" aria-label="问题分类">
+          <nav style={{ display: "flex", gap: 8, marginBottom: 40, flexWrap: "wrap" }} aria-label="问题分类">
             {faqCategories.map((cat) => (
               <a
                 key={cat.title}
                 href={`#faq-${cat.title}`}
-                className="inline-flex items-center px-4 py-2 rounded-full text-[13px] text-[#273951] bg-[#f6f9fc] border border-gray-200 whitespace-nowrap min-h-[36px] hover:bg-[#533afd] hover:text-white hover:border-[#533afd] transition-all"
+                style={{ display: "inline-flex", alignItems: "center", padding: "8px 16px", borderRadius: 100, fontSize: 13, color: "#0f172a", background: "#f8fafc", border: "1px solid #e2e8f0", whiteSpace: "nowrap", textDecoration: "none", minHeight: 36 }}
               >
                 {cat.title}
               </a>
@@ -148,12 +143,12 @@ export default function FaqPage() {
           </nav>
 
           {faqCategories.map((cat) => (
-            <div key={cat.title} id={`faq-${cat.title}`} className="mb-14 last:mb-0">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-200">
-                <div className="w-8 h-8 bg-[#533afd] rounded-md flex items-center justify-center flex-shrink-0">
-                  <HelpCircleIcon className="w-4 h-4 text-white" />
+            <div key={cat.title} id={`faq-${cat.title}`} style={{ marginBottom: 56 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #e2e8f0" }}>
+                <div style={{ width: 32, height: 32, background: "#533afd", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <HelpCircleIcon style={{ width: 16, height: 16, color: "#fff" }} />
                 </div>
-                <div className="text-lg font-medium text-[#061b31]">{cat.title}</div>
+                <div style={{ fontSize: 18, fontWeight: 700, color: "#0f172a" }}>{cat.title}</div>
               </div>
               <Accordion multiple className="gap-2.5">
                 {cat.items.map((item, i) => (
@@ -162,10 +157,10 @@ export default function FaqPage() {
                     value={`${cat.title}-${i}`}
                     className="border border-gray-200 rounded-md overflow-hidden mb-2.5 not-last:border-b"
                   >
-                    <AccordionTrigger className="px-6 py-5 text-[15px] font-medium text-[#061b31] leading-snug hover:no-underline">
+                    <AccordionTrigger className="px-6 py-5 text-[15px] font-medium leading-snug hover:no-underline" style={{ color: "#0f172a" }}>
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-5 text-sm text-[#64748d] leading-[1.8] border-t border-gray-100">
+                    <AccordionContent className="px-6 pb-5 text-sm leading-[1.8] border-t border-gray-100" style={{ color: "#475569" }}>
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -177,16 +172,16 @@ export default function FaqPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
-        <div className="relative z-10 max-w-[640px] mx-auto px-6">
-          <div className="inline-block text-[11px] font-medium text-white/55 uppercase tracking-[1.5px] mb-3.5">还有疑问？</div>
-          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">没找到您想要的答案？</h2>
-          <p className="text-lg text-white/85 mb-10 leading-[1.75]">直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。</p>
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
+      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
+        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "inline-block", fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 14 }}>还有疑问？</div>
+          <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>没找到您想要的答案？</h2>
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
               免费咨询顾问
             </Link>
-            <Link href="/cases" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/40 px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-colors">
+            <Link href="/cases" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
               查看成功案例
             </Link>
           </div>

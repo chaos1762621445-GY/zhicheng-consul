@@ -106,104 +106,99 @@ export default function CasesPage() {
       <NavClient />
 
       {/* Hero */}
-      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
-        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full bg-[radial-gradient(ellipse,rgba(83,58,253,0.28)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-[-60px] left-[5%] w-[600px] h-[300px] bg-[radial-gradient(ellipse,rgba(234,34,97,0.2)_0%,rgba(249,107,238,0.1)_50%,transparent_70%)] blur-[30px] pointer-events-none" />
-        <div className="section-inner relative z-10">
-          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
-            Success Cases · 成功案例
-          </div>
-          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+        <div className="page-wrap">
+          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>Success Cases · 成功案例</div>
+          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
             客户成功案例
           </h1>
-          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
             来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Stats Bar */}
-      <div className="bg-[rgba(28,30,84,0.95)] py-12 border-b border-white/[0.08]">
-        <div className="section-inner grid grid-cols-2 md:grid-cols-4">
+      <div style={{ background: "#0f172a", padding: "48px 0" }}>
+        <div className="page-wrap" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
           {stats.map((s) => (
-            <div key={s.label} className="text-center py-4 px-4">
-              <div className="text-[clamp(32px,4vw,44px)] font-light text-white tracking-[-1px] leading-none">{s.num}</div>
-              <div className="text-[13px] text-white/60 mt-2">{s.label}</div>
+            <div key={s.label} style={{ textAlign: "center", padding: "16px" }}>
+              <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#533afd", letterSpacing: "-1px", lineHeight: 1 }}>{s.num}</div>
+              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 8 }}>{s.label}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Cases Grid */}
-      <section className="section-std bg-[#f6f9fc]">
-        <div className="section-inner">
-          <div className="text-center mb-2">
-            <div className="inline-block text-[11px] font-light text-[#64748d] uppercase tracking-[2px]">真实案例 · 匿名脱敏处理</div>
+      <section className="section" style={{ background: "#f8fafc" }}>
+        <div className="page-wrap">
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <div style={{ display: "inline-block", fontSize: 11, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "2px" }}>真实案例 · 匿名脱敏处理</div>
           </div>
-          <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4 text-center">各行业获批实例</h2>
-          <p className="text-base text-[#64748d] leading-7 text-center max-w-[560px] mx-auto">
+          <h2 className="section-heading" style={{ textAlign: "center" }}>各行业获批实例</h2>
+          <p className="section-sub" style={{ textAlign: "center", maxWidth: 560, margin: "0 auto 48px" }}>
             以下案例均来自我们服务过的真实客户，已做匿名化处理，补助金金额及周期均为实际数据。
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(460px, 1fr))", gap: 24 }}>
             {cases.map((c, i) => (
-              <div key={i} className="bg-white border border-[#e5edf5] rounded-lg p-7 relative overflow-hidden transition-all hover:shadow-xl hover:-translate-y-0.5">
-                <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: c.color }} />
-                <div className="flex items-start justify-between gap-3 mb-5">
+              <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "28px", position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: c.color }} />
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 20 }}>
                   <div>
                     <span
-                      className="inline-block text-[11px] font-normal px-2.5 py-0.5 rounded tracking-[0.5px]"
-                      style={{ background: `${c.color}18`, color: c.color, border: `1px solid ${c.color}40` }}
+                      style={{ display: "inline-block", fontSize: 11, padding: "2px 10px", borderRadius: 4, letterSpacing: "0.5px", background: `${c.color}18`, color: c.color, border: `1px solid ${c.color}40` }}
                     >
                       {c.industry}
                     </span>
-                    <div className="text-[15px] font-medium text-[#061b31] mt-2 leading-[1.4]">{c.company}</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: "#0f172a", marginTop: 8, lineHeight: 1.4 }}>{c.company}</div>
                   </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none">{c.amount}</div>
-                    <div className="text-[11px] text-[#64748d] mt-1">获批金额</div>
+                  <div style={{ textAlign: "right", flexShrink: 0 }}>
+                    <div style={{ fontSize: 28, fontWeight: 700, color: "#533afd", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
+                    <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>获批金额</div>
                   </div>
                 </div>
 
-                <div className="flex gap-3 flex-wrap mb-4">
-                  <div className="flex items-center gap-1.5 text-xs text-[#64748d] bg-[#f6f9fc] border border-[#e5edf5] rounded px-2.5 py-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#533afd] flex-shrink-0" />
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#533afd", flexShrink: 0 }} />
                     <span>{c.subsidy}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-[#64748d] bg-[#f6f9fc] border border-[#e5edf5] rounded px-2.5 py-1">
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                     <span>申请周期 {c.period}</span>
                   </div>
                 </div>
 
-                <hr className="border-0 border-t border-[#e5edf5] my-4" />
+                <hr style={{ border: "none", borderTop: "1px solid #e2e8f0", margin: "16px 0" }} />
 
-                <div className="text-[13px] font-light text-[#64748d] leading-[1.8] pl-3 border-l-2 border-[#e5edf5]">
-                  <span className="text-xl text-[#533afd]/30 leading-none block mb-1.5">"</span>
+                <div style={{ fontSize: 13, color: "#475569", lineHeight: 1.8, paddingLeft: 12, borderLeft: "2px solid #e2e8f0" }}>
+                  <span style={{ fontSize: 20, color: "rgba(83,58,253,0.3)", lineHeight: 1, display: "block", marginBottom: 6 }}>"</span>
                   {c.quote}
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-xs text-[#64748d] mt-10 px-6 py-4 bg-white border border-[#e5edf5] rounded-md leading-[1.8]">
+          <p style={{ textAlign: "center", fontSize: 12, color: "#94a3b8", marginTop: 40, padding: "16px 24px", background: "#fff", border: "1px solid #e2e8f0", borderRadius: 8, lineHeight: 1.8 }}>
             ※ 以上案例均已征得客户同意并做匿名化处理，补助金获批金额因企业规模、申请内容、审查年度等因素而异，不代表所有申请均可达到相同金额。具体可获批额度请咨询我们进行个案评估。
           </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
-        <div className="relative z-10 max-w-[640px] mx-auto px-6">
-          <div className="inline-block text-[11px] font-medium text-white/55 uppercase tracking-[1.5px] mb-3.5">下一步</div>
-          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">您的企业也能获得补助金</h2>
-          <p className="text-lg text-white/85 mb-10 leading-[1.75]">免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
+      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
+        <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "inline-block", fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 14 }}>下一步</div>
+          <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>您的企业也能获得补助金</h2>
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
               立即免费咨询
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
-            <Link href="/faq" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/40 px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-colors">
+            <Link href="/faq" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.4)", padding: "14px 32px", borderRadius: 8, fontWeight: 500, fontSize: 15, textDecoration: "none" }}>
               查看常见问题
             </Link>
           </div>

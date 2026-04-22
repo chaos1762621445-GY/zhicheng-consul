@@ -87,37 +87,37 @@ const tabCategories = [
 
 function SubsidyCard({ s }: { s: Subsidy }) {
   return (
-    <Card className="rounded-lg">
+    <Card style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16 }}>
       <CardContent className="p-8">
-        <div className="flex items-start gap-4 mb-6">
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
           <div>
-            <Badge className="mb-3 bg-[rgba(83,58,253,0.1)] text-[#533afd] border border-[rgba(83,58,253,0.2)] hover:bg-[rgba(83,58,253,0.1)]">
+            <Badge style={{ marginBottom: 12, background: "rgba(83,58,253,0.1)", color: "#533afd", border: "1px solid rgba(83,58,253,0.2)" }} className="hover:bg-[rgba(83,58,253,0.1)]">
               {s.tag}
             </Badge>
-            <div className="text-xl font-semibold text-[#061b31] mb-1">{s.name}</div>
-            <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none mb-1 tabular-nums">{s.amount}</div>
-            <div className="text-sm text-[#64748d] mt-1">{s.rate}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#0f172a", marginBottom: 4 }}>{s.name}</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#533afd", letterSpacing: "-0.5px", lineHeight: 1, marginBottom: 4 }}>{s.amount}</div>
+            <div style={{ fontSize: 14, color: "#475569", marginTop: 4 }}>{s.rate}</div>
           </div>
         </div>
-        <p className="text-sm text-[#64748d] leading-7 mb-6">{s.desc}</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, marginBottom: 24 }}>{s.desc}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           <div>
-            <h4 className="text-sm font-semibold text-[#061b31] mb-3">申请条件</h4>
-            <ul className="flex flex-col gap-2">
+            <h4 style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 12 }}>申请条件</h4>
+            <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.conditions.map((c, j) => (
-                <li key={j} className="flex items-start gap-2 text-sm text-[#64748d]">
-                  <CheckIcon className="w-3.5 h-3.5 text-[#533afd] mt-0.5 flex-shrink-0" strokeWidth={2} />
+                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
+                  <CheckIcon style={{ width: 14, height: 14, color: "#533afd", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {c}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-[#061b31] mb-3">主要用途</h4>
-            <ul className="flex flex-col gap-2">
+            <h4 style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 12 }}>主要用途</h4>
+            <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.usage.map((u, j) => (
-                <li key={j} className="flex items-start gap-2 text-sm text-[#64748d]">
-                  <CheckIcon className="w-3.5 h-3.5 text-[#533afd] mt-0.5 flex-shrink-0" strokeWidth={2} />
+                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
+                  <CheckIcon style={{ width: 14, height: 14, color: "#533afd", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {u}
                 </li>
               ))}
@@ -125,10 +125,10 @@ function SubsidyCard({ s }: { s: Subsidy }) {
           </div>
         </div>
         {s.slug && (
-          <div className="mt-5 pt-4 border-t border-gray-100 flex justify-end">
-            <Link href={`/subsidies/${s.slug}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-[#533afd]">
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #e2e8f0", display: "flex", justifyContent: "flex-end" }}>
+            <Link href={`/subsidies/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "#533afd", textDecoration: "none" }}>
               查看详情
-              <ArrowRightIcon className="w-3.5 h-3.5" />
+              <ArrowRightIcon style={{ width: 14, height: 14 }} />
             </Link>
           </div>
         )}
@@ -142,25 +142,23 @@ export default function SubsidiesPage() {
     <main>
       <NavClient />
 
-      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_70%_50%,rgba(83,58,253,0.25)_0%,transparent_60%),radial-gradient(ellipse_at_20%_80%,rgba(234,34,97,0.15)_0%,transparent_50%)]" />
-        <div className="section-inner relative z-10">
-          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
-            补助金种类
-          </div>
-          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+      {/* Hero */}
+      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+        <div className="page-wrap">
+          <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>补助金种类</div>
+          <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
             主要补助金与助成金一览
           </h1>
-          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: 520 }}>
             志成コンサル代办的6种主要补助金·助成金详细介绍。申请条件及使用方法欢迎随时咨询。
           </p>
         </div>
-      </div>
+      </section>
 
-      <section className="section-std bg-[#f6f9fc]">
-        <div className="section-inner">
+      <section className="section" style={{ background: "#f8fafc" }}>
+        <div className="page-wrap">
           <Tabs defaultValue="省力化">
-            <TabsList className="mb-8 h-auto bg-white border border-gray-200 rounded-lg p-1 flex gap-1 flex-wrap">
+            <TabsList style={{ marginBottom: 32, height: "auto", background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
               {tabCategories.map(cat => (
                 <TabsTrigger
                   key={cat.value}
@@ -172,7 +170,7 @@ export default function SubsidiesPage() {
               ))}
             </TabsList>
             {tabCategories.map(cat => (
-              <TabsContent key={cat.value} value={cat.value} className="flex flex-col gap-5">
+              <TabsContent key={cat.value} value={cat.value} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 {cat.items.map((s, i) => (
                   <SubsidyCard key={i} s={s} />
                 ))}
@@ -180,12 +178,12 @@ export default function SubsidiesPage() {
             ))}
           </Tabs>
 
-          <div className="text-center mt-16 pt-14 border-t border-gray-200">
-            <div className="text-2xl font-bold text-[#061b31] mb-3">哪种补助金最适合您？</div>
-            <p className="text-base text-[#64748d] mb-8 leading-7">3分钟免费诊断，为您的企业精准匹配最优补助金方案。</p>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#533afd] text-white px-9 py-3.5 rounded-md font-medium text-base hover:bg-[#4434d4] transition-colors">
+          <div style={{ textAlign: "center", marginTop: 64, paddingTop: 56, borderTop: "1px solid #e2e8f0" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", marginBottom: 12 }}>哪种补助金最适合您？</div>
+            <p style={{ fontSize: 15, color: "#475569", marginBottom: 32, lineHeight: 1.75 }}>3分钟免费诊断，为您的企业精准匹配最优补助金方案。</p>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#533afd", color: "#fff", padding: "14px 36px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
               开始免费诊断
-              <ArrowRightIcon className="w-3.5 h-3.5" />
+              <ArrowRightIcon style={{ width: 14, height: 14 }} />
             </Link>
           </div>
         </div>
