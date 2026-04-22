@@ -15,7 +15,7 @@ const teamMembers = [
     en: "Kenji Nakano",
     specialty: "补助金申请书类制作专家",
     desc: "拥有10年以上行政书士经验，专精各类补助金及助成金申请书的制作与提交。精通中日双语，能将复杂的事业计划书以准确、有力的日语表达，大幅提升申请通过率。",
-    color: "#533afd",
+    color: "#1e40af",
   },
   {
     title: "社会保険労務士",
@@ -59,7 +59,7 @@ export default function AboutPage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
         <div className="page-wrap">
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>关于我们</div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
@@ -97,7 +97,7 @@ export default function AboutPage() {
               ].map((stat, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 20, paddingBottom: 20, borderBottom: i < 3 ? "1px solid #e2e8f0" : "none" }}>
                   <span style={{ fontSize: 14, color: "#475569" }}>{stat.label}</span>
-                  <span style={{ fontSize: 28, fontWeight: 700, color: "#533afd", letterSpacing: "-0.5px" }}>{stat.num}</span>
+                  <span style={{ fontSize: 28, fontWeight: 700, color: "#1e40af", letterSpacing: "-0.5px" }}>{stat.num}</span>
                 </div>
               ))}
             </div>
@@ -140,7 +140,7 @@ export default function AboutPage() {
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <div className="label-tag">创业故事</div>
             <h2 className="section-heading">从一次痛心的错过说起</h2>
-            <div style={{ borderLeft: "3px solid #533afd", paddingLeft: 28, marginTop: 32, marginBottom: 32 }}>
+            <div style={{ borderLeft: "3px solid #1e40af", paddingLeft: 28, marginTop: 32, marginBottom: 32 }}>
               <p style={{ fontSize: 18, color: "#0f172a", lineHeight: 1.8, fontWeight: 400 }}>
                 「我亲眼看到一位认识多年的华人朋友，因为看不懂日语申请指南，错过了最高可获500万円的事业重构补助金的申请截止日期。那一刻，我意识到——这不是个案，而是整个在日华人创业群体面临的系统性困境。」
               </p>
@@ -184,12 +184,12 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
           <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>与我们一起，让补助金触手可及</h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>3分钟免费问诊，为您的企业精准匹配最优补助金方案。全程中文，无成功不收费。</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
               申请免费咨询
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14 }}>
                 <path d="M5 12h14M12 5l7 7-7 7" />

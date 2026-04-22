@@ -17,7 +17,7 @@ export default async function BlogPage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
         <div className="page-wrap">
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>知识库</div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
@@ -34,7 +34,7 @@ export default async function BlogPage() {
           {posts.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0" }}>
               <div style={{ fontSize: 15, color: "#475569", marginBottom: 24 }}>暂无文章，敬请期待</div>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#533afd", color: "#fff", padding: "14px 32px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
+              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#1e40af", color: "#fff", padding: "14px 32px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
                 联系我们咨询
               </Link>
             </div>
@@ -49,7 +49,7 @@ export default async function BlogPage() {
                   <div style={{ fontSize: 12, color: "#94a3b8", marginBottom: 8 }}>{post.date}</div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a", marginBottom: 12, lineHeight: 1.4 }}>{post.title}</div>
                   <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.8, marginBottom: 16 }}>{(post.excerpt || "").slice(0, 100)}...</p>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 600, color: "#533afd" }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 600, color: "#1e40af" }}>
                     阅读全文
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 12, height: 12 }}>
                       <path d="M9 18l6-6-6-6" />

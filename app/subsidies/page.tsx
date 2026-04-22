@@ -91,11 +91,11 @@ function SubsidyCard({ s }: { s: Subsidy }) {
       <CardContent className="p-8">
         <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
           <div>
-            <Badge style={{ marginBottom: 12, background: "rgba(83,58,253,0.1)", color: "#533afd", border: "1px solid rgba(83,58,253,0.2)" }} className="hover:bg-[rgba(83,58,253,0.1)]">
+            <Badge style={{ marginBottom: 12, background: "rgba(30,64,175,0.1)", color: "#1e40af", border: "1px solid rgba(30,64,175,0.2)" }} className="hover:bg-[rgba(30,64,175,0.1)]">
               {s.tag}
             </Badge>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#0f172a", marginBottom: 4 }}>{s.name}</div>
-            <div style={{ fontSize: 28, fontWeight: 700, color: "#533afd", letterSpacing: "-0.5px", lineHeight: 1, marginBottom: 4 }}>{s.amount}</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: "#1e40af", letterSpacing: "-0.5px", lineHeight: 1, marginBottom: 4 }}>{s.amount}</div>
             <div style={{ fontSize: 14, color: "#475569", marginTop: 4 }}>{s.rate}</div>
           </div>
         </div>
@@ -106,7 +106,7 @@ function SubsidyCard({ s }: { s: Subsidy }) {
             <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.conditions.map((c, j) => (
                 <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
-                  <CheckIcon style={{ width: 14, height: 14, color: "#533afd", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
+                  <CheckIcon style={{ width: 14, height: 14, color: "#1e40af", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {c}
                 </li>
               ))}
@@ -117,7 +117,7 @@ function SubsidyCard({ s }: { s: Subsidy }) {
             <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.usage.map((u, j) => (
                 <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
-                  <CheckIcon style={{ width: 14, height: 14, color: "#533afd", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
+                  <CheckIcon style={{ width: 14, height: 14, color: "#1e40af", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {u}
                 </li>
               ))}
@@ -126,7 +126,7 @@ function SubsidyCard({ s }: { s: Subsidy }) {
         </div>
         {s.slug && (
           <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #e2e8f0", display: "flex", justifyContent: "flex-end" }}>
-            <Link href={`/subsidies/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "#533afd", textDecoration: "none" }}>
+            <Link href={`/subsidies/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "#1e40af", textDecoration: "none" }}>
               查看详情
               <ArrowRightIcon style={{ width: 14, height: 14 }} />
             </Link>
@@ -143,7 +143,7 @@ export default function SubsidiesPage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
         <div className="page-wrap">
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>补助金种类</div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
@@ -163,7 +163,7 @@ export default function SubsidiesPage() {
                 <TabsTrigger
                   key={cat.value}
                   value={cat.value}
-                  className="px-5 py-2.5 text-sm rounded-md data-active:bg-[#533afd] data-active:text-white data-active:shadow-none"
+                  className="px-5 py-2.5 text-sm rounded-md data-active:bg-[#1e40af] data-active:text-white data-active:shadow-none"
                 >
                   {cat.label}
                 </TabsTrigger>
@@ -181,7 +181,7 @@ export default function SubsidiesPage() {
           <div style={{ textAlign: "center", marginTop: 64, paddingTop: 56, borderTop: "1px solid #e2e8f0" }}>
             <div style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", marginBottom: 12 }}>哪种补助金最适合您？</div>
             <p style={{ fontSize: 15, color: "#475569", marginBottom: 32, lineHeight: 1.75 }}>3分钟免费诊断，为您的企业精准匹配最优补助金方案。</p>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#533afd", color: "#fff", padding: "14px 36px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#1e40af", color: "#fff", padding: "14px 36px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
               开始免费诊断
               <ArrowRightIcon style={{ width: 14, height: 14 }} />
             </Link>

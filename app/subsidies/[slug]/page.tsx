@@ -536,7 +536,7 @@ export default async function SubsidyDetailPage({
                   }}>
                     <span style={{
                       width: 22, height: 22, borderRadius: "50%",
-                      background: "rgba(83,58,253,0.1)", color: "var(--primary)",
+                      background: "rgba(30,64,175,0.1)", color: "var(--primary)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       flexShrink: 0, marginTop: 1,
                     }}>
@@ -651,7 +651,7 @@ export default async function SubsidyDetailPage({
                       display: "flex", alignItems: "flex-start", gap: 12,
                     }}>
                       <span style={{
-                        background: "rgba(83,58,253,0.12)", color: "var(--primary)",
+                        background: "rgba(30,64,175,0.12)", color: "var(--primary)",
                         fontSize: 12, fontWeight: 700, padding: "2px 7px", borderRadius: 3,
                         flexShrink: 0, marginTop: 2,
                       }}>A</span>
@@ -709,7 +709,7 @@ export default async function SubsidyDetailPage({
                   }}>
                     <div>
                       <span style={{
-                        fontSize: 10, background: "rgba(83,58,253,0.08)", color: "var(--primary)",
+                        fontSize: 10, background: "rgba(30,64,175,0.08)", color: "var(--primary)",
                         padding: "2px 6px", borderRadius: 3, marginRight: 8,
                       }}>{s.tag}</span>
                       {s.name}

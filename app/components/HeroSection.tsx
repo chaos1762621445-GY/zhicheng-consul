@@ -1,58 +1,39 @@
 import Link from 'next/link';
 
 const items = [
-  { name: '省力化补助金', amount: '最高 1,500万円' },
-  { name: 'AI 导入补助金', amount: '最高 350万円' },
-  { name: '员工转正助成金', amount: '最高 80万円/人' },
-  { name: '员工培训助成金', amount: '最高 1亿円' },
+  { name: '省力化补助金',    amount: '最高 1,500万円' },
+  { name: 'AI 导入补助金',   amount: '最高 350万円' },
+  { name: '员工转正助成金',  amount: '最高 80万円/人' },
+  { name: '员工培训助成金',  amount: '最高 1亿円' },
   { name: '空调省能更新补助', amount: '最高 1,000万円' },
 ];
 
 export default function HeroSection() {
   return (
-    <section className="hero-bg" style={{ paddingTop: 88, paddingBottom: 96, position: 'relative', overflow: 'hidden' }}>
-      {/* Orb decorations */}
-      <div
-        className="hero-orb"
-        style={{
-          width: 600,
-          height: 600,
-          background: 'rgba(83,58,253,0.12)',
-          top: -160,
-          right: -120,
-          filter: 'blur(80px)',
-        }}
-      />
-      <div
-        className="hero-orb"
-        style={{
-          width: 400,
-          height: 400,
-          background: 'rgba(139,92,246,0.08)',
-          bottom: -100,
-          left: -80,
-          filter: 'blur(60px)',
-        }}
-      />
+    <section className="hero-bg" style={{ paddingTop: 72, paddingBottom: 96, position: 'relative', overflow: 'hidden' }}>
+      {/* Subtle orbs */}
+      <div className="hero-orb" style={{ width: 520, height: 520, background: 'rgba(30,64,175,0.10)', top: -140, right: -100 }} />
+      <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -80, left: -60, filter: 'blur(70px)' }} />
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero-grid">
 
-          {/* Left */}
+          {/* Left column */}
           <div>
-            <div className="eyebrow">国家认定补助金代办专家</div>
+            <div className="eyebrow">国家认定 · 持牌专家代办</div>
 
-            <h1 className="display" style={{ marginBottom: 24 }}>
-              在日经营，<br />政府补助金<br />
-              <span className="gradient-text">全程代办到账</span>
+            <h1 className="display" style={{ marginBottom: 28 }}>
+              在日经营<br />
+              政府补助金<br />
+              <span style={{ color: 'var(--brand)' }}>全程代办到账</span>
             </h1>
 
-            <p className="sub" style={{ marginBottom: 36 }}>
+            <p className="sub" style={{ marginBottom: 40, fontSize: 18 }}>
               日本政府每年向中小企业发放大量补助金，大多数企业主因不了解政策而白白错过。
-              我们以四类国家认证专家团队，全程中文代办，<strong style={{ color: 'var(--ink-2)', fontWeight: 600 }}>不获批不收费</strong>。
+              四类国家认证专家团队，全程中文代办，<strong style={{ color: 'var(--ink)', fontWeight: 700 }}>不获批不收费</strong>。
             </p>
 
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 44 }}>
               <Link href="/contact" className="btn btn-fill">
                 免费获取诊断报告
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -65,12 +46,17 @@ export default function HeroSection() {
             </div>
 
             {/* Trust row */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 28px' }}>
-              {['不获批不收费，零风险', '3,000+ 企业已成功申请', '四类国家认定持牌专家', '全程中文，无需懂日语'].map(t => (
-                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: 'var(--ink-3)' }}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px 28px' }}>
+              {[
+                { t: '不获批不收费，零风险' },
+                { t: '3,000+ 企业已成功申请' },
+                { t: '四类国家认定持牌专家' },
+                { t: '全程中文，无需懂日语' },
+              ].map(({ t }) => (
+                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: 'var(--ink-3)', fontWeight: 500 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" fill="rgba(34,197,94,.12)" />
-                    <path d="M8 12l3 3 5-5" stroke="#16a34a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M8 12l3 3 5-5" stroke="#16a34a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   {t}
                 </div>
@@ -78,42 +64,57 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right panel */}
-          <div className="hero-panel-col">
+          {/* Right panel — premium card */}
+          <div>
             <div
-              className="card-glow"
               style={{
                 background: '#fff',
                 border: '1px solid var(--line)',
                 borderRadius: 20,
-                padding: '28px 28px 24px',
-                boxShadow: '0 24px 64px rgba(12,21,37,.10), 0 4px 16px rgba(12,21,37,.06)',
+                padding: 8,
+                boxShadow: 'var(--shadow-xl)',
+                position: 'relative',
               }}
             >
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 20 }}>
-                适合您的补助金
-              </div>
+              {/* Top accent bar */}
+              <div style={{
+                height: 4,
+                borderRadius: '16px 16px 0 0',
+                background: 'linear-gradient(90deg, var(--brand) 0%, var(--gold) 100%)',
+                margin: '-1px -1px 0',
+              }} />
 
-              {items.map((it, i) => (
-                <div key={i} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '12px 0',
-                  borderBottom: i < items.length - 1 ? '1px solid var(--surface-3)' : 'none',
-                }}>
-                  <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink-3)' }}>{it.name}</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--brand)', marginLeft: 16, whiteSpace: 'nowrap' }}>{it.amount}</span>
+              <div style={{ padding: '24px 26px 22px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>
+                    适合您的补助金
+                  </div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--gold)', background: 'var(--gold-soft)', padding: '3px 9px', borderRadius: 100, letterSpacing: '.05em' }}>
+                    精选
+                  </div>
                 </div>
-              ))}
 
-              <div style={{ marginTop: 20, paddingTop: 18, borderTop: '1px solid var(--surface-3)' }}>
+                {items.map((it, i) => (
+                  <div key={i} style={{
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: '13px 0',
+                    borderBottom: i < items.length - 1 ? '1px solid var(--surface-3)' : 'none',
+                  }}>
+                    <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink-2)' }}>{it.name}</span>
+                    <span className="amount" style={{ fontSize: 14, marginLeft: 16, whiteSpace: 'nowrap' }}>{it.amount}</span>
+                  </div>
+                ))}
+
                 <Link href="/contact" style={{
+                  marginTop: 22,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                  background: 'var(--brand-bg)',
-                  color: 'var(--brand)',
-                  padding: '11px 16px',
+                  background: 'var(--ink)',
+                  color: '#fff',
+                  padding: '13px 16px',
                   borderRadius: 10,
                   fontSize: 14,
                   fontWeight: 600,
+                  transition: 'all .18s ease',
                 }}>
                   立即咨询，精准匹配方案
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

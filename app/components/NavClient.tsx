@@ -27,7 +27,7 @@ export default function NavClient() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 12);
+    const h = () => setScrolled(window.scrollY > 8);
     window.addEventListener('scroll', h, { passive: true });
     return () => window.removeEventListener('scroll', h);
   }, []);
@@ -40,23 +40,31 @@ export default function NavClient() {
     return () => document.removeEventListener('mousedown', h);
   }, []);
 
+  // lock body scroll when mobile menu open
+  useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   return (
     <nav style={{
       position: 'sticky', top: 0, zIndex: 50,
-      background: 'rgba(255,255,255,.94)',
-      backdropFilter: 'blur(14px)',
+      background: scrolled ? 'rgba(255,255,255,.88)' : 'rgba(255,255,255,.72)',
+      backdropFilter: 'blur(16px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(16px) saturate(180%)',
       borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
-      boxShadow: scrolled ? '0 2px 24px rgba(12,21,37,.07)' : 'none',
-      transition: 'box-shadow .2s, border-color .2s',
+      boxShadow: scrolled ? '0 1px 0 rgba(11,31,58,.03), 0 4px 20px rgba(11,31,58,.04)' : 'none',
+      transition: 'all .22s ease',
     }}>
-      <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
+      <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="志成咨询" style={{ height: 32, width: 'auto' }} />
+        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <img src="/logo.png" alt="志成咨询" style={{ height: 34, width: 'auto' }} />
         </Link>
 
-        {/* Desktop */}
-        <div ref={ref} style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="max-md:hidden">
+        {/* Desktop nav */}
+        <div ref={ref} className="nav-desktop" style={{ alignItems: 'center', gap: 4 }}>
           {NAV.map(item => (
             <div key={item.href} style={{ position: 'relative' }}>
               {item.children ? (
@@ -64,32 +72,37 @@ export default function NavClient() {
                   <button
                     onClick={() => setDrop(drop === item.label ? null : item.label)}
                     style={{
-                      display: 'flex', alignItems: 'center', gap: 4,
-                      padding: '8px 14px', borderRadius: 8, border: 'none',
+                      display: 'flex', alignItems: 'center', gap: 5,
+                      padding: '9px 14px', borderRadius: 8, border: 'none',
                       background: 'transparent', cursor: 'pointer',
-                      fontSize: 14, fontWeight: 500, color: 'var(--ink-3)',
+                      fontSize: 14.5, fontWeight: 500, color: 'var(--ink-2)',
+                      fontFamily: 'inherit',
+                      transition: 'color .15s',
                     }}
+                    onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = 'var(--brand)')}
+                    onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--ink-2)')}
                   >
                     {item.label}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                      style={{ transition: 'transform .18s', transform: drop === item.label ? 'rotate(180deg)' : 'none' }}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                      style={{ transition: 'transform .2s', transform: drop === item.label ? 'rotate(180deg)' : 'none' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
                   {drop === item.label && (
                     <div style={{
-                      position: 'absolute', top: 'calc(100% + 8px)',
+                      position: 'absolute', top: 'calc(100% + 10px)',
                       left: '50%', transform: 'translateX(-50%)',
                       background: '#fff', border: '1px solid var(--line)',
-                      borderRadius: 14, minWidth: 180,
-                      boxShadow: '0 16px 48px rgba(12,21,37,.12)',
+                      borderRadius: 14, minWidth: 200,
+                      boxShadow: 'var(--shadow-lg)',
                       overflow: 'hidden',
+                      padding: 6,
                     }}>
                       {item.children.map(c => (
                         <Link key={c.href} href={c.href} onClick={() => setDrop(null)}
-                          style={{ display: 'block', padding: '11px 18px', fontSize: 14, fontWeight: 500, color: 'var(--ink-3)', borderBottom: '1px solid var(--surface-3)', transition: 'background .12s, color .12s' }}
-                          onMouseEnter={e => { (e.target as HTMLElement).style.background = 'var(--surface-2)'; (e.target as HTMLElement).style.color = 'var(--brand)'; }}
-                          onMouseLeave={e => { (e.target as HTMLElement).style.background = ''; (e.target as HTMLElement).style.color = 'var(--ink-3)'; }}
+                          style={{ display: 'block', padding: '10px 14px', fontSize: 14, fontWeight: 500, color: 'var(--ink-2)', borderRadius: 8, transition: 'background .12s, color .12s' }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'var(--surface-2)'; (e.currentTarget as HTMLElement).style.color = 'var(--brand)'; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; (e.currentTarget as HTMLElement).style.color = 'var(--ink-2)'; }}
                         >
                           {c.label}
                         </Link>
@@ -98,9 +111,9 @@ export default function NavClient() {
                   )}
                 </>
               ) : (
-                <Link href={item.href} style={{ display: 'block', padding: '8px 14px', borderRadius: 8, fontSize: 14, fontWeight: 500, color: 'var(--ink-3)', transition: 'color .15s' }}
-                  onMouseEnter={e => ((e.target as HTMLElement).style.color = 'var(--brand)')}
-                  onMouseLeave={e => ((e.target as HTMLElement).style.color = 'var(--ink-3)')}
+                <Link href={item.href} style={{ display: 'block', padding: '9px 14px', borderRadius: 8, fontSize: 14.5, fontWeight: 500, color: 'var(--ink-2)', transition: 'color .15s' }}
+                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = 'var(--brand)')}
+                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--ink-2)')}
                 >
                   {item.label}
                 </Link>
@@ -109,49 +122,52 @@ export default function NavClient() {
           ))}
         </div>
 
-        {/* CTA + hamburger */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Link href="/contact" className="btn btn-fill" style={{ padding: '9px 20px', fontSize: 14 }} data-hide-mobile>
+        {/* Right side */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Link href="/contact" className="btn btn-fill nav-cta-desktop" style={{ padding: '10px 20px', fontSize: 14 }}>
             免费诊断
           </Link>
           <button
-            className="max-md:flex md:hidden"
-            style={{ display: 'none', padding: 8, border: 'none', background: 'transparent', cursor: 'pointer', borderRadius: 8 }}
+            className="nav-mobile-toggle"
+            style={{ padding: 10, border: '1px solid var(--line)', background: '#fff', cursor: 'pointer', borderRadius: 10, alignItems: 'center', justifyContent: 'center' }}
             onClick={() => setOpen(!open)}
             aria-label="菜单"
           >
-            <div style={{ width: 22, height: 16, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(45deg) translate(5px,6px)' : 'none' }} />
-              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', opacity: open ? 0 : 1 }} />
-              <span style={{ display: 'block', height: 2, background: 'var(--ink-2)', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
+            <div style={{ width: 20, height: 14, position: 'relative' }}>
+              <span style={{ position:'absolute', left:0, right:0, top: open? 6: 0, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'all .22s', transform: open ? 'rotate(45deg)' : 'none' }} />
+              <span style={{ position:'absolute', left:0, right:0, top: 6, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'opacity .15s', opacity: open ? 0 : 1 }} />
+              <span style={{ position:'absolute', left:0, right:0, top: open? 6: 12, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'all .22s', transform: open ? 'rotate(-45deg)' : 'none' }} />
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full slide-down panel */}
       <div style={{
-        display: open ? 'block' : 'none',
+        position: 'absolute', left: 0, right: 0, top: '100%',
         background: '#fff',
-        borderTop: '1px solid var(--surface-3)',
-        padding: '12px 0 16px',
+        borderBottom: '1px solid var(--line)',
+        boxShadow: '0 16px 40px rgba(11,31,58,.08)',
+        maxHeight: open ? 'calc(100vh - 72px)' : 0,
+        overflow: 'hidden auto',
+        transition: 'max-height .3s cubic-bezier(.4,0,.2,1)',
       }}>
-        {NAV.map(item => (
-          <div key={item.href}>
-            <Link href={item.href} onClick={() => setOpen(false)}
-              style={{ display: 'block', padding: '12px 24px', fontSize: 15, fontWeight: 600, color: 'var(--ink-2)' }}>
-              {item.label}
-            </Link>
-            {item.children?.map(c => (
-              <Link key={c.href} href={c.href} onClick={() => setOpen(false)}
-                style={{ display: 'block', padding: '9px 40px', fontSize: 14, color: 'var(--body)' }}>
-                {c.label}
+        <div style={{ padding: '16px 20px 24px' }}>
+          {NAV.map(item => (
+            <div key={item.href} style={{ marginBottom: 4 }}>
+              <Link href={item.href} onClick={() => setOpen(false)}
+                style={{ display: 'block', padding: '13px 12px', fontSize: 16, fontWeight: 600, color: 'var(--ink)', borderRadius: 8 }}>
+                {item.label}
               </Link>
-            ))}
-          </div>
-        ))}
-        <div style={{ padding: '12px 24px 4px' }}>
-          <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-fill" style={{ width: '100%', justifyContent: 'center' }}>
+              {item.children?.map(c => (
+                <Link key={c.href} href={c.href} onClick={() => setOpen(false)}
+                  style={{ display: 'block', padding: '10px 12px 10px 28px', fontSize: 14.5, color: 'var(--ink-3)', borderRadius: 8 }}>
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+          <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-fill" style={{ width: '100%', marginTop: 16 }}>
             免费诊断
           </Link>
         </div>

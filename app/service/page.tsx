@@ -32,9 +32,9 @@ export default function ServicePage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ position: 'relative', background: '#0c1525', padding: '80px 0 72px', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', background: '#0b1f3a', padding: '80px 0 72px', overflow: 'hidden' }}>
         {/* Orb decorations */}
-        <div className="hero-orb" style={{ width: 500, height: 500, background: 'rgba(83,58,253,0.20)', top: -160, right: -100, filter: 'blur(80px)' }} />
+        <div className="hero-orb" style={{ width: 500, height: 500, background: 'rgba(30,64,175,0.20)', top: -160, right: -100, filter: 'blur(80px)' }} />
         <div className="hero-orb" style={{ width: 350, height: 350, background: 'rgba(139,92,246,0.12)', bottom: -80, left: -60, filter: 'blur(60px)' }} />
         <div className="page-wrap" style={{ position: 'relative', zIndex: 1 }}>
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>服务流程</div>
@@ -62,14 +62,14 @@ export default function ServicePage() {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
                   <div style={{
                     width: 48, height: 48, borderRadius: "50%",
-                    background: "#533afd", color: "#fff",
+                    background: "#1e40af", color: "#fff",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: 15, fontWeight: 800, flexShrink: 0,
                   }}>
                     {s.n}
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #533afd, #e2e8f0)", margin: "8px 0" }} />
+                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #1e40af, #e2e8f0)", margin: "8px 0" }} />
                   )}
                 </div>
                 {/* Right: content */}
@@ -84,8 +84,8 @@ export default function ServicePage() {
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {s.points.map((p, j) => (
                       <div key={j} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#334155" }}>
-                        <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(83,58,253,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(30,64,175,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e40af" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
@@ -112,7 +112,7 @@ export default function ServicePage() {
             {faqs.map((f, i) => (
               <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px 28px" }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(83,58,253,0.1)", color: "#533afd", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Q</div>
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(30,64,175,0.1)", color: "#1e40af", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Q</div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", lineHeight: 1.4 }}>{f.q}</div>
                 </div>
                 <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.75, paddingLeft: 44 }}>{f.a}</p>
@@ -123,13 +123,13 @@ export default function ServicePage() {
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', background: "#0c1525", padding: "80px 0", textAlign: "center", overflow: 'hidden' }}>
-        <div className="hero-orb" style={{ width: 400, height: 400, background: 'rgba(83,58,253,0.18)', top: -100, right: -60, filter: 'blur(80px)' }} />
+      <section style={{ position: 'relative', background: "#0b1f3a", padding: "80px 0", textAlign: "center", overflow: 'hidden' }}>
+        <div className="hero-orb" style={{ width: 400, height: 400, background: 'rgba(30,64,175,0.18)', top: -100, right: -60, filter: 'blur(80px)' }} />
         <div className="hero-orb" style={{ width: 300, height: 300, background: 'rgba(139,92,246,0.12)', bottom: -80, left: -40, filter: 'blur(60px)' }} />
         <div className="page-wrap" style={{ maxWidth: 560, margin: "0 auto", position: 'relative', zIndex: 1 }}>
           <h2 className="gradient-text" style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, lineHeight: 1.2, marginBottom: 16 }}>立即开始免费咨询</h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: 36 }}>3分钟问诊，精准推荐最优补助金方案。完全免费，无任何购买义务。</p>
-          <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 10, fontSize: 16, fontWeight: 700, boxShadow: "0 8px 32px rgba(83,58,253,0.35), 0 2px 8px rgba(0,0,0,0.15)" }}>
+          <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 10, fontSize: 16, fontWeight: 700, boxShadow: "0 8px 32px rgba(30,64,175,0.35), 0 2px 8px rgba(0,0,0,0.15)" }}>
             申请免费咨询
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>

@@ -13,7 +13,7 @@ export default function WechatFloat() {
     <Link
       href="/contact"
       aria-label="微信咨询 pr2024188"
-      className="fixed right-6 bottom-6 z-[999] flex items-center bg-[#533afd] rounded-[28px] h-14 px-4 cursor-pointer shadow-[0_4px_20px_rgba(83,58,253,0.4)] text-white overflow-hidden hover:shadow-[0_8px_28px_rgba(83,58,253,0.55)] transition-shadow group"
+      className="fixed right-6 bottom-6 z-[999] flex items-center bg-[#1e40af] rounded-[28px] h-14 px-4 cursor-pointer shadow-[0_4px_20px_rgba(30,64,175,0.4)] text-white overflow-hidden hover:shadow-[0_8px_28px_rgba(30,64,175,0.55)] transition-shadow group"
     >
       <WechatIcon />
       <span className="text-sm font-medium whitespace-nowrap max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[160px] group-hover:ml-2 max-md:max-w-[160px] max-md:ml-2">

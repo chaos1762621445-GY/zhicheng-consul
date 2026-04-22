@@ -2,21 +2,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const IconBriefcase = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="7" width="20" height="14" rx="2"/>
     <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-    <line x1="12" y1="12" x2="12" y2="12.01"/>
   </svg>
 );
 const IconYen = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-    <path d="M2 17l10 5 10-5"/>
-    <path d="M2 12l10 5 10-5"/>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 3l5 8 5-8"/><path d="M7 13h10"/><path d="M7 17h10"/><path d="M12 11v10"/>
   </svg>
 );
 const IconBadge = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="8" r="6"/>
     <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
   </svg>
@@ -45,14 +42,13 @@ function CountUp({ endVal, prefix, suffix, started }: { endVal: number; prefix: 
   useEffect(() => {
     if (!started || startedRef.current) return;
     startedRef.current = true;
-    const duration = 1600;
+    const duration = 1800;
     const startTime = performance.now();
     const isDecimal = endVal % 1 !== 0;
 
     const animate = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutExpo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const current = eased * endVal;
       setDisplay(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
@@ -68,7 +64,7 @@ function CountUp({ endVal, prefix, suffix, started }: { endVal: number; prefix: 
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [started, endVal]);
 
-  const formatted = endVal % 1 !== 0 ? display.toFixed(1) : display.toString();
+  const formatted = endVal % 1 !== 0 ? display.toFixed(1) : display.toLocaleString('en-US');
   return <>{prefix}{formatted}{suffix}</>;
 }
 
@@ -89,58 +85,30 @@ export default function StatsSection() {
   }, [started]);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        position: 'relative',
-        background: 'var(--ink)',
-        padding: '72px 0',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Radial gradient decorations */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 60% 80% at 10% 50%, rgba(83,58,253,0.18) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 90% 50%, rgba(139,92,246,0.12) 0%, transparent 55%)',
-      }} />
-
-      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+    <section ref={sectionRef} className="stats-wrap">
+      <div className="wrap">
         <div className="stats-grid">
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className="stats-item"
-              style={{
-                textAlign: 'center',
-                padding: '0 40px',
-                borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-              }}
-            >
-              {/* Icon */}
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                width: 52, height: 52, borderRadius: 14,
-                background: 'rgba(255,255,255,0.08)',
-                marginBottom: 20,
-              }}>
+            <div key={i} className="stats-item">
+              <div className="icon-circle-lg" style={{ margin: '0 auto 24px' }}>
                 <s.Icon />
               </div>
 
-              {/* Number */}
               <div style={{
-                fontSize: 'clamp(52px,7vw,80px)',
+                fontSize: 'clamp(56px, 7.5vw, 84px)',
                 fontWeight: 800,
-                color: '#fff',
-                letterSpacing: '-2px',
+                color: 'var(--gold)',
+                letterSpacing: '-2.5px',
                 lineHeight: 1,
                 fontVariantNumeric: 'tabular-nums',
-                marginBottom: 10,
+                marginBottom: 14,
+                textShadow: '0 1px 0 rgba(255,255,255,0.8)',
               }}>
                 <CountUp endVal={s.endVal} prefix={s.prefix} suffix={s.suffix} started={started} />
               </div>
 
-              <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{s.label}</div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>{s.desc}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 8 }}>{s.label}</div>
+              <div style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>{s.desc}</div>
             </div>
           ))}
         </div>

@@ -21,7 +21,7 @@ export default function ContactPage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
         <div className="page-wrap">
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>免费咨询</div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16, maxWidth: 560 }}>

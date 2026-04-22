@@ -106,7 +106,7 @@ export default function CasesPage() {
       <NavClient />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0 72px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0 72px" }}>
         <div className="page-wrap">
           <div className="label-tag" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>Success Cases · 成功案例</div>
           <h1 style={{ fontSize: "clamp(32px,5vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.5px", marginBottom: 16 }}>
@@ -123,7 +123,7 @@ export default function CasesPage() {
         <div className="page-wrap" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
           {stats.map((s) => (
             <div key={s.label} style={{ textAlign: "center", padding: "16px" }}>
-              <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#533afd", letterSpacing: "-1px", lineHeight: 1 }}>{s.num}</div>
+              <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#1e40af", letterSpacing: "-1px", lineHeight: 1 }}>{s.num}</div>
               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 8 }}>{s.label}</div>
             </div>
           ))}
@@ -155,14 +155,14 @@ export default function CasesPage() {
                     <div style={{ fontSize: 15, fontWeight: 600, color: "#0f172a", marginTop: 8, lineHeight: 1.4 }}>{c.company}</div>
                   </div>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
-                    <div style={{ fontSize: 28, fontWeight: 700, color: "#533afd", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
+                    <div style={{ fontSize: 28, fontWeight: 700, color: "#1e40af", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
                     <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>获批金额</div>
                   </div>
                 </div>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#533afd", flexShrink: 0 }} />
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#1e40af", flexShrink: 0 }} />
                     <span>{c.subsidy}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>
@@ -174,7 +174,7 @@ export default function CasesPage() {
                 <hr style={{ border: "none", borderTop: "1px solid #e2e8f0", margin: "16px 0" }} />
 
                 <div style={{ fontSize: 13, color: "#475569", lineHeight: 1.8, paddingLeft: 12, borderLeft: "2px solid #e2e8f0" }}>
-                  <span style={{ fontSize: 20, color: "rgba(83,58,253,0.3)", lineHeight: 1, display: "block", marginBottom: 6 }}>"</span>
+                  <span style={{ fontSize: 20, color: "rgba(30,64,175,0.3)", lineHeight: 1, display: "block", marginBottom: 6 }}>"</span>
                   {c.quote}
                 </div>
               </div>
@@ -188,13 +188,13 @@ export default function CasesPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #533afd 0%, #312ea8 100%)", padding: "80px 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)", padding: "80px 0", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "inline-block", fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 14 }}>下一步</div>
           <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.5px", marginBottom: 16, lineHeight: 1.15 }}>您的企业也能获得补助金</h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", marginBottom: 40, lineHeight: 1.75 }}>免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#533afd", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1e40af", padding: "14px 32px", borderRadius: 8, fontWeight: 700, fontSize: 15, textDecoration: "none" }}>
               立即免费咨询
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>

@@ -163,28 +163,25 @@ export default async function HomePage() {
       )}
 
       {/* ── CTA ── */}
-      <section style={{ position: 'relative', background: '#0c1525', padding: '88px 0', textAlign: 'center', overflow: 'hidden' }}>
-        {/* Orb decorations */}
-        <div className="hero-orb" style={{ width: 500, height: 500, background: 'rgba(83,58,253,0.18)', top: -150, right: -80, filter: 'blur(80px)' }} />
-        <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(139,92,246,0.12)', bottom: -100, left: -60, filter: 'blur(60px)' }} />
-        <div className="wrap" style={{ maxWidth: 580, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <section style={{ position: 'relative', padding: '96px 0', textAlign: 'center', overflow: 'hidden', background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%)', borderTop: '1px solid var(--line)' }}>
+        <div className="hero-orb" style={{ width: 480, height: 480, background: 'rgba(30,64,175,0.08)', top: -140, right: -80 }} />
+        <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -100, left: -60, filter: 'blur(70px)' }} />
+        <div className="wrap" style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <Reveal>
-            <h2 className="gradient-text" style={{ fontSize: 'clamp(26px,4vw,42px)', fontWeight: 800, lineHeight: 1.2, marginBottom: 18, letterSpacing: '-.3px' }}>
-              不确定能申请哪些？<br />免费诊断，当日回复
+            <div className="eyebrow" style={{ margin: '0 auto 20px' }}>免费诊断</div>
+            <h2 className="h2" style={{ marginBottom: 18 }}>
+              不确定能申请哪些？<br />
+              <span style={{ color: 'var(--brand)' }}>免费诊断，当日回复</span>
             </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,.7)', lineHeight: 1.75, marginBottom: 36 }}>
+            <p style={{ fontSize: 17, color: 'var(--body)', lineHeight: 1.75, marginBottom: 36, maxWidth: 520, margin: '0 auto 36px' }}>
               专家团队为您精准匹配最优补助金方案，完全免费，无任何购买义务。
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                href="/contact"
-                className="btn btn-white"
-                style={{ boxShadow: '0 8px 32px rgba(83,58,253,0.35), 0 2px 8px rgba(0,0,0,0.15)' }}
-              >
+              <Link href="/contact" className="btn btn-fill">
                 立即免费诊断
                 <ArrowIcon />
               </Link>
-              <Link href="/subsidies" className="btn btn-outline-white">
+              <Link href="/subsidies" className="btn btn-ghost">
                 查看补助金种类
               </Link>
             </div>

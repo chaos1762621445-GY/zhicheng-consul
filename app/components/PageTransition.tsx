@@ -11,7 +11,7 @@ export default function PageTransition() {
       animate={{ y: '-100%' }}
       transition={{ duration: 0.6, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={() => setDone(true)}
-      className="fixed inset-0 bg-[#533afd] z-[9999] pointer-events-none"
+      className="fixed inset-0 bg-[#1e40af] z-[9999] pointer-events-none"
     />
   );
 }

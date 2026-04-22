@@ -72,7 +72,7 @@ export default function ServicesSection() {
                   borderLeft: '3px solid transparent',
                   transition: 'box-shadow .25s ease, transform .22s ease, border-color .22s ease, border-left-color .22s ease',
                 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = '#533afd'; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = 'var(--brand)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = 'transparent'; }}
               >
                 {/* Top row */}
@@ -82,7 +82,7 @@ export default function ServicesSection() {
                 </div>
 
                 <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 6 }}>{s.name}</div>
-                <div className="gradient-text" style={{ fontSize: 26, fontWeight: 800, letterSpacing: '-0.5px', marginBottom: 4, fontVariantNumeric: 'tabular-nums' }}>{s.amount}</div>
+                <div className="amount" style={{ fontSize: 28, marginBottom: 4 }}>{s.amount}</div>
                 <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 16 }}>{s.rate}</div>
                 <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.7, flex: 1 }}>{s.desc}</p>
 
