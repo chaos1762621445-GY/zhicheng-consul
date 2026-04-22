@@ -6,7 +6,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section style={{ background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', padding: '48px 0' }}>
+    <section style={{ background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', padding: '56px 0' }}>
       <div className="page-wrap">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0 }}>
           {stats.map((s, i) => (
