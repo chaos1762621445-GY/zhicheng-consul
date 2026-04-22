@@ -3,9 +3,14 @@ import { useRef, useState, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 
 function useCounter(end: number, duration: number, active: boolean) {
-  const [value, setValue] = useState(0);
+  // Start at end value so SSR/static screenshots show correct numbers
+  const [value, setValue] = useState(end);
+  const [started, setStarted] = useState(false);
+
   useEffect(() => {
-    if (!active) return;
+    if (!active || started) return;
+    setStarted(true);
+    setValue(0);
     const startTime = performance.now();
     let rafId: number;
     const tick = (now: number) => {
@@ -13,10 +18,12 @@ function useCounter(end: number, duration: number, active: boolean) {
       const eased = 1 - Math.pow(1 - elapsed, 3);
       setValue(Math.round(eased * end));
       if (elapsed < 1) rafId = requestAnimationFrame(tick);
+      else setValue(end);
     };
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [active, end, duration]);
+  }, [active]);
+
   return value;
 }
 
