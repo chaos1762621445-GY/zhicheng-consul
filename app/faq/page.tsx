@@ -1,20 +1,17 @@
+'use client';
 import Link from "next/link";
 import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
-
-export const metadata: Metadata = {
-  title: "常见问题",
-  description: "在日华人补助金申请常见问题解答——申请资格、费用、流程、材料等全面解答，助您轻松了解日本政府补助金申请。",
-};
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { HelpCircleIcon } from "lucide-react";
 
 type FaqItem = { q: string; a: string };
-type FaqCategory = { title: string; icon: string; items: FaqItem[] };
+type FaqCategory = { title: string; items: FaqItem[] };
 
 const faqCategories: FaqCategory[] = [
   {
     title: "申请资格类",
-    icon: "✦",
     items: [
       {
         q: "我是外国人（中国籍），在日本经营公司，可以申请日本政府补助金吗？",
@@ -40,7 +37,6 @@ const faqCategories: FaqCategory[] = [
   },
   {
     title: "费用类",
-    icon: "◈",
     items: [
       {
         q: "委托志成コンサル申请，需要支付多少费用？",
@@ -58,7 +54,6 @@ const faqCategories: FaqCategory[] = [
   },
   {
     title: "流程类",
-    icon: "◇",
     items: [
       {
         q: "从咨询到最终拿到补助金，大概需要多长时间？",
@@ -80,7 +75,6 @@ const faqCategories: FaqCategory[] = [
   },
   {
     title: "材料类",
-    icon: "◉",
     items: [
       {
         q: "申请补助金需要准备哪些基本材料？",
@@ -98,7 +92,6 @@ const faqCategories: FaqCategory[] = [
   },
   {
     title: "其他问题",
-    icon: "◎",
     items: [
       {
         q: "可以同时申请多个补助金吗？",
@@ -119,185 +112,83 @@ const faqCategories: FaqCategory[] = [
 export default function FaqPage() {
   return (
     <main>
-      <style>{`
-        .faq-hero {
-          background: var(--dark);
-          padding: 88px 0 72px;
-          position: relative;
-          overflow: hidden;
-        }
-        .faq-hero::before {
-          content: '';
-          position: absolute;
-          top: -120px; right: -80px;
-          width: 480px; height: 480px;
-          background: radial-gradient(ellipse, rgba(83,58,253,0.28) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .faq-hero::after {
-          content: '';
-          position: absolute;
-          bottom: -80px; left: 10%;
-          width: 500px; height: 250px;
-          background: radial-gradient(ellipse, rgba(234,34,97,0.22) 0%, rgba(249,107,238,0.12) 50%, transparent 70%);
-          filter: blur(30px);
-          pointer-events: none;
-        }
-        .faq-hero-inner {
-          max-width: 1200px; margin: 0 auto; padding: 0 48px;
-          position: relative; z-index: 1;
-        }
-        .faq-hero-label {
-          display: inline-block;
-          font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.55);
-          text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;
-          border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
-          padding: 4px 12px;
-        }
-        .faq-hero-title {
-          font-size: clamp(32px, 4.5vw, 52px); font-weight: 300; color: #ffffff;
-          letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px;
-        }
-        .faq-hero-desc {
-          font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.7);
-          line-height: 1.75; max-width: 560px;
-        }
-
-        .faq-section {
-          background: #ffffff;
-          padding: 80px 0;
-        }
-        .faq-category {
-          margin-bottom: 56px;
-        }
-        .faq-category:last-child { margin-bottom: 0; }
-        .faq-category-header {
-          display: flex; align-items: center; gap: 12px;
-          margin-bottom: 20px;
-          padding-bottom: 16px;
-          border-bottom: 1px solid var(--border);
-        }
-        .faq-category-icon {
-          width: 32px; height: 32px;
-          background: var(--primary);
-          border-radius: 6px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 14px; color: #ffffff; flex-shrink: 0;
-        }
-        .faq-category-title {
-          font-size: 18px; font-weight: 500; color: var(--heading);
-        }
-
-        details.faq-item {
-          border: 1px solid var(--border);
-          border-radius: 6px;
-          margin-bottom: 10px;
-          background: #ffffff;
-          transition: box-shadow 0.2s;
-          overflow: hidden;
-        }
-        details.faq-item[open] {
-          box-shadow: 0 4px 20px rgba(83,58,253,0.08);
-          border-color: var(--primary-light);
-        }
-        details.faq-item summary {
-          list-style: none;
-          cursor: pointer;
-          padding: 20px 24px;
-          display: flex; align-items: center; justify-content: space-between; gap: 16px;
-          font-size: 15px; font-weight: 500; color: var(--heading);
-          line-height: 1.5;
-          user-select: none;
-          -webkit-user-select: none;
-        }
-        details.faq-item summary::-webkit-details-marker { display: none; }
-        details.faq-item summary::after {
-          content: '+';
-          flex-shrink: 0;
-          width: 24px; height: 24px;
-          border-radius: 50%;
-          background: var(--bg-outer);
-          border: 1px solid var(--border);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 16px; font-weight: 300; color: var(--primary);
-          line-height: 24px; text-align: center;
-          transition: transform 0.2s, background 0.2s;
-        }
-        details.faq-item[open] summary::after {
-          content: '−';
-          background: var(--primary);
-          border-color: var(--primary);
-          color: #ffffff;
-        }
-        .faq-answer {
-          padding: 0 24px 20px 24px;
-          font-size: 14px; font-weight: 300; color: var(--body);
-          line-height: 1.8;
-          border-top: 1px solid var(--border);
-          padding-top: 16px;
-        }
-
-        @media (max-width: 900px) {
-          .faq-hero { padding: 64px 0 48px; }
-          .faq-hero-inner { padding: 0 20px; }
-          .faq-hero-desc { font-size: 16px; }
-          .faq-section { padding: 56px 0; }
-          details.faq-item summary { padding: 16px 18px; font-size: 14px; }
-          .faq-answer { padding: 0 18px 16px; padding-top: 14px; }
-        }
-      `}</style>
-
       <NavClient />
 
       {/* Hero */}
-      <div className="faq-hero">
-        <div className="faq-hero-inner">
-          <div className="faq-hero-label">FAQ · 常见问题</div>
-          <h1 className="faq-hero-title">补助金申请<br />常见问题解答</h1>
-          <p className="faq-hero-desc">汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。</p>
+      <div className="bg-[#1c1e54] py-[88px] relative overflow-hidden">
+        <div className="absolute top-[-120px] right-[-80px] w-[480px] h-[480px] rounded-full bg-[radial-gradient(ellipse,rgba(83,58,253,0.28)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-[-80px] left-[10%] w-[500px] h-[250px] bg-[radial-gradient(ellipse,rgba(234,34,97,0.22)_0%,rgba(249,107,238,0.12)_50%,transparent_70%)] blur-[30px] pointer-events-none" />
+        <div className="section-inner relative z-10">
+          <div className="inline-block text-[11px] font-light text-white/55 uppercase tracking-[2px] mb-5 border border-white/15 rounded px-3 py-1">
+            FAQ · 常见问题
+          </div>
+          <h1 className="text-[clamp(32px,4.5vw,52px)] font-light text-white tracking-[-0.5px] leading-[1.15] mb-4">
+            补助金申请<br />常见问题解答
+          </h1>
+          <p className="text-lg font-light text-white/70 leading-[1.75] max-w-[560px]">
+            汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。
+          </p>
         </div>
       </div>
 
       {/* FAQ Content */}
-      <section className="faq-section">
+      <section className="section-std bg-white">
         <div className="section-inner">
-          {/* Category nav — horizontal scroll on mobile */}
-          <nav className="faq-cat-nav" aria-label="问题分类">
+          {/* Category nav */}
+          <nav className="flex gap-2 mb-10 flex-wrap" aria-label="问题分类">
             {faqCategories.map((cat) => (
-              <a key={cat.title} href={`#faq-${cat.title}`} className="faq-cat-nav-link">
+              <a
+                key={cat.title}
+                href={`#faq-${cat.title}`}
+                className="inline-flex items-center px-4 py-2 rounded-full text-[13px] text-[#273951] bg-[#f6f9fc] border border-gray-200 whitespace-nowrap min-h-[36px] hover:bg-[#533afd] hover:text-white hover:border-[#533afd] transition-all"
+              >
                 {cat.title}
               </a>
             ))}
           </nav>
+
           {faqCategories.map((cat) => (
-            <div key={cat.title} id={`faq-${cat.title}`} className="faq-category">
-              <div className="faq-category-header">
-                <div className="faq-category-icon">{cat.icon}</div>
-                <div className="faq-category-title">{cat.title}</div>
+            <div key={cat.title} id={`faq-${cat.title}`} className="mb-14 last:mb-0">
+              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-200">
+                <div className="w-8 h-8 bg-[#533afd] rounded-md flex items-center justify-center flex-shrink-0">
+                  <HelpCircleIcon className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-lg font-medium text-[#061b31]">{cat.title}</div>
               </div>
-              {cat.items.map((item, i) => (
-                <details key={i} className="faq-item">
-                  <summary>{item.q}</summary>
-                  <div className="faq-answer">{item.a}</div>
-                </details>
-              ))}
+              <Accordion multiple className="gap-2.5">
+                {cat.items.map((item, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`${cat.title}-${i}`}
+                    className="border border-gray-200 rounded-md overflow-hidden mb-2.5 not-last:border-b"
+                  >
+                    <AccordionTrigger className="px-6 py-5 text-[15px] font-medium text-[#061b31] leading-snug hover:no-underline">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="px-6 pb-5 text-sm text-[#64748d] leading-[1.8] border-t border-gray-100">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta-section">
-        <div className="cta-inner">
-          <div className="section-label" style={{color:"rgba(255,255,255,0.55)"}}>还有疑问？</div>
-          <h2 className="cta-title">没找到您想要的答案？</h2>
-          <p className="cta-desc">直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。</p>
-          <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-            <Link href="/contact" className="btn-cta-white">
+      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
+        <div className="relative z-10 max-w-[640px] mx-auto px-6">
+          <div className="inline-block text-[11px] font-medium text-white/55 uppercase tracking-[1.5px] mb-3.5">还有疑问？</div>
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">没找到您想要的答案？</h2>
+          <p className="text-lg text-white/85 mb-10 leading-[1.75]">直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。</p>
+          <div className="flex gap-3 justify-center flex-wrap">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
               免费咨询顾问
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <Link href="/cases" className="btn-cta-ghost">查看成功案例</Link>
+            <Link href="/cases" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/40 px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-colors">
+              查看成功案例
+            </Link>
           </div>
         </div>
       </section>

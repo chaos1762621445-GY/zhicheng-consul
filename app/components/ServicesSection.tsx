@@ -1,58 +1,11 @@
-'use client';
 import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-
-const IconDoc = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-    <line x1="16" y1="13" x2="8" y2="13"/>
-    <line x1="16" y1="17" x2="8" y2="17"/>
-  </svg>
-);
-const IconRobot = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <rect x="3" y="11" width="18" height="10" rx="2"/>
-    <path d="M12 3v8M8 3h8M5 21v-2M19 21v-2"/>
-    <circle cx="9" cy="15" r="1" fill="#533afd"/>
-    <circle cx="15" cy="15" r="1" fill="#533afd"/>
-  </svg>
-);
-const IconUsers = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-  </svg>
-);
-const IconGraduate = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-  </svg>
-);
-const IconSnow = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <line x1="12" y1="2" x2="12" y2="22"/>
-    <path d="M17 7l-5-5-5 5M17 17l-5 5-5-5M2 12l5-5-5 5 5 5M22 12l-5-5 5 5-5 5"/>
-  </svg>
-);
-const IconHandshake = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:24,height:24}}>
-    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
-  </svg>
-);
-const IconArrowRight = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}}>
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-);
+import { FileTextIcon, BotIcon, UsersIcon, GraduationCapIcon, SnowflakeIcon, HeartHandshakeIcon, ArrowRightIcon } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const services = [
   {
-    icon: <IconDoc />,
+    Icon: FileTextIcon,
     badge: '整体上限极高',
     name: '省力化补助金',
     amount: '最高1,500万円',
@@ -61,7 +14,7 @@ const services = [
     slug: 'seiryoka',
   },
   {
-    icon: <IconRobot />,
+    Icon: BotIcon,
     badge: '个人也能申请',
     name: 'AI导入补助金',
     amount: '最高350万円',
@@ -70,7 +23,7 @@ const services = [
     slug: 'ai-it',
   },
   {
-    icon: <IconUsers />,
+    Icon: UsersIcon,
     badge: '员工转正有补贴',
     name: '员工转正助成金',
     amount: '最高80万円/人',
@@ -79,7 +32,7 @@ const services = [
     slug: 'career-up',
   },
   {
-    icon: <IconGraduate />,
+    Icon: GraduationCapIcon,
     badge: '员工培训有补贴',
     name: '员工培训助成金',
     amount: '最高1亿円',
@@ -88,7 +41,7 @@ const services = [
     slug: 'training',
   },
   {
-    icon: <IconSnow />,
+    Icon: SnowflakeIcon,
     badge: '以旧换新省大钱',
     name: '空调省能更新补助',
     amount: '最高1,000万円',
@@ -97,7 +50,7 @@ const services = [
     slug: 'aircon',
   },
   {
-    icon: <IconHandshake />,
+    Icon: HeartHandshakeIcon,
     badge: '推荐客户得分成',
     name: '代理合作',
     amount: '60% 分成',
@@ -107,67 +60,43 @@ const services = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  },
-};
-
 export default function ServicesSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section className="section-std" style={{ background: '#ffffff' }}>
-      <div className="section-inner" ref={ref}>
-        <motion.div
-          style={{ maxWidth: 600, marginBottom: 56 }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="section-label">你能申请什么</div>
-          <h2 className="section-title">主要补助金种类</h2>
-          <p className="section-desc">以下是在日华人企业最常申请的补助金，我们为你全程操办。</p>
-        </motion.div>
-
-        <motion.div
-          className="service-grid"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {services.map((s, i) => (
-            <motion.div
+    <section className="section-std bg-white">
+      <div className="section-inner">
+        <div className="max-w-[600px] mb-14">
+          <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">你能申请什么</div>
+          <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">主要补助金种类</h2>
+          <p className="text-base text-[#64748d] leading-7">以下是在日华人企业最常申请的补助金，我们为你全程操办。</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {services.map(({ Icon, badge, name, amount, rate, desc, slug }, i) => (
+            <Card
               key={i}
-              className="service-card"
-              variants={cardVariants}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="border-l-[3px] border-l-transparent hover:border-l-[#533afd] hover:shadow-2xl transition-all duration-300 rounded-lg"
             >
-              <div className="service-icon-wrap">{s.icon}</div>
-              <div className="service-badge">{s.badge}</div>
-              <div className="service-name">{s.name}</div>
-              <div className="service-amount">{s.amount}</div>
-              <div className="service-rate">{s.rate}</div>
-              <p className="service-desc">{s.desc}</p>
-              {s.slug && (
-                <Link href={`/subsidies/${s.slug}`} className="service-link">
-                  查看详情
-                  <span className="service-link-arrow"><IconArrowRight /></span>
-                </Link>
-              )}
-              <div style={{marginTop:12,paddingTop:10,borderTop:'1px solid var(--border)',fontSize:12,color:'var(--body)'}}>→ 微信咨询：pr2024188</div>
-            </motion.div>
+              <CardContent className="p-7">
+                <div className="w-[52px] h-[52px] bg-[rgba(83,58,253,0.08)] rounded-full flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-[#533afd]" strokeWidth={1.8} />
+                </div>
+                <Badge className="mb-2.5 text-[10px] font-normal bg-[rgba(21,190,83,0.1)] text-[#108c3d] border border-[rgba(21,190,83,0.25)] hover:bg-[rgba(21,190,83,0.1)]">
+                  {badge}
+                </Badge>
+                <div className="text-[17px] font-semibold text-[#061b31] mb-2">{name}</div>
+                <div className="text-[28px] font-light text-[#533afd] tracking-[-0.5px] leading-none mb-1 tabular-nums">{amount}</div>
+                <div className="text-xs text-[#64748d] mb-3.5">{rate}</div>
+                <p className="text-sm text-[#64748d] leading-7">{desc}</p>
+                {slug && (
+                  <Link href={`/subsidies/${slug}`} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#533afd] mt-3.5 group">
+                    查看详情
+                    <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                )}
+                <div className="mt-3 pt-2.5 border-t border-gray-100 text-xs text-[#64748d]">→ 微信咨询：pr2024188</div>
+              </CardContent>
+            </Card>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

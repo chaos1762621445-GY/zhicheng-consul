@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, Geist } from "next/font/google";
 import "./globals.css";
-import SplashScreen from "./components/SplashScreen";
 import WechatFloat from "./components/WechatFloat";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +28,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN" className={cn("font-sans", geist.variable)}>
       <body>
-        <SplashScreen />
         {children}
         <WechatFloat />
       </body>

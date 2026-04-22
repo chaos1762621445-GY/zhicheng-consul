@@ -4,17 +4,10 @@ import NavClient from "./components/NavClient";
 import HeroSection from "./components/HeroSection";
 import StatsSection from "./components/StatsSection";
 import ServicesSection from "./components/ServicesSection";
+import Footer from "./components/Footer";
 import MotionSection from "./components/MotionSection";
+import { ChevronRightIcon } from "lucide-react";
 
-// ─── Icons (credentials / feature / shared) ───────────────────────────────────
-
-const IconChevron = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:12,height:12}}>
-    <path d="M9 18l6-6-6-6"/>
-  </svg>
-);
-
-// Credential icons 32px
 const CIconDoc = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:32,height:32}}>
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -45,7 +38,6 @@ const CIconAward = () => (
   </svg>
 );
 
-// Why Us feature icons 20px
 const FIconGlobe = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#533afd" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}>
     <circle cx="12" cy="12" r="10"/>
@@ -71,70 +63,6 @@ const FIconTrophy = () => (
   </svg>
 );
 
-// ─── Nav ─────────────────────────────────────────────────────────────────────
-const Nav = () => <NavClient />;
-
-// ─── Footer ───────────────────────────────────────────────────────────────────
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-inner">
-      <div>
-        <img src="/logo.png" alt="志成コンサル" style={{height:36,display:'block',filter:'brightness(10)'}} />
-        <p className="footer-brand-desc">
-          专为在日华人企业主提供日本政府补助金申请代办服务。
-          行政书士·社会保险劳务士·税理士·中小企业诊断士联合专业团队，全程中文无障碍。
-        </p>
-      </div>
-
-      <div>
-        <div className="footer-col-title">快速导航</div>
-        <div className="footer-links">
-          {[
-            {href:'/subsidies',label:'补助金种类'},
-            {href:'/service',label:'服务流程'},
-            {href:'/blog',label:'知识库'},
-            {href:'/contact',label:'免费咨询'},
-          ].map(l => (
-            <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <div className="footer-col-title">联系我们</div>
-        <div className="footer-contact-row">
-          <strong className="footer-contact-label">微信：</strong>
-          <span>pr2024188</span>
-        </div>
-        <div className="footer-contact-row">
-          <strong className="footer-contact-label">电话：</strong>
-          <span>03-6265-9756</span>
-        </div>
-        <div className="footer-contact-row">
-          <strong className="footer-contact-label">邮箱：</strong>
-          <span>knakano.sekiyoshi@gmail.com</span>
-        </div>
-        <div className="footer-contact-row" style={{flexDirection:'column',gap:2}}>
-          <strong className="footer-contact-label">地址：</strong>
-          <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
-        </div>
-        <div style={{marginTop:20,background:'rgba(255,255,255,0.08)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:6,padding:12,display:'inline-block'}}>
-          <p style={{fontSize:11,color:'rgba(255,255,255,0.5)',textAlign:'center',marginBottom:8,fontWeight:400,letterSpacing:'0.5px',textTransform:'uppercase'}}>微信扫码</p>
-          <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:160,height:160,display:'block',borderRadius:4,background:'#fff',padding:6}} />
-        </div>
-      </div>
-    </div>
-
-    <div className="footer-copy">
-      <div className="footer-copy-inner">
-        <span className="footer-copy-text">© 2026 株式会社志成コンサル 保留所有权利。</span>
-        <span className="footer-copy-text">行政书士·社会保险劳务士·税理士·中小企业诊断士</span>
-      </div>
-    </div>
-  </footer>
-);
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function HomePage() {
   const posts = await getAllPosts();
   const recentPosts = posts.slice(0, 3);
@@ -164,35 +92,29 @@ export default async function HomePage() {
 
   return (
     <main>
-      <Nav />
-
-      {/* ── HERO (client component with sequenced animation) ── */}
+      <NavClient />
       <HeroSection />
-
-      {/* ── STATS (client component with CountUp) ── */}
       <StatsSection />
-
-      {/* ── SERVICES (client component with stagger cards) ── */}
       <ServicesSection />
 
-      {/* ── CREDENTIALS ── */}
-      <section className="credentials-section">
+      {/* Credentials */}
+      <section className="bg-[#F8FAFC] section-std">
         <div className="section-inner">
-          <MotionSection style={{textAlign:'center',maxWidth:700,margin:'0 auto 48px'}}>
-            <div className="section-label">为什么放心交给我们</div>
-            <h2 className="section-title">持牌专家团队，你不用懂日语</h2>
-            <p className="section-desc" style={{maxWidth:560,margin:'0 auto'}}>
+          <MotionSection style={{textAlign:'center', maxWidth:700, margin:'0 auto 48px'}}>
+            <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">为什么放心交给我们</div>
+            <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">持牌专家团队，你不用懂日语</h2>
+            <p className="text-base text-[#64748d] leading-7 max-w-[560px] mx-auto">
               四类国家认证资格持有者分工合作，从材料准备到递交审核，你只需要配合提供资料，其他全交给我们。
             </p>
           </MotionSection>
-          <div className="credentials-grid">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {credentials.map((c, i) => (
               <MotionSection key={i} delay={i * 0.08}>
-                <div className="credential-card">
-                  <div className="credential-icon">{c.icon}</div>
-                  <div className="credential-role">{c.role}</div>
-                  <div className="credential-name">{c.name}</div>
-                  <p className="credential-desc">{c.desc}</p>
+                <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                  <div className="mb-4 flex justify-center">{c.icon}</div>
+                  <div className="text-lg font-semibold text-[#0F172A] mb-2">{c.role}</div>
+                  <div className="text-xs font-medium text-[#2563EB] bg-blue-50 px-3 py-0.5 rounded-full mb-3 inline-block">{c.name}</div>
+                  <p className="text-[13px] text-[#64748B] leading-[1.65] mt-2">{c.desc}</p>
                 </div>
               </MotionSection>
             ))}
@@ -200,31 +122,33 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── WHY US ── */}
-      <section className="section-std" style={{background: '#ffffff'}}>
+      {/* Why Us */}
+      <section className="section-std bg-white">
         <div className="section-inner">
-          <div className="feature-split">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <MotionSection>
-              <div className="feature-img-wrap">
+              <div className="rounded-xl overflow-hidden shadow-2xl min-h-[460px] hidden md:block">
                 <img
                   src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640&q=80"
                   alt="志成コンサル专业团队"
-                  className="feature-img"
+                  className="w-full h-full min-h-[460px] object-cover block"
                 />
               </div>
             </MotionSection>
             <div>
               <MotionSection>
-                <div className="section-label">选择我们的理由</div>
-                <h2 className="section-title">我们和其他中介有什么不同</h2>
+                <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">选择我们的理由</div>
+                <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">我们和其他中介有什么不同</h2>
               </MotionSection>
-              <div className="feature-list">
+              <div className="flex flex-col">
                 {whyUs.map((item, i) => (
-                  <MotionSection key={i} delay={i * 0.08} className="feature-item">
-                    <div className="feature-icon-circle">{item.icon}</div>
+                  <MotionSection key={i} delay={i * 0.08} className="flex gap-4 items-start mb-7">
+                    <div className="flex-shrink-0 w-11 h-11 bg-[rgba(83,58,253,0.05)] rounded-full flex items-center justify-center">
+                      {item.icon}
+                    </div>
                     <div>
-                      <div className="feature-title">{item.title}</div>
-                      <p className="feature-desc">{item.desc}</p>
+                      <div className="text-base font-semibold text-[#061b31] mb-1.5">{item.title}</div>
+                      <p className="text-sm text-[#64748d] leading-7">{item.desc}</p>
                     </div>
                   </MotionSection>
                 ))}
@@ -234,21 +158,21 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── PROCESS ── */}
-      <section className="section-std" style={{background: '#F8FAFC'}}>
+      {/* Process */}
+      <section className="section-std bg-[#F8FAFC]">
         <div className="section-inner">
-          <MotionSection style={{maxWidth:520,marginBottom:56}}>
-            <div className="section-label">申请流程</div>
-            <h2 className="section-title">申请流程很简单</h2>
-            <p className="section-desc">整个过程你需要做的很少，主要是配合提供资料，其他全程由我们处理。</p>
+          <MotionSection style={{maxWidth:520, marginBottom:56}}>
+            <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">申请流程</div>
+            <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">申请流程很简单</h2>
+            <p className="text-base text-[#64748d] leading-7">整个过程你需要做的很少，主要是配合提供资料，其他全程由我们处理。</p>
           </MotionSection>
-          <div className="process-grid">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((s, i) => (
               <MotionSection key={i} delay={i * 0.07}>
-                <div className="process-card">
-                  <div className="process-step-label">{s.step}</div>
-                  <div className="process-step-title">{s.title}</div>
-                  <p className="process-step-desc">{s.desc}</p>
+                <div className="bg-white border-l-[3px] border-l-[#533afd] border border-gray-200 rounded-lg p-7 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                  <div className="inline-flex items-center justify-center bg-[#533afd] text-white rounded px-2.5 py-1 text-xs font-medium mb-3.5">{s.step}</div>
+                  <div className="text-[17px] font-semibold text-[#061b31] mb-2.5">{s.title}</div>
+                  <p className="text-sm text-[#64748d] leading-7">{s.desc}</p>
                 </div>
               </MotionSection>
             ))}
@@ -256,25 +180,25 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── BLOG ── */}
-      <section className="blog-section">
+      {/* Blog */}
+      <section className="bg-[#f6f9fc] section-std">
         <div className="section-inner">
-          <MotionSection style={{maxWidth:560,marginBottom:56}}>
-            <div className="section-label">知识库</div>
-            <h2 className="section-title">最新文章</h2>
-            <p className="section-desc">深度解析日本政府补助金政策，为在日华人企业主提供实用指南。</p>
+          <MotionSection style={{maxWidth:560, marginBottom:56}}>
+            <div className="inline-block text-[11px] font-medium text-[#533afd] uppercase tracking-[1.5px] mb-3.5">知识库</div>
+            <h2 className="text-[clamp(28px,3.5vw,36px)] font-light text-[#061b31] tracking-tight leading-[1.1] mb-4">最新文章</h2>
+            <p className="text-base text-[#64748d] leading-7">深度解析日本政府补助金政策，为在日华人企业主提供实用指南。</p>
           </MotionSection>
           {recentPosts.length > 0 ? (
-            <div className="blog-grid">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {recentPosts.map((post, i) => (
                 <MotionSection key={post.slug} delay={i * 0.08}>
-                  <Link href={`/blog/${post.slug}`} style={{textDecoration:'none',color:'inherit',display:'block'}}>
-                    <div className="blog-card">
-                      <div className="blog-date">{post.date}</div>
-                      <div className="blog-title">{post.title}</div>
-                      <p className="blog-excerpt">{post.excerpt?.slice(0, 80)}...</p>
-                      <div className="blog-more">
-                        阅读更多 <IconChevron />
+                  <Link href={`/blog/${post.slug}`} className="block">
+                    <div className="bg-white border border-gray-200 rounded-lg p-7 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                      <div className="text-xs text-[#64748d] mb-3">{post.date}</div>
+                      <div className="text-base font-semibold text-[#061b31] leading-[1.45] mb-2.5 hover:text-[#533afd] transition-colors">{post.title}</div>
+                      <p className="text-[13px] text-[#64748d] leading-7">{post.excerpt?.slice(0, 80)}...</p>
+                      <div className="inline-flex items-center gap-1.5 text-sm font-medium text-[#533afd] mt-3.5">
+                        阅读更多 <ChevronRightIcon className="w-3 h-3" />
                       </div>
                     </div>
                   </Link>
@@ -282,28 +206,30 @@ export default async function HomePage() {
               ))}
             </div>
           ) : (
-            <div style={{textAlign:'center',padding:'48px 0',color:'var(--body)',fontSize:15}}>
-              文章加载中...
-            </div>
+            <div className="text-center py-12 text-[#64748d] text-[15px]">文章加载中...</div>
           )}
-          <div style={{textAlign:'center',marginTop:40}}>
-            <Link href="/blog" className="btn-ghost">查看全部文章 <IconChevron /></Link>
+          <div className="text-center mt-10">
+            <Link href="/blog" className="inline-flex items-center gap-2 bg-white text-[#533afd] border border-blue-200 px-6 py-3 rounded-md font-medium text-base hover:bg-blue-50 transition-colors">
+              查看全部文章 <ChevronRightIcon className="w-3 h-3" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="cta-section">
-        <div className="cta-inner">
-          <h2 className="cta-title">不知道能拿多少？先问一下没有损失</h2>
-          <p className="cta-desc">
+      {/* CTA */}
+      <section className="bg-[#533afd] py-24 text-center relative overflow-hidden">
+        <div className="relative z-10 max-w-[640px] mx-auto px-6">
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold text-white tracking-tight mb-4 leading-[1.15]">
+            不知道能拿多少？先问一下没有损失
+          </h2>
+          <p className="text-lg text-white/85 mb-10 leading-[1.75]">
             微信联系我们，免费告诉你能申请哪些补助金、大概能拿多少。
           </p>
-          <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap'}}>
-            <Link href="/contact" className="btn-cta-white">
+          <div className="flex gap-3 justify-center flex-wrap">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-[#533afd] px-8 py-3.5 rounded-md font-semibold text-base shadow-md hover:opacity-95 transition-opacity">
               立即免费咨询
             </Link>
-            <Link href="/subsidies" className="btn-cta-ghost">
+            <Link href="/subsidies" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/40 px-8 py-3.5 rounded-md font-medium text-base hover:bg-white/10 transition-colors">
               了解补助金种类
             </Link>
           </div>
