@@ -40,7 +40,6 @@ export default function NavClient() {
     return () => document.removeEventListener('mousedown', h);
   }, []);
 
-  // lock body scroll when mobile menu open
   useEffect(() => {
     if (open) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = '';
@@ -50,21 +49,20 @@ export default function NavClient() {
   return (
     <nav style={{
       position: 'sticky', top: 0, zIndex: 50,
-      background: scrolled ? 'rgba(255,255,255,.88)' : 'rgba(255,255,255,.72)',
-      backdropFilter: 'blur(16px) saturate(180%)',
-      WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-      borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
-      boxShadow: 'none',
-      transition: 'all .22s ease',
+      background: 'rgba(255,255,255,0.85)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      borderBottom: '1px solid rgba(0,0,0,0.08)',
+      transition: 'border-color .2s',
     }}>
-      <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
+      <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
         {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/logo.png" alt="株式会社 志成コンサル" style={{ height: 44, width: 'auto' }} />
+        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.png" alt="株式会社 志成コンサル" style={{ height: 36, width: 'auto' }} />
         </Link>
 
         {/* Desktop nav */}
-        <div ref={ref} className="nav-desktop" style={{ alignItems: 'center', gap: 4 }}>
+        <div ref={ref} className="nav-desktop" style={{ alignItems: 'center', gap: 0 }}>
           {NAV.map(item => (
             <div key={item.href} style={{ position: 'relative' }}>
               {item.children ? (
@@ -72,37 +70,38 @@ export default function NavClient() {
                   <button
                     onClick={() => setDrop(drop === item.label ? null : item.label)}
                     style={{
-                      display: 'flex', alignItems: 'center', gap: 5,
-                      padding: '9px 14px', borderRadius: 8, border: 'none',
+                      display: 'flex', alignItems: 'center', gap: 4,
+                      padding: '6px 12px', border: 'none',
                       background: 'transparent', cursor: 'pointer',
-                      fontSize: 14.5, fontWeight: 500, color: 'var(--ink-2)',
+                      fontSize: 14, fontWeight: 500, color: '#171717',
                       fontFamily: 'inherit',
-                      transition: 'color .15s',
+                      borderRadius: 6,
+                      transition: 'background .1s',
                     }}
-                    onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = 'var(--brand)')}
-                    onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--ink-2)')}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                   >
                     {item.label}
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                      style={{ transition: 'transform .2s', transform: drop === item.label ? 'rotate(180deg)' : 'none' }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                      style={{ opacity: 0.5, transition: 'transform .15s', transform: drop === item.label ? 'rotate(180deg)' : 'none' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
                   {drop === item.label && (
                     <div style={{
-                      position: 'absolute', top: 'calc(100% + 10px)',
+                      position: 'absolute', top: 'calc(100% + 8px)',
                       left: '50%', transform: 'translateX(-50%)',
-                      background: '#fff', border: '1px solid var(--line)',
-                      borderRadius: 14, minWidth: 200,
-                      boxShadow: 'var(--shadow-lg)',
+                      background: '#fff',
+                      borderRadius: 8, minWidth: 180,
+                      boxShadow: 'rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.06) 0px 4px 12px',
                       overflow: 'hidden',
-                      padding: 6,
+                      padding: 4,
                     }}>
                       {item.children.map(c => (
                         <Link key={c.href} href={c.href} onClick={() => setDrop(null)}
-                          style={{ display: 'block', padding: '10px 14px', fontSize: 14, fontWeight: 500, color: 'var(--ink-2)', borderRadius: 8, transition: 'background .12s, color .12s' }}
-                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'var(--surface-2)'; (e.currentTarget as HTMLElement).style.color = 'var(--brand)'; }}
-                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; (e.currentTarget as HTMLElement).style.color = 'var(--ink-2)'; }}
+                          style={{ display: 'block', padding: '9px 12px', fontSize: 13.5, fontWeight: 500, color: '#171717', borderRadius: 6, transition: 'background .1s' }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}
                         >
                           {c.label}
                         </Link>
@@ -111,9 +110,9 @@ export default function NavClient() {
                   )}
                 </>
               ) : (
-                <Link href={item.href} style={{ display: 'block', padding: '9px 14px', borderRadius: 8, fontSize: 14.5, fontWeight: 500, color: 'var(--ink-2)', transition: 'color .15s' }}
-                  onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = 'var(--brand)')}
-                  onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = 'var(--ink-2)')}
+                <Link href={item.href} style={{ display: 'block', padding: '6px 12px', borderRadius: 6, fontSize: 14, fontWeight: 500, color: '#171717', transition: 'background .1s' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
                   {item.label}
                 </Link>
@@ -123,51 +122,61 @@ export default function NavClient() {
         </div>
 
         {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Link href="/contact" className="btn btn-fill nav-cta-desktop" style={{ padding: '10px 20px', fontSize: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Link href="/contact" className="nav-cta-desktop" style={{
+            display: 'inline-flex', alignItems: 'center',
+            background: '#171717', color: '#fff',
+            padding: '8px 16px',
+            borderRadius: 6, fontSize: 13.5, fontWeight: 500,
+          }}>
             免费诊断
           </Link>
           <button
             className="nav-mobile-toggle"
-            style={{ padding: 10, border: '1px solid var(--line)', background: '#fff', cursor: 'pointer', borderRadius: 10, alignItems: 'center', justifyContent: 'center' }}
+            style={{ padding: 8, border: '1px solid #eaeaea', background: '#fff', cursor: 'pointer', borderRadius: 6, alignItems: 'center', justifyContent: 'center' }}
             onClick={() => setOpen(!open)}
             aria-label="菜单"
           >
-            <div style={{ width: 20, height: 14, position: 'relative' }}>
-              <span style={{ position:'absolute', left:0, right:0, top: open? 6: 0, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'all .22s', transform: open ? 'rotate(45deg)' : 'none' }} />
-              <span style={{ position:'absolute', left:0, right:0, top: 6, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'opacity .15s', opacity: open ? 0 : 1 }} />
-              <span style={{ position:'absolute', left:0, right:0, top: open? 6: 12, height: 2, background: 'var(--ink)', borderRadius: 2, transition: 'all .22s', transform: open ? 'rotate(-45deg)' : 'none' }} />
+            <div style={{ width: 18, height: 12, position: 'relative' }}>
+              <span style={{ position:'absolute', left:0, right:0, top: open? 5: 0, height: 1.5, background: '#171717', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(45deg)' : 'none' }} />
+              <span style={{ position:'absolute', left:0, right:0, top: 5, height: 1.5, background: '#171717', borderRadius: 2, transition: 'opacity .15s', opacity: open ? 0 : 1 }} />
+              <span style={{ position:'absolute', left:0, right:0, top: open? 5: 10, height: 1.5, background: '#171717', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(-45deg)' : 'none' }} />
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu — full slide-down panel */}
+      {/* Mobile menu */}
       <div style={{
         position: 'absolute', left: 0, right: 0, top: '100%',
         background: '#fff',
-        borderBottom: '1px solid var(--line)',
-        boxShadow: '0 16px 40px rgba(11,31,58,.08)',
-        maxHeight: open ? 'calc(100vh - 72px)' : 0,
+        borderBottom: '1px solid #eaeaea',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
+        maxHeight: open ? 'calc(100vh - 56px)' : 0,
         overflow: 'hidden auto',
-        transition: 'max-height .3s cubic-bezier(.4,0,.2,1)',
+        transition: 'max-height .28s cubic-bezier(.4,0,.2,1)',
       }}>
-        <div style={{ padding: '16px 20px 24px' }}>
+        <div style={{ padding: '12px 20px 24px' }}>
           {NAV.map(item => (
-            <div key={item.href} style={{ marginBottom: 4 }}>
+            <div key={item.href} style={{ marginBottom: 2 }}>
               <Link href={item.href} onClick={() => setOpen(false)}
-                style={{ display: 'block', padding: '13px 12px', fontSize: 16, fontWeight: 600, color: 'var(--ink)', borderRadius: 8 }}>
+                style={{ display: 'block', padding: '11px 10px', fontSize: 15, fontWeight: 600, color: '#171717', borderRadius: 6 }}>
                 {item.label}
               </Link>
               {item.children?.map(c => (
                 <Link key={c.href} href={c.href} onClick={() => setOpen(false)}
-                  style={{ display: 'block', padding: '10px 12px 10px 28px', fontSize: 14.5, color: 'var(--ink-3)', borderRadius: 8 }}>
+                  style={{ display: 'block', padding: '9px 10px 9px 26px', fontSize: 13.5, color: '#666', borderRadius: 6 }}>
                   {c.label}
                 </Link>
               ))}
             </div>
           ))}
-          <Link href="/contact" onClick={() => setOpen(false)} className="btn btn-fill" style={{ width: '100%', marginTop: 16 }}>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: '#171717', color: '#fff',
+            padding: '12px 20px', borderRadius: 6,
+            fontSize: 14, fontWeight: 500, marginTop: 12,
+          }}>
             免费诊断
           </Link>
         </div>
