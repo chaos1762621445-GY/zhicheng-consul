@@ -97,7 +97,7 @@ export default function StatsSection() {
               <div style={{
                 fontSize: 'clamp(56px, 7.5vw, 84px)',
                 fontWeight: 800,
-                color: 'var(--gold)',
+                color: '#000',
                 letterSpacing: '-2.5px',
                 lineHeight: 1,
                 fontVariantNumeric: 'tabular-nums',

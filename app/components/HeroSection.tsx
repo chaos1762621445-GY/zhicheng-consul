@@ -12,8 +12,7 @@ export default function HeroSection() {
   return (
     <section className="hero-bg" style={{ paddingTop: 72, paddingBottom: 96, position: 'relative', overflow: 'hidden' }}>
       {/* Subtle orbs */}
-      <div className="hero-orb" style={{ width: 520, height: 520, background: 'rgba(30,64,175,0.10)', top: -140, right: -100 }} />
-      <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -80, left: -60, filter: 'blur(70px)' }} />
+      {/* no orbs — Vercel minimal */}
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero-grid">
@@ -25,7 +24,7 @@ export default function HeroSection() {
             <h1 className="display" style={{ marginBottom: 28 }}>
               在日经营<br />
               政府补助金<br />
-              <span style={{ color: 'var(--brand)' }}>全程代办到账</span>
+              <span style={{ color: '#000' }}>全程代办到账</span>
             </h1>
 
             <p className="sub" style={{ marginBottom: 40, fontSize: 18 }}>
@@ -55,8 +54,8 @@ export default function HeroSection() {
               ].map(({ t }) => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13.5, color: 'var(--ink-3)', fontWeight: 500 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="rgba(34,197,94,.12)" />
-                    <path d="M8 12l3 3 5-5" stroke="#16a34a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="12" r="10" fill="rgba(0,0,0,0.06)" />
+                    <path d="M8 12l3 3 5-5" stroke="#000" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   {t}
                 </div>
@@ -77,19 +76,14 @@ export default function HeroSection() {
               }}
             >
               {/* Top accent bar */}
-              <div style={{
-                height: 4,
-                borderRadius: '16px 16px 0 0',
-                background: 'linear-gradient(90deg, var(--brand) 0%, var(--gold) 100%)',
-                margin: '-1px -1px 0',
-              }} />
+              <div style={{ height: 4, borderRadius: '6px 6px 0 0', background: '#000', margin: '-1px -1px 0' }} />
 
               <div style={{ padding: '24px 26px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>
                     适合您的补助金
                   </div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--gold)', background: 'var(--gold-soft)', padding: '3px 9px', borderRadius: 100, letterSpacing: '.05em' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: '#555', background: '#f5f5f5', padding: '3px 9px', borderRadius: 4, letterSpacing: '.05em' }}>
                     精选
                   </div>
                 </div>

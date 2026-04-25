@@ -54,7 +54,7 @@ export default function NavClient() {
       backdropFilter: 'blur(16px) saturate(180%)',
       WebkitBackdropFilter: 'blur(16px) saturate(180%)',
       borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
-      boxShadow: scrolled ? '0 1px 0 rgba(11,31,58,.03), 0 4px 20px rgba(11,31,58,.04)' : 'none',
+      boxShadow: 'none',
       transition: 'all .22s ease',
     }}>
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
