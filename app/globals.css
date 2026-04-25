@@ -10,50 +10,51 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ─────────────────────────────────────────
-   DESIGN TOKENS — premium B2B (Stripe / Ramp inspired)
+   DESIGN TOKENS — Apple / Ferrari editorial premium
 ───────────────────────────────────────── */
 :root {
-  /* ── Vercel-inspired: pure black & white precision ── */
-  --brand:      #000000;
+  /* ── Core palette — Apple / Ferrari chiaroscuro ── */
+  --brand:      #1d1d1f;
   --brand-dark: #000000;
   --brand-deep: #000000;
-  --brand-soft: #111111;
+  --brand-soft: #424245;
   --brand-bg:   rgba(0,0,0,0.04);
   --brand-mid:  rgba(0,0,0,0.08);
 
-  /* No gold — use monochrome */
-  --gold:       #000000;
-  --gold-bright:#333333;
-  --gold-soft:  rgba(0,0,0,0.06);
+  --gold:       #1d1d1f;
+  --gold-bright:#424245;
+  --gold-soft:  rgba(0,0,0,0.04);
 
-  /* Neutrals — pure grayscale */
-  --ink:        #000000;
-  --ink-2:      #111111;
-  --ink-3:      #333333;
-  --body:       #555555;
-  --muted:      #888888;
+  /* Apple text hierarchy */
+  --ink:        #1d1d1f;
+  --ink-2:      #1d1d1f;
+  --ink-3:      #424245;
+  --body:       #6e6e73;
+  --muted:      #86868b;
 
+  /* Apple surfaces */
   --surface:    #ffffff;
-  --surface-2:  #fafafa;
-  --surface-3:  #f5f5f5;
-  --surface-warm:#fafafa;
+  --surface-2:  #f5f5f7;
+  --surface-3:  #fafafa;
+  --surface-warm:#f5f5f7;
 
-  --line:       #eaeaea;
-  --line-strong:#d4d4d4;
+  /* Apple hairline borders */
+  --line:       #d2d2d7;
+  --line-strong:#86868b;
 
-  /* Sharp corners — Vercel precision */
-  --r-sm: 4px;
-  --r:    6px;
-  --r-lg: 8px;
-  --r-xl: 12px;
+  /* Zero radius — Ferrari / editorial precision */
+  --r-sm: 2px;
+  --r:    2px;
+  --r-lg: 2px;
+  --r-xl: 4px;
 
-  /* Clean black shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 24px 64px rgba(0,0,0,0.08);
-  --shadow-xl: 0 12px 40px rgba(0,0,0,0.12), 0 32px 80px rgba(0,0,0,0.10);
-  --shadow-brand: 0 4px 16px rgba(0,0,0,0.16), 0 1px 4px rgba(0,0,0,0.10);
+  /* Minimal shadows — Ferrari: depth from contrast not shadow */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-xl: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-brand: 0 4px 16px rgba(0,0,0,0.12);
   --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.08);
 
   /* shadcn compat */

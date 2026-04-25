@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import NavClient from "./components/NavClient";
 import HeroSection from "./components/HeroSection";
-import StatsSection from "./components/StatsSection";
+// StatsSection merged into HeroSection
 import ServicesSection from "./components/ServicesSection";
 import Footer from "./components/Footer";
 import Reveal from "./components/Reveal";
@@ -42,7 +42,6 @@ export default async function HomePage() {
     <main>
       <NavClient />
       <HeroSection />
-      <StatsSection />
       <ServicesSection />
 
       {/* ── 专家团队 ── */}

@@ -1,136 +1,178 @@
 import Link from 'next/link';
 
-const pipeline = [
-  { step: '01', color: '#0a72ef', label: '免费诊断', desc: '精准匹配可申请补助金' },
-  { step: '02', color: '#de1d8d', label: '资料代办', desc: '四类持牌专家全程操作' },
-  { step: '03', color: '#ff5b4f', label: '到账收费', desc: '不获批，零收费' },
+// Unsplash photos — free commercial use
+// Tokyo night cityscape / Japan business
+const BG = 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1800&q=80&auto=format&fit=crop'; // Tokyo night
+
+const trust = [
+  '不获批不收费',
+  '3,000+ 企业成功',
+  '四类国家认定专家',
+  '全程中文',
 ];
 
 export default function HeroSection() {
   return (
-    <section style={{
-      paddingTop: 120,
-      paddingBottom: 120,
-      background: '#fff',
-      borderBottom: '1px solid #eaeaea',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      {/* Subtle grid background */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(#eaeaea 1px, transparent 1px), linear-gradient(90deg, #eaeaea 1px, transparent 1px)',
-        backgroundSize: '48px 48px',
-        maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%)',
-        opacity: 0.3,
-      }} />
-
-      <div className="wrap" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860 }}>
-        {/* Eyebrow badge */}
+    <>
+      {/* ── HERO — dark cinematic ── */}
+      <section style={{
+        position: 'relative',
+        height: 'min(100vh, 820px)',
+        minHeight: 600,
+        overflow: 'hidden',
+        background: '#000',
+      }}>
+        {/* Photo */}
+        <img
+          src={BG}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            opacity: 0.45,
+          }}
+        />
+        {/* Gradient overlay — bottom fade to black */}
         <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: '#f5f5f5',
-          border: '1px solid #e5e5e5',
-          borderRadius: 9999,
-          padding: '5px 14px',
-          fontSize: 12, fontWeight: 600,
-          color: '#555',
-          letterSpacing: '.06em',
-          textTransform: 'uppercase',
-          marginBottom: 36,
-        }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0a72ef', flexShrink: 0 }} />
-          国家认定 · 四类持牌专家联合团队
-        </div>
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 60%, #000 100%)',
+        }} />
 
-        {/* Main headline */}
-        <h1 style={{
-          fontSize: 'clamp(44px, 7vw, 80px)',
-          fontWeight: 800,
-          color: '#171717',
-          lineHeight: 1.02,
-          letterSpacing: '-2.4px',
-          marginBottom: 32,
-          fontStyle: 'normal',
+        {/* Content */}
+        <div className="wrap" style={{
+          position: 'relative', zIndex: 1,
+          height: '100%',
+          display: 'flex', flexDirection: 'column',
+          justifyContent: 'flex-end',
+          paddingBottom: 72,
         }}>
-          在日华人企业主<br />
-          <span style={{ color: '#171717' }}>政府补助金全程代办</span>
-        </h1>
-
-        {/* Sub */}
-        <p style={{
-          fontSize: 20,
-          color: '#4d4d4d',
-          lineHeight: 1.8,
-          maxWidth: 580,
-          margin: '0 auto 44px',
-          fontWeight: 400,
-        }}>
-          日本政府每年向中小企业发放大量补助金，大多数企业因不了解政策而错过。
-          <strong style={{ color: '#171717', fontWeight: 600 }}>不获批，不收费。</strong>
-        </p>
-
-        {/* CTA row */}
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 80 }}>
-          <Link href="/contact" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: '#171717', color: '#fff',
-            padding: '12px 24px',
-            borderRadius: 6, fontSize: 15, fontWeight: 500,
-            transition: 'background .15s',
+          {/* Label */}
+          <div style={{
+            fontFamily: 'ui-monospace, Menlo, monospace',
+            fontSize: 11, fontWeight: 400,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.5)',
+            marginBottom: 24,
           }}>
-            免费获取诊断报告
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </Link>
-          <Link href="/subsidies" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: '#fff', color: '#171717',
-            padding: '12px 24px',
-            borderRadius: 6, fontSize: 15, fontWeight: 500,
-            boxShadow: 'rgb(235,235,235) 0px 0px 0px 1px',
-            transition: 'box-shadow .15s',
-          }}>
-            查看补助金种类
-          </Link>
-        </div>
+            国家认定 · 四类持牌专家联合团队
+          </div>
 
-        {/* Pipeline — Develop / Preview / Ship style */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          boxShadow: 'rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 2px, #fafafa 0px 0px 0px 1px inset',
-          borderRadius: 8,
-          overflow: 'hidden',
-          background: '#fff',
-        }}>
-          {pipeline.map((p, i) => (
-            <div key={i} style={{
-              padding: '28px 24px',
-              textAlign: 'left',
-              borderRight: i < pipeline.length - 1 ? '1px solid #eaeaea' : 'none',
+          {/* Main headline */}
+          <h1 style={{
+            fontSize: 'clamp(40px, 6.5vw, 88px)',
+            fontWeight: 700,
+            color: '#fff',
+            lineHeight: 1.0,
+            letterSpacing: '-1.5px',
+            marginBottom: 28,
+            maxWidth: 860,
+          }}>
+            在日经营<br />
+            政府补助金<br />
+            全程代办到账
+          </h1>
+
+          {/* Sub */}
+          <p style={{
+            fontSize: 17,
+            color: 'rgba(255,255,255,0.65)',
+            lineHeight: 1.7,
+            maxWidth: 480,
+            marginBottom: 40,
+          }}>
+            日本政府每年向中小企业发放大量补助金，大多数企业因不了解政策而白白错过。
+            <strong style={{ color: '#fff', fontWeight: 600 }}>不获批，不收费。</strong>
+          </p>
+
+          {/* CTA */}
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 52 }}>
+            <Link href="/contact" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: '#fff', color: '#000',
+              padding: '13px 28px',
+              fontSize: 14, fontWeight: 600,
+              letterSpacing: '0.04em',
+              transition: 'opacity .15s',
             }}>
-              <div style={{
-                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                fontSize: 11, fontWeight: 500,
-                color: p.color,
-                letterSpacing: '.1em',
-                textTransform: 'uppercase',
-                marginBottom: 10,
+              免费获取诊断报告
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </Link>
+            <Link href="/subsidies" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: 'transparent', color: 'rgba(255,255,255,0.8)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              padding: '13px 28px',
+              fontSize: 14, fontWeight: 500,
+              letterSpacing: '0.04em',
+            }}>
+              查看补助金种类
+            </Link>
+          </div>
+
+          {/* Trust bar */}
+          <div style={{
+            display: 'flex', flexWrap: 'wrap', gap: '8px 28px',
+            borderTop: '1px solid rgba(255,255,255,0.12)',
+            paddingTop: 20,
+          }}>
+            {trust.map(t => (
+              <div key={t} style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                fontSize: 12.5, color: 'rgba(255,255,255,0.5)',
+                fontFamily: 'ui-monospace, Menlo, monospace',
+                letterSpacing: '0.06em',
               }}>
-                STEP {p.step}
+                <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
+                {t}
               </div>
-              <div style={{ fontSize: 18, fontWeight: 600, color: '#171717', letterSpacing: '-0.3px', marginBottom: 6 }}>
-                {p.label}
-              </div>
-              <div style={{ fontSize: 13, color: '#4d4d4d', lineHeight: 1.6 }}>
-                {p.desc}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ── STATS — white editorial ── */}
+      <section style={{
+        background: '#fff',
+        borderBottom: '1px solid #e8e8e8',
+      }}>
+        <div className="wrap">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3,1fr)',
+          }}>
+            {[
+              { val: '3,000+', label: '企业成功申请', note: '餐饮·零售·制造·IT' },
+              { val: '¥8.5億+', label: '累计到账补助金', note: '真实到账金额' },
+              { val: '4 种', label: '国家认定专业资质', note: '行政书士·社劳士·税理士·诊断士' },
+            ].map((s, i) => (
+              <div key={i} style={{
+                padding: '52px 0',
+                textAlign: 'center',
+                borderRight: i < 2 ? '1px solid #e8e8e8' : 'none',
+              }}>
+                <div style={{
+                  fontSize: 'clamp(40px,5vw,64px)',
+                  fontWeight: 800,
+                  color: '#000',
+                  letterSpacing: '-2px',
+                  lineHeight: 1,
+                  marginBottom: 10,
+                  fontVariantNumeric: 'tabular-nums',
+                }}>
+                  {s.val}
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 600, color: '#1d1d1f', marginBottom: 4 }}>{s.label}</div>
+                <div style={{ fontSize: 12, color: '#6e6e73' }}>{s.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
