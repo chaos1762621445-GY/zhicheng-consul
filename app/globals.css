@@ -260,7 +260,22 @@ img { max-width: 100%; display: block; }
   .hero-content { padding-bottom: 44px; }
 }
 
-/* steps 5-col → 3-col → 1-col */
+/* Footer wrap padding */
+.footer-wrap { padding: 72px 32px 48px; }
+@media (max-width: 560px) {
+  .footer-wrap { padding: 48px 16px 32px; }
+}
+
+/* Services section padding */
+.services-header-wrap { padding: 80px 32px 72px; }
+.services-cards-wrap  { padding: 0 32px; }
+@media (max-width: 600px) {
+  .services-header-wrap { padding: 48px 16px 40px; }
+  .services-cards-wrap  { padding: 0 16px; }
+}
+.contact-main { padding: 80px 0 120px; }
+@media (max-width: 860px) { .contact-main { padding: 56px 0 80px; } }
+@media (max-width: 560px) { .contact-main { padding: 40px 0 60px; } }
 .grid-steps-5 {
   display: grid !important;
   grid-template-columns: repeat(5, 1fr) !important;

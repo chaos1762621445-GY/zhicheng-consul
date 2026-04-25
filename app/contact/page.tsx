@@ -93,7 +93,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main two-col */}
-      <section style={{ padding: "80px 0 120px", background: "#fff" }}>
+      <section className="contact-main" style={{ background: "white" }}>
         <div className="wrap">
           <div className="grid-contact">
 

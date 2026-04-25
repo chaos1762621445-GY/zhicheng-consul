@@ -44,7 +44,7 @@ export default function Footer() {
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         {/* Main */}
-        <div className="wrap" style={{ padding: '72px 32px 48px' }}>
+        <div className="wrap footer-wrap">
           <div className="grid-footer" style={{
             paddingBottom: 48,
             borderBottom: '1px solid rgba(255,255,255,0.08)',
