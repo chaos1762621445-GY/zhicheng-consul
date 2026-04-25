@@ -15,13 +15,7 @@ export default function HeroSection() {
   return (
     <>
       {/* ── HERO — dark cinematic ── */}
-      <section style={{
-        position: 'relative',
-        height: 'min(100vh, 820px)',
-        minHeight: 600,
-        overflow: 'hidden',
-        background: '#000',
-      }}>
+      <section className="hero-section">
         {/* Photo */}
         <img
           src={BG}
@@ -41,13 +35,7 @@ export default function HeroSection() {
         }} />
 
         {/* Content */}
-        <div className="wrap" style={{
-          position: 'relative', zIndex: 1,
-          height: '100%',
-          display: 'flex', flexDirection: 'column',
-          justifyContent: 'flex-end',
-          paddingBottom: 72,
-        }}>
+        <div className="wrap hero-content">
           {/* Label */}
           <div style={{
             fontFamily: 'ui-monospace, Menlo, monospace',
@@ -88,7 +76,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTA */}
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 52 }}>
+          <div className="hero-cta-row" style={{ marginBottom: 52 }}>
             <Link href="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: '#fff', color: '#000',
@@ -115,11 +103,7 @@ export default function HeroSection() {
           </div>
 
           {/* Trust bar */}
-          <div style={{
-            display: 'flex', flexWrap: 'wrap', gap: '8px 28px',
-            borderTop: '1px solid rgba(255,255,255,0.12)',
-            paddingTop: 20,
-          }}>
+          <div className="hero-trust-bar">
             {trust.map(t => (
               <div key={t} style={{
                 display: 'flex', alignItems: 'center', gap: 8,
@@ -141,10 +125,7 @@ export default function HeroSection() {
         borderBottom: '1px solid #e8e8e8',
       }}>
         <div className="wrap">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-          }}>
+          <div className="grid-stats-3">
             {[
               { val: '3,000+', label: '企业成功申请', note: '餐饮·零售·制造·IT' },
               { val: '¥8.5億+', label: '累计到账补助金', note: '真实到账金额' },

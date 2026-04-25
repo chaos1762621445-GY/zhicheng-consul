@@ -21,12 +21,7 @@ export default function ServicesSection() {
       <section style={{ background: '#fff', borderTop: '1px solid #e8e8e8', borderBottom: '1px solid #e8e8e8' }}>
         <div className="wrap" style={{ padding: '80px 32px 72px' }}>
           <Reveal>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 48,
-              alignItems: 'end',
-            }}>
+            <div className="grid-services-header">
               <div>
                 <div style={{
                   fontFamily: 'ui-monospace, Menlo, monospace',
@@ -57,12 +52,7 @@ export default function ServicesSection() {
       {/* ── Cards grid — no radius, hairline borders ── */}
       <section style={{ background: '#f5f5f7' }}>
         <div className="wrap" style={{ padding: '0 32px' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-            borderLeft: '1px solid #d2d2d7',
-            borderTop: '1px solid #d2d2d7',
-          }}>
+          <div className="grid-services-3">
             {services.map((s, i) => (
               <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
                 <div style={{

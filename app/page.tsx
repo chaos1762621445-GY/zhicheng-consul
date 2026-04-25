@@ -72,7 +72,7 @@ export default async function HomePage() {
       {/* ── 为什么选我们 ── */}
       <section className="sec" style={{ background: 'var(--surface)' }}>
         <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="max-md:grid-cols-1 max-md:gap-12">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="grid-2col-about max-md:grid-cols-1 max-md:gap-12">
             <Reveal direction="left">
               <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }} className="max-md:hidden">
                 <img
@@ -111,7 +111,7 @@ export default async function HomePage() {
               <p className="sub">整个过程，您需要做的极少，主要是配合提供资料，其余全程由我们处理。</p>
             </div>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16 }} className="grid-steps-5">
             {steps.map((s, i) => (
               <Reveal key={i} delay={(i % 5) as 0|1|2|3|4|5}>
                 <div className="card" style={{ borderLeft: '3px solid var(--brand)' }}>

@@ -122,9 +122,167 @@ img { max-width: 100%; display: block; }
   .sec-sm { padding: 52px 0; }
 }
 @media (max-width: 640px) {
-  .wrap, .wrap-narrow { padding: 0 18px; }
+  .wrap, .wrap-narrow { padding: 0 16px; }
   .sec  { padding: 64px 0; }
   .sec-sm { padding: 44px 0; }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE GRID UTILITIES
+   (mobile-first — inline style cannot be overridden by media queries,
+    so all responsive grids must use these classes)
+───────────────────────────────────────── */
+
+/* Hero stats: 3-col → 1-col on mobile */
+.grid-stats-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 640px) {
+  .grid-stats-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-stats-3 > div {
+    border-right: none !important;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .grid-stats-3 > div:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Services: 3-col → 2-col → 1-col */
+.grid-services-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 1px solid #d2d2d7;
+  border-top: 1px solid #d2d2d7;
+}
+@media (max-width: 900px) {
+  .grid-services-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid-services-3 { grid-template-columns: 1fr; }
+}
+
+/* Services section header: 2-col → 1-col */
+.grid-services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+}
+@media (max-width: 768px) {
+  .grid-services-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Footer: 4-col → 2-col → 1-col */
+.grid-footer {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+@media (max-width: 900px) {
+  .grid-footer { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 560px) {
+  .grid-footer { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Contact: 2-col → 1-col */
+.grid-contact {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .grid-contact { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Hero CTA buttons: wrap on mobile */
+.hero-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .hero-cta-row > * { flex: 1 1 100%; text-align: center; justify-content: center; }
+}
+
+/* Trust bar: wrap + smaller text on mobile */
+.hero-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 20px;
+}
+@media (max-width: 480px) {
+  .hero-trust-bar { gap: 8px 16px; }
+}
+
+/* Nav */
+.nav-desktop { display: flex; }
+.nav-mobile-toggle { display: none !important; }
+.nav-cta-desktop { display: inline-flex; }
+@media (max-width: 860px) {
+  .nav-desktop { display: none !important; }
+  .nav-mobile-toggle { display: flex !important; }
+}
+
+/* Hero section height on mobile */
+.hero-section {
+  position: relative;
+  height: min(100vh, 820px);
+  min-height: 600px;
+  overflow: hidden;
+  background: #000;
+}
+@media (max-width: 640px) {
+  .hero-section { min-height: 520px; height: 100svh; }
+}
+
+/* Hero content padding */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 72px;
+}
+@media (max-width: 640px) {
+  .hero-content { padding-bottom: 44px; }
+}
+
+/* steps 5-col → 3-col → 1-col */
+.grid-steps-5 {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+@media (max-width: 900px) {
+  .grid-steps-5 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .grid-steps-5 { grid-template-columns: 1fr !important; }
+}
+
+/* about 2-col → 1-col */
+.grid-2col-about {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 72px !important;
+}
+@media (max-width: 860px) {
+  .grid-2col-about {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
 }
 
 /* ─────────────────────────────────────────

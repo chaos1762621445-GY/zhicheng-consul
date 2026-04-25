@@ -95,12 +95,7 @@ export default function ContactPage() {
       {/* Main two-col */}
       <section style={{ padding: "80px 0 120px", background: "#fff" }}>
         <div className="wrap">
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
-            gap: 64,
-            alignItems: "start",
-          }}>
+          <div className="grid-contact">
 
             {/* Left: contacts */}
             <div>
