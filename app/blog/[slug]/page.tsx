@@ -4,6 +4,8 @@ import html from "remark-html";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import NavClient from "../../components/NavClient";
+import Footer from "../../components/Footer";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -22,24 +24,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug);
   if (!post) notFound();
 
-  const processed = await remark().use(html).process(post.content);
+  // 正文开头的 "# 标题" 和首段导语与页面 header 的 title/excerpt 重复，渲染前剥掉
+  let body = post.content.replace(/^\s*#\s+.*(\r?\n)+/, "");
+  // 若紧接着的首段与 excerpt 高度重合，也一并去除
+  if (post.excerpt) {
+    const firstPara = body.split(/\r?\n\r?\n/)[0]?.trim() ?? "";
+    const norm = (s: string) => s.replace(/[\s。.…]/g, "");
+    if (firstPara && norm(post.excerpt).startsWith(norm(firstPara).slice(0, 20))) {
+      body = body.replace(/^[\s\S]*?(\r?\n\r?\n)/, "");
+    }
+  }
+  const processed = await remark().use(html).process(body);
   const contentHtml = processed.toString();
 
   return (
     <main>
-      <nav className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            <img src="/logo.png" alt="志成コンサル" style={{height:52}} />
-          </Link>
-          <div className="nav-links">
-            <Link href="/subsidies" className="nav-link">补助金种类</Link>
-            <Link href="/service" className="nav-link">服务流程</Link>
-            <Link href="/blog" className="nav-link active">知识库</Link>
-            <Link href="/contact" className="nav-cta">免费咨询</Link>
-          </div>
-        </div>
-      </nav>
+      <NavClient />
 
       <div className="article-wrap">
         <div className="article-header">
@@ -56,8 +56,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
         <div className="article-content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
 
-        <div style={{ margin: "64px 0", background: "var(--navy)", borderRadius: "var(--r-lg)", padding: "40px", maxWidth: 760 }}>
-          <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 10 }}>
+        <div style={{ margin: "64px 0", background: "linear-gradient(150deg,#124442,#1a5c5a)", borderRadius: "var(--r-lg)", padding: "40px", maxWidth: 760 }}>
+          <h3 style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 10, letterSpacing: "-0.4px" }}>
             想了解自己能申请哪些补助金？
           </h3>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", marginBottom: 24, lineHeight: 1.7 }}>
@@ -72,41 +72,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
       </div>
 
-      <footer className="footer" style={{ marginTop: 0 }}>
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <div className="footer-logo-wrap">
-              <img src="/logo.png" alt="志成コンサル" style={{height:52, filter:"brightness(10)"}} />
-            </div>
-            <p className="footer-tagline">专为在日华人企业主提供日本政府补助金申请代办服务。</p>
-          </div>
-          <div className="footer-nav">
-            <h4>快速导航</h4>
-            <div className="footer-nav-links">
-              <Link href="/subsidies" className="footer-nav-link">补助金种类</Link>
-              <Link href="/service" className="footer-nav-link">服务流程</Link>
-              <Link href="/blog" className="footer-nav-link">知识库</Link>
-              <Link href="/contact" className="footer-nav-link">免费咨询</Link>
-            </div>
-          </div>
-          <div className="footer-contact-col">
-            <h4>联系我们</h4>
-            <div className="footer-contact-row"><strong>微信：</strong>lzl238888</div>
-            <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
-            <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
-            <div className="footer-contact-row" style={{flexDirection:"column",gap:4}}>
-              <strong>地址：</strong>
-              <span>〒542-0082 大阪府大阪市中央区島之内1-13-3<br/>おおきに東心斎橋ビル301号室</span>
-            </div>
-            <div className="footer-qr">
-              <img src="/wechat-qr.jpg" alt="微信二维码" style={{width:80,height:80,borderRadius:4}} />
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© 2025 株式会社 志成コンサル 保留所有权利。</span>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
