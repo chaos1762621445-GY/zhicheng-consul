@@ -77,7 +77,10 @@ export default function StatsSection() {
               <div style={{
                 fontSize: 'clamp(48px, 6vw, 72px)',
                 fontWeight: 800,
-                color: '#171717',
+                background: 'linear-gradient(135deg, #1a5c5a 30%, #c4a23a 130%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
                 letterSpacing: '-2.5px',
                 lineHeight: 1,
                 fontVariantNumeric: 'tabular-nums',

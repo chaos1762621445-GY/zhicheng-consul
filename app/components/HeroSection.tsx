@@ -139,7 +139,10 @@ export default function HeroSection() {
                 <div style={{
                   fontSize: 'clamp(40px,5vw,64px)',
                   fontWeight: 800,
-                  color: '#000',
+                  background: 'linear-gradient(135deg, #1a5c5a 30%, #c4a23a 130%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
                   letterSpacing: '-2px',
                   lineHeight: 1,
                   marginBottom: 10,

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const contacts = [
   {
     label: "微信 WeChat",
-    value: "pr2024188",
+    value: "lzl238888",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 <div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: "#171717", marginBottom: 8 }}>扫码添加微信</div>
                   <p style={{ fontSize: 13.5, color: "#4d4d4d", lineHeight: 1.65, marginBottom: 8 }}>
-                    添加微信 <strong style={{ color: "#171717" }}>pr2024188</strong>，专业顾问当日（工作日）免费诊断。
+                    添加微信 <strong style={{ color: "#171717" }}>lzl238888</strong>，专业顾问当日（工作日）免费诊断。
                   </p>
                   <div style={{ fontSize: 12, color: "#888" }}>营业时间：周一〜周六 9:00〜18:00</div>
                 </div>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                 background: "#fff",
               }}>
                 <iframe
-                  src="/quiz.html"
+                  src="https://zhicheng-subsidy.surge.sh/"
                   style={{ width: "100%", height: 660, border: "none", display: "block" }}
                   title="补助金资格自测"
                 />

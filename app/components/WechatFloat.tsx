@@ -12,12 +12,12 @@ export default function WechatFloat() {
   return (
     <Link
       href="/contact"
-      aria-label="微信咨询 pr2024188"
+      aria-label="微信咨询 lzl238888"
       className="fixed right-6 bottom-6 z-[999] flex items-center bg-[#1a5c5a] rounded-[28px] h-14 px-4 cursor-pointer shadow-[0_4px_20px_rgba(26,92,90,0.35)] text-white overflow-hidden hover:shadow-[0_8px_28px_rgba(26,92,90,0.5)] transition-shadow group"
     >
       <WechatIcon />
       <span className="text-sm font-medium whitespace-nowrap max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[160px] group-hover:ml-2 max-md:max-w-[160px] max-md:ml-2">
-        微信：pr2024188
+        微信：lzl238888
       </span>
     </Link>
   );

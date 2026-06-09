@@ -111,7 +111,7 @@ export default function Footer() {
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}>
             {[
-              { label: '微信', value: 'pr2024188' },
+              { label: '微信', value: 'lzl238888' },
               { label: '电话', value: '03-6265-9756' },
               { label: '邮箱', value: 'knakano.sekiyoshi@gmail.com' },
               { label: '地址', value: '〒542-0082 大阪府大阪市中央区島之内1-13-3' },

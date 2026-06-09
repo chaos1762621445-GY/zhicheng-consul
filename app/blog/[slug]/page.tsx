@@ -91,7 +91,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
           <div className="footer-contact-col">
             <h4>联系我们</h4>
-            <div className="footer-contact-row"><strong>微信：</strong>pr2024188</div>
+            <div className="footer-contact-row"><strong>微信：</strong>lzl238888</div>
             <div className="footer-contact-row"><strong>电话：</strong>03-6265-9756</div>
             <div className="footer-contact-row"><strong>邮箱：</strong>knakano.sekiyoshi@gmail.com</div>
             <div className="footer-contact-row" style={{flexDirection:"column",gap:4}}>
