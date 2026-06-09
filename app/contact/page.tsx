@@ -98,7 +98,7 @@ export default function ContactPage() {
           <div className="grid-contact">
 
             {/* Left: contacts */}
-            <div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{
                 fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
                 fontSize: 11, fontWeight: 500,
@@ -143,7 +143,8 @@ export default function ContactPage() {
                 display: "flex", gap: 20, alignItems: "center",
                 background: "#fafafa",
                 boxShadow: "rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 2px, #fafafa 0px 0px 0px 1px inset",
-                borderRadius: 8, padding: "20px 24px",
+                borderRadius: 8, padding: "24px",
+                flex: 1, minHeight: 140,
               }}>
                 <div style={{ background: "#fff", borderRadius: 8, padding: 8, flexShrink: 0, boxShadow: "rgba(0,0,0,0.06) 0px 0px 0px 1px" }}>
                   <img src="/wechat-qr.jpg" alt="微信二维码" style={{ width: 100, height: 100, display: "block", borderRadius: 4 }} />

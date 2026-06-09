@@ -81,25 +81,25 @@ const tabCategories = [
 
 function SubsidyCard({ s }: { s: Subsidy }) {
   return (
-    <Card style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16 }}>
+    <Card style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: 16 }}>
       <CardContent className="p-8">
         <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
           <div>
-            <Badge style={{ marginBottom: 12, background: "rgba(30,64,175,0.1)", color: "#1a5c5a", border: "1px solid rgba(30,64,175,0.2)" }} className="hover:bg-[rgba(30,64,175,0.1)]">
+            <Badge style={{ marginBottom: 12, background: "var(--brand-bg)", color: "#1a5c5a", border: "1px solid var(--brand-mid)" }} className="hover:bg-[var(--brand-bg)]">
               {s.tag}
             </Badge>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#0f172a", marginBottom: 4 }}>{s.name}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "var(--ink)", marginBottom: 4 }}>{s.name}</div>
             <div style={{ fontSize: 28, fontWeight: 700, color: "#1a5c5a", letterSpacing: "-0.5px", lineHeight: 1, marginBottom: 4 }}>{s.amount}</div>
-            <div style={{ fontSize: 14, color: "#475569", marginTop: 4 }}>{s.rate}</div>
+            <div style={{ fontSize: 14, color: "var(--ink-3)", marginTop: 4 }}>{s.rate}</div>
           </div>
         </div>
-        <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, marginBottom: 24 }}>{s.desc}</p>
+        <p style={{ fontSize: 14, color: "var(--ink-3)", lineHeight: 1.75, marginBottom: 24 }}>{s.desc}</p>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           <div>
-            <h4 style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 12 }}>申请条件</h4>
+            <h4 style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", marginBottom: 12 }}>申请条件</h4>
             <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.conditions.map((c, j) => (
-                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
+                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "var(--ink-3)" }}>
                   <CheckIcon style={{ width: 14, height: 14, color: "#1a5c5a", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {c}
                 </li>
@@ -107,10 +107,10 @@ function SubsidyCard({ s }: { s: Subsidy }) {
             </ul>
           </div>
           <div>
-            <h4 style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 12 }}>主要用途</h4>
+            <h4 style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", marginBottom: 12 }}>主要用途</h4>
             <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {s.usage.map((u, j) => (
-                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "#475569" }}>
+                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "var(--ink-3)" }}>
                   <CheckIcon style={{ width: 14, height: 14, color: "#1a5c5a", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />
                   {u}
                 </li>
@@ -119,7 +119,7 @@ function SubsidyCard({ s }: { s: Subsidy }) {
           </div>
         </div>
         {s.slug && (
-          <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #e2e8f0", display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid var(--line)", display: "flex", justifyContent: "flex-end" }}>
             <Link href={`/subsidies/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "#1a5c5a", textDecoration: "none" }}>
               查看详情
               <ArrowRightIcon style={{ width: 14, height: 14 }} />
@@ -142,10 +142,10 @@ export default function SubsidiesPage() {
         desc="志成コンサル代办的6种主要补助金·助成金详细介绍。申请条件及使用方法欢迎随时咨询。"
       />
 
-      <section className="section" style={{ background: "#f8fafc" }}>
+      <section className="section" style={{ background: "var(--surface-2)" }}>
         <div className="page-wrap">
           <Tabs defaultValue="全部">
-            <TabsList style={{ marginBottom: 32, height: "auto", background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
+            <TabsList style={{ marginBottom: 32, height: "auto", background: "#fff", border: "1px solid var(--line)", borderRadius: 12, padding: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
               {tabCategories.map(cat => (
                 <TabsTrigger
                   key={cat.value}
@@ -165,9 +165,9 @@ export default function SubsidiesPage() {
             ))}
           </Tabs>
 
-          <div style={{ textAlign: "center", marginTop: 64, paddingTop: 56, borderTop: "1px solid #e2e8f0" }}>
-            <div style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", marginBottom: 12 }}>哪种补助金最适合您？</div>
-            <p style={{ fontSize: 15, color: "#475569", marginBottom: 32, lineHeight: 1.75 }}>3分钟免费诊断，为您的企业精准匹配最优补助金方案。</p>
+          <div style={{ textAlign: "center", marginTop: 64, paddingTop: 56, borderTop: "1px solid var(--line)" }}>
+            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--ink)", marginBottom: 12 }}>哪种补助金最适合您？</div>
+            <p style={{ fontSize: 15, color: "var(--ink-3)", marginBottom: 32, lineHeight: 1.75 }}>3分钟免费诊断，为您的企业精准匹配最优补助金方案。</p>
             <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#1a5c5a", color: "#fff", padding: "14px 36px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
               开始免费诊断
               <ArrowRightIcon style={{ width: 14, height: 14 }} />
