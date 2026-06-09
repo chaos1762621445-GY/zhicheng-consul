@@ -441,8 +441,45 @@ export default async function SubsidyDetailPage({
 
   const otherSubsidies = subsidies.filter((s) => s.slug !== slug);
 
+  const SITE_URL = "https://zhicheng-consul.vercel.app";
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: `${data.name}申请代办`,
+    name: `${data.name}（${data.nameJa}）申请代办`,
+    description: data.metaDesc,
+    inLanguage: "zh-CN",
+    areaServed: { "@type": "Country", name: "日本" },
+    provider: {
+      "@type": "Organization",
+      name: "株式会社 志成コンサル",
+      url: SITE_URL,
+    },
+    audience: { "@type": "BusinessAudience", name: "在日华人中小企业" },
+    url: `${SITE_URL}/subsidies/${slug}`,
+  };
+  const faqJsonLd = data.faq && data.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  } : null;
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <NavClient />
 
       {/* ── Hero ── premium light */}

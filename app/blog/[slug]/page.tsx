@@ -16,7 +16,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt, keywords: post.keywords };
+  const url = `/blog/${slug}`;
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords: post.keywords,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url,
+      siteName: "志成コンサル",
+      locale: "zh_CN",
+      publishedTime: post.date || undefined,
+      authors: ["株式会社 志成コンサル"],
+      images: ["/logo.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: ["/logo.png"],
+    },
+  };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -37,8 +60,44 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const processed = await remark().use(html).process(body);
   const contentHtml = processed.toString();
 
+  const SITE_URL = "https://zhicheng-consul.vercel.app";
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date || undefined,
+    dateModified: post.date || undefined,
+    inLanguage: "zh-CN",
+    keywords: (post.keywords || []).join(", "),
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
+    author: { "@type": "Organization", name: "株式会社 志成コンサル" },
+    publisher: {
+      "@type": "Organization",
+      name: "株式会社 志成コンサル",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+    },
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "首页", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "知识库", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${slug}` },
+    ],
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <NavClient />
 
       <div className="article-wrap">
