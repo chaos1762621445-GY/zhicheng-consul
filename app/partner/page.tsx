@@ -156,7 +156,7 @@ export default function PartnerPage() {
               { num: "平均¥28万", label: "代理月均收入", sub: "最高月收入超100万円" },
             ].map((stat, i) => (
               <div key={i} style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 16, padding: "36px 32px", textAlign: "center" }}>
-                <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#1e40af", letterSpacing: "-1px", lineHeight: 1, marginBottom: 8 }}>{stat.num}</div>
+                <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#1a5c5a", letterSpacing: "-1px", lineHeight: 1, marginBottom: 8 }}>{stat.num}</div>
                 <div style={{ fontSize: 15, fontWeight: 600, color: "#0f172a", marginBottom: 6 }}>{stat.label}</div>
                 <div style={{ fontSize: 13, color: "#94a3b8" }}>{stat.sub}</div>
               </div>
@@ -176,7 +176,7 @@ export default function PartnerPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20, marginTop: 48 }}>
             {targetGroups.map((g, i) => (
               <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "28px" }}>
-                <div style={{ width: 48, height: 48, background: "rgba(30,64,175,0.08)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", color: "#1e40af", marginBottom: 16 }}>
+                <div style={{ width: 48, height: 48, background: "rgba(30,64,175,0.08)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", color: "#1a5c5a", marginBottom: 16 }}>
                   {g.icon}
                 </div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", marginBottom: 10 }}>{g.title}</div>
@@ -205,7 +205,7 @@ export default function PartnerPage() {
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", gap: 20, alignItems: "flex-start", paddingBottom: 20, marginBottom: 20, borderBottom: i < 3 ? "1px solid #e2e8f0" : "none" }}>
                   <div style={{ flexShrink: 0, minWidth: 72 }}>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: "#1e40af", letterSpacing: "-0.5px" }}>{item.value}</div>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: "#1a5c5a", letterSpacing: "-0.5px" }}>{item.value}</div>
                   </div>
                   <div>
                     <div style={{ fontSize: 14, fontWeight: 600, color: "#0f172a", marginBottom: 4 }}>{item.label}</div>
@@ -234,11 +234,11 @@ export default function PartnerPage() {
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid #e2e8f0" }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>您的收入（最高 60%）</span>
-                      <span style={{ fontSize: 18, fontWeight: 700, color: "#1e40af" }}>{ex.income}</span>
+                      <span style={{ fontSize: 18, fontWeight: 700, color: "#1a5c5a" }}>{ex.income}</span>
                     </div>
                   </div>
                 ))}
-                <div style={{ background: "#1e40af", borderRadius: 8, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ background: "#1a5c5a", borderRadius: 8, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)" }}>月推荐3单合计</span>
                   <span style={{ fontSize: 22, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px" }}>¥72.6万</span>
                 </div>
@@ -266,7 +266,7 @@ export default function PartnerPage() {
                 <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75 }}>{step.desc}</p>
                 {i < steps.length - 1 && (
                   <div style={{ display: "none", position: "absolute", top: "50%", right: -12, transform: "translateY(-50%)", zIndex: 10, alignItems: "center" }} className="lg-flex">
-                    <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#1e40af", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>
+                    <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#1a5c5a", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>
                       ›
                     </div>
                   </div>
@@ -286,7 +286,7 @@ export default function PartnerPage() {
             {faqs.map((faq, i) => (
               <div key={i} style={{ borderBottom: i < faqs.length - 1 ? "1px solid #e2e8f0" : "none", paddingBottom: 28, marginBottom: 28 }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 6, background: "rgba(30,64,175,0.1)", color: "#1e40af", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>Q</div>
+                  <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 6, background: "rgba(30,64,175,0.1)", color: "#1a5c5a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>Q</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", lineHeight: 1.5 }}>{faq.q}</div>
                 </div>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>

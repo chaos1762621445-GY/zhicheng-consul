@@ -79,7 +79,7 @@ export default function HeroSection() {
           <div className="hero-cta-row" style={{ marginBottom: 52 }}>
             <Link href="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              background: '#fff', color: '#000',
+              background: '#fff', color: '#1a5c5a',
               padding: '13px 28px',
               fontSize: 14, fontWeight: 600,
               letterSpacing: '0.04em',

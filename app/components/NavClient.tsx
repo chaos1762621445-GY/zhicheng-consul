@@ -125,7 +125,7 @@ export default function NavClient() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Link href="/contact" className="nav-cta-desktop" style={{
             display: 'inline-flex', alignItems: 'center',
-            background: '#171717', color: '#fff',
+            background: 'linear-gradient(180deg,#2a7a77,#1a5c5a)', color: '#fff',
             padding: '8px 16px',
             borderRadius: 6, fontSize: 13.5, fontWeight: 500,
           }}>
@@ -173,7 +173,7 @@ export default function NavClient() {
           ))}
           <Link href="/contact" onClick={() => setOpen(false)} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: '#171717', color: '#fff',
+            background: 'linear-gradient(180deg,#2a7a77,#1a5c5a)', color: '#fff',
             padding: '12px 20px', borderRadius: 6,
             fontSize: 14, fontWeight: 500, marginTop: 12,
           }}>

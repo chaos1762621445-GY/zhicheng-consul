@@ -22,7 +22,7 @@ export default function CtaSection({
       position: 'relative',
       padding: '120px 0',
       overflow: 'hidden',
-      background: '#000',
+      background: 'linear-gradient(160deg,#124442,#1a5c5a)',
     }}>
       {/* Photo */}
       <img
@@ -71,7 +71,7 @@ export default function CtaSection({
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <Link href={primary.href} style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: '#fff', color: '#000',
+            background: '#fff', color: '#1a5c5a',
             padding: '13px 28px',
             fontSize: 14, fontWeight: 600,
             letterSpacing: '0.04em',

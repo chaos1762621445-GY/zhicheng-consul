@@ -139,7 +139,7 @@ export default function FaqPage() {
           {faqCategories.map((cat) => (
             <div key={cat.title} id={`faq-${cat.title}`} style={{ marginBottom: 56 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #e2e8f0" }}>
-                <div style={{ width: 32, height: 32, background: "#1e40af", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <div style={{ width: 32, height: 32, background: "#1a5c5a", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <HelpCircleIcon style={{ width: 16, height: 16, color: "#fff" }} />
                 </div>
                 <div style={{ fontSize: 18, fontWeight: 700, color: "#0f172a" }}>{cat.title}</div>

@@ -24,7 +24,7 @@ export default function PageCurtain() {
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999,
-      background: '#000',
+      background: 'linear-gradient(160deg,#0f3937,#124442)',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       transition: stage === 2 ? 'transform 0.7s cubic-bezier(.76,0,.24,1)' : 'none',

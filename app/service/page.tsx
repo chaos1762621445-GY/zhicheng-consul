@@ -53,14 +53,14 @@ export default function ServicePage() {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
                   <div style={{
                     width: 48, height: 48, borderRadius: "50%",
-                    background: "#1e40af", color: "#fff",
+                    background: "#1a5c5a", color: "#fff",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: 15, fontWeight: 800, flexShrink: 0,
                   }}>
                     {s.n}
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #1e40af, #e2e8f0)", margin: "8px 0" }} />
+                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #1a5c5a, #e2e8f0)", margin: "8px 0" }} />
                   )}
                 </div>
                 {/* Right: content */}
@@ -76,7 +76,7 @@ export default function ServicePage() {
                     {s.points.map((p, j) => (
                       <div key={j} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#334155" }}>
                         <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(30,64,175,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e40af" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1a5c5a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
@@ -103,7 +103,7 @@ export default function ServicePage() {
             {faqs.map((f, i) => (
               <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px 28px" }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(30,64,175,0.1)", color: "#1e40af", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Q</div>
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(30,64,175,0.1)", color: "#1a5c5a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Q</div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", lineHeight: 1.4 }}>{f.q}</div>
                 </div>
                 <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.75, paddingLeft: 44 }}>{f.a}</p>

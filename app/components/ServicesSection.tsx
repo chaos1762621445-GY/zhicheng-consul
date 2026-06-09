@@ -79,7 +79,7 @@ export default function ServicesSection() {
 
                   <div style={{
                     fontSize: 'clamp(20px,2.5vw,28px)', fontWeight: 800,
-                    color: '#1d1d1f', letterSpacing: '-0.8px',
+                    color: '#1a5c5a', letterSpacing: '-0.8px',
                     lineHeight: 1.1, marginBottom: 4,
                     fontVariantNumeric: 'tabular-nums',
                   }}>{s.amount}</div>

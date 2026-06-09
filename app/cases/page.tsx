@@ -151,14 +151,14 @@ export default function CasesPage() {
                     <div style={{ fontSize: 15, fontWeight: 600, color: "#0f172a", marginTop: 8, lineHeight: 1.4 }}>{c.company}</div>
                   </div>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
-                    <div style={{ fontSize: 28, fontWeight: 700, color: "#1e40af", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
+                    <div style={{ fontSize: 28, fontWeight: 700, color: "#1a5c5a", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
                     <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>获批金额</div>
                   </div>
                 </div>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#1e40af", flexShrink: 0 }} />
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#1a5c5a", flexShrink: 0 }} />
                     <span>{c.subsidy}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#475569", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 6, padding: "4px 10px" }}>

@@ -27,7 +27,7 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer style={{ position: 'relative', background: '#000', overflow: 'hidden' }}>
+    <footer style={{ position: 'relative', background: 'linear-gradient(160deg,#0f3937,#124442)', overflow: 'hidden' }}>
       {/* Dark photo background */}
       <img
         src={FOOTER_BG}
