@@ -54,14 +54,14 @@ export default function ServicesSection() {
         <div className="wrap services-cards-wrap">
           <div className="grid-services-3">
             {services.map((s, i) => (
-              <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
+              <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5} className="h-full">
                 <div style={{
                   background: '#fff',
                   borderRight: '1px solid #d2d2d7',
                   borderBottom: '1px solid #d2d2d7',
                   padding: '36px 28px',
                   display: 'flex', flexDirection: 'column',
-                  minHeight: 280,
+                  minHeight: 280, height: '100%',
                   transition: 'background .15s',
                 }}
                   onMouseEnter={e => (e.currentTarget.style.background = '#fafafa')}

@@ -56,11 +56,11 @@ export default async function HomePage() {
           </Reveal>
           <div className="grid-4">
             {credentials.map((c, i) => (
-              <Reveal key={i} delay={(i % 4) as 0|1|2|3|4|5}>
-                <div className="card" style={{ textAlign: 'center' }}>
+              <Reveal key={i} delay={(i % 4) as 0|1|2|3|4|5} className="h-full">
+                <div className="card" style={{ textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ fontSize: 36, marginBottom: 16 }}>{c.emoji}</div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 6 }}>{c.role}</div>
-                  <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'var(--brand-bg)', padding: '3px 10px', borderRadius: 100, marginBottom: 14 }}>{c.name}</div>
+                  <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'var(--brand-bg)', padding: '3px 10px', borderRadius: 100, marginBottom: 14, alignSelf: 'center' }}>{c.name}</div>
                   <p style={{ fontSize: 13, color: 'var(--body)', lineHeight: 1.7 }}>{c.desc}</p>
                 </div>
               </Reveal>
@@ -111,11 +111,11 @@ export default async function HomePage() {
               <p className="sub">整个过程，您需要做的极少，主要是配合提供资料，其余全程由我们处理。</p>
             </div>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16 }} className="grid-steps-5">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16, alignItems: 'stretch' }} className="grid-steps-5">
             {steps.map((s, i) => (
-              <Reveal key={i} delay={(i % 5) as 0|1|2|3|4|5}>
-                <div className="card" style={{ borderLeft: '3px solid var(--brand)' }}>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--brand)', color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 10px', borderRadius: 6, marginBottom: 16, letterSpacing: '.05em' }}>
+              <Reveal key={i} delay={(i % 5) as 0|1|2|3|4|5} className="h-full">
+                <div className="card" style={{ borderLeft: '3px solid var(--brand)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--brand)', color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 10px', borderRadius: 6, marginBottom: 16, letterSpacing: '.05em', alignSelf: 'flex-start' }}>
                     STEP {s.n}
                   </div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 10 }}>{s.title}</div>
