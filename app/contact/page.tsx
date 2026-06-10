@@ -181,7 +181,7 @@ export default function ContactPage() {
                 background: "#fff",
               }}>
                 <iframe
-                  src="https://zhicheng-subsidy.surge.sh/"
+                  src="https://zhicheng-subsidy.surge.sh/?client=official_website"
                   style={{ width: "100%", height: 660, border: "none", display: "block" }}
                   title="补助金资格自测"
                 />
