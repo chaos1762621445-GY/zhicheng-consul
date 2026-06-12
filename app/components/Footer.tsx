@@ -99,6 +99,18 @@ export default function Footer() {
                       {l.label}
                     </Link>
                   ))}
+                  {/* 关联站点：日文官网（同集团，互链导流） */}
+                  {col.title === '公司' && (
+                    <a href="https://shiseiconsult.com/" rel="noopener" style={{
+                      fontSize: 13.5, color: 'rgba(255,255,255,0.5)',
+                      transition: 'color .12s', letterSpacing: '0.01em',
+                    }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.9)'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'; }}
+                    >
+                      日文官网 志成コンサル
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
