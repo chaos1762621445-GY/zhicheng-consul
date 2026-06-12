@@ -18,30 +18,69 @@ if (!ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
-// 预设主题池，每次随机选一个没写过的
+// 预设主题池：每个主题唯一，覆盖不同长尾关键词，避免关键词自相残杀。
+// 选题以"在日华人真实会搜的中文句子"为准，不与已有标题撞车。
 const TOPIC_POOL = [
+  // ── 各补助金制度深度解读 ──
   { title: "省力化补助金完整指南：在日华人企业如何申请最高1500万円", keywords: ["省力化補助金", "在日华人补助金", "日本补助金申请"] },
   { title: "AI导入补助金2025：在日华人企业导入AI工具最高获补350万円", keywords: ["AI導入補助金", "IT导入补助金", "在日华人AI补助"] },
   { title: "员工转正助成金：将兼职转为正社员每人最高获80万円", keywords: ["キャリアアップ助成金", "在日华人员工转正", "正社員化補助"] },
   { title: "员工培训助成金：AI研修费最高75%由政府承担，在日华人企业必看", keywords: ["人材開発支援助成金", "在日华人培训补贴", "AI研修補助"] },
   { title: "东京都空调省能更新补助：换空调几乎不花钱的秘密", keywords: ["東京都省エネ補助", "空调以旧换新", "在日华人东京补助"] },
+  { title: "持续化补助金（小规模事业者持续化补助金）在日华人小店申请攻略", keywords: ["持续化补助金", "小規模事業者持続化補助金", "在日华人小店补助"] },
+  { title: "事业再构筑补助金：在日华人企业转型升级最高补6000万円", keywords: ["事业再构筑补助金", "事業再構築補助金", "在日华人企业转型"] },
+  { title: "制造业补助金（ものづくり补助金）：在日华人工厂设备投资攻略", keywords: ["ものづくり補助金", "制造业补助金", "在日华人工厂"] },
+  { title: "业务改善助成金：上调最低时薪也能拿补贴，在日华人企业必看", keywords: ["業務改善助成金", "最低工资补贴", "在日华人雇用助成"] },
+  { title: "雇用调整助成金：员工停工期间工资由政府补贴", keywords: ["雇用調整助成金", "在日华人雇用补贴", "停工补助"] },
+  // ── 行业 × 补助金（长尾人群词）──
   { title: "在日华人餐饮店怎么拿补助金？省力化+转正双管齐下攻略", keywords: ["在日华人餐饮补助金", "餐饮店省力化", "日本补助金"] },
-  { title: "日本补助金申请最常见的5个失败原因（附规避方法）", keywords: ["日本补助金失败", "补助金申请技巧", "在日华人补助金"] },
-  { title: "个人事业主在日本也能申请补助金吗？详解申请资格", keywords: ["个人事业主补助金", "在日华人个体经营", "日本補助金"] },
-  { title: "转正+培训双补贴：一人最多获超100万円政府支持的实操方案", keywords: ["キャリアアップ助成金", "人材开发支援助成金", "补助金组合申请"] },
-  { title: "美容院·美容沙龙如何申请日本政府补助金？全行业适用指南", keywords: ["美容院补助金", "在日华人美容业", "日本补助金申请"] },
-  { title: "在日华人企业主必看：2025年日本补助金政策全面盘点", keywords: ["2025年日本补助金", "在日华人企业补助", "补助金最新政策"] },
-  { title: "GビズID注册全流程：申请日本补助金的第一步", keywords: ["GビズID注册", "日本补助金前期准备", "在日华人补助申请"] },
-  { title: "省力化补助金vs AI导入补助金：哪个更适合你？", keywords: ["省力化补助金比较", "AI导入补助金", "在日华人选择补助金"] },
   { title: "在日华人开小卖铺·零售店能拿哪些补助金？", keywords: ["在日华人零售补助", "小売店补助金", "日本补助金"] },
+  { title: "美容院·美容沙龙如何申请日本政府补助金？全行业适用指南", keywords: ["美容院补助金", "在日华人美容业", "日本补助金申请"] },
+  { title: "在日华人民宿·旅馆业能申请哪些补助金？", keywords: ["在日华人民宿补助", "旅馆业补助金", "宿泊业助成金"] },
+  { title: "在日华人按摩·整体院补助金申请指南", keywords: ["按摩院补助金", "整体院助成金", "在日华人理疗"] },
+  { title: "在日华人IT·软件公司能拿哪些补助金？", keywords: ["IT企业补助金", "在日华人软件公司", "数字化补助"] },
+  { title: "在日华人贸易公司·物流业补助金申请攻略", keywords: ["贸易公司补助金", "物流业助成金", "在日华人贸易"] },
+  { title: "在日华人建筑·装修公司补助金申请全解析", keywords: ["建筑业补助金", "在日华人装修公司", "建設業助成金"] },
+  { title: "在日华人教育·培训机构能申请哪些补助金？", keywords: ["教育机构补助金", "在日华人培训学校", "塾补助金"] },
+  { title: "在日华人不动产中介补助金申请指南", keywords: ["不动产补助金", "在日华人不动产", "宅建業助成金"] },
+  // ── 资格 / 流程 / 实操（高意图词）──
+  { title: "个人事业主在日本也能申请补助金吗？详解申请资格", keywords: ["个人事业主补助金", "在日华人个体经营", "日本補助金"] },
+  { title: "日本补助金申请最常见的5个失败原因（附规避方法）", keywords: ["日本补助金失败", "补助金申请技巧", "在日华人补助金"] },
+  { title: "转正+培训双补贴：一人最多获超100万円政府支持的实操方案", keywords: ["キャリアアップ助成金", "人材开发支援助成金", "补助金组合申请"] },
+  { title: "GビズID注册全流程：申请日本补助金的第一步", keywords: ["GビズID注册", "日本补助金前期准备", "在日华人补助申请"] },
+  { title: "在日华人企业主必看：2025年日本补助金政策全面盘点", keywords: ["2025年日本补助金", "在日华人企业补助", "补助金最新政策"] },
+  { title: "省力化补助金vs AI导入补助金：哪个更适合你？", keywords: ["省力化补助金比较", "AI导入补助金", "在日华人选择补助金"] },
+  { title: "补助金申请需要准备哪些材料？在日华人企业必备清单", keywords: ["补助金申请材料", "在日华人补助清单", "申请书类准备"] },
+  { title: "补助金采择后多久能拿到钱？资金流程时间线详解", keywords: ["补助金入金时间", "采择后流程", "补助金支付"] },
+  { title: "补助金和助成金有什么区别？在日华人企业主一文搞懂", keywords: ["补助金助成金区别", "在日华人补助", "助成金是什么"] },
+  { title: "刚成立的公司能申请补助金吗？创业初期补助金指南", keywords: ["创业补助金", "新公司补助金", "在日华人创业"] },
+  { title: "认定支援机关是什么？为什么申请补助金需要它", keywords: ["认定经营革新等支援机关", "认定支援机关", "补助金支援"] },
+  { title: "补助金申请被驳回怎么办？再申请与异议流程", keywords: ["补助金驳回", "补助金再申请", "不采择对策"] },
+  { title: "补助金实绩报告怎么写？采择后必做的关键一步", keywords: ["补助金实绩报告", "实施报告", "采择后手续"] },
+  { title: "外国人经营者申请日本补助金有哪些注意事项？", keywords: ["外国人补助金", "在留资格补助金", "在日华人经营者"] },
+  { title: "补助金是先垫付还是后报销？资金压力如何应对", keywords: ["补助金垫付", "后払い", "补助金资金周转"] },
+  // ── 时效 / 政策类 ──
+  { title: "2026年日本补助金日程表：各制度募集时间一览", keywords: ["2026补助金日程", "募集期间", "补助金截止时间"] },
+  { title: "中小企业·小规模事业者的定义：你符合补助金对象吗？", keywords: ["中小企业定义", "小规模事业者", "补助金对象"] },
+  { title: "数字化转型补助金：在日华人企业上系统·建官网也能补", keywords: ["数字化补助金", "DX补助", "在日华人官网补助"] },
+  { title: "省力化补助金（一般型·目录型）区别与选择指南", keywords: ["省力化补助金类型", "目录型省力化", "一般型省力化"] },
+  { title: "补助金代办费用怎么收？成功报酬制是什么意思", keywords: ["补助金代办费用", "成功报酬", "补助金顾问费"] },
 ];
 
-async function getExistingTopics() {
+// 读取所有已有文章的 frontmatter title（用于按标题去重）
+async function getExistingTitles() {
   if (!fs.existsSync(POSTS_DIR)) {
     fs.mkdirSync(POSTS_DIR, { recursive: true });
     return [];
   }
-  return fs.readdirSync(POSTS_DIR).map((f) => f.replace(/\.md$/, ""));
+  const titles = [];
+  for (const f of fs.readdirSync(POSTS_DIR).filter((x) => x.endsWith(".md"))) {
+    const raw = fs.readFileSync(path.join(POSTS_DIR, f), "utf-8");
+    const m = raw.match(/^---\s*\n([\s\S]*?)\n---/);
+    const tm = m && m[1].match(/^title:\s*"?(.*?)"?\s*$/m);
+    if (tm) titles.push(tm[1].trim());
+  }
+  return titles;
 }
 
 async function generateArticle(topic) {
@@ -89,23 +128,19 @@ function slugify(_title) {
 }
 
 async function main() {
-  const existing = await getExistingTopics();
-  console.log(`现有文章数: ${existing.length}`);
+  const existingTitles = await getExistingTitles();
+  console.log(`现有文章数: ${existingTitles.length}`);
 
-  // 找一个还没写过的主题
-  const available = TOPIC_POOL.filter(
-    (t) => !existing.some((e) => e.includes(t.keywords[0].replace(/\s/g, "")))
-  );
+  // 按标题精确去重：只挑标题没用过的主题
+  const available = TOPIC_POOL.filter((t) => !existingTitles.includes(t.title));
 
   if (available.length === 0) {
-    console.log("所有预设主题已生成，从头开始循环");
+    console.log("⚠️ 所有预设主题都已生成，请扩充 TOPIC_POOL 后再运行。本次不生成，避免重复内容。");
+    process.exit(0);
   }
 
-  const topic = available.length > 0
-    ? available[Math.floor(Math.random() * available.length)]
-    : TOPIC_POOL[Math.floor(Math.random() * TOPIC_POOL.length)];
-
-  console.log(`生成文章: ${topic.title}`);
+  const topic = available[Math.floor(Math.random() * available.length)];
+  console.log(`可用主题数: ${available.length}，本次生成: ${topic.title}`);
 
   const content = await generateArticle(topic);
   const slug = slugify(topic.title);
