@@ -521,6 +521,13 @@ img { max-width: 100%; display: block; }
 }
 .reveal-scale.visible { opacity: 1; transform: none; }
 
+/* 兜底：无JS / 减少动画偏好 → 内容必须可见，绝不永久隐藏（SEO + 可访问性） */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+}
+
 /* ─────────────────────────────────────────
    PAGE CURTAIN (premium intro)
 ───────────────────────────────────────── */
