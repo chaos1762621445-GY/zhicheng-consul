@@ -72,12 +72,15 @@ export default function PageCurtain() {
           transition: 'opacity 0.9s ease, transform 0.9s cubic-bezier(.22,1,.36,1)',
         }}
       >
-        {/* Logo + 扫光 */}
-        <div style={{ position: 'relative', overflow: 'hidden', padding: '4px 8px' }}>
+        {/* Logo + 扫光 + 金色描边框 */}
+        <div style={{ position: 'relative', overflow: 'visible', padding: '18px 26px' }}>
+          {/* 四角金线描边（绘制感） */}
+          <span className="cframe cframe-tl" />
+          <span className="cframe cframe-br" />
           <img
             src="/logo.png"
             alt="志成コンサル"
-            style={{ height: 52, width: 'auto', filter: 'brightness(0) invert(1)', display: 'block' }}
+            style={{ height: 52, width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', position: 'relative', zIndex: 1 }}
           />
           {/* 金色扫光 */}
           <div
@@ -86,6 +89,7 @@ export default function PageCurtain() {
               background:
                 'linear-gradient(105deg, transparent 0%, rgba(217,189,94,0.55) 50%, transparent 100%)',
               animation: stage >= 1 ? 'csheen 1.4s ease-in-out 0.5s forwards' : 'none',
+              zIndex: 2,
             }}
           />
         </div>
@@ -138,6 +142,14 @@ export default function PageCurtain() {
         @keyframes cglow {
           0%, 100% { transform: translate(-50%,-58%) scale(1); opacity: .85 }
           50% { transform: translate(-50%,-58%) scale(1.08); opacity: 1 }
+        }
+        /* 四角金线描边 — 绘制感 */
+        .cframe { position: absolute; width: 22px; height: 22px; opacity: 0; }
+        .cframe-tl { top: 0; left: 0; border-top: 1.5px solid #c4a23a; border-left: 1.5px solid #c4a23a; animation: cframeIn .7s ease .55s forwards; }
+        .cframe-br { bottom: 0; right: 0; border-bottom: 1.5px solid #c4a23a; border-right: 1.5px solid #c4a23a; animation: cframeIn .7s ease .7s forwards; }
+        @keyframes cframeIn {
+          from { opacity: 0; transform: scale(.4); }
+          to   { opacity: .85; transform: scale(1); }
         }
       `}</style>
     </div>

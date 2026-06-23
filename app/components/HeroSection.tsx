@@ -25,31 +25,46 @@ export default function HeroSection() {
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
             objectFit: 'cover', objectPosition: 'center',
-            opacity: 0.45,
+            opacity: 0.30,
           }}
         />
-        {/* Gradient overlay — bottom fade to black */}
+        {/* Brand-tinted gradient overlay — teal 调，与开屏帘幕统一 */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 60%, #000 100%)',
+          background: 'linear-gradient(160deg, rgba(15,57,55,0.72) 0%, rgba(10,43,41,0.86) 55%, #0a2b29 100%)',
+        }} />
+        {/* 金色径向光晕 — 右上呼吸 */}
+        <div className="hero-glow" style={{
+          position: 'absolute', top: '-12%', right: '-6%',
+          width: 620, height: 620, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(196,162,58,0.16) 0%, rgba(196,162,58,0.05) 40%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        {/* 细网格纹理（极淡） */}
+        <div aria-hidden="true" style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          maskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%)',
         }} />
 
         {/* Content */}
         <div className="wrap hero-content">
           {/* Label */}
-          <div style={{
+          <div className="hero-anim hero-anim-1" style={{
             fontFamily: 'ui-monospace, Menlo, monospace',
             fontSize: 11, fontWeight: 400,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.5)',
+            color: 'rgba(255,255,255,0.55)',
             marginBottom: 24,
           }}>
             国家认定 · 四类持牌专家联合团队
           </div>
 
           {/* Main headline */}
-          <h1 style={{
+          <h1 className="hero-anim hero-anim-2" style={{
             fontSize: 'clamp(40px, 6.5vw, 88px)',
             fontWeight: 700,
             color: '#fff',
@@ -59,14 +74,18 @@ export default function HeroSection() {
             maxWidth: 860,
           }}>
             在日经营<br />
-            政府补助金<br />
+            <span style={{
+              background: 'linear-gradient(100deg, #fff 20%, #e3c766 65%, #d9bd5e 100%)',
+              WebkitBackgroundClip: 'text', backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>政府补助金</span><br />
             全程代办到账
           </h1>
 
           {/* Sub */}
-          <p style={{
+          <p className="hero-anim hero-anim-3" style={{
             fontSize: 17,
-            color: 'rgba(255,255,255,0.65)',
+            color: 'rgba(255,255,255,0.68)',
             lineHeight: 1.7,
             maxWidth: 480,
             marginBottom: 40,
@@ -76,7 +95,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTA */}
-          <div className="hero-cta-row" style={{ marginBottom: 52 }}>
+          <div className="hero-cta-row hero-anim hero-anim-4" style={{ marginBottom: 52 }}>
             <Link href="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: '#fff', color: '#1a5c5a',
@@ -103,7 +122,7 @@ export default function HeroSection() {
           </div>
 
           {/* Trust bar */}
-          <div className="hero-trust-bar">
+          <div className="hero-trust-bar hero-anim hero-anim-5">
             {trust.map(t => (
               <div key={t} style={{
                 display: 'flex', alignItems: 'center', gap: 8,
