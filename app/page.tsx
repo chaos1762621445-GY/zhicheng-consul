@@ -7,18 +7,36 @@ import ServicesSection from "./components/ServicesSection";
 import Footer from "./components/Footer";
 import Reveal from "./components/Reveal";
 
+// ── 专业线性 SVG 图标（品牌 teal，替代 emoji）──
+const Icon = ({ d, size = 22 }: { d: string; size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    {d.split('|').map((p, i) => <path key={i} d={p} />)}
+  </svg>
+);
+// 图标路径库
+const ICONS = {
+  document: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z|M14 2v6h6|M9 13h6|M9 17h4",
+  users: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2|M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8|M23 21v-2a4 4 0 0 0-3-3.87|M16 3.13a4 4 0 0 1 0 7.75",
+  chart: "M3 3v18h18|M7 16l4-6 4 3 5-7",
+  building: "M3 21h18|M5 21V7l8-4v18|M19 21V11l-6-4|M9 9h0|M9 13h0|M9 17h0",
+  chat: "M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z",
+  shield: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z|M9 12l2 2 4-4",
+  check: "M22 11.08V12a10 10 0 1 1-5.93-9.14|M22 4L12 14.01l-3-3",
+  trophy: "M6 9H4.5a2.5 2.5 0 0 1 0-5H6|M18 9h1.5a2.5 2.5 0 0 0 0-5H18|M4 22h16|M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22|M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22|M18 2H6v7a6 6 0 0 0 12 0V2z",
+};
+
 const credentials = [
-  { emoji: "📋", name: "行政书士", role: "申请材料专家", desc: "负责补助金申请书类制作与各类行政许可手续，确保材料规范、提交准时。" },
-  { emoji: "👷", name: "社会保险劳务士", role: "雇用关系专家", desc: "专精员工转正助成金、劳务管理合规，助力企业在规范用工中最大化补贴收益。" },
-  { emoji: "📊", name: "税理士",     role: "财务税务专家", desc: "负责财务资料审查与税务申报，确保申请数据准确可信，提升获批可能性。" },
-  { emoji: "🏢", name: "中小企业诊断士", role: "经营战略专家", desc: "制定事业计划书与经营战略，以专业的商业逻辑打动审查机关。" },
+  { icon: ICONS.document, name: "行政书士", role: "申请材料专家", desc: "负责补助金申请书类制作与各类行政许可手续，确保材料规范、提交准时。" },
+  { icon: ICONS.users, name: "社会保险劳务士", role: "雇用关系专家", desc: "专精员工转正助成金、劳务管理合规，助力企业在规范用工中最大化补贴收益。" },
+  { icon: ICONS.chart, name: "税理士",     role: "财务税务专家", desc: "负责财务资料审查与税务申报，确保申请数据准确可信，提升获批可能性。" },
+  { icon: ICONS.building, name: "中小企业诊断士", role: "经营战略专家", desc: "制定事业计划书与经营战略，以专业的商业逻辑打动审查机关。" },
 ];
 
 const reasons = [
-  { icon: "💬", title: "全程中文，无语言障碍",   desc: "从初次咨询到资金到账，所有日语文件由我们的专业人员处理，您只需提供企业信息。" },
-  { icon: "🛡️", title: "不获批不收费，零风险",   desc: "申请不成功无需支付任何费用，包括资料制作费与咨询费，风险由我们承担。" },
-  { icon: "✅", title: "四类国家认证专家全程操办", desc: "行政书士、社劳士、税理士、经营诊断士分工协作，覆盖补助金申请全环节。" },
-  { icon: "🏆", title: "3,000+ 真实成功案例",    desc: "累计服务超过 3,000 家在日华人企业，覆盖餐饮、IT、制造、美容等多个行业。" },
+  { icon: ICONS.chat, title: "全程中文，无语言障碍",   desc: "从初次咨询到资金到账，所有日语文件由我们的专业人员处理，您只需提供企业信息。" },
+  { icon: ICONS.shield, title: "不获批不收费，零风险",   desc: "申请不成功无需支付任何费用，包括资料制作费与咨询费，风险由我们承担。" },
+  { icon: ICONS.check, title: "四类国家认证专家全程操办", desc: "行政书士、社劳士、税理士、经营诊断士分工协作，覆盖补助金申请全环节。" },
+  { icon: ICONS.trophy, title: "3,000+ 真实成功案例",    desc: "累计服务超过 3,000 家在日华人企业，覆盖餐饮、IT、制造、美容等多个行业。" },
 ];
 
 const steps = [
@@ -58,7 +76,14 @@ export default async function HomePage() {
             {credentials.map((c, i) => (
               <Reveal key={i} delay={(i % 4) as 0|1|2|3|4|5} className="h-full">
                 <div className="card" style={{ textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{c.emoji}</div>
+                  <div style={{
+                    width: 56, height: 56, margin: '0 auto 18px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    borderRadius: 14, background: 'var(--brand-bg)', color: 'var(--brand)',
+                    border: '1px solid var(--brand-mid)',
+                  }}>
+                    <Icon d={c.icon} size={26} />
+                  </div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)', marginBottom: 6 }}>{c.role}</div>
                   <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, color: 'var(--brand)', background: 'var(--brand-bg)', padding: '3px 10px', borderRadius: 100, marginBottom: 14, alignSelf: 'center' }}>{c.name}</div>
                   <p style={{ fontSize: 13, color: 'var(--body)', lineHeight: 1.7 }}>{c.desc}</p>
@@ -88,7 +113,7 @@ export default async function HomePage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                 {reasons.map((r, i) => (
                   <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                    <div className="icon-circle" style={{ fontSize: 20, flexShrink: 0 }}>{r.icon}</div>
+                    <div className="icon-circle" style={{ flexShrink: 0, color: 'var(--brand)' }}><Icon d={r.icon} size={20} /></div>
                     <div>
                       <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink)', marginBottom: 5 }}>{r.title}</div>
                       <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.7 }}>{r.desc}</p>
