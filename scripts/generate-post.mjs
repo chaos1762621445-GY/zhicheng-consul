@@ -153,11 +153,21 @@ async function main() {
     .split("\n")
     .find((l) => l.length > 20) || topic.title;
 
+  // YAML 双引号字段防断：把内嵌的英文/弯双引号统一转中文引号「」，避免提前截断字符串
+  const yamlSafe = (s) =>
+    String(s)
+      .replace(/[""]/g, (m, i, str) => {
+        // 成对弯引号 → 「」；落单的也归一为「
+        return m === "\u201D" ? "\u300D" : "\u300C";
+      })
+      .replace(/"([^"]*)"/g, "\u300C$1\u300D") // 成对英文双引号 → 「」
+      .replace(/"/g, "\u300C"); // 残留落单英文双引号 → 「
+
   const frontmatter = `---
-title: "${topic.title}"
+title: "${yamlSafe(topic.title)}"
 date: "${date}"
-excerpt: "${excerpt.substring(0, 120)}..."
-keywords: [${topic.keywords.map((k) => `"${k}"`).join(", ")}]
+excerpt: "${yamlSafe(excerpt.substring(0, 120))}..."
+keywords: [${topic.keywords.map((k) => `"${yamlSafe(k)}"`).join(", ")}]
 ---
 
 `;
