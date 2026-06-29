@@ -91,10 +91,10 @@ async function generateArticle(topic) {
 目标关键词：${topic.keywords.join("、")}
 
 要求：
-1. 字数1500-2000字
-2. 结构清晰，用H2/H3分级标题
-3. 包含FAQ板块（至少3个常见问题）
-4. 语言亲切专业，适合华人企业主阅读
+1. 字数2500-3000字（中文字符，内容要深度、具体、可操作，避免空话套话）
+2. 结构清晰，用H2/H3分级标题，至少5个H2大节
+3. 必须包含「常见问题解答（FAQ）」板块，至少5个常见问题，每个问题用「### Q1：问题内容」格式，答案用「**A：**」开头，答案要详实（每个不少于80字）
+4. 语言亲切专业，适合华人企业主阅读，多用具体数字、金额、流程步骤、真实场景举例
 5. 自然融入目标关键词，不要堆砌
 6. 结尾引导读者免费咨询
 
@@ -109,7 +109,7 @@ async function generateArticle(topic) {
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5",
-      max_tokens: 3000,
+      max_tokens: 8000,
       messages: [{ role: "user", content: prompt }],
     }),
   });

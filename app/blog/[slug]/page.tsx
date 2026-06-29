@@ -12,6 +12,45 @@ export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
+// 从正文 Markdown 提取 FAQ 问答对（### Q...：问题 + **A：** 答案），用于 FAQPage 结构化数据
+function extractFaq(markdown: string): { q: string; a: string }[] {
+  const faqs: { q: string; a: string }[] = [];
+  const lines = markdown.split(/\r?\n/);
+  let curQ: string | null = null;
+  let curA: string[] = [];
+  const flush = () => {
+    if (curQ) {
+      const a = curA
+        .join(" ")
+        .replace(/\*\*A[：:]\*\*/g, "")
+        .replace(/^\s*A[：:]\s*/, "")
+        .replace(/[*_`>#-]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      const q = curQ.replace(/[*_`#]/g, "").replace(/\s+/g, " ").trim();
+      if (q && a) faqs.push({ q, a });
+    }
+    curQ = null;
+    curA = [];
+  };
+  for (const line of lines) {
+    const qm = line.match(/^###\s*Q\d*\s*[：:、.\s]\s*(.+?)\s*$/);
+    if (qm) {
+      flush();
+      curQ = qm[1];
+      continue;
+    }
+    // 遇到新的二/三级标题（非 Q），结束当前问答
+    if (/^##\s/.test(line) || (/^###\s/.test(line) && !/^###\s*Q/.test(line))) {
+      flush();
+      continue;
+    }
+    if (curQ !== null && line.trim()) curA.push(line.trim());
+  }
+  flush();
+  return faqs;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
@@ -60,6 +99,18 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const processed = await remark().use(html).process(body);
   const contentHtml = processed.toString();
 
+  // 内链：按 keywords 交集排序挑 3 篇相关文章（无交集则用最近文章补足）
+  const allPosts = await getAllPosts();
+  const related = allPosts
+    .filter((p) => p.slug !== slug)
+    .map((p) => ({
+      p,
+      score: (p.keywords || []).filter((k) => (post.keywords || []).includes(k)).length,
+    }))
+    .sort((a, b) => b.score - a.score || (a.p.date < b.p.date ? 1 : -1))
+    .slice(0, 3)
+    .map((s) => s.p);
+
   const SITE_URL = "https://zhicheng-consul.vercel.app";
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -88,6 +139,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     ],
   };
 
+  // FAQ 结构化数据：从正文自动提取问答，命中可吃 Google FAQ 富摘要
+  const faqPairs = extractFaq(post.content);
+  const faqJsonLd =
+    faqPairs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqPairs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
+
   return (
     <main>
       <script
@@ -98,6 +164,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <NavClient />
 
       <div className="article-wrap">
@@ -129,6 +201,41 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </svg>
           </Link>
         </div>
+
+        {related.length > 0 && (
+          <div style={{ margin: "0 0 64px", maxWidth: 760 }}>
+            <h3 style={{ fontSize: 20, fontWeight: 800, color: "#1d1d1f", marginBottom: 20, letterSpacing: "-0.4px" }}>
+              相关阅读
+            </h3>
+            <div style={{ display: "grid", gap: 12 }}>
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/blog/${r.slug}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 16,
+                    padding: "18px 22px",
+                    background: "#fff",
+                    border: "1px solid #e7f1f1",
+                    borderRadius: "var(--r-lg)",
+                    textDecoration: "none",
+                    transition: "border-color .2s",
+                  }}
+                >
+                  <span style={{ fontSize: 15, fontWeight: 600, color: "#1a5c5a", lineHeight: 1.5 }}>
+                    {r.title}
+                  </span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#c4a23a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16, flexShrink: 0 }}>
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <Footer />
