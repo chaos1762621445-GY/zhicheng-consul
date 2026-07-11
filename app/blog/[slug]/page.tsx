@@ -56,10 +56,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug);
   if (!post) return {};
   const url = `/blog/${slug}`;
+  // 站点级身份长尾词：追加到每篇文章 keywords，让中文口语搜索词也能匹配到本站文章
+  // （在日华人真实搜的是"日本补助金 中文""在日华人 补助金 申请"这类身份词，而非专业术语）
+  const IDENTITY_KEYWORDS = [
+    "在日华人补助金",
+    "日本补助金中文",
+    "在日华人企业补助金",
+    "日本补助金代办中文",
+    "在日华人 补助金 申请",
+    "日本政府补助金 华人",
+  ];
+  const mergedKeywords = Array.from(
+    new Set([...(post.keywords || []), ...IDENTITY_KEYWORDS])
+  );
   return {
     title: post.title,
     description: post.excerpt,
-    keywords: post.keywords,
+    keywords: mergedKeywords,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
