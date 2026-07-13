@@ -1,157 +1,115 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+/**
+ * 开屏帘幕 V2 — 编辑式题词卡
+ * 逐字升起的衬线品牌名 + 金线展开 + 帘幕上提退场（内容视差）。
+ * 每个会话只播一次；总时长 2.2s，比 V1 更快更克制。
+ */
 export default function PageCurtain() {
   const [mounted, setMounted] = useState(true);
   const [stage, setStage] = useState(0);
-  // stage 0 = 初始, 1 = logo入场, 2 = 上滑退场
+  // 0 = 初始, 1 = 入场, 2 = 上提退场
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (sessionStorage.getItem('zc-curtain')) { setMounted(false); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setMounted(false);
+      sessionStorage.setItem('zc-curtain', '1');
+      return;
+    }
 
-    const t1 = setTimeout(() => setStage(1), 120);   // logo + 内容入场
-    const t2 = setTimeout(() => setStage(2), 1850);  // 幕布上滑
+    const t1 = setTimeout(() => setStage(1), 60);
+    const t2 = setTimeout(() => setStage(2), 1400);
     const t3 = setTimeout(() => {
       setMounted(false);
       sessionStorage.setItem('zc-curtain', '1');
-    }, 2750);
+    }, 2250);
     return () => [t1, t2, t3].forEach(clearTimeout);
   }, []);
 
   if (!mounted) return null;
 
+  const chars = ['志', '成', 'コ', 'ン', 'サ', 'ル'];
+
   return (
     <div
+      aria-hidden="true"
       style={{
         position: 'fixed', inset: 0, zIndex: 9999,
-        background:
-          'radial-gradient(120% 90% at 50% 38%, #155350 0%, #0f3937 45%, #0a2b29 100%)',
-        display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center',
+        background: 'linear-gradient(180deg, #0f3937 0%, #114240 55%, #0d3331 100%)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         overflow: 'hidden',
-        transition: stage === 2
-          ? 'transform 0.85s cubic-bezier(.76,0,.24,1), opacity 0.85s ease'
-          : 'none',
-        transform: stage === 2 ? 'translateY(-100%)' : 'translateY(0)',
+        transition: stage === 2 ? 'transform .85s cubic-bezier(.83,0,.17,1)' : 'none',
+        transform: stage === 2 ? 'translateY(-100.5%)' : 'translateY(0)',
         pointerEvents: 'none',
+        willChange: 'transform',
       }}
-      aria-hidden="true"
     >
-      {/* 金色呼吸光晕 */}
-      <div
-        style={{
-          position: 'absolute', top: '50%', left: '50%',
-          width: 720, height: 720, transform: 'translate(-50%,-58%)',
-          background:
-            'radial-gradient(circle, rgba(196,162,58,0.16) 0%, rgba(196,162,58,0.05) 35%, transparent 70%)',
-          opacity: stage >= 1 ? 1 : 0,
-          transition: 'opacity 1s ease',
-          animation: stage >= 1 ? 'cglow 3.2s ease-in-out infinite' : 'none',
-        }}
-      />
+      {/* 金色光晕（静态，不呼吸——克制） */}
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%',
+        width: 640, height: 640, transform: 'translate(-50%,-52%)',
+        background: 'radial-gradient(circle, rgba(196,162,58,0.10) 0%, transparent 65%)',
+      }} />
 
-      {/* 编织结纹理母题（极淡） */}
+      {/* 主体：内容在退场时轻微下坠形成视差 */}
       <div
         style={{
-          position: 'absolute', inset: 0,
-          backgroundImage:
-            'repeating-linear-gradient(45deg, rgba(255,255,255,0.012) 0 2px, transparent 2px 26px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.012) 0 2px, transparent 2px 26px)',
-          opacity: stage >= 1 ? 1 : 0,
-          transition: 'opacity 1.2s ease',
-        }}
-      />
-
-      {/* 主体内容 */}
-      <div
-        style={{
-          position: 'relative',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22,
-          opacity: stage >= 1 ? 1 : 0,
-          transform: stage >= 1 ? 'translateY(0)' : 'translateY(14px)',
-          transition: 'opacity 0.9s ease, transform 0.9s cubic-bezier(.22,1,.36,1)',
+          position: 'relative', textAlign: 'center',
+          transition: stage === 2 ? 'transform .85s cubic-bezier(.83,0,.17,1), opacity .5s ease' : 'none',
+          transform: stage === 2 ? 'translateY(60px)' : 'translateY(0)',
+          opacity: stage === 2 ? 0.4 : 1,
         }}
       >
-        {/* Logo + 扫光 + 金色描边框 */}
-        <div style={{ position: 'relative', overflow: 'visible', padding: '18px 26px' }}>
-          {/* 四角金线描边（绘制感） */}
-          <span className="cframe cframe-tl" />
-          <span className="cframe cframe-br" />
-          <img
-            src="/logo.png"
-            alt="志成コンサル"
-            style={{ height: 52, width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', position: 'relative', zIndex: 1 }}
-          />
-          {/* 金色扫光 */}
-          <div
-            style={{
-              position: 'absolute', top: 0, left: '-60%', width: '60%', height: '100%',
-              background:
-                'linear-gradient(105deg, transparent 0%, rgba(217,189,94,0.55) 50%, transparent 100%)',
-              animation: stage >= 1 ? 'csheen 1.4s ease-in-out 0.5s forwards' : 'none',
-              zIndex: 2,
-            }}
-          />
+        {/* 品牌名 — 逐字升起 */}
+        <div className="serif" style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'baseline',
+          fontSize: 'clamp(38px, 7vw, 64px)', fontWeight: 900,
+          color: '#fff', letterSpacing: '0.04em', lineHeight: 1,
+        }}>
+          {chars.map((ch, i) => (
+            <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
+              <span style={{
+                display: 'inline-block',
+                transform: stage >= 1 ? 'translateY(0)' : 'translateY(110%)',
+                transition: `transform .7s cubic-bezier(.22,1,.36,1) ${0.08 + i * 0.055}s`,
+                // 假名比汉字小一号，形成节奏
+                fontSize: i >= 2 ? '0.62em' : '1em',
+                color: i >= 2 ? 'rgba(255,255,255,0.85)' : '#fff',
+              }}>{ch}</span>
+            </span>
+          ))}
         </div>
 
-        {/* 金色分隔线（从中间展开） */}
-        <div
-          style={{
-            width: stage >= 1 ? 56 : 0, height: 1.5,
-            background: 'linear-gradient(90deg, transparent, #c4a23a, transparent)',
-            transition: 'width 0.9s cubic-bezier(.22,1,.36,1) 0.3s',
-          }}
-        />
+        {/* 金线 — 从中心展开 */}
+        <div style={{
+          width: stage >= 1 ? 64 : 0, height: 2, margin: '26px auto 22px',
+          background: 'var(--gold, #c4a23a)',
+          transition: 'width .8s cubic-bezier(.22,1,.36,1) .45s',
+        }} />
 
-        {/* 副标题 */}
-        <div
-          style={{
-            fontFamily: 'ui-monospace, Menlo, monospace',
-            fontSize: 11, fontWeight: 400,
-            letterSpacing: stage >= 1 ? '0.34em' : '0.5em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.5)',
-            paddingLeft: '0.34em',
-            transition: 'letter-spacing 1.1s cubic-bezier(.22,1,.36,1)',
-          }}
-        >
-          在日华人补助金 · 全程代办
+        {/* 题词 — 衬线，淡入 */}
+        <div className="serif" style={{
+          fontSize: 14, fontWeight: 600, letterSpacing: '0.42em',
+          paddingLeft: '0.42em',
+          color: 'rgba(255,255,255,0.55)',
+          opacity: stage >= 1 ? 1 : 0,
+          transform: stage >= 1 ? 'translateY(0)' : 'translateY(8px)',
+          transition: 'opacity .7s ease .6s, transform .7s cubic-bezier(.22,1,.36,1) .6s',
+        }}>
+          在日华人 · 补助金全程代办
         </div>
       </div>
 
-      {/* 底部金色进度条 */}
-      <div
-        style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: 2,
-          background: 'rgba(255,255,255,0.06)', overflow: 'hidden',
-        }}
-      >
-        <div
-          style={{
-            height: '100%',
-            background: 'linear-gradient(90deg, #c4a23a, #d9bd5e)',
-            boxShadow: '0 0 12px rgba(196,162,58,0.6)',
-            animation: stage >= 1 ? 'cprog 1.65s cubic-bezier(.4,0,.2,1) forwards' : 'none',
-          }}
-        />
-      </div>
-
-      <style>{`
-        @keyframes cprog { from { width: 0 } to { width: 100% } }
-        @keyframes csheen { from { left: -60% } to { left: 130% } }
-        @keyframes cglow {
-          0%, 100% { transform: translate(-50%,-58%) scale(1); opacity: .85 }
-          50% { transform: translate(-50%,-58%) scale(1.08); opacity: 1 }
-        }
-        /* 四角金线描边 — 绘制感 */
-        .cframe { position: absolute; width: 22px; height: 22px; opacity: 0; }
-        .cframe-tl { top: 0; left: 0; border-top: 1.5px solid #c4a23a; border-left: 1.5px solid #c4a23a; animation: cframeIn .7s ease .55s forwards; }
-        .cframe-br { bottom: 0; right: 0; border-bottom: 1.5px solid #c4a23a; border-right: 1.5px solid #c4a23a; animation: cframeIn .7s ease .7s forwards; }
-        @keyframes cframeIn {
-          from { opacity: 0; transform: scale(.4); }
-          to   { opacity: .85; transform: scale(1); }
-        }
-      `}</style>
+      {/* 帘幕下摆的金色缘线——上提时像布料的收边 */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
+        background: 'linear-gradient(90deg, transparent 8%, #c4a23a 50%, transparent 92%)',
+        opacity: stage >= 1 ? 1 : 0,
+        transition: 'opacity .6s ease .3s',
+      }} />
     </div>
   );
 }

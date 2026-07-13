@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 
-// Unsplash — Japan business meeting / office
-const BG = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&auto=format&fit=crop';
-
 interface CtaSectionProps {
   title: React.ReactNode;
   desc?: string;
@@ -11,6 +8,11 @@ interface CtaSectionProps {
   secondary?: { href: string; label: string };
 }
 
+/**
+ * CTA V2 — 编辑式收尾（无素材图）
+ * 深 teal 场 + 巨型描边「診断」水印（白皮书封面基因）
+ * 左：衬线大标题；右：行动栏（金色主按钮 + 保障微文案）
+ */
 export default function CtaSection({
   title,
   desc = '3分钟免费问诊，为您的企业精准匹配最优补助金方案。全程中文，不获批不收费。',
@@ -20,73 +22,78 @@ export default function CtaSection({
   return (
     <section style={{
       position: 'relative',
-      padding: '120px 0',
+      padding: 'clamp(88px, 10vw, 140px) 0',
       overflow: 'hidden',
-      background: 'linear-gradient(160deg,#124442,#1a5c5a)',
+      background: 'linear-gradient(165deg, #0f3937 0%, #114240 48%, #0d3331 100%)',
+      borderTop: '3px solid var(--gold)',
     }}>
-      {/* Photo */}
-      <img
-        src={BG}
-        alt=""
-        aria-hidden="true"
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center 40%',
-          opacity: 0.25,
-        }}
-      />
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)',
+      {/* 巨型描边水印 — 白皮书封面「2026」同款基因 */}
+      <div aria-hidden="true" className="serif cta-watermark">診断</div>
+
+      {/* 金色径向光晕 */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', bottom: '-40%', left: '-8%',
+        width: 620, height: 620, pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(196,162,58,0.10) 0%, transparent 68%)',
       }} />
 
-      <div className="wrap" style={{ maxWidth: 680, position: 'relative', zIndex: 1 }}>
-        <h2 className="serif" style={{
-          fontSize: 'clamp(28px, 3.5vw, 48px)',
-          fontWeight: 900,
-          color: '#fff',
-          letterSpacing: '0',
-          lineHeight: 1.2,
-          marginBottom: 24,
-          position: 'relative',
-          paddingTop: 20,
-        }}>
-          <span aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, width: 42, height: 3, background: 'var(--gold-bright, #d9bd5e)' }} />
-          {title}
-        </h2>
-
-        {desc && (
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, maxWidth: 480, marginBottom: 44 }}>
-            {desc}
-          </p>
-        )}
-
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Link href={primary.href} style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: '#fff', color: '#1a5c5a',
-            padding: '13px 28px',
-            fontSize: 14, fontWeight: 600,
-            letterSpacing: '0.04em',
-          }}>
-            {primary.label}
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </Link>
-          {secondary && (
-            <Link href={secondary.href} style={{
-              display: 'inline-flex', alignItems: 'center',
-              background: 'transparent', color: 'rgba(255,255,255,0.7)',
-              border: '1px solid rgba(255,255,255,0.25)',
-              padding: '13px 28px',
-              fontSize: 14, fontWeight: 500,
-              letterSpacing: '0.04em',
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="cta-grid">
+          {/* 左栏：陈述 */}
+          <div>
+            <div style={{ width: 42, height: 3, background: 'var(--gold)', marginBottom: 26 }} />
+            <h2 className="serif" style={{
+              fontSize: 'clamp(28px, 3.6vw, 50px)',
+              fontWeight: 900,
+              color: '#fff',
+              lineHeight: 1.22,
+              letterSpacing: '-0.3px',
+              wordBreak: 'keep-all',
+              margin: 0,
             }}>
-              {secondary.label}
+              {title}
+            </h2>
+            {desc && (
+              <p style={{
+                fontSize: 15.5, color: 'rgba(255,255,255,0.62)',
+                lineHeight: 1.85, maxWidth: '38em', marginTop: 22,
+              }}>
+                {desc}
+              </p>
+            )}
+          </div>
+
+          {/* 右栏：行动栏 */}
+          <div className="cta-panel">
+            <Link href={primary.href} className="cta-btn-gold">
+              {primary.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
             </Link>
-          )}
+            {secondary && (
+              <Link href={secondary.href} className="cta-btn-ghost">
+                {secondary.label}
+              </Link>
+            )}
+
+            {/* 保障微文案 — hairline 分隔 */}
+            <div style={{ marginTop: 8, borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+              {[
+                ['不获批不收费', '成功报酬制，申请失败分文不取'],
+                ['工作日当日回复', '微信 lzl238888 直连中文顾问'],
+              ].map(([k, v]) => (
+                <div key={k} style={{
+                  display: 'flex', alignItems: 'baseline', gap: 12,
+                  padding: '13px 0',
+                  borderBottom: '1px solid rgba(255,255,255,0.14)',
+                }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--gold)', whiteSpace: 'nowrap' }}>{k}</span>
+                  <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

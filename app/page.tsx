@@ -5,6 +5,7 @@ import HeroSection from "./components/HeroSection";
 import ServicesSection from "./components/ServicesSection";
 import Footer from "./components/Footer";
 import Reveal from "./components/Reveal";
+import CtaSection from "./components/CtaSection";
 
 // ── 专业线性 SVG 图标（品牌 teal，替代 emoji）──
 const Icon = ({ d, size = 22 }: { d: string; size?: number }) => (
@@ -188,41 +189,11 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ── CTA — 品牌 teal 满铺（Committed color） ── */}
-      <section style={{ position: 'relative', padding: '110px 0', overflow: 'hidden', background: 'linear-gradient(158deg, #0f3d3b 0%, var(--brand) 60%, #1f6b67 100%)' }}>
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(circle at 82% 20%, rgba(196,162,58,0.22), transparent 46%)',
-        }} />
-        <div className="wrap" style={{ maxWidth: 760, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <Reveal>
-            <h2 className="h2 serif" style={{ color: '#fff', marginBottom: 20, fontSize: 'clamp(30px,3.8vw,46px)' }}>
-              不确定能申请哪些？<br />
-              <span style={{ color: 'var(--gold-bright)' }}>免费诊断，当日回复</span>
-            </h2>
-            <p style={{ fontSize: 16.5, color: 'rgba(255,255,255,.78)', lineHeight: 1.75, marginBottom: 40, maxWidth: 480, margin: '0 auto 40px' }}>
-              专家团队为您精准匹配最优补助金方案，完全免费，无任何购买义务。
-            </p>
-            <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: '#fff', color: 'var(--brand)',
-                padding: '15px 32px', fontSize: 15, fontWeight: 700,
-              }}>
-                立即免费诊断 <ArrowIcon />
-              </Link>
-              <Link href="/subsidies" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'transparent', color: 'rgba(255,255,255,.9)',
-                border: '1px solid rgba(255,255,255,.35)',
-                padding: '15px 32px', fontSize: 15, fontWeight: 500,
-              }}>
-                查看补助金种类
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ── CTA — 编辑式收尾（共享组件 V2：診断水印+行动栏） ── */}
+      <CtaSection
+        title={<>不确定能申请哪些？<br /><span style={{ color: 'var(--gold-bright)' }}>免费诊断，当日回复</span></>}
+        desc="专家团队为您精准匹配最优补助金方案，完全免费，无任何购买义务。"
+      />
 
       <Footer />
     </main>
