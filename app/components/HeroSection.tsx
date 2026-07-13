@@ -63,22 +63,18 @@ export default function HeroSection() {
             国家认定 · 四类持牌专家联合团队
           </div>
 
-          {/* Main headline */}
-          <h1 className="hero-anim hero-anim-2" style={{
-            fontSize: 'clamp(40px, 6.5vw, 88px)',
-            fontWeight: 700,
+          {/* Main headline — 衬线体，金色实色强调（无渐变文字） */}
+          <h1 className="hero-anim hero-anim-2 serif" style={{
+            fontSize: 'clamp(38px, 6vw, 82px)',
+            fontWeight: 900,
             color: '#fff',
-            lineHeight: 1.0,
-            letterSpacing: '-1.5px',
+            lineHeight: 1.14,
+            letterSpacing: '0',
             marginBottom: 28,
             maxWidth: 860,
           }}>
             在日经营<br />
-            <span style={{
-              background: 'linear-gradient(100deg, #fff 20%, #e3c766 65%, #d9bd5e 100%)',
-              WebkitBackgroundClip: 'text', backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>政府补助金</span><br />
+            <span style={{ color: '#e3c766' }}>政府补助金</span><br />
             全程代办到账
           </h1>
 
@@ -121,16 +117,15 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          {/* Trust bar */}
+          {/* Trust bar — 细竖线分隔（无装饰点） */}
           <div className="hero-trust-bar hero-anim hero-anim-5">
-            {trust.map(t => (
+            {trust.map((t, i) => (
               <div key={t} style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                fontSize: 12.5, color: 'rgba(255,255,255,0.5)',
-                fontFamily: 'ui-monospace, Menlo, monospace',
-                letterSpacing: '0.06em',
+                display: 'flex', alignItems: 'center', gap: 14,
+                fontSize: 12.5, color: 'rgba(255,255,255,0.55)',
+                letterSpacing: '0.08em',
               }}>
-                <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.4)', flexShrink: 0 }} />
+                {i > 0 && <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.22)', flexShrink: 0 }} />}
                 {t}
               </div>
             ))}
@@ -155,18 +150,7 @@ export default function HeroSection() {
                 textAlign: 'center',
                 borderRight: i < 2 ? '1px solid #e8e8e8' : 'none',
               }}>
-                <div style={{
-                  fontSize: 'clamp(40px,5vw,64px)',
-                  fontWeight: 800,
-                  background: 'linear-gradient(135deg, #1a5c5a 30%, #c4a23a 130%)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  letterSpacing: '-2px',
-                  lineHeight: 1,
-                  marginBottom: 10,
-                  fontVariantNumeric: 'tabular-nums',
-                }}>
+                <div className="stat-v" style={{ marginBottom: 10 }}>
                   {s.val}
                 </div>
                 <div style={{ fontSize: 14, fontWeight: 600, color: '#1d1d1f', marginBottom: 4 }}>{s.label}</div>
