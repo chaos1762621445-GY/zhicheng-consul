@@ -114,7 +114,7 @@ export default function ServicePage() {
       </section>
 
       <CtaSection
-        title={<>立即开始<span style={{ color: 'var(--brand)' }}>免费咨询</span></>}
+        title={<>立即开始<span style={{ color: 'var(--gold-bright)' }}>免费咨询</span></>}
         desc="3分钟问诊，精准推荐最优补助金方案。完全免费，无任何购买义务。"
       />
 

@@ -300,7 +300,7 @@ export default function PartnerPage() {
       </section>
 
       <CtaSection
-        title={<>现在报名<br /><span style={{ color: 'var(--brand)' }}>开始您的代理合作之旅</span></>}
+        title={<>现在报名<br /><span style={{ color: 'var(--gold-bright)' }}>开始您的代理合作之旅</span></>}
         desc="填写简单的报名表，我们会在1个工作日内联系您，为您安排专属培训和对接。"
         primary={{ href: '/contact', label: '立即报名成为代理' }}
         secondary={{ href: '/about', label: '了解我们的团队' }}

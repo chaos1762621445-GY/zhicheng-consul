@@ -32,24 +32,24 @@ export default async function BlogPage() {
               <Link href="/contact" className="btn btn-fill">联系我们咨询</Link>
             </div>
           ) : (
-            <div className="grid-3">
+            <div className="ed-rows" style={{ background: 'var(--surface)', padding: '0 32px' }}>
               {posts.map(post => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  style={{ display: "block", textDecoration: "none" }}
+                  className="ed-row"
+                  style={{ textDecoration: "none" }}
                 >
-                  <div className="card-premium" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 10, fontWeight: 600, letterSpacing: '.02em' }}>{post.date}</div>
-                    <div style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", marginBottom: 12, lineHeight: 1.45 }}>{post.title}</div>
-                    <p style={{ fontSize: 14, color: "var(--body)", lineHeight: 1.75, marginBottom: 20, flex: 1 }}>{(post.excerpt || "").slice(0, 100)}...</p>
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13.5, fontWeight: 600, color: "var(--brand)" }}>
-                      阅读全文
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 13, height: 13 }}>
-                        <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
+                  <span style={{ fontSize: 12.5, color: "var(--muted)", fontVariantNumeric: 'tabular-nums' }}>{post.date}</span>
+                  <div>
+                    <div className="serif" style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", marginBottom: 6, lineHeight: 1.5 }}>{post.title}</div>
+                    <p style={{ fontSize: 13.5, color: "var(--body)", lineHeight: 1.7, maxWidth: '72ch' }}>{(post.excerpt || "").slice(0, 100)}...</p>
                   </div>
+                  <span style={{ color: "var(--brand)" }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}>
+                      <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
                 </Link>
               ))}
             </div>
@@ -58,7 +58,7 @@ export default async function BlogPage() {
       </section>
 
       <CtaSection
-        title={<>想了解更多？<br /><span style={{ color: 'var(--brand)' }}>免费咨询顾问</span></>}
+        title={<>想了解更多？<br /><span style={{ color: 'var(--gold-bright)' }}>免费咨询顾问</span></>}
       />
 
       <Footer />

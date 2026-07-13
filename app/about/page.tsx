@@ -77,8 +77,7 @@ export default function AboutPage() {
         <div className="wrap">
           <div className="grid-cols-about">
             <div>
-              <div className="eyebrow">我们的理念</div>
-              <h2 className="h2" style={{ marginBottom: 24 }}>让语言不再成为<br />机会的壁垒</h2>
+              <h2 className="h2 ed-h" style={{ marginBottom: 24 }}>让语言不再成为<br />机会的壁垒</h2>
               <p style={{ fontSize: 15.5, color: 'var(--body)', lineHeight: 1.9, marginBottom: 20 }}>
                 日本政府每年提供超过数千亿日元的补助金与助成金，专门用于扶持中小企业创新、雇用与发展。然而，对于大多数在日华人企业主而言，这些资金往往因为语言门槛和繁琐的申请程序而遥不可及。
               </p>
@@ -133,44 +132,24 @@ export default function AboutPage() {
       <section className="sec" style={{ background: 'var(--surface-2)' }}>
         <div className="wrap">
           <div style={{ textAlign: 'center', marginBottom: 52, maxWidth: 640, margin: '0 auto 52px' }}>
-            <div className="eyebrow">专业团队</div>
-            <h2 className="h2" style={{ marginBottom: 14 }}>四士联合，全方位保障</h2>
+            <h2 className="h2 ed-h ed-h-center" style={{ marginBottom: 14 }}>四士联合，全方位保障</h2>
             <p className="sub" style={{ margin: '0 auto' }}>
               行政书士·社会保险劳务士·税理士·中小企业诊断士，四种国家资格专家组成跨学科团队，覆盖补助金申请的每一个环节。
             </p>
           </div>
-          <div className="grid-4">
+          <div className="ed-rows" style={{ maxWidth: 900, margin: '0 auto', background: 'var(--surface)', padding: '0 32px' }}>
             {teamMembers.map((m, i) => (
-              <div key={i} className="card-premium" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                {/* Avatar circle */}
-                <div style={{
-                  width: 64, height: 64, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--brand) 0%, var(--brand-soft) 100%)',
-                  color: '#fff',
-                  fontSize: m.initial.length > 1 ? 18 : 24,
-                  fontWeight: 700,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: 20,
-                  boxShadow: '0 4px 12px rgba(30,64,175,.25)',
-                  letterSpacing: m.initial.length > 1 ? '-0.02em' : 0,
-                  flexShrink: 0,
-                }}>
-                  {m.initial}
+              <div key={i} className="ed-row">
+                <span className="ed-row-n">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 6, flexWrap: 'wrap' }}>
+                    <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: 'var(--ink)' }}>{m.name}</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.06em' }}>{m.title}</span>
+                    <span style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '.02em' }}>{m.en}</span>
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--brand)' }}>{m.specialty}</div>
+                  <p style={{ fontSize: 13.5, color: 'var(--body)', lineHeight: 1.75, maxWidth: '64ch' }}>{m.desc}</p>
                 </div>
-                <div style={{
-                  display: 'inline-block', alignSelf: 'flex-start',
-                  fontSize: 11, fontWeight: 700, padding: '4px 10px',
-                  borderRadius: 100, marginBottom: 14,
-                  background: 'var(--brand-bg)', color: 'var(--brand)',
-                  border: '1px solid var(--brand-mid)',
-                  letterSpacing: '.05em',
-                }}>
-                  {m.title}
-                </div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--ink)', marginBottom: 2 }}>{m.name}</div>
-                <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 12, letterSpacing: '.02em' }}>{m.en}</div>
-                <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 14, color: 'var(--gold)' }}>{m.specialty}</div>
-                <p style={{ fontSize: 13.5, color: 'var(--body)', lineHeight: 1.75, flex: 1 }}>{m.desc}</p>
               </div>
             ))}
           </div>
@@ -181,8 +160,7 @@ export default function AboutPage() {
       <section className="sec" style={{ background: '#fff' }}>
         <div className="wrap" style={{ maxWidth: 820 }}>
           <div style={{ textAlign: 'center', marginBottom: 20 }}>
-            <div className="eyebrow" style={{ margin: '0 auto 20px' }}>创业故事</div>
-            <h2 className="h2">从一次痛心的错过说起</h2>
+            <h2 className="h2 ed-h ed-h-center">从一次痛心的错过说起</h2>
           </div>
           <div className="quote-block">
             <p className="quote-text">
@@ -206,8 +184,7 @@ export default function AboutPage() {
       <section className="sec" style={{ background: 'var(--surface-2)' }}>
         <div className="wrap" style={{ maxWidth: 960 }}>
           <div style={{ marginBottom: 36, textAlign: 'center' }}>
-            <div className="eyebrow" style={{ margin: '0 auto 20px' }}>公司概要</div>
-            <h2 className="h2">公司信息</h2>
+            <h2 className="h2 ed-h ed-h-center">公司信息</h2>
           </div>
           <div style={{ overflowX: 'auto' }}>
             <table className="info-table">
@@ -225,7 +202,7 @@ export default function AboutPage() {
       </section>
 
       <CtaSection
-        title={<>与我们一起<br /><span style={{ color: 'var(--brand)' }}>让补助金触手可及</span></>}
+        title={<>与我们一起<br /><span style={{ color: 'var(--gold-bright)' }}>让补助金触手可及</span></>}
         primary={{ href: '/contact', label: '申请免费咨询' }}
         secondary={{ href: '/partner', label: '了解代理合作' }}
       />

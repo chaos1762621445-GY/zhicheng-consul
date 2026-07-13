@@ -175,7 +175,7 @@ export default function CasesPage() {
       </section>
 
       <CtaSection
-        title={<>您的企业也能<span style={{ color: 'var(--brand)' }}>获得补助金</span></>}
+        title={<>您的企业也能<span style={{ color: 'var(--gold-bright)' }}>获得补助金</span></>}
         desc="免费咨询资格诊断，3分钟了解您能申请哪些补助金，专业顾问当日回复。"
         primary={{ href: '/contact', label: '立即免费咨询' }}
         secondary={{ href: '/faq', label: '查看常见问题' }}

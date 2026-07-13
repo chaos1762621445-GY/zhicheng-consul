@@ -42,25 +42,19 @@ export default function CtaSection({
       }} />
 
       <div className="wrap" style={{ maxWidth: 680, position: 'relative', zIndex: 1 }}>
-        <div style={{
-          fontFamily: 'ui-monospace, Menlo, monospace',
-          fontSize: 11, fontWeight: 400,
-          letterSpacing: '0.22em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.4)',
-          marginBottom: 24,
-        }}>
-          免费诊断
-        </div>
-
-        <h2 style={{
-          fontSize: 'clamp(28px, 3.5vw, 52px)',
-          fontWeight: 700,
+        <h2 className="serif" style={{
+          fontSize: 'clamp(28px, 3.5vw, 48px)',
+          fontWeight: 900,
           color: '#fff',
-          letterSpacing: '-1px',
-          lineHeight: 1.08,
+          letterSpacing: '0',
+          lineHeight: 1.2,
           marginBottom: 24,
-        }}>{title}</h2>
+          position: 'relative',
+          paddingTop: 20,
+        }}>
+          <span aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, width: 42, height: 3, background: 'var(--gold-bright, #d9bd5e)' }} />
+          {title}
+        </h2>
 
         {desc && (
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, maxWidth: 480, marginBottom: 44 }}>

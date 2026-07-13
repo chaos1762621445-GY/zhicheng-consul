@@ -181,7 +181,7 @@ export default function FaqPage() {
       </section>
 
       <CtaSection
-        title={<>没找到您想要的答案？<br /><span style={{ color: 'var(--brand)' }}>免费咨询顾问</span></>}
+        title={<>没找到您想要的答案？<br /><span style={{ color: 'var(--gold-bright)' }}>免费咨询顾问</span></>}
         desc="直接联系我们，专业顾问将在工作日当日以中文为您解答，完全免费，无任何购买义务。"
         primary={{ href: '/contact', label: '免费咨询顾问' }}
         secondary={{ href: '/cases', label: '查看成功案例' }}

@@ -491,7 +491,7 @@ export default async function SubsidyDetailPage({
             </svg>
             补助金种类一览
           </Link>
-          <div className="eyebrow">{data.tag}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.12em', marginBottom: 16 }}>{data.tag}</div>
           <h1 className="display" style={{ fontSize: 'clamp(32px,4.6vw,52px)', marginBottom: 10 }}>
             {data.name}
           </h1>
@@ -763,8 +763,7 @@ export default async function SubsidyDetailPage({
         <div className="hero-orb" style={{ width: 480, height: 480, background: 'rgba(30,64,175,0.08)', top: -140, right: -80 }} />
         <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -100, left: -60, filter: 'blur(70px)' }} />
         <div className="wrap" style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div className="eyebrow" style={{ margin: '0 auto 20px' }}>免费服务</div>
-          <h2 className="h2" style={{ marginBottom: 18 }}>
+          <h2 className="h2 ed-h ed-h-center" style={{ marginBottom: 18 }}>
             {data.name}申请<br />
             <span style={{ color: 'var(--brand)' }}>从咨询到领取全程代办</span>
           </h2>
