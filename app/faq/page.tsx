@@ -1,17 +1,20 @@
-'use client';
+import type { Metadata } from "next";
 import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
 import PageHero from "../components/PageHero";
 import CtaSection from "../components/CtaSection";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { HelpCircleIcon } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "常见问题",
+  description: "补助金申请常见问题解答——申请资格、费用构成、流程周期、材料准备。在日华人企业主最关心的问题，志成コンサル一次性解答清楚。",
+};
 
 type FaqItem = { q: string; a: string };
 type FaqCategory = { title: string; items: FaqItem[] };
 
 const faqCategories: FaqCategory[] = [
   {
-    title: "申请资格类",
+    title: "申请资格",
     items: [
       {
         q: "我是外国人（中国籍），在日本经营公司，可以申请日本政府补助金吗？",
@@ -36,7 +39,7 @@ const faqCategories: FaqCategory[] = [
     ]
   },
   {
-    title: "费用类",
+    title: "费用",
     items: [
       {
         q: "委托志成コンサル申请，需要支付多少费用？",
@@ -53,7 +56,7 @@ const faqCategories: FaqCategory[] = [
     ]
   },
   {
-    title: "流程类",
+    title: "流程",
     items: [
       {
         q: "从咨询到最终拿到补助金，大概需要多长时间？",
@@ -74,7 +77,7 @@ const faqCategories: FaqCategory[] = [
     ]
   },
   {
-    title: "材料类",
+    title: "材料",
     items: [
       {
         q: "申请补助金需要准备哪些基本材料？",
@@ -91,7 +94,7 @@ const faqCategories: FaqCategory[] = [
     ]
   },
   {
-    title: "其他问题",
+    title: "其他",
     items: [
       {
         q: "可以同时申请多个补助金吗？",
@@ -135,46 +138,47 @@ export default function FaqPage() {
         desc="汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。"
       />
 
-      {/* FAQ Content */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="page-wrap">
-          {/* Category nav */}
-          <nav style={{ display: "flex", gap: 8, marginBottom: 40, flexWrap: "wrap" }} aria-label="问题分类">
-            {faqCategories.map((cat) => (
-              <a
-                key={cat.title}
-                href={`#faq-${cat.title}`}
-                style={{ display: "inline-flex", alignItems: "center", padding: "8px 16px", borderRadius: 100, fontSize: 13, color: "#0f172a", background: "#f8fafc", border: "1px solid #e2e8f0", whiteSpace: "nowrap", textDecoration: "none", minHeight: 36 }}
-              >
-                {cat.title}
+      {/* FAQ — 编辑式行表 */}
+      <section className="sec" style={{ background: "#fff" }}>
+        <div className="wrap" style={{ maxWidth: 1080 }}>
+          {/* 分类目录 — hairline 索引行 */}
+          <nav className="faq-index" aria-label="问题分类">
+            {faqCategories.map((cat, ci) => (
+              <a key={cat.title} href={`#faq-${ci}`} className="faq-index-item">
+                <span className="faq-index-num">{String(ci + 1).padStart(2, '0')}</span>
+                <span className="serif" style={{ fontWeight: 700 }}>{cat.title}</span>
+                <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{cat.items.length} 问</span>
               </a>
             ))}
           </nav>
 
-          {faqCategories.map((cat) => (
-            <div key={cat.title} id={`faq-${cat.title}`} style={{ marginBottom: 56 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #e2e8f0" }}>
-                <div style={{ width: 32, height: 32, background: "#1a5c5a", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <HelpCircleIcon style={{ width: 16, height: 16, color: "#fff" }} />
-                </div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: "#0f172a" }}>{cat.title}</div>
+          {faqCategories.map((cat, ci) => (
+            <div key={cat.title} id={`faq-${ci}`} className="faq-cat">
+              {/* 左：分类题字（桌面 sticky） */}
+              <div className="faq-cat-head">
+                <div className="faq-cat-num serif">{String(ci + 1).padStart(2, '0')}</div>
+                <h2 className="serif" style={{ fontSize: 'clamp(20px, 2vw, 26px)', fontWeight: 900, color: 'var(--ink)', margin: '10px 0 0' }}>
+                  {cat.title}
+                </h2>
+                <div style={{ width: 30, height: 2, background: 'var(--gold)', marginTop: 14 }} />
               </div>
-              <Accordion multiple className="gap-2.5">
+
+              {/* 右：问题行表 */}
+              <div className="faq-list">
                 {cat.items.map((item, i) => (
-                  <AccordionItem
-                    key={i}
-                    value={`${cat.title}-${i}`}
-                    className="border border-gray-200 rounded-md overflow-hidden mb-2.5 not-last:border-b"
-                  >
-                    <AccordionTrigger className="px-6 py-5 text-[15px] font-medium leading-snug hover:no-underline" style={{ color: "#0f172a" }}>
-                      {item.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-5 text-sm leading-[1.8] border-t border-gray-100" style={{ color: "#475569" }}>
-                      {item.a}
-                    </AccordionContent>
-                  </AccordionItem>
+                  <details key={i} className="faq-item">
+                    <summary className="faq-q">
+                      <span className="faq-q-marker serif">Q</span>
+                      <span className="faq-q-text">{item.q}</span>
+                      <span className="faq-toggle" aria-hidden="true" />
+                    </summary>
+                    <div className="faq-a">
+                      <span className="faq-a-marker serif">A</span>
+                      <p>{item.a}</p>
+                    </div>
+                  </details>
                 ))}
-              </Accordion>
+              </div>
             </div>
           ))}
         </div>
