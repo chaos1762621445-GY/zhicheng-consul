@@ -1700,3 +1700,31 @@ html, body { overflow-x: clip; }
   .cta-btn-gold, .cta-btn-ghost { width: 100%; }
   section:has(> .wrap .cta-grid) { padding: 72px 0 !important; }
 }
+
+/* ── Footer V2 ── */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.footer-link {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.52);
+  letter-spacing: 0.01em;
+  transition: color .12s ease, padding-left .15s ease;
+}
+.footer-link:hover { color: #fff; padding-left: 3px; }
+@media (max-width: 860px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  /* 链接列改双列网格,不再无限竖排 */
+  .footer-nav { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+}
+@media (max-width: 400px) {
+  .footer-nav { grid-template-columns: 1fr 1fr; }
+}
