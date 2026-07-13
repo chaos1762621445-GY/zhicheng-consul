@@ -68,6 +68,6 @@ if [ "$PUSHED" != "1" ]; then echo "❌ push三次均失败，文章已commit在
 # 5) 等待Vercel部署并验证线上文章数
 echo ">> 等待Vercel部署(70s)..." | tee -a "$LOG"
 sleep 70
-ONLINE=$(curl -s https://zhicheng-consul.vercel.app/sitemap.xml 2>/dev/null | grep -c "<loc>")
+ONLINE=$(curl -s https://shisei-consult.jp/sitemap.xml 2>/dev/null | grep -c "<loc>")
 echo "✅ 完成。线上sitemap文章数: ${ONLINE}" | tee -a "$LOG"
 echo "===== $(date '+%F %T') 结束 =====" | tee -a "$LOG"

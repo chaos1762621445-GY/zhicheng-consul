@@ -441,7 +441,7 @@ export default async function SubsidyDetailPage({
 
   const otherSubsidies = subsidies.filter((s) => s.slug !== slug);
 
-  const SITE_URL = "https://zhicheng-consul.vercel.app";
+  const SITE_URL = "https://shisei-consult.jp";
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",

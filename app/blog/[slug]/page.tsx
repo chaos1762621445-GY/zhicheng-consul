@@ -124,7 +124,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     .slice(0, 3)
     .map((s) => s.p);
 
-  const SITE_URL = "https://zhicheng-consul.vercel.app";
+  const SITE_URL = "https://shisei-consult.jp";
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",

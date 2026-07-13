@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
 
-const SITE_URL = "https://zhicheng-consul.vercel.app";
+const SITE_URL = "https://shisei-consult.jp";
 
 // 补助金详情页 slug（与 app/subsidies/[slug]/page.tsx 保持一致）
 const SUBSIDY_SLUGS = ["seiryoka", "ai-it", "career-up", "training", "aircon"];

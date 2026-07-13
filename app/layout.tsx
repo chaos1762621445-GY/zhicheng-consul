@@ -3,7 +3,7 @@ import "./globals.css";
 import WechatFloat from "./components/WechatFloat";
 import PageCurtain from "./components/PageCurtain";
 
-const SITE_URL = "https://zhicheng-consul.vercel.app";
+const SITE_URL = "https://shisei-consult.jp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
