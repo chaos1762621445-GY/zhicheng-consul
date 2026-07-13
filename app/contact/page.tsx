@@ -53,40 +53,39 @@ export default function ContactPage() {
 
       {/* Page hero — Vercel style, centered, minimal */}
       <section style={{
-        padding: "96px 0 80px",
-        borderBottom: "1px solid #eaeaea",
+        padding: "116px 0 80px",
+        background: "linear-gradient(180deg, #0f3937 0%, #114240 55%, #12403d 100%)",
+        borderBottom: "3px solid var(--gold)",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
       }}>
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "linear-gradient(#eaeaea 1px, transparent 1px), linear-gradient(90deg, #eaeaea 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%)",
-          opacity: 0.3,
+        <div aria-hidden style={{
+          position: "absolute", top: "-30%", right: "-10%",
+          width: 560, height: 560, pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(196,162,58,0.13) 0%, rgba(196,162,58,0.04) 40%, transparent 70%)",
         }} />
         <div className="wrap" style={{ maxWidth: 640, position: "relative", zIndex: 1 }}>
           <div style={{
-            display: "inline-flex", alignItems: "center", gap: 6,
-            background: "#f5f5f5", border: "1px solid #e5e5e5",
-            borderRadius: 9999, padding: "5px 14px",
-            fontSize: 11, fontWeight: 600, color: "#555",
+            display: "inline-flex", alignItems: "center", gap: 8,
+            border: "1px solid rgba(255,255,255,0.22)",
+            borderRadius: 9999, padding: "6px 16px",
+            fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.75)",
             letterSpacing: ".08em", textTransform: "uppercase",
             marginBottom: 28,
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80" }} />
             工作日当日回复
           </div>
-          <h1 style={{
-            fontSize: "clamp(36px, 5vw, 60px)",
-            fontWeight: 800, color: "#171717",
-            letterSpacing: "-2px", lineHeight: 1.05,
-            marginBottom: 20,
+          <h1 className="serif" style={{
+            fontSize: "clamp(34px, 5vw, 58px)",
+            fontWeight: 900, color: "#fff",
+            letterSpacing: "-0.5px", lineHeight: 1.15,
+            marginBottom: 20, wordBreak: "keep-all",
           }}>
-            免费补助金<br />资格诊断
+            免费补助金<br /><span style={{ color: "var(--gold)" }}>资格诊断</span>
           </h1>
-          <p style={{ fontSize: 17, color: "#4d4d4d", lineHeight: 1.75, maxWidth: 480, margin: "0 auto" }}>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>
             填写下方问卷，专业顾问当日为您匹配最适合的补助金方案。完全免费，无任何购买义务。
           </p>
         </div>

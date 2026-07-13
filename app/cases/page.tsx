@@ -99,7 +99,7 @@ export default function CasesPage() {
 
       <PageHero
         eyebrow="Success Cases · 成功案例"
-        title={<>客户<span style={{ color: 'var(--brand)' }}>成功案例</span></>}
+        title={<>客户<span style={{ color: 'var(--gold)' }}>成功案例</span></>}
         desc="来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。"
       />
 

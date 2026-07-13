@@ -485,7 +485,7 @@ export default async function SubsidyDetailPage({
       {/* ── Hero ── premium light */}
       <section className="page-hero">
         <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-          <Link href="/subsidies" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--muted)', marginBottom: 24, fontWeight: 500 }}>
+          <Link href="/subsidies" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'rgba(255,255,255,0.6)', marginBottom: 24, fontWeight: 500 }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 13, height: 13 }}>
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
@@ -495,7 +495,7 @@ export default async function SubsidyDetailPage({
           <h1 className="display" style={{ fontSize: 'clamp(32px,4.6vw,52px)', marginBottom: 10 }}>
             {data.name}
           </h1>
-          <p style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 20, letterSpacing: '.02em' }}>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', marginBottom: 20, letterSpacing: '.02em' }}>
             {data.nameJa}
           </p>
           <p className="sub" style={{ fontSize: 17, marginBottom: 32, maxWidth: 680 }}>

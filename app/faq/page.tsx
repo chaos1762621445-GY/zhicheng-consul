@@ -131,7 +131,7 @@ export default function FaqPage() {
 
       <PageHero
         eyebrow="FAQ · 常见问题"
-        title={<>补助金申请<br /><span style={{ color: 'var(--brand)' }}>常见问题解答</span></>}
+        title={<>补助金申请<br /><span style={{ color: 'var(--gold)' }}>常见问题解答</span></>}
         desc="汇整在日华人企业主最常问到的问题，从申请资格、费用构成到流程细节，一次性为您解答清楚。"
       />
 

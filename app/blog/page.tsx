@@ -20,7 +20,7 @@ export default async function BlogPage() {
 
       <PageHero
         eyebrow="知识库 · Knowledge Base"
-        title={<>补助金<span style={{ color: 'var(--brand)' }}>申请资讯</span></>}
+        title={<>补助金<span style={{ color: 'var(--gold)' }}>申请资讯</span></>}
         desc="最新日本政府补助金政策解读，帮助在日华人企业主第一时间掌握申请机会。"
       />
 

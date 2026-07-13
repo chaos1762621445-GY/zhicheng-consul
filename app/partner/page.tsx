@@ -132,7 +132,7 @@ export default function PartnerPage() {
 
       <PageHero
         eyebrow="代理合作计划"
-        title={<>与我们合作<br /><span style={{ color: 'var(--brand)' }}>最高 60% 透明分成</span></>}
+        title={<>与我们合作<br /><span style={{ color: 'var(--gold)' }}>最高 60% 透明分成</span></>}
         desc="无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您最高可获得服务费的 60%。"
       >
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 36, position: 'relative' }}>

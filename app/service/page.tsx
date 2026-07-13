@@ -34,7 +34,7 @@ export default function ServicePage() {
 
       <PageHero
         eyebrow="服务流程"
-        title={<>6步全程代办<br /><span style={{ color: 'var(--brand)' }}>从咨询到到账</span></>}
+        title={<>6步全程代办<br /><span style={{ color: 'var(--gold)' }}>从咨询到到账</span></>}
         desc="从初次咨询到资金到账，全程中文陪同。不获批不收费，彻底消除申请风险。"
       />
 

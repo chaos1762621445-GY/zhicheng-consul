@@ -68,7 +68,7 @@ export default function AboutPage() {
 
       <PageHero
         eyebrow="关于我们"
-        title={<>跨越语言边界<br /><span style={{ color: 'var(--brand)' }}>让补助金触手可及</span></>}
+        title={<>跨越语言边界<br /><span style={{ color: 'var(--gold)' }}>让补助金触手可及</span></>}
         desc="我们是一支跨越语言与文化边界的专业团队，致力于让每一位在日华人企业主，都能平等地享受日本政府补助金政策的红利。"
       />
 
@@ -128,27 +128,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 四士团队 */}
-      <section className="sec" style={{ background: 'var(--surface-2)' }}>
-        <div className="wrap">
+      {/* 四士团队 — 深 teal 色块（呼应首页专家团队区） */}
+      <section className="sec sec-dark">
+        <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: 52, maxWidth: 640, margin: '0 auto 52px' }}>
-            <h2 className="h2 ed-h ed-h-center" style={{ marginBottom: 14 }}>四士联合，全方位保障</h2>
-            <p className="sub" style={{ margin: '0 auto' }}>
+            <h2 className="h2 ed-h ed-h-center serif" style={{ marginBottom: 14, color: '#fff' }}>四士联合，全方位保障</h2>
+            <p className="sub" style={{ margin: '0 auto', color: 'rgba(255,255,255,0.68)' }}>
               行政书士·社会保险劳务士·税理士·中小企业诊断士，四种国家资格专家组成跨学科团队，覆盖补助金申请的每一个环节。
             </p>
           </div>
-          <div className="ed-rows" style={{ maxWidth: 900, margin: '0 auto', background: 'var(--surface)', padding: '0 32px' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto' }}>
             {teamMembers.map((m, i) => (
-              <div key={i} className="ed-row">
-                <span className="ed-row-n">{String(i + 1).padStart(2, '0')}</span>
+              <div key={i} className="ed-row" style={{ borderTop: '1px solid rgba(255,255,255,0.14)', padding: '28px 0' }}>
+                <span className="ed-row-n" style={{ color: 'transparent', WebkitTextStroke: '1.2px var(--gold)' }}>{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 6, flexWrap: 'wrap' }}>
-                    <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: 'var(--ink)' }}>{m.name}</span>
+                    <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: '#fff' }}>{m.name}</span>
                     <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.06em' }}>{m.title}</span>
-                    <span style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '.02em' }}>{m.en}</span>
+                    <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', letterSpacing: '.02em' }}>{m.en}</span>
                   </div>
-                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--brand)' }}>{m.specialty}</div>
-                  <p style={{ fontSize: 13.5, color: 'var(--body)', lineHeight: 1.75, maxWidth: '64ch' }}>{m.desc}</p>
+                  <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'rgba(255,255,255,0.85)' }}>{m.specialty}</div>
+                  <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.62)', lineHeight: 1.75, maxWidth: '64ch' }}>{m.desc}</p>
                 </div>
               </div>
             ))}

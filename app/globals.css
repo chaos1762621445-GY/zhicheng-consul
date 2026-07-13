@@ -951,28 +951,21 @@ img { max-width: 100%; display: block; }
 .page-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
-  border-bottom: 1px solid var(--line);
-  padding: 72px 0 72px;
+  background: linear-gradient(180deg, #0f3937 0%, #114240 55%, #12403d 100%);
+  border-bottom: 3px solid var(--gold);
+  padding: 104px 0 72px;
 }
 .page-hero::before {
   content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 50% 60% at 90% 10%, rgba(0,0,0,.04) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 50% at 5% 100%, rgba(0,0,0,.03) 0%, transparent 55%);
+  position: absolute; top: -30%; right: -10%;
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(196,162,58,0.13) 0%, rgba(196,162,58,0.04) 40%, transparent 70%);
   pointer-events: none;
 }
-.page-hero::after {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,.025) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 85%);
-  pointer-events: none;
-}
+.page-hero::after { content: none; }
+/* 深色开场带内的文字反白 */
+.page-hero .display, .page-hero h1 { color: #fff; }
+.page-hero .sub, .page-hero p { color: rgba(255,255,255,0.72); }
 @media (max-width: 640px) {
   .page-hero { padding: 56px 0; }
   .page-hero::after { background-size: 32px 32px; }
