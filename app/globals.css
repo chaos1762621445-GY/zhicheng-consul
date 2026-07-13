@@ -268,7 +268,7 @@ img { max-width: 100%; display: block; }
   .hero-glow { animation: none; }
 }
 @media (max-width: 640px) {
-  .hero-section { min-height: 520px; height: 100svh; }
+  .hero-section { min-height: 520px; height: min(100svh, 780px); }
 }
 
 /* Hero content padding */
@@ -545,6 +545,11 @@ img { max-width: 100%; display: block; }
   transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
 }
 .reveal-right.visible { opacity: 1; transform: none; }
+/* 手机端：水平位移动画会把内容推出视口边缘（溢出/闪现），降级为上移 */
+@media (max-width: 767px) {
+  .reveal-left  { transform: translateY(24px); }
+  .reveal-right { transform: translateY(24px); }
+}
 .reveal-scale {
   opacity: 0; transform: scale(.96);
   transition: opacity .6s ease, transform .6s ease;
@@ -1549,3 +1554,106 @@ h1, h2, h3, .display, .h2, .h3 {
   font-variant-numeric: tabular-nums;
 }
 .stat-v .stat-u { font-size: .45em; color: var(--gold); font-weight: 700; }
+
+/* ─────────────────────────────────────────
+   V3 EDITORIAL RHYTHM — 2026-07 美学重构
+   节奏：深-浅-暖交替 / 真实响应式（替代死类 max-md:*）
+───────────────────────────────────────── */
+
+/* 深 teal 数据带（紧贴 hero，同一深色世界） */
+.stats-band {
+  background: linear-gradient(180deg, #0a2b29 0%, #0f3d3b 100%);
+  border-bottom: 3px solid var(--gold);
+}
+.stats-band .grid-stats-3 > div { border-color: rgba(255,255,255,.12) !important; }
+.stats-band .stat-v { color: #fff; }
+.stats-band .stat-v .stat-u { color: var(--gold-bright); }
+.stats-band .stat-label { color: rgba(255,255,255,.85); }
+.stats-band .stat-note { color: rgba(255,255,255,.45); }
+@media (max-width: 640px) {
+  .stats-band .grid-stats-3 > div { border-bottom: 1px solid rgba(255,255,255,.12) !important; }
+  .stats-band .grid-stats-3 > div:last-child { border-bottom: none !important; }
+}
+
+/* 暖纸色节（打破白灰单调的第三底色） */
+.sec-warm { background: var(--surface-warm); }
+
+/* 深色节（团队区 — 色彩勇气） */
+.sec-dark { background: linear-gradient(165deg, #0f3d3b 0%, #114240 55%, #16504d 100%); position: relative; overflow: hidden; }
+.sec-dark::before {
+  content: ""; position: absolute; top: -20%; right: -8%;
+  width: 560px; height: 560px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,162,58,.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+.sec-dark .h2 { color: #fff; }
+.sec-dark .sub { color: rgba(255,255,255,.65); }
+.sec-dark .ed-vert { color: var(--gold-bright); }
+.sec-dark .ed-rows { border-top-color: rgba(255,255,255,.85); }
+.sec-dark .ed-row { border-bottom-color: rgba(255,255,255,.14); }
+.sec-dark .ed-row:hover { background: rgba(255,255,255,.04); }
+.sec-dark .ed-row-n { color: var(--gold-bright); }
+
+/* 团队区真实响应式两栏 */
+.team-grid { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+@media (max-width: 860px) {
+  .team-grid { grid-template-columns: 1fr; gap: 36px; }
+  .team-grid .ed-vert { display: none; }
+  .team-grid .team-sticky { position: static !important; }
+}
+
+/* 步骤区：金描边数字 hover 实心化 + 手机横向紧凑 */
+.step-cell { transition: transform .25s ease; }
+.step-cell:hover { transform: translateY(-4px); }
+.step-cell:hover .ed-num { color: var(--gold); -webkit-text-stroke: 1.3px var(--gold); opacity: 1; }
+@media (max-width: 600px) {
+  .grid-steps-5 { grid-template-columns: 1fr 1fr !important; gap: 28px 20px !important; }
+  .grid-steps-5 .step-cell { border-right: none !important; margin-right: 0 !important; padding: 0 !important; }
+}
+
+/* 服务行：手机端收紧 + 金额行内挤压修正 */
+@media (max-width: 640px) {
+  .svc-item { padding: 22px 0; }
+  .svc-amount { font-size: 22px; }
+  .svc-item:hover { padding-left: 0; }
+}
+
+/* about 图片区浮动徽章 — 手机端归位 */
+.about-img-badge { position: absolute; bottom: -22px; right: -14px; }
+@media (max-width: 767px) {
+  .about-img-badge { position: static; display: inline-block; margin-top: -3px; }
+  .md-only { display: none !important; }
+}
+
+/* hero 手机端：标题字距和 CTA 全宽 */
+@media (max-width: 640px) {
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .hero-cta-row a { justify-content: center; }
+  .hero-trust-bar { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px 0; }
+  .hero-trust-bar > div > span:first-child { display: none; } /* 手机隐藏竖线 */
+}
+
+/* 文章行手机端：日期上移 */
+@media (max-width: 767px) {
+  .ed-row { gap: 16px; }
+}
+
+/* 首页文章区底色差异化 */
+.sec-posts { background: var(--surface-warm); }
+.sec-posts .ed-rows { background: #fff; padding: 0 28px; border: 1px solid var(--line); border-top: 1.5px solid var(--ink); }
+
+/* ── 移动端防溢出三板斧（grid blowout 修正） ── */
+.ed-row > *, .svc-item > *, .team-grid > * { min-width: 0; }
+.ed-row p, .svc-desc, .sub { overflow-wrap: anywhere; }
+html, body { overflow-x: clip; }
+
+/* ── 移动端 ed-row 确定性布局（56ch max-width 撑爆 1fr 轨道的根治） ── */
+@media (max-width: 767px) {
+  .ed-row { display: block !important; }
+  .ed-row-n { display: block; margin-bottom: 10px; font-size: 20px; }
+  .ed-row p, .ed-row .sub { max-width: 100% !important; }
+  .svc-desc { max-width: 100% !important; }
+  .ed-row > span:first-child { display: inline-block; margin-bottom: 8px; }
+  /* 文章行:日期与箭头 */
+  .ed-row > span:last-child { display: none; }
+}

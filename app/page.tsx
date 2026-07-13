@@ -56,13 +56,13 @@ export default async function HomePage() {
       <HeroSection />
       <ServicesSection />
 
-      {/* ── 专家团队 — 编辑式行列表 ── */}
-      <section className="sec" style={{ background: 'var(--surface-2)' }}>
-        <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'clamp(28px,5vw,72px)', alignItems: 'start' }} className="max-md:grid-cols-1">
+      {/* ── 专家团队 — 深 teal 色块（色彩勇气节点） ── */}
+      <section className="sec sec-dark">
+        <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="team-grid">
             <Reveal>
-              <div style={{ position: 'sticky', top: 100, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
-                <span className="ed-vert max-md:hidden">専門家連携</span>
+              <div className="team-sticky" style={{ position: 'sticky', top: 100, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+                <span className="ed-vert">専門家連携</span>
                 <div style={{ maxWidth: 340 }}>
                   <h2 className="h2 ed-h" style={{ marginBottom: 16 }}>专业团队，<br />你不用懂日语</h2>
                   <p className="sub" style={{ fontSize: 15 }}>四类国家认证资格持有者分工合作，从材料准备到递交审核，全程代办。</p>
@@ -76,10 +76,10 @@ export default async function HomePage() {
                     <span className="ed-row-n">{String(i + 1).padStart(2, '0')}</span>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 8, flexWrap: 'wrap' }}>
-                        <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: 'var(--ink)' }}>{c.role}</span>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.06em' }}>{c.name}</span>
+                        <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: '#fff' }}>{c.role}</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold-bright)', letterSpacing: '.06em' }}>{c.name}</span>
                       </div>
-                      <p style={{ fontSize: 14, color: 'var(--body)', lineHeight: 1.75, maxWidth: '56ch' }}>{c.desc}</p>
+                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,.6)', lineHeight: 1.75, maxWidth: '56ch' }}>{c.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -92,21 +92,21 @@ export default async function HomePage() {
       {/* ── 为什么选我们 ── */}
       <section className="sec" style={{ background: 'var(--surface)' }}>
         <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }} className="grid-2col-about max-md:grid-cols-1 max-md:gap-12">
+          <div className="grid-2col-about" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
             <Reveal direction="left">
-              <div style={{ position: 'relative' }} className="max-md:hidden">
+              <div style={{ position: 'relative', marginBottom: 24 }}>
                 <div style={{ overflow: 'hidden' }}>
                   <img
                     src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80"
                     alt="志成コンサル 专业团队办公场景"
-                    style={{ width: '100%', height: 480, objectFit: 'cover', display: 'block' }}
+                    style={{ width: '100%', height: 'clamp(280px, 40vw, 480px)', objectFit: 'cover', display: 'block' }}
                   />
                 </div>
-                <div className="serif" style={{
-                  position: 'absolute', bottom: -22, right: -14,
+                <div className="serif about-img-badge" style={{
                   background: 'var(--brand)', color: '#fff',
                   padding: '18px 26px', maxWidth: 240,
                   fontSize: 15, fontWeight: 700, lineHeight: 1.6,
+                  borderBottom: '3px solid var(--gold)',
                 }}>
                   成功报酬制<br /><span style={{ color: 'var(--gold-bright)' }}>不获批，不收费。</span>
                 </div>
@@ -142,12 +142,12 @@ export default async function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 0 }} className="grid-steps-5">
             {steps.map((s, i) => (
               <Reveal key={i} delay={(i % 5) as 0|1|2|3|4|5} className="h-full">
-                <div style={{
+                <div className="step-cell" style={{
                   height: '100%', padding: '8px 24px 8px 0',
                   marginRight: i < 4 ? 24 : 0,
                   borderRight: i < 4 ? '1px solid var(--line)' : 'none',
                   display: 'flex', flexDirection: 'column',
-                }} className="max-md:border-r-0 max-md:mr-0 max-md:pb-8">
+                }}>
                   <div className="ed-num" style={{ fontSize: 'clamp(44px,4.6vw,64px)', marginBottom: 20 }}>{s.n}</div>
                   <div className="serif" style={{ fontSize: 17, fontWeight: 700, color: 'var(--ink)', marginBottom: 10 }}>{s.title}</div>
                   <p style={{ fontSize: 13.5, color: 'var(--body)', lineHeight: 1.7 }}>{s.desc}</p>
@@ -160,7 +160,7 @@ export default async function HomePage() {
 
       {/* ── 最新文章 — 编辑式列表 ── */}
       {posts.length > 0 && (
-        <section className="sec" style={{ background: 'var(--surface)' }}>
+        <section className="sec sec-posts">
           <div className="wrap">
             <Reveal>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, marginBottom: 48, flexWrap: 'wrap' }}>

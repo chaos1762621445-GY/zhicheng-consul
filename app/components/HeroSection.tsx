@@ -133,11 +133,8 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* ── STATS — white editorial ── */}
-      <section style={{
-        background: '#fff',
-        borderBottom: '1px solid #e8e8e8',
-      }}>
+      {/* ── STATS — 深 teal 数据带（与 hero 同一深色世界，金线收边） ── */}
+      <section className="stats-band">
         <div className="wrap">
           <div className="grid-stats-3">
             {[
@@ -146,15 +143,15 @@ export default function HeroSection() {
               { val: '4 种', label: '国家认定专业资质', note: '行政书士·社劳士·税理士·诊断士' },
             ].map((s, i) => (
               <div key={i} style={{
-                padding: '52px 0',
+                padding: '46px 0',
                 textAlign: 'center',
-                borderRight: i < 2 ? '1px solid #e8e8e8' : 'none',
+                borderRight: i < 2 ? '1px solid rgba(255,255,255,.12)' : 'none',
               }}>
                 <div className="stat-v" style={{ marginBottom: 10 }}>
                   {s.val}
                 </div>
-                <div style={{ fontSize: 14, fontWeight: 600, color: '#1d1d1f', marginBottom: 4 }}>{s.label}</div>
-                <div style={{ fontSize: 12, color: '#6e6e73' }}>{s.note}</div>
+                <div className="stat-label" style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>{s.label}</div>
+                <div className="stat-note" style={{ fontSize: 12 }}>{s.note}</div>
               </div>
             ))}
           </div>
