@@ -106,10 +106,10 @@ export default function CasesPage() {
       {/* Stats Bar — premium light */}
       <section className="stats-wrap">
         <div className="wrap">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 0 }} className="grid-stats-4">
+          <div className="grid-stats-4">
             {stats.map((s, i) => (
-              <div key={s.label} style={{ textAlign: 'center', padding: '40px 20px', position: 'relative', borderRight: i < stats.length - 1 ? '1px solid var(--line)' : 'none' }}>
-                <div className="amount" style={{ fontSize: 'clamp(36px,4.2vw,52px)', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
+              <div key={s.label} className="stat-cell" style={{ textAlign: 'center', padding: '40px 20px', position: 'relative' }}>
+                <div className="amount" style={{ fontSize: 'clamp(30px,4.2vw,52px)', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
                 <div style={{ fontSize: 13, color: 'var(--ink-3)', fontWeight: 500 }}>{s.label}</div>
               </div>
             ))}
@@ -128,7 +128,7 @@ export default function CasesPage() {
             以下案例均来自我们服务过的真实客户，已做匿名化处理，补助金金额及周期均为实际数据。
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(460px, 1fr))", gap: 24, alignItems: "stretch" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(460px, 100%), 1fr))", gap: 24, alignItems: "stretch" }}>
             {cases.map((c, i) => (
               <div key={i} style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: "var(--r-xl)", padding: "28px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", height: "100%", boxShadow: "var(--shadow-sm)" }}>
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, var(--brand), var(--gold))" }} />

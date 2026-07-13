@@ -1728,3 +1728,14 @@ html, body { overflow-x: clip; }
 @media (max-width: 400px) {
   .footer-nav { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── cases 页统计条：缺失的 grid-stats-4（此前未定义导致手机端4列溢出） ── */
+.grid-stats-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.grid-stats-4 .stat-cell { border-right: 1px solid var(--line); }
+.grid-stats-4 .stat-cell:last-child { border-right: none; }
+@media (max-width: 767px) {
+  .grid-stats-4 { grid-template-columns: 1fr 1fr; }
+  .grid-stats-4 .stat-cell { padding: 28px 12px !important; }
+  .grid-stats-4 .stat-cell:nth-child(2n) { border-right: none; }
+  .grid-stats-4 .stat-cell:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
