@@ -12,6 +12,7 @@ const NAV = [
   ]},
   { label: '服务流程', href: '/service' },
   { label: '成功案例', href: '/cases' },
+  { label: '白皮书', href: '/whitepaper' },
   { label: '关于我们', href: '/about', children: [
     { label: '公司介绍', href: '/about' },
     { label: '代理合作', href: '/partner' },
