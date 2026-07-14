@@ -70,19 +70,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 微信面板：二维码 + 号码，横向组合 */}
-          <div style={{
+          {/* 企业微信面板：二维码 + 说明，横向组合，可点击进线 */}
+          <a href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb" target="_blank" rel="noopener noreferrer" style={{
             display: 'flex', alignItems: 'center', gap: 18,
             border: '1px solid rgba(255,255,255,0.13)',
-            padding: 18, alignSelf: 'start',
+            padding: 18, alignSelf: 'start', textDecoration: 'none',
           }}>
-            <img src="/wechat-qr.jpg" alt="微信二维码" style={{ width: 96, height: 96, display: 'block', flexShrink: 0 }} />
+            <img src="/qiwei-qr.png" alt="企业微信二维码" style={{ width: 96, height: 96, display: 'block', flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--gold)', marginBottom: 8 }}>微信扫码咨询</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 4 }}>lzl238888</div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>工作日当日回复<br />中文顾问直连</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--gold)', marginBottom: 8 }}>企业微信扫码咨询</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 4 }}>营业部客服群</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>点击联系客服 · 免费咨询<br />工作日当日回复</div>
             </div>
-          </div>
+          </a>
         </div>
 
         {/* ── 中段：导航列 ── */}
@@ -124,7 +124,7 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
               {[
                 ['电话', '03-6265-9756'],
-                ['微信', 'lzl238888'],
+                ['企业微信', '扫码添加营业部'],
                 ['地址', '大阪市中央区島之内 1-13-3'],
               ].map(([k, v]) => (
                 <div key={k} style={{ fontSize: 13, lineHeight: 1.6 }}>

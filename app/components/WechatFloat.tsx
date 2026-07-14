@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 
 const WechatIcon = () => (
   <svg viewBox="0 0 24 24" fill="white" width="24" height="24" className="flex-shrink-0">
@@ -10,15 +9,17 @@ const WechatIcon = () => (
 
 export default function WechatFloat() {
   return (
-    <Link
-      href="/contact"
-      aria-label="微信咨询 lzl238888"
+    <a
+      href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="联系客服 免费咨询"
       className="fixed right-6 bottom-6 z-[999] flex items-center bg-[#1a5c5a] rounded-[28px] h-14 px-4 cursor-pointer shadow-[0_4px_20px_rgba(26,92,90,0.35)] text-white overflow-hidden hover:shadow-[0_8px_28px_rgba(26,92,90,0.5)] transition-shadow group"
     >
       <WechatIcon />
-      <span className="text-sm font-medium whitespace-nowrap max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[160px] group-hover:ml-2 max-md:max-w-[160px] max-md:ml-2">
-        微信：lzl238888
+      <span className="text-sm font-medium whitespace-nowrap max-w-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-w-[180px] group-hover:ml-2 max-md:max-w-[180px] max-md:ml-2">
+        联系客服·免费咨询
       </span>
-    </Link>
+    </a>
   );
 }

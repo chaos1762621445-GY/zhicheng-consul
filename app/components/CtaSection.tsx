@@ -81,7 +81,7 @@ export default function CtaSection({
             <div style={{ marginTop: 8, borderTop: '1px solid rgba(255,255,255,0.14)' }}>
               {[
                 ['不获批不收费', '成功报酬制，申请失败分文不取'],
-                ['工作日当日回复', '微信 lzl238888 直连中文顾问'],
+                ['工作日当日回复', '扫码加企业微信直连中文顾问'],
               ].map(([k, v]) => (
                 <div key={k} style={{
                   display: 'flex', alignItems: 'baseline', gap: 12,

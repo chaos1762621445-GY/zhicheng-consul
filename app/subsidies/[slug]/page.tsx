@@ -707,7 +707,7 @@ export default async function SubsidyDetailPage({
               </Link>
               <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.12)" }}>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginBottom: 6 }}>也可直接联系我们</div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)" }}>微信：lzl238888</div>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)" }}>企业微信：扫码添加营业部</div>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)" }}>电话：03-6265-9756</div>
               </div>
             </div>

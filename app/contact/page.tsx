@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 const contacts = [
   {
-    label: "微信 WeChat",
-    value: "lzl238888",
+    label: "企业微信 WeCom",
+    value: "扫码添加营业部客服",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -146,14 +146,31 @@ export default function ContactPage() {
                 flex: 1, minHeight: 140,
               }}>
                 <div style={{ background: "#fff", borderRadius: 8, padding: 8, flexShrink: 0, boxShadow: "rgba(0,0,0,0.06) 0px 0px 0px 1px" }}>
-                  <img src="/wechat-qr.jpg" alt="微信二维码" style={{ width: 100, height: 100, display: "block", borderRadius: 4 }} />
+                  <img src="/qiwei-qr.png" alt="企业微信二维码" style={{ width: 100, height: 100, display: "block", borderRadius: 4 }} />
                 </div>
                 <div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: "#171717", marginBottom: 8 }}>扫码添加微信</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "#171717", marginBottom: 8 }}>扫码添加企业微信</div>
                   <p style={{ fontSize: 13.5, color: "#4d4d4d", lineHeight: 1.65, marginBottom: 8 }}>
-                    添加微信 <strong style={{ color: "#171717" }}>lzl238888</strong>，专业顾问当日（工作日）免费诊断。
+                    扫码添加 <strong style={{ color: "#171717" }}>营业部客服</strong>，专业顾问当日（工作日）免费诊断。
                   </p>
-                  <div style={{ fontSize: 12, color: "#888" }}>营业时间：周一〜周六 9:00〜18:00</div>
+                  <div style={{ fontSize: 12, color: "#888", marginBottom: 14 }}>营业时间：周一〜周六 9:00〜18:00</div>
+                  <a
+                    href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: 8,
+                      background: "#1a5c5a", color: "#fff",
+                      fontSize: 13.5, fontWeight: 600,
+                      padding: "10px 18px", borderRadius: 8,
+                      textDecoration: "none",
+                    }}
+                  >
+                    联系客服·免费咨询
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
