@@ -33,6 +33,15 @@ export const metadata: Metadata = {
   publisher: "株式会社 志成コンサル",
   alternates: {
     canonical: "/",
+    // hreflang：声明中日双语版本对应关系（GEO/多语言SEO）
+    // 日文版为独立站 shiseiconsult.com；x-default 指向中文站（本站为主）
+    languages: {
+      "zh-CN": "https://shisei-consult.jp",
+      "zh-Hans": "https://shisei-consult.jp",
+      ja: "https://shiseiconsult.com",
+      "ja-JP": "https://shiseiconsult.com",
+      "x-default": "https://shisei-consult.jp",
+    },
   },
   openGraph: {
     type: "website",
