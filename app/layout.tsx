@@ -43,21 +43,14 @@ export const metadata: Metadata = {
     title: "志成コンサル | 在日华人补助金申请代办",
     description:
       "专为在日华人企业主提供日本政府补助金全程代办服务。全程中文，无成功不收费。行政书士·税理士·社劳士·诊断士联合团队。",
-    images: [
-      {
-        url: "/logo.png",
-        width: 794,
-        height: 227,
-        alt: "志成コンサル",
-      },
-    ],
+    // 图片由 app/opengraph-image.tsx 自动生成（1200×630 品牌卡片）
   },
   twitter: {
     card: "summary_large_image",
     title: "志成コンサル | 在日华人补助金申请代办",
     description:
       "专为在日华人企业主提供日本政府补助金全程代办服务。全程中文，无成功不收费。",
-    images: ["/logo.png"],
+    // 图片同样复用自动生成的 opengraph-image
   },
   robots: {
     index: true,

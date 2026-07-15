@@ -7,8 +7,9 @@ import PageHero from "../components/PageHero";
 import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
-  title: "知识库",
-  description: "在日华人补助金知识库——省力化补助金、AI导入补助金、员工转正助成金等最新申请攻略",
+  title: "在日华人补助金知识库｜省力化·AI导入·转正助成金最新攻略",
+  description: "在日华人补助金知识库——省力化补助金、AI导入补助金、员工转正助成金、东京空调补助金等最新申请攻略与政策解读，行政书士·税理士团队原创，全程中文。",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {
