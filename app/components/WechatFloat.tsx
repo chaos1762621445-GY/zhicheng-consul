@@ -10,7 +10,7 @@ const WechatIcon = () => (
 export default function WechatFloat() {
   return (
     <a
-      href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb"
+      href="https://work.weixin.qq.com/kfid/kfcdeef8ec4573ef9f3"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="联系客服 免费咨询"

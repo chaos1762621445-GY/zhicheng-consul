@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           {/* 企业微信面板：二维码 + 说明，横向组合，可点击进线 */}
-          <a href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb" target="_blank" rel="noopener noreferrer" style={{
+          <a href="https://work.weixin.qq.com/kfid/kfcdeef8ec4573ef9f3" target="_blank" rel="noopener noreferrer" style={{
             display: 'flex', alignItems: 'center', gap: 18,
             border: '1px solid rgba(255,255,255,0.13)',
             padding: 18, alignSelf: 'start', textDecoration: 'none',

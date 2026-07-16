@@ -155,7 +155,7 @@ export default function ContactPage() {
                   </p>
                   <div style={{ fontSize: 12, color: "#888", marginBottom: 14 }}>营业时间：周一〜周六 9:00〜18:00</div>
                   <a
-                    href="https://work.weixin.qq.com/ca/cawcdef4edcd3068eb"
+                    href="https://work.weixin.qq.com/kfid/kfcdeef8ec4573ef9f3"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
