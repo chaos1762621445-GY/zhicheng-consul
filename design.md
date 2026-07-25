@@ -2,6 +2,39 @@
 
 > 改任何视觉之前必读。本文件是唯一设计裁判：与本文件冲突的"顺手美化"一律不做。
 > 系统目标：**「和风编辑部 × 专业事务所」**——像一本严谨的日式刊物，而不是 SaaS 落地页。
+> **叠加层：apple-design skill（emilkowalski）。与下文任何规则冲突时，以本节 Apple 层为准。**
+
+## A. Apple 流体层（优先级最高）
+来源：Apple WWDC《Designing Fluid Interfaces》等，经 apple-design skill 提炼。网站无手势驱动 UI，故弹簧/velocity 手势章节不强行套用（restraint 本身就是 Apple 原则）；以下为必须遵守的落地规则：
+
+**A1. Response — 按压即时反馈（§1）**
+- 一切可点元素在 pointer-down 瞬间给反馈：`:active { transform: scale(0.97) }`（约100ms ease-out），行元素用 scale(0.995)+背景微变。禁止只在 click 后才有反应。
+- 输入路径上不得有人为延迟（debounce/等待动画完成才响应）。
+
+**A2. 材质与景深（§12）**
+- 顶部导航 = 半透明材质层：`rgba(255,255,255,0.72)` + `backdrop-filter: blur(20px) saturate(180%)`，内容从其下滚过；**不用不透明白条**。
+- 用「scroll-edge 渐隐」代替 1px 硬分隔线（浮动层与内容交界处渐变+微阴影）。
+- 下拉菜单/浮层 = 材质到场：`transform-origin` 锚定触发源（§7），进入时 scale+blur 同步动画（materialize），不是干巴巴 opacity fade。
+- 两层浅色半透明表面禁止叠放（可读性崩塌）。
+
+**A3. 字型光学规则（§15）**
+- **字距随字号变化，禁止一刀切**：display/h1/h2 级大字用负字距（-0.01~-0.02em），正文保持 0，小注/label 可微正。
+- **行距与字号成反比**：大标题 1.05~1.2，正文 1.75~1.9。
+- 层级靠 字重+字号+行距 三件套，不靠字号单打。
+
+**A4. 无障碍三信号（§14）**
+- `prefers-reduced-motion: reduce`：动效降为短 opacity 交叉淡化，去除位移/弹跳。
+- `prefers-reduced-transparency: reduce`：材质变实底、去 blur。
+- `prefers-contrast: more`：近实底 + 明确边框。
+三者独立响应，组件级内建，不是全局一关了之。
+
+**A5. 空间一致性（§7）**
+- 进出同路径：从右滑入的面板必须向右退出。
+- 菜单/浮层从触发它的元素处生长（origin 锚定），不从几何中心凭空出现。
+
+**A6. Craft 底线（§16）**
+- 动画只用 compositor 属性（transform/opacity），will-change 仅在即将运动时。
+- 每一个间距/时长/对齐都要能说出理由；jitter、错位、旋转破版=不可接受。
 
 ## 0. 反同质化红线（AI 常见套路，一律禁止）
 - ❌ 紫色/蓝紫渐变、玻璃拟态(glassmorphism)、大圆角(>14px)胶囊卡片堆叠

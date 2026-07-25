@@ -48,14 +48,7 @@ export default function NavClient() {
   }, [open]);
 
   return (
-    <nav style={{
-      position: 'sticky', top: 0, zIndex: 50,
-      background: 'rgba(255,255,255,0.85)',
-      backdropFilter: 'blur(12px)',
-      WebkitBackdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(0,0,0,0.08)',
-      transition: 'border-color .2s',
-    }}>
+    <nav className="nav-material">
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
         {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
@@ -89,12 +82,10 @@ export default function NavClient() {
                     </svg>
                   </button>
                   {drop === item.label && (
-                    <div style={{
+                    <div className="nav-drop" style={{
                       position: 'absolute', top: 'calc(100% + 8px)',
                       left: '50%', transform: 'translateX(-50%)',
-                      background: '#fff',
-                      borderRadius: 8, minWidth: 180,
-                      boxShadow: 'rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.06) 0px 4px 12px',
+                      minWidth: 180,
                       overflow: 'hidden',
                       padding: 4,
                     }}>

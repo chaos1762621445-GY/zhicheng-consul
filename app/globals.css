@@ -1830,3 +1830,82 @@ html, body { overflow-x: clip; }
   .faq-q { padding: 18px 2px; gap: 12px; }
   .faq-a { gap: 12px; }
 }
+
+/* ═══════════════════════════════════════════
+   APPLE FLUID LAYER — apple-design skill
+   (design.md §A — 冲突时本层优先)
+═══════════════════════════════════════════ */
+
+/* A1. Response — 按压即时反馈 (§1: respond on pointer-down) */
+.btn, .btn-fill, .btn-gold, .btn-ghost, .btn-white, .btn-outline-white {
+  transition: transform 100ms ease-out, background .2s cubic-bezier(.4,0,.2,1),
+    color .2s cubic-bezier(.4,0,.2,1), border-color .2s cubic-bezier(.4,0,.2,1);
+}
+.btn:active, .btn-fill:active, .btn-gold:active, .btn-ghost:active,
+.btn-white:active, .btn-outline-white:active,
+.hero-cta-row a:active, .cta-actions a:active {
+  transform: scale(0.97);
+  transition-duration: 100ms;
+}
+/* 行级可点元素 — 更克制的按压 */
+.svc-item:active, .ed-row[href]:active, a.card:active, a.card-premium:active {
+  transform: scale(0.995);
+  transition: transform 100ms ease-out;
+}
+.faq-q:active .faq-q-text { opacity: .6; transition: opacity 100ms ease-out; }
+
+/* A2. 材质导航 — nav 交给 .nav-material (NavClient 引用) (§12) */
+.nav-material {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: none;
+}
+/* scroll-edge 渐隐代替 1px 硬线：材质与内容交界的柔和过渡 */
+.nav-material::after {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 100%; height: 10px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(13,52,51,0.07), transparent);
+}
+
+/* 下拉菜单 materialize — 从触发源生长 (§7 origin + §12 materialize) */
+.nav-drop {
+  background: rgba(255,255,255,0.92);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(13,52,51,0.08), 0 8px 28px rgba(13,52,51,0.10);
+  transform-origin: top center;
+  animation: navDropIn 180ms cubic-bezier(.22,1,.36,1);
+}
+@keyframes navDropIn {
+  from { opacity: 0; transform: translateX(-50%) scale(0.96) translateY(-4px); }
+  to   { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); }
+}
+
+/* A3. 光学字距 — 大字负 tracking，随字号分级 (§15) */
+.hero-section h1 { letter-spacing: -0.015em !important; line-height: 1.12 !important; }
+.h2, .ed-h { letter-spacing: -0.012em; }
+.h-display { letter-spacing: -0.018em; }
+.stat-v { letter-spacing: -0.01em; }
+/* 正文保持 0；小 label 微正已由 .eyebrow(.08em+) 承担 — 符合小字正 tracking */
+
+/* A4. 无障碍三信号 (§14) */
+@media (prefers-reduced-motion: reduce) {
+  .nav-drop { animation: opacityIn 150ms ease; }
+  .btn:active, .btn-fill:active, .btn-gold:active, .btn-ghost:active,
+  .btn-white:active, .btn-outline-white:active,
+  .svc-item:active, .ed-row[href]:active { transform: none; }
+}
+@keyframes opacityIn { from { opacity: 0 } to { opacity: 1 } }
+@media (prefers-reduced-transparency: reduce) {
+  .nav-material { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 1px solid var(--line); }
+  .nav-material::after { display: none; }
+  .nav-drop { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .nav-material { background: #fff; border-bottom: 1.5px solid var(--ink); }
+  .nav-drop { background: #fff; box-shadow: 0 0 0 1.5px var(--ink); }
+}
