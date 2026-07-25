@@ -1604,6 +1604,12 @@ h1, h2, h3, .display, .h2, .h3 {
   .grid-steps-5 .step-cell { border-right: none !important; margin-right: 0 !important; padding: 0 !important; }
 }
 
+/* 服务流程页步骤行：窄屏序号列收窄 */
+@media (max-width: 640px) {
+  .svc-step-row { grid-template-columns: 56px 1fr !important; gap: 16px !important; }
+  .svc-step-row > .serif:first-child { font-size: 32px !important; }
+}
+
 /* 服务行：手机端收紧 + 金额行内挤压修正 */
 @media (max-width: 640px) {
   .svc-item { padding: 22px 0; }

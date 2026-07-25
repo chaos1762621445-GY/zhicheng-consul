@@ -39,48 +39,41 @@ export default function ServicePage() {
         desc="从初次咨询到资金到账，全程中文陪同。不获批不收费，彻底消除申请风险。"
       />
 
-      {/* Steps */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="page-wrap">
+      {/* Steps — 编辑式时间线（金描边衬线序号 + hairline，与首页五步区同基因） */}
+      <section className="sec" style={{ background: "var(--surface)" }}>
+        <div className="wrap">
           <div style={{ maxWidth: 560, marginBottom: 56 }}>
-            <div className="label-tag">申请流程</div>
-            <h2 className="section-heading">6步流程详解</h2>
-            <p className="section-sub">清晰透明，让您随时掌握申请进度。</p>
+            <div className="eyebrow">申请流程</div>
+            <h2 className="h2 ed-h" style={{ marginBottom: 12 }}>6步流程详解</h2>
+            <p className="sub" style={{ fontSize: 15 }}>清晰透明，让您随时掌握申请进度。</p>
           </div>
-          <div style={{ maxWidth: 800 }}>
+          <div style={{ maxWidth: 820, borderTop: "1.5px solid var(--ink)" }}>
             {steps.map((s, i) => (
-              <div key={i} style={{ display: "flex", gap: 32, position: "relative" }}>
-                {/* Left: number + line */}
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-                  <div style={{
-                    width: 48, height: 48, borderRadius: "50%",
-                    background: "#1a5c5a", color: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 15, fontWeight: 800, flexShrink: 0,
-                  }}>
-                    {s.n}
-                  </div>
-                  {i < steps.length - 1 && (
-                    <div className="timeline-line" style={{ width: 2, flex: 1, minHeight: 32, background: "linear-gradient(to bottom, #1a5c5a, #e2e8f0)", margin: "8px 0" }} />
-                  )}
+              <div key={i} className="svc-step-row" style={{
+                display: "grid", gridTemplateColumns: "88px 1fr", gap: 28,
+                padding: "34px 0", borderBottom: "1px solid var(--line)",
+              }}>
+                {/* 金描边衬线大序号 */}
+                <div className="serif" aria-hidden="true" style={{
+                  fontSize: 44, fontWeight: 900, lineHeight: 1,
+                  color: "transparent", WebkitTextStroke: "1.3px var(--gold)",
+                }}>
+                  {s.n}
                 </div>
-                {/* Right: content */}
-                <div style={{ flex: 1, paddingTop: 8, paddingBottom: i < steps.length - 1 ? 40 : 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6, flexWrap: "wrap" }}>
-                    <span style={{ fontSize: 18, fontWeight: 700, color: "#0f172a" }}>{s.title}</span>
-                    <span style={{ fontSize: 12, color: "#94a3b8", background: "#f1f5f9", padding: "2px 10px", borderRadius: 100, whiteSpace: "nowrap" }}>
+                <div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 8, flexWrap: "wrap" }}>
+                    <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: "var(--ink)" }}>{s.title}</span>
+                    <span style={{ fontSize: 12, color: "var(--gold)", fontWeight: 700, letterSpacing: ".06em", whiteSpace: "nowrap" }}>
                       {s.duration}
                     </span>
                   </div>
-                  <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.75, marginBottom: 16 }}>{s.desc}</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <p style={{ fontSize: 14.5, color: "var(--body)", lineHeight: 1.75, marginBottom: 14, maxWidth: "62ch" }}>{s.desc}</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
                     {s.points.map((p, j) => (
-                      <div key={j} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#334155" }}>
-                        <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(30,64,175,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1a5c5a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                        </div>
+                      <div key={j} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13.5, color: "var(--ink-3)" }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
                         {p}
                       </div>
                     ))}
@@ -92,23 +85,24 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section" style={{ background: "#f8fafc" }}>
-        <div className="page-wrap">
-          <div style={{ textAlign: "center", maxWidth: 560, margin: "0 auto 56px" }}>
-            <div className="label-tag">FAQ</div>
-            <h2 className="section-heading">常见问题解答</h2>
-            <p className="section-sub" style={{ margin: "0 auto" }}>关于补助金申请，您最常问到的问题。</p>
+      {/* FAQ — hairline 行表（与 /faq 页 V2 同基因，details 原生展开） */}
+      <section className="sec" style={{ background: "var(--surface-warm)" }}>
+        <div className="wrap">
+          <div style={{ maxWidth: 560, marginBottom: 48 }}>
+            <div className="eyebrow">FAQ</div>
+            <h2 className="h2 ed-h" style={{ marginBottom: 12 }}>常见问题解答</h2>
+            <p className="sub" style={{ fontSize: 15 }}>关于补助金申请，您最常问到的问题。</p>
           </div>
-          <div style={{ maxWidth: 760, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
+          <div className="faq-list" style={{ maxWidth: 820 }}>
             {faqs.map((f, i) => (
-              <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px 28px" }}>
-                <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(30,64,175,0.1)", color: "#1a5c5a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, flexShrink: 0 }}>Q</div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: "#0f172a", lineHeight: 1.4 }}>{f.q}</div>
-                </div>
-                <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.75, paddingLeft: 44 }}>{f.a}</p>
-              </div>
+              <details key={i} className="faq-item">
+                <summary className="faq-q">
+                  <span className="faq-q-marker serif">Q</span>
+                  <span className="faq-q-text">{f.q}</span>
+                  <span className="faq-toggle" aria-hidden="true" />
+                </summary>
+                <div className="faq-a"><p>{f.a}</p></div>
+              </details>
             ))}
           </div>
         </div>
