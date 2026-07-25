@@ -44,10 +44,10 @@ export default function WechatFloat() {
           border-radius: 34px;
           text-decoration: none;
           color: #fff;
-          background: linear-gradient(135deg, #1f6b68 0%, #1a5c5a 45%, #114240 100%);
-          box-shadow: 0 6px 22px rgba(17, 66, 64, 0.34),
-            0 2px 6px rgba(17, 66, 64, 0.28),
-            inset 0 0 0 1px rgba(196, 162, 58, 0.45);
+          background: linear-gradient(135deg, #2a7a77 0%, #1e6663 48%, #1a5c5a 100%);
+          box-shadow: 0 6px 22px rgba(26, 92, 90, 0.36),
+            0 2px 6px rgba(26, 92, 90, 0.3),
+            inset 0 0 0 1px rgba(217, 189, 94, 0.55);
           transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
             box-shadow 0.28s ease;
           overflow: hidden;
@@ -64,9 +64,9 @@ export default function WechatFloat() {
         }
         .zc-cs-fab:hover {
           transform: translateY(-3px);
-          box-shadow: 0 12px 30px rgba(17, 66, 64, 0.42),
-            0 4px 10px rgba(17, 66, 64, 0.3),
-            inset 0 0 0 1px rgba(196, 162, 58, 0.75);
+          box-shadow: 0 12px 30px rgba(26, 92, 90, 0.44),
+            0 4px 10px rgba(26, 92, 90, 0.32),
+            inset 0 0 0 1px rgba(217, 189, 94, 0.85);
         }
         .zc-cs-fab:hover::before {
           transform: translateX(120%);
@@ -97,7 +97,7 @@ export default function WechatFloat() {
           height: 11px;
           border-radius: 50%;
           background: #34d07f;
-          box-shadow: 0 0 0 2px rgba(31, 107, 104, 1);
+          box-shadow: 0 0 0 2px rgba(42, 122, 119, 1);
           z-index: 2;
         }
         .zc-cs-dot-core {

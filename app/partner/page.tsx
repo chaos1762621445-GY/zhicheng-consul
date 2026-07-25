@@ -155,10 +155,10 @@ export default function PartnerPage() {
               { num: "23个都道府县", label: "代理网络覆盖", sub: "持续扩大中" },
               { num: "平均¥28万", label: "代理月均收入", sub: "最高月收入超100万円" },
             ].map((stat, i) => (
-              <div key={i} style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 16, padding: "36px 32px", textAlign: "center" }}>
+              <div key={i} style={{ background: "var(--surface-2)", border: "1px solid var(--line)", borderRadius: 16, padding: "36px 32px", textAlign: "center" }}>
                 <div style={{ fontSize: "clamp(32px,4vw,44px)", fontWeight: 800, color: "#1a5c5a", letterSpacing: "-1px", lineHeight: 1, marginBottom: 8 }}>{stat.num}</div>
-                <div style={{ fontSize: 15, fontWeight: 600, color: "#0f172a", marginBottom: 6 }}>{stat.label}</div>
-                <div style={{ fontSize: 13, color: "#94a3b8" }}>{stat.sub}</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "var(--ink)", marginBottom: 6 }}>{stat.label}</div>
+                <div style={{ fontSize: 13, color: "var(--muted)" }}>{stat.sub}</div>
               </div>
             ))}
           </div>
@@ -166,7 +166,7 @@ export default function PartnerPage() {
       </section>
 
       {/* 适合人群 */}
-      <section className="section" style={{ background: "#f8fafc" }}>
+      <section className="section" style={{ background: "var(--surface-2)" }}>
         <div className="page-wrap">
           <div className="label-tag">适合人群</div>
           <h2 className="section-heading">哪些人适合成为代理？</h2>
@@ -175,12 +175,12 @@ export default function PartnerPage() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20, marginTop: 48 }}>
             {targetGroups.map((g, i) => (
-              <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "28px" }}>
-                <div style={{ width: 48, height: 48, background: "rgba(30,64,175,0.08)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", color: "#1a5c5a", marginBottom: 16 }}>
+              <div key={i} style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "28px" }}>
+                <div style={{ width: 48, height: 48, background: "rgba(26,92,90,0.08)", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", color: "#1a5c5a", marginBottom: 16 }}>
                   {g.icon}
                 </div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", marginBottom: 10 }}>{g.title}</div>
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75 }}>{g.desc}</p>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", marginBottom: 10 }}>{g.title}</div>
+                <p style={{ fontSize: 14, color: "var(--body)", lineHeight: 1.75 }}>{g.desc}</p>
               </div>
             ))}
           </div>
@@ -194,7 +194,7 @@ export default function PartnerPage() {
             <div>
               <div className="label-tag">分成机制</div>
               <h2 className="section-heading">透明、公平、<br />按时结算</h2>
-              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.85, marginBottom: 32 }}>
+              <p style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.85, marginBottom: 32 }}>
                 我们相信透明是最好的合作基础。分成比例、结算周期、计算方式，全部在合同中明文规定，没有任何隐藏条款。
               </p>
               {[
@@ -203,37 +203,37 @@ export default function PartnerPage() {
                 { label: "失败风险", value: "零风险", desc: "申请失败时，您和客户均无需支付任何费用" },
                 { label: "最低起步", value: "1单", desc: "没有业绩要求，1个成功案例即可结算" },
               ].map((item, i) => (
-                <div key={i} style={{ display: "flex", gap: 20, alignItems: "flex-start", paddingBottom: 20, marginBottom: 20, borderBottom: i < 3 ? "1px solid #e2e8f0" : "none" }}>
+                <div key={i} style={{ display: "flex", gap: 20, alignItems: "flex-start", paddingBottom: 20, marginBottom: 20, borderBottom: i < 3 ? "1px solid var(--line)" : "none" }}>
                   <div style={{ flexShrink: 0, minWidth: 72 }}>
                     <div style={{ fontSize: 22, fontWeight: 700, color: "#1a5c5a", letterSpacing: "-0.5px" }}>{item.value}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#0f172a", marginBottom: 4 }}>{item.label}</div>
-                    <div style={{ fontSize: 14, color: "#475569" }}>{item.desc}</div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)", marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontSize: 14, color: "var(--body)" }}>{item.desc}</div>
                   </div>
                 </div>
               ))}
             </div>
             <div>
-              <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 16, padding: 36 }}>
-                <div style={{ fontSize: 12, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 24 }}>收入计算示例</div>
+              <div style={{ background: "var(--surface-2)", border: "1px solid var(--line)", borderRadius: 16, padding: 36 }}>
+                <div style={{ fontSize: 12, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 24 }}>收入计算示例</div>
                 {[
                   { scenario: "客户获批省力化补助金", amount: "¥500万", rate: "15%", income: "¥45万" },
                   { scenario: "客户获批IT导入补助金", amount: "¥200万", rate: "15%", income: "¥18万" },
                   { scenario: "客户获批员工转正助成金", amount: "¥80万", rate: "20%", income: "¥9.6万" },
                 ].map((ex, i) => (
-                  <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 8, padding: "16px 20px", marginBottom: 12 }}>
-                    <div style={{ fontSize: 13, color: "#475569", marginBottom: 10 }}>{ex.scenario}</div>
+                  <div key={i} style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: 8, padding: "16px 20px", marginBottom: 12 }}>
+                    <div style={{ fontSize: 13, color: "var(--body)", marginBottom: 10 }}>{ex.scenario}</div>
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 4 }}>
-                      <span style={{ color: "#475569" }}>获批金额</span>
-                      <span style={{ fontWeight: 600, color: "#0f172a" }}>{ex.amount}</span>
+                      <span style={{ color: "var(--body)" }}>获批金额</span>
+                      <span style={{ fontWeight: 600, color: "var(--ink)" }}>{ex.amount}</span>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 10 }}>
-                      <span style={{ color: "#475569" }}>服务费率</span>
-                      <span style={{ fontWeight: 600, color: "#0f172a" }}>{ex.rate}</span>
+                      <span style={{ color: "var(--body)" }}>服务费率</span>
+                      <span style={{ fontWeight: 600, color: "var(--ink)" }}>{ex.rate}</span>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid #e2e8f0" }}>
-                      <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>您的收入（最高 60%）</span>
+                    <div style={{ display: "flex", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid var(--line)" }}>
+                      <span style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)" }}>您的收入（最高 60%）</span>
                       <span style={{ fontSize: 18, fontWeight: 700, color: "#1a5c5a" }}>{ex.income}</span>
                     </div>
                   </div>
@@ -249,7 +249,7 @@ export default function PartnerPage() {
       </section>
 
       {/* 合作流程 */}
-      <section className="section" style={{ background: "#f8fafc" }}>
+      <section className="section" style={{ background: "var(--surface-2)" }}>
         <div className="page-wrap">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="label-tag" style={{ display: "inline-block" }}>合作流程</div>
@@ -260,10 +260,10 @@ export default function PartnerPage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 20 }}>
             {steps.map((step, i) => (
-              <div key={i} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "28px", position: "relative" }}>
-                <div style={{ fontSize: 40, fontWeight: 800, color: "rgba(30,64,175,0.15)", letterSpacing: "-2px", lineHeight: 1, marginBottom: 16 }}>{step.num}</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", marginBottom: 10 }}>{step.title}</div>
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75 }}>{step.desc}</p>
+              <div key={i} style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "28px", position: "relative" }}>
+                <div style={{ fontSize: 40, fontWeight: 800, color: "rgba(26,92,90,0.15)", letterSpacing: "-2px", lineHeight: 1, marginBottom: 16 }}>{step.num}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", marginBottom: 10 }}>{step.title}</div>
+                <p style={{ fontSize: 14, color: "var(--body)", lineHeight: 1.75 }}>{step.desc}</p>
                 {i < steps.length - 1 && (
                   <div style={{ display: "none", position: "absolute", top: "50%", right: -12, transform: "translateY(-50%)", zIndex: 10, alignItems: "center" }} className="lg-flex">
                     <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#1a5c5a", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>
@@ -284,14 +284,14 @@ export default function PartnerPage() {
           <h2 className="section-heading">代理合作 FAQ</h2>
           <div style={{ maxWidth: 800, marginTop: 40 }}>
             {faqs.map((faq, i) => (
-              <div key={i} style={{ borderBottom: i < faqs.length - 1 ? "1px solid #e2e8f0" : "none", paddingBottom: 28, marginBottom: 28 }}>
+              <div key={i} style={{ borderBottom: i < faqs.length - 1 ? "1px solid var(--line)" : "none", paddingBottom: 28, marginBottom: 28 }}>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 6, background: "rgba(30,64,175,0.1)", color: "#1a5c5a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>Q</div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", lineHeight: 1.5 }}>{faq.q}</div>
+                  <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 6, background: "rgba(26,92,90,0.1)", color: "#1a5c5a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>Q</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", lineHeight: 1.5 }}>{faq.q}</div>
                 </div>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 6, background: "rgba(21,190,83,0.1)", color: "#15be53", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>A</div>
-                  <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>{faq.a}</p>
+                  <p style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.8 }}>{faq.a}</p>
                 </div>
               </div>
             ))}

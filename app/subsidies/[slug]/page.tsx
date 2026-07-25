@@ -554,7 +554,7 @@ export default async function SubsidyDetailPage({
                   }}>
                     <span style={{
                       width: 22, height: 22, borderRadius: "50%",
-                      background: "rgba(30,64,175,0.1)", color: "var(--primary)",
+                      background: "rgba(26,92,90,0.1)", color: "var(--primary)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       flexShrink: 0, marginTop: 1,
                     }}>
@@ -669,7 +669,7 @@ export default async function SubsidyDetailPage({
                       display: "flex", alignItems: "flex-start", gap: 12,
                     }}>
                       <span style={{
-                        background: "rgba(30,64,175,0.12)", color: "var(--primary)",
+                        background: "rgba(26,92,90,0.12)", color: "var(--primary)",
                         fontSize: 12, fontWeight: 700, padding: "2px 7px", borderRadius: 3,
                         flexShrink: 0, marginTop: 2,
                       }}>A</span>
@@ -727,7 +727,7 @@ export default async function SubsidyDetailPage({
                   }}>
                     <div>
                       <span style={{
-                        fontSize: 10, background: "rgba(30,64,175,0.08)", color: "var(--primary)",
+                        fontSize: 10, background: "rgba(26,92,90,0.08)", color: "var(--primary)",
                         padding: "2px 6px", borderRadius: 3, marginRight: 8,
                       }}>{s.tag}</span>
                       {s.name}
@@ -760,7 +760,7 @@ export default async function SubsidyDetailPage({
         background: 'linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%)',
         borderTop: '1px solid var(--line)',
       }}>
-        <div className="hero-orb" style={{ width: 480, height: 480, background: 'rgba(30,64,175,0.08)', top: -140, right: -80 }} />
+        <div className="hero-orb" style={{ width: 480, height: 480, background: 'rgba(26,92,90,0.08)', top: -140, right: -80 }} />
         <div className="hero-orb" style={{ width: 360, height: 360, background: 'rgba(200,155,60,0.08)', bottom: -100, left: -60, filter: 'blur(70px)' }} />
         <div className="wrap" style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <h2 className="h2 ed-h ed-h-center" style={{ marginBottom: 18 }}>

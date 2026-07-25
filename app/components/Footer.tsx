@@ -76,7 +76,7 @@ export default function Footer() {
             border: '1px solid rgba(255,255,255,0.13)',
             padding: 18, alignSelf: 'start', textDecoration: 'none',
           }}>
-            <img src="/qiwei-qr.png" alt="企业微信二维码" style={{ width: 96, height: 96, display: 'block', flexShrink: 0 }} />
+            <img src="/qiwei-qr.png" alt="企业微信二维码" style={{ width: 96, height: 96, display: 'block', flexShrink: 0, background: '#fff', padding: 5, boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }} />
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--gold)', marginBottom: 8 }}>企业微信扫码咨询</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 4 }}>营业部客服群</div>
