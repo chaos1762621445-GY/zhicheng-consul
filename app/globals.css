@@ -523,36 +523,38 @@ img { max-width: 100%; display: block; }
 /* ─────────────────────────────────────────
    SCROLL REVEAL
 ───────────────────────────────────────── */
+/* Reveal — Apple 弹簧等效：critically damped, response ~0.45s（design.md §A）
+   短距离+快速安定，无 overshoot；曲线为临界阻尼近似 */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  transform: translateY(16px);
+  transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1);
 }
 .reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .08s; }
-.reveal-delay-2 { transition-delay: .16s; }
-.reveal-delay-3 { transition-delay: .24s; }
-.reveal-delay-4 { transition-delay: .32s; }
-.reveal-delay-5 { transition-delay: .40s; }
+.reveal-delay-1 { transition-delay: .06s; }
+.reveal-delay-2 { transition-delay: .12s; }
+.reveal-delay-3 { transition-delay: .18s; }
+.reveal-delay-4 { transition-delay: .24s; }
+.reveal-delay-5 { transition-delay: .30s; }
 
 .reveal-left {
-  opacity: 0; transform: translateX(-32px);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  opacity: 0; transform: translateX(-20px);
+  transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1);
 }
 .reveal-left.visible { opacity: 1; transform: none; }
 .reveal-right {
-  opacity: 0; transform: translateX(32px);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  opacity: 0; transform: translateX(20px);
+  transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1);
 }
 .reveal-right.visible { opacity: 1; transform: none; }
 /* 手机端：水平位移动画会把内容推出视口边缘（溢出/闪现），降级为上移 */
 @media (max-width: 767px) {
-  .reveal-left  { transform: translateY(24px); }
-  .reveal-right { transform: translateY(24px); }
+  .reveal-left  { transform: translateY(16px); }
+  .reveal-right { transform: translateY(16px); }
 }
 .reveal-scale {
-  opacity: 0; transform: scale(.96);
-  transition: opacity .6s ease, transform .6s ease;
+  opacity: 0; transform: scale(.97);
+  transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1);
 }
 .reveal-scale.visible { opacity: 1; transform: none; }
 
@@ -571,7 +573,7 @@ img { max-width: 100%; display: block; }
 .intro-curtain {
   position: fixed; inset: 0;
   z-index: 9999;
-  background: linear-gradient(135deg, #081737 0%, #0b1f3a 45%, #13305e 100%);
+  background: linear-gradient(135deg, #0a2b29 0%, #0f3937 45%, #124442 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1908,4 +1910,40 @@ html, body { overflow-x: clip; }
 @media (prefers-contrast: more) {
   .nav-material { background: #fff; border-bottom: 1.5px solid var(--ink); }
   .nav-drop { background: #fff; box-shadow: 0 0 0 1.5px var(--ink); }
+}
+
+/* A5. 移动菜单 — 材质 + compositor 动画 + 对称进出 (§7 §11 §12)
+   从导航处生长(origin top)，进=出镜像路径；transform/opacity only */
+.nav-mobile-menu {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: rgba(255,255,255,0.88);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(13,52,51,0.08);
+  max-height: calc(100vh - 56px);
+  overflow: hidden auto;
+  transform-origin: top center;
+  transform: scaleY(0.96) translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform .32s cubic-bezier(.22,1,.36,1),
+    opacity .26s cubic-bezier(.22,1,.36,1),
+    visibility 0s linear .32s;
+}
+.nav-mobile-menu.open {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    transform .32s cubic-bezier(.22,1,.36,1),
+    opacity .22s cubic-bezier(.22,1,.36,1),
+    visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-mobile-menu { transform: none; transition: opacity .2s ease, visibility 0s linear .2s; }
+  .nav-mobile-menu.open { transition: opacity .2s ease, visibility 0s; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav-mobile-menu { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 1px solid var(--line); }
 }

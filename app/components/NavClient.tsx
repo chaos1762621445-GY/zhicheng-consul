@@ -138,16 +138,8 @@ export default function NavClient() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div style={{
-        position: 'absolute', left: 0, right: 0, top: '100%',
-        background: '#fff',
-        borderBottom: '1px solid #eaeaea',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
-        maxHeight: open ? 'calc(100vh - 56px)' : 0,
-        overflow: 'hidden auto',
-        transition: 'max-height .28s cubic-bezier(.4,0,.2,1)',
-      }}>
+      {/* Mobile menu — 材质层，compositor 动画，镜像 easing 对称进出（design.md §A2/A5） */}
+      <div className={`nav-mobile-menu${open ? ' open' : ''}`}>
         <div style={{ padding: '12px 20px 24px' }}>
           {NAV.map(item => (
             <div key={item.href} style={{ marginBottom: 2 }}>
