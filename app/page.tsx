@@ -96,12 +96,44 @@ export default async function HomePage() {
           <div className="grid-2col-about" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
             <Reveal direction="left">
               <div style={{ position: 'relative', marginBottom: 24 }}>
-                <div style={{ overflow: 'hidden' }}>
-                  <img
-                    src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80"
-                    alt="志成コンサル 专业团队办公场景"
-                    style={{ width: '100%', height: 'clamp(280px, 40vw, 480px)', objectFit: 'cover', display: 'block' }}
-                  />
+                {/* 品牌数据面板 — 以真实数据代替 stock 图（design.md：数据即视觉） */}
+                <div aria-hidden="true" style={{
+                  position: 'relative', overflow: 'hidden',
+                  height: 'clamp(280px, 40vw, 480px)',
+                  background: 'linear-gradient(158deg, #124442 0%, #0f3937 58%, #0a2b29 100%)',
+                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                  padding: 'clamp(24px, 3.4vw, 42px)',
+                }}>
+                  {/* 金色光晕 + 细网格 */}
+                  <div style={{
+                    position: 'absolute', top: '-18%', right: '-12%', width: 380, height: 380, borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(196,162,58,0.18) 0%, transparent 65%)', pointerEvents: 'none',
+                  }} />
+                  <div style={{
+                    position: 'absolute', inset: 0, pointerEvents: 'none',
+                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                    backgroundSize: '56px 56px',
+                  }} />
+                  {/* 大衬线数字 */}
+                  <div style={{ position: 'relative' }}>
+                    <div style={{ fontSize: 11, letterSpacing: '0.22em', color: 'rgba(255,255,255,0.5)', marginBottom: 10 }}>申请通过率</div>
+                    <div className="serif" style={{ fontSize: 'clamp(56px, 8vw, 92px)', fontWeight: 900, lineHeight: 0.95, color: '#fff' }}>
+                      92<span style={{ fontSize: '0.4em', color: 'var(--gold-bright)', marginLeft: 4 }}>%</span>
+                    </div>
+                    <div style={{ width: 44, height: 2, background: 'var(--gold)', marginTop: 18 }} />
+                  </div>
+                  {/* 四资质 hairline 行表 */}
+                  <div style={{ position: 'relative' }}>
+                    {[['01', '行政书士'], ['02', '社会保险劳务士'], ['03', '税理士'], ['04', '中小企业诊断士']].map(([n, t]) => (
+                      <div key={n} style={{
+                        display: 'flex', alignItems: 'baseline', gap: 14,
+                        padding: '9px 0', borderTop: '1px solid rgba(255,255,255,0.12)',
+                      }}>
+                        <span className="serif" style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold-bright)' }}>{n}</span>
+                        <span style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.82)', letterSpacing: '0.04em' }}>{t}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="serif about-img-badge" style={{
                   background: 'var(--brand)', color: '#fff',

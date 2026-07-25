@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
-// Unsplash photos — free commercial use
-// Tokyo night cityscape / Japan business
-const BG = 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1800&q=80&auto=format&fit=crop'; // Tokyo night
+// 自托管 hero 背景（webp 195KB，替代 unsplash 外链 730KB：消除第三方依赖 + LCP 提速）
+const BG = '/hero-tokyo.webp'; // Tokyo night
 
 const trust = [
   '不获批不收费',
@@ -16,11 +15,13 @@ export default function HeroSection() {
     <>
       {/* ── HERO — dark cinematic ── */}
       <section className="hero-section">
-        {/* Photo */}
+        {/* Photo — LCP 元素，fetchpriority 提示浏览器优先加载 */}
         <img
           src={BG}
           alt=""
           aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
           style={{
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
