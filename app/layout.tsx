@@ -1,7 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import WechatFloat from "./components/WechatFloat";
 import PageCurtain from "./components/PageCurtain";
+
+// 自托管字体：消除阻塞渲染的 Google Fonts <link>，display:swap 先用系统字体秒出、字体到位无缝替换
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-inter",
+});
+const notoSerifSC = Noto_Serif_SC({
+  weight: ["600", "700", "900"],
+  display: "swap",
+  variable: "--font-noto-serif-sc",
+  preload: false, // 中文字体大，不 preload，标题先用系统衬线(Songti SC)回退
+});
 
 const SITE_URL = "https://shisei-consult.jp";
 
@@ -136,11 +151,8 @@ const websiteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" className={`${inter.variable} ${notoSerifSC.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

@@ -14,7 +14,7 @@ const stats = [
   { num: "3,000+", label: "累计服务客户" },
   { num: "8.5億円", label: "累计获批补助金总额" },
   { num: "92%", label: "申请通过率" },
-  { num: "6年", label: "专业服务年限" },
+  { num: "4年", label: "专业服务年限" },
 ];
 
 type CaseItem = {
