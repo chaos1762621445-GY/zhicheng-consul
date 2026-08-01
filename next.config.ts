@@ -21,6 +21,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        // 白皮书是 5.8MB 的独立阅读物（非 SEO 页面），禁止索引以免浪费抓取预算
+        source: "/whitepaper/2026-hakusho.html",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
