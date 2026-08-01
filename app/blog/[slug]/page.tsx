@@ -12,6 +12,10 @@ export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
+// 所有文章构建时已知：非预生成的 slug（如正文残留的占位链接 /blog/联系方式）
+// 一律走 404 而非动态渲染抛 500
+export const dynamicParams = false;
+
 // 从正文 Markdown 提取 FAQ 问答对（### Q...：问题 + **A：** 答案），用于 FAQPage 结构化数据
 function extractFaq(markdown: string): { q: string; a: string }[] {
   const faqs: { q: string; a: string }[] = [];

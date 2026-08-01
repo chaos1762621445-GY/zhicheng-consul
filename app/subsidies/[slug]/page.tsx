@@ -406,9 +406,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const data = subsidies.find((s) => s.slug === slug);
   if (!data) return {};
+  const canonicalPath = `/subsidies/${slug}`;
   return {
     title: data.metaTitle,
     description: data.metaDesc,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      url: `https://shisei-consult.jp${canonicalPath}`,
+      title: data.metaTitle,
+      description: data.metaDesc,
+    },
   };
 }
 

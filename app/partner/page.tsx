@@ -8,6 +8,7 @@ import CtaSection from "../components/CtaSection";
 export const metadata: Metadata = {
   title: "代理合作",
   description: "加入志成コンサル代理网络，享受最高 60% 透明分成。适合税理士、行政书士、社劳士、会计事务所、微信群主、留学中介、房产中介等人群。",
+  alternates: { canonical: "/partner" },
 };
 
 const targetGroups = [

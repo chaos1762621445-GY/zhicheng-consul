@@ -201,7 +201,13 @@ async function main() {
   const topic = available[Math.floor(Math.random() * available.length)];
   console.log(`可用主题数: ${available.length}，本次生成: ${topic.title}`);
 
-  const content = await generateArticle(topic);
+  const rawContent = await generateArticle(topic);
+  // 正文占位链接清洗：模型常产出 [免费咨询](联系方式)/[立即预约](预约链接) 这类中文占位链接，
+  // 相对链接会被解析成 /blog/联系方式 → 中文 slug 路由抛 500。统一改指 /contact。
+  const content = rawContent.replace(
+    /\]\((?:联系方式|预约链接|预约地址|企业咨询通道|咨询入口(?:链接)?|在此[^)]*链接[^)]*|您的?联系方式|你的?链接[^)]*|链接地址)\)/g,
+    "](/contact)"
+  );
   const slug = slugify(topic.title);
   const date = new Date().toISOString().split("T")[0];
 

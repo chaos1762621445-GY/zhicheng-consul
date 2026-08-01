@@ -6,7 +6,9 @@ export const metadata: Metadata = {
   title: "2026 在日华人企业补助金白皮书",
   description:
     "《2026 在日华人企业补助金与经营升级白皮书》正式发布。由株式会社志成コンサル编制，系统梳理 AI・数字化、省力化设备、人才助成、节能投资四大方向的制度、金额、补助率与申请要点，面向在日华人中小企业主。",
+  alternates: { canonical: "/whitepaper" },
   openGraph: {
+    url: "https://shisei-consult.jp/whitepaper",
     title: "2026 在日华人企业补助金白皮书 | 志成コンサル",
     description:
       "四大方向、制度全景、申请流程与风险提示——面向在日华人企业主的补助金实务指南。",

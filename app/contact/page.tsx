@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "免费咨询",
   description: "免费补助金资格诊断——3分钟问卷，志成コンサル专业团队当日回复",
+  alternates: { canonical: "/contact" },
 };
 
 const contacts = [
