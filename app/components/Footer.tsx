@@ -19,6 +19,7 @@ const cols = [
   { title: '公司', links: [
     { label: '关于我们', href: '/about' },
     { label: '免费咨询', href: '/contact' },
+    { label: '隐私政策', href: '/privacy' },
   ]},
 ];
 
