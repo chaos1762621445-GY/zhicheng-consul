@@ -138,13 +138,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     dateModified: post.date || undefined,
     inLanguage: "zh-CN",
     keywords: (post.keywords || []).join(", "),
+    image: [`${SITE_URL}/opengraph-image`],
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
-    author: { "@type": "Organization", name: "株式会社 志成コンサル" },
-    publisher: {
+    author: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "株式会社 志成コンサル",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+      url: SITE_URL,
     },
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

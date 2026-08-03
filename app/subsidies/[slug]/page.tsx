@@ -136,11 +136,10 @@ const subsidies: SubsidyData[] = [
       "须在公募締切前完成交付申请（非随时受理）",
     ],
     targets: [
-      { item: "AI 软件采购费用", detail: "智能客服、生产流程优化 AI、AI 营销工具等各类 SaaS 订阅或买断费用" },
-      { item: "AI 系统定制开发", detail: "面向业务的定制 AI 系统开发（含需求分析、原型、开发、测试）" },
-      { item: "AI 硬件设备购置", detail: "AI 服务器、GPU 设备、专用传感器、摄像头等配套硬件" },
-      { item: "AI 实施·培训·咨询", detail: "系统部署调试费、员工 AI 技能培训、专业咨询服务费" },
-      { item: "AI 应用配套投入", detail: "数据存储服务器、数据清洗整合、业务数据整备等配套支出" },
+      { item: "登录 IT 工具（软件·云服务）", detail: "补助对象须为官方名录中登记的「IT 工具」——智能客服、流程优化、AI 营销等已登录的 SaaS 订阅或云服务费用" },
+      { item: "登录工具的功能扩展·选项", detail: "在登录工具范围内的相关功能扩展、模块选项等，须属于该工具的登记类别" },
+      { item: "导入关联役务", detail: "由 IT 导入支援事业者提供的导入设定、初期咨询等登记在案的关联役务费用" },
+      { item: "インボイス枠限定硬件", detail: "仅インボイス（电子交易）枠允许，且限 PC·平板·打印扫描·POS·售票机等指定设备；GPU 服务器等硬件不在通常枠对象内，须逐项确认" },
     ],
     steps: [
       { step: "01", title: "免费资格诊断", desc: "专业顾问判断您的 AI 导入计划是否符合申请资格，个人事业主·赤字企业皆可评估，1 个工作日内回复。" },
@@ -490,11 +489,21 @@ export default async function SubsidyDetailPage({
     areaServed: { "@type": "Country", name: "日本" },
     provider: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "株式会社 志成コンサル",
       url: SITE_URL,
     },
     audience: { "@type": "BusinessAudience", name: "在日华人中小企业" },
     url: `${SITE_URL}/subsidies/${slug}`,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "首页", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "补助金一览", item: `${SITE_URL}/subsidies` },
+      { "@type": "ListItem", position: 3, name: data.name, item: `${SITE_URL}/subsidies/${slug}` },
+    ],
   };
   const faqJsonLd = data.faq && data.faq.length > 0 ? {
     "@context": "https://schema.org",
@@ -511,6 +520,10 @@ export default async function SubsidyDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
         <script

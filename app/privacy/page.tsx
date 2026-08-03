@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "株式会社志成コンサル隐私政策——说明我们如何收集、使用、保管和保护您在使用本网站及咨询服务时提供的个人信息，依据日本《个人信息保护法》制定。",
   alternates: { canonical: "/privacy" },
+  openGraph: { url: "/privacy" },
 };
 
 const sections = [
