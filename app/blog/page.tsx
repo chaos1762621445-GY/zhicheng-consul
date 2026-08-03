@@ -39,6 +39,7 @@ export default async function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
+                  prefetch={false}
                   className="ed-row"
                   style={{ textDecoration: "none" }}
                 >

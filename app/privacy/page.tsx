@@ -181,7 +181,7 @@ export default function PrivacyPage() {
                   <div style={{ fontWeight: 700, color: "var(--heading)", marginBottom: 6 }}>
                     株式会社 志成コンサル
                   </div>
-                  <div>〒169-0075 東京都新宿区高田馬場1-25-32 7階</div>
+                  <div>〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階</div>
                   <div>电话：03-6265-9756</div>
                   <div>
                     邮箱：

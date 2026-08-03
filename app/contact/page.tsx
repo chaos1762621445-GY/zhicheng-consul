@@ -39,7 +39,7 @@ const contacts = [
   },
   {
     label: "地址 Address",
-    value: "〒169-0075 東京都新宿区高田馬場1-25-32 7階",
+    value: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>

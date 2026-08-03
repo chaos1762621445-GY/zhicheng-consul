@@ -126,7 +126,7 @@ export default function Footer() {
               {[
                 ['电话', '03-6265-9756'],
                 ['企业微信', '扫码添加营业部'],
-                ['地址', '東京都新宿区高田馬場 1-25-32 7階'],
+                ['地址', '東京都千代田区平河町1-8-2 半蔵門パレス8階'],
               ].map(([k, v]) => (
                 <div key={k} style={{ fontSize: 13, lineHeight: 1.6 }}>
                   <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{k}</span>

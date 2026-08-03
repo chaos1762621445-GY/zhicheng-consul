@@ -231,6 +231,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
+                  prefetch={false}
                   style={{
                     display: "flex",
                     alignItems: "center",

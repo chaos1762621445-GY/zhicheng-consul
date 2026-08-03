@@ -116,10 +116,11 @@ export default function CasesPage() {
               </div>
             ))}
           </div>
+          <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--muted)', margin: '4px auto 0', maxWidth: 760, lineHeight: 1.7, padding: '0 20px' }}>
+            ※ 以上为本团队及合作持牌专家自 2022 年成立以来的累计口径（截至 2026 年 7 月）：服务企业数为累计咨询·委托家数；获批总额为经手申请中已收到交付决定的补助金·助成金合计；通过率为已完成审查案件中的採択比例，因补助金种类与公募回而异，个案结果以主管机关审查为准。
+          </p>
         </div>
       </section>
-
-      {/* Cases Grid */}
       <section className="section" style={{ background: "var(--surface-2)" }}>
         <div className="page-wrap">
           <div style={{ textAlign: "center", marginBottom: 8 }}>

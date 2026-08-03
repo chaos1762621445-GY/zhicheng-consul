@@ -12,7 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 const notoSerifSC = Noto_Serif_SC({
-  weight: ["600", "700", "900"],
+  weight: ["700", "900"], // 砍 600（全站无一处使用），省约 1/3 中文字体分片
   display: "swap",
   variable: "--font-noto-serif-sc",
   preload: false, // 中文字体大，不 preload，标题先用系统衬线(Songti SC)回退
@@ -108,8 +108,11 @@ const orgJsonLd = {
   url: SITE_URL,
   logo: { "@type": "ImageObject", "@id": `${SITE_URL}/#logo`, url: `${SITE_URL}/logo.png` },
   image: { "@id": `${SITE_URL}/#logo` },
-  // 同集团日文官网（已双向 hreflang 握手），是可核验的关联实体
-  sameAs: ["https://shiseiconsult.com"],
+  // 同集团日文官网 + GビズINFO 官方法人页（可核验实体）
+  sameAs: [
+    "https://shiseiconsult.com",
+    "https://info.gbiz.go.jp/hojin/ichiran?hojinBango=5010401158340",
+  ],
   description:
     "专为在日华人企业主提供日本政府补助金（省力化补助金、AI导入补助金、员工转正助成金等）全程代办服务。行政书士、社会保险劳务士、税理士、中小企业诊断士联合团队，全程中文，无成功不收费。",
   slogan: "在日华人补助金全程代办，不获批不收费",
@@ -117,14 +120,21 @@ const orgJsonLd = {
   areaServed: { "@type": "Country", name: "日本" },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "高田馬場1-25-32 7階",
-    addressLocality: "新宿区",
+    streetAddress: "平河町1-8-2 半蔵門パレス8階",
+    addressLocality: "千代田区",
     addressRegion: "東京都",
-    postalCode: "169-0075",
+    postalCode: "102-0093",
     addressCountry: "JP",
   },
   telephone: "+81-3-6265-9756",
   email: "info@shisei-consult.jp",
+  // 法人番号（日本国税庁指定）—— GビズINFO 可核验的稳定实体标识
+  taxID: "5010401158340",
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "法人番号",
+    value: "5010401158340",
+  },
   knowsAbout: [
     "日本政府补助金",
     "省力化补助金",
@@ -157,6 +167,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN" className={`${inter.variable} ${notoSerifSC.variable}`}>
       <head>
+        {/* LCP 提速：hero 背景图预加载，先于 HTML body 解析即开始下载 */}
+        <link rel="preload" as="image" href="/hero-tokyo.webp" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
