@@ -6,7 +6,7 @@ import PageHero from "../components/PageHero";
 import CtaSection from "../components/CtaSection";
 
 export const metadata: Metadata = {
-  title: "代理合作",
+  title: "补助金代理合作招募｜最高60%透明分成·中介伙伴共赢",
   description: "加入志成コンサル代理网络，享受最高 60% 透明分成。适合税理士、行政书士、社劳士、会计事务所、微信群主、留学中介、房产中介等人群。",
   alternates: { canonical: "/partner" },
   openGraph: { url: "/partner" },

@@ -3,7 +3,7 @@ import NavClient from "../components/NavClient";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "免费咨询",
+  title: "免费补助金资格诊断｜3分钟中文问卷·当日回复",
   description: "免费补助金资格诊断——3分钟问卷，志成コンサル专业团队当日回复",
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact" },
