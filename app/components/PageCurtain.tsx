@@ -1,5 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { localeFromPathname } from '@/lib/i18n/from-path';
+
+const CURTAIN_TAGLINE: Record<string, string> = {
+  zh: '在日华人 · 补助金全程代办',
+  en: 'Japan Subsidies · Full-Service Support in Chinese',
+  ja: '在日華人 · 補助金の全工程代行',
+};
 
 /**
  * 开屏帘幕 V2 — 编辑式题词卡
@@ -7,6 +15,8 @@ import { useEffect, useState } from 'react';
  * 每个会话只播一次；总时长 2.2s，比 V1 更快更克制。
  */
 export default function PageCurtain() {
+  const pathname = usePathname() || '/';
+  const tagline = CURTAIN_TAGLINE[localeFromPathname(pathname)] ?? CURTAIN_TAGLINE.zh;
   const [mounted, setMounted] = useState(true);
   const [stage, setStage] = useState(0);
   // 0 = 初始, 1 = 入场, 2 = 上提退场
@@ -99,7 +109,7 @@ export default function PageCurtain() {
           transform: stage >= 1 ? 'translateY(0)' : 'translateY(8px)',
           transition: 'opacity .7s ease .6s, transform .7s cubic-bezier(.22,1,.36,1) .6s',
         }}>
-          在日华人 · 补助金全程代办
+          {tagline}
         </div>
       </div>
 

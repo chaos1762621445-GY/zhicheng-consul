@@ -56,7 +56,7 @@ const T: Record<Locale, {
     ],
   },
   en: {
-    heroEyebrow: "Success Cases · 成功案例",
+    heroEyebrow: "Success Cases · Client Results",
     heroTitle1: "Client", heroTitle2: "Success Stories",
     heroDesc: "Real approved cases across food service, beauty, IT, construction, and more — proof of our expertise in Japan's government subsidy field.",
     statsNote: "※ The figures above are cumulative for our team and affiliated licensed professionals since our founding in 2022 (as of July 2026): businesses served counts cumulative consultations and engagements; total secured is the sum of subsidies and grants that have received a disbursement decision among the applications handled; the success rate is the proportion of adopted cases among those with completed review, varying by subsidy type and public-offering round. Individual results are subject to the reviewing authority's decision.",
