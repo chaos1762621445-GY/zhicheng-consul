@@ -49,15 +49,22 @@ if ! node scripts/generate-post.mjs 2>&1 | tee -a "$LOG"; then
   echo "❌ 文章生成失败" | tee -a "$LOG"; exit 1
 fi
 
-# 3) 提交所有未提交的文章(含历史堆积的)
+# 3) 把新生成(及历史遗漏)的中文文章翻译成 en/ja（幂等，只译缺的）
+echo ">> 翻译新文章为 en/ja..." | tee -a "$LOG"
+if ! node scripts/translate-new-posts.mjs 2>&1 | tee -a "$LOG"; then
+  echo "⚠️ 部分文章翻译失败，已成功的照常提交，缺失的下次补译（前端会回退中文，不影响上线）" | tee -a "$LOG"
+fi
+
+# 4) 提交所有未提交的文章(含 en/ja 译文 + 历史堆积的)
 git add content/posts/ 2>&1 | tee -a "$LOG"
 if git diff --cached --quiet; then
   echo "ℹ️ 无新文章需提交" | tee -a "$LOG"; exit 0
 fi
-NCOUNT=$(git diff --cached --name-only | grep -c "content/posts/")
-git commit -m "chore: 每日自动文章 $(date +%F)（${NCOUNT}篇）" 2>&1 | tee -a "$LOG"
+ZH_COUNT=$(git diff --cached --name-only | grep -E "content/posts/[^/]+\.md$" | grep -c .)
+TR_COUNT=$(git diff --cached --name-only | grep -E "content/posts/(en|ja)/" | grep -c .)
+git commit -m "chore: 每日自动文章 $(date +%F)（中文${ZH_COUNT}篇 + 译文${TR_COUNT}个）" 2>&1 | tee -a "$LOG"
 
-# 4) 推送(带3次重试)
+# 5) 推送(带3次重试)
 PUSHED=0
 for i in 1 2 3; do
   if git push 2>&1 | tee -a "$LOG"; then PUSHED=1; break; fi
