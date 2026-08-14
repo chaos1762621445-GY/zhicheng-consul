@@ -1,27 +1,35 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import LangSwitcher from './LangSwitcher';
+import { localizedHref } from '@/lib/i18n/href';
+import type { Locale } from '@/lib/i18n/config';
+import type { Dictionary } from '@/messages/zh';
+import { zh } from '@/messages/zh';
 
-const NAV = [
-  { label: '补助金种类', href: '/subsidies', children: [
-    { label: '省力化补助金', href: '/subsidies/seiryoka' },
-    { label: 'AI 导入补助金', href: '/subsidies/ai-it' },
-    { label: '员工转正助成金', href: '/subsidies/career-up' },
-    { label: '员工培训助成金', href: '/subsidies/training' },
-    { label: '空调省能补助', href: '/subsidies/aircon' },
-  ]},
-  { label: '服务流程', href: '/service' },
-  { label: '成功案例', href: '/cases' },
-  { label: '白皮书', href: '/whitepaper' },
-  { label: '关于我们', href: '/about', children: [
-    { label: '公司介绍', href: '/about' },
-    { label: '代理合作', href: '/partner' },
-    { label: '常见问题', href: '/faq' },
-    { label: '知识库', href: '/blog' },
-  ]},
-];
+export default function NavClient({ locale = 'zh', dict }: { locale?: Locale; dict?: Dictionary }) {
+  const t = (dict ?? (zh as unknown as Dictionary)).nav;
+  const L = (p: string) => localizedHref(locale, p);
 
-export default function NavClient() {
+  const NAV = [
+    { label: t.subsidies, href: '/subsidies', children: [
+      { label: t.subItems.seiryoka, href: '/subsidies/seiryoka' },
+      { label: t.subItems['ai-it'], href: '/subsidies/ai-it' },
+      { label: t.subItems['career-up'], href: '/subsidies/career-up' },
+      { label: t.subItems.training, href: '/subsidies/training' },
+      { label: t.subItems.aircon, href: '/subsidies/aircon' },
+    ]},
+    { label: t.service, href: '/service' },
+    { label: t.cases, href: '/cases' },
+    { label: t.whitepaper, href: '/whitepaper' },
+    { label: t.about, href: '/about', children: [
+      { label: t.companyIntro, href: '/about' },
+      { label: t.partner, href: '/partner' },
+      { label: t.faq, href: '/faq' },
+      { label: t.blog, href: '/blog' },
+    ]},
+  ];
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState<string | null>(null);
@@ -51,7 +59,7 @@ export default function NavClient() {
     <nav className="nav-material">
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
         {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href={L('/')} onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center' }}>
           <img src="/logo.png" alt="株式会社 志成コンサル" style={{ height: 36, width: 'auto' }} />
         </Link>
 
@@ -90,7 +98,7 @@ export default function NavClient() {
                       padding: 4,
                     }}>
                       {item.children.map(c => (
-                        <Link key={c.href} href={c.href} onClick={() => setDrop(null)}
+                        <Link key={c.href} href={L(c.href)} onClick={() => setDrop(null)}
                           style={{ display: 'block', padding: '9px 12px', fontSize: 13.5, fontWeight: 500, color: '#171717', borderRadius: 6, transition: 'background .1s' }}
                           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
                           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}
@@ -102,7 +110,7 @@ export default function NavClient() {
                   )}
                 </>
               ) : (
-                <Link href={item.href} style={{ display: 'block', padding: '6px 12px', borderRadius: 6, fontSize: 14, fontWeight: 500, color: '#171717', transition: 'background .1s' }}
+                <Link href={L(item.href)} style={{ display: 'block', padding: '6px 12px', borderRadius: 6, fontSize: 14, fontWeight: 500, color: '#171717', transition: 'background .1s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
@@ -111,23 +119,24 @@ export default function NavClient() {
               )}
             </div>
           ))}
+          <div style={{ marginLeft: 4, color: '#171717' }}><LangSwitcher locale={locale} /></div>
         </div>
 
         {/* Right side */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Link href="/contact" className="nav-cta-desktop" style={{
+          <Link href={L('/contact')} className="nav-cta-desktop" style={{
             display: 'inline-flex', alignItems: 'center',
             background: 'linear-gradient(180deg,#2a7a77,#1a5c5a)', color: '#fff',
             padding: '8px 16px',
             borderRadius: 6, fontSize: 13.5, fontWeight: 500,
           }}>
-            免费诊断
+            {t.ctaButton}
           </Link>
           <button
             className="nav-mobile-toggle"
             style={{ padding: 8, border: '1px solid #eaeaea', background: '#fff', cursor: 'pointer', borderRadius: 6, alignItems: 'center', justifyContent: 'center' }}
             onClick={() => setOpen(!open)}
-            aria-label="菜单"
+            aria-label="menu"
           >
             <div style={{ width: 18, height: 12, position: 'relative' }}>
               <span style={{ position:'absolute', left:0, right:0, top: open? 5: 0, height: 1.5, background: '#171717', borderRadius: 2, transition: 'all .2s', transform: open ? 'rotate(45deg)' : 'none' }} />
@@ -143,26 +152,29 @@ export default function NavClient() {
         <div style={{ padding: '12px 20px 24px' }}>
           {NAV.map(item => (
             <div key={item.href} style={{ marginBottom: 2 }}>
-              <Link href={item.href} onClick={() => setOpen(false)}
+              <Link href={L(item.href)} onClick={() => setOpen(false)}
                 style={{ display: 'block', padding: '11px 10px', fontSize: 15, fontWeight: 600, color: '#171717', borderRadius: 6 }}>
                 {item.label}
               </Link>
               {item.children?.map(c => (
-                <Link key={c.href} href={c.href} onClick={() => setOpen(false)}
+                <Link key={c.href} href={L(c.href)} onClick={() => setOpen(false)}
                   style={{ display: 'block', padding: '9px 10px 9px 26px', fontSize: 13.5, color: '#666', borderRadius: 6 }}>
                   {c.label}
                 </Link>
               ))}
             </div>
           ))}
-          <Link href="/contact" onClick={() => setOpen(false)} style={{
+          <Link href={L('/contact')} onClick={() => setOpen(false)} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: 'linear-gradient(180deg,#2a7a77,#1a5c5a)', color: '#fff',
             padding: '12px 20px', borderRadius: 6,
             fontSize: 14, fontWeight: 500, marginTop: 12,
           }}>
-            免费诊断
+            {t.ctaButton}
           </Link>
+          <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid #eee', color: '#171717' }}>
+            <LangSwitcher locale={locale} compact />
+          </div>
         </div>
       </div>
     </nav>

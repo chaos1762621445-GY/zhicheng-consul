@@ -1,12 +1,17 @@
 'use client';
+import { usePathname } from 'next/navigation';
+import { localeFromPathname } from '@/lib/i18n/from-path';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export default function WechatFloat() {
+  const pathname = usePathname() || '/';
+  const w = getDictionary(localeFromPathname(pathname)).wechat;
   return (
     <a
       href="https://work.weixin.qq.com/kfid/kfcdeef8ec4573ef9f3"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="联系在线客服 免费咨询"
+      aria-label={w.aria}
       className="zc-cs-fab"
     >
       {/* 在线脉冲灯 */}
@@ -26,8 +31,8 @@ export default function WechatFloat() {
 
       {/* 文案 */}
       <span className="zc-cs-text">
-        <span className="zc-cs-text-main">免费咨询</span>
-        <span className="zc-cs-text-sub">在线顾问 · 即时回复</span>
+        <span className="zc-cs-text-main">{w.main}</span>
+        <span className="zc-cs-text-sub">{w.sub}</span>
       </span>
 
       <style jsx>{`

@@ -50,6 +50,28 @@ const CONTENT = `# 志成コンサル（株式会社 志成コンサル）
 
 - 补助金申请结果以各主管机关的审查为准，本公司不保证一定获批。
 - 「不获批不收费」指采择失败时不收取成功报酬，具体费用条款以咨询时确认为准。
+
+## Multilingual site / 多言語対応
+
+This site is available in three languages. 本サイトは3言語で提供しています。
+
+### English
+
+Shisei Consulting Co., Ltd. provides full-service application support for Japanese government subsidies and grants, tailored to Chinese-owned businesses operating in Japan. A team of nationally licensed experts (Gyoseishoshi, Zeirishi, Sharoshi, SME Management Consultant) supports the entire process in Chinese, on a "no approval, no fee" success-fee basis. Results are subject to each authority's review; approval is not guaranteed.
+- English home: ${SITE_URL}/en
+- Subsidies (EN): ${SITE_URL}/en/subsidies
+- Process (EN): ${SITE_URL}/en/service
+- Insights (EN): ${SITE_URL}/en/blog
+- Free consultation (EN): ${SITE_URL}/en/contact
+
+### 日本語
+
+株式会社 志成コンサルは、日本で事業を営む在日華人企業向けに、日本政府の補助金・助成金の申請を全工程で代行します。行政書士・税理士・社会保険労務士・中小企業診断士など国家資格の専門家が連携し、全工程を中国語で対応、「不採択なら無料」の成功報酬制です。採択は各主管機関の審査によるものであり、採択を保証するものではありません。
+- 日本語トップ: ${SITE_URL}/ja
+- 補助金の種類（JA）: ${SITE_URL}/ja/subsidies
+- サービスの流れ（JA）: ${SITE_URL}/ja/service
+- お役立ち情報（JA）: ${SITE_URL}/ja/blog
+- 無料相談（JA）: ${SITE_URL}/ja/contact
 `;
 
 export function GET() {

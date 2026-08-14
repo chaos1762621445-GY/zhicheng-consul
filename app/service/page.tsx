@@ -1,120 +1,16 @@
 import type { Metadata } from "next";
-import NavClient from "../components/NavClient";
-import Footer from "../components/Footer";
-import PageHero from "../components/PageHero";
-import CtaSection from "../components/CtaSection";
+import ServiceContent from "../components/pages/ServiceContent";
+import { buildPageMetadata } from "@/lib/i18n/metadata";
 
 export const metadata: Metadata = {
-  title: "补助金代办服务流程｜从免费诊断到资金到账·全程中文6步",
-  description: "志成コンサル补助金申请服务流程详解——免费诊断、方案匹配、材料制作、申请提交、审查跟进、资金到账，行政书士·税理士联合团队全程中文代办，不获批不收费。",
-  alternates: { canonical: "/service" },
-  openGraph: { url: "/service" },
+  ...buildPageMetadata({
+    locale: "zh",
+    path: "/service",
+    title: "补助金代办服务流程｜从免费诊断到资金到账·全程中文6步",
+    description: "志成コンサル补助金申请服务流程详解——免费诊断、方案匹配、材料制作、申请提交、审查跟进、资金到账，行政书士·税理士联合团队全程中文代办，不获批不收费。",
+  }),
 };
 
-const steps = [
-  { n: "01", title: "免费咨询·初次接触", duration: "当日〜次个工作日", desc: "扫码添加企业微信或电话联系我们。专业顾问用中文与您沟通，了解企业基本情况、业种和规模。", points: ["全程中文，无语言障碍", "初次咨询完全免费", "当日工作日回复"] },
-  { n: "02", title: "补助金诊断·方案匹配", duration: "1〜3个工作日", desc: "根据您的企业信息，从6种以上主要补助金中筛选最适合方案，预估可获批金额并详细说明。", points: ["多种补助金横向比较", "预估获批金额透明告知", "说明申请成功可能性"] },
-  { n: "03", title: "申请方案制定·签约", duration: "3〜5个工作日", desc: "制定详细申请计划书，明确时间轴、资料清单、预期金额及成功报酬率，签署委托合同。", points: ["申请计划书全程透明", "无成功不收费书面保证", "资料清单提前告知"] },
-  { n: "04", title: "资料收集与整理", duration: "2〜4周", desc: "专业团队协助收集申请文件，行政书士负责申请书类制作和翻译，确保内容准确完整。", points: ["事业计划书制作支援", "必要书类收集整备", "中日双语资料处理"] },
-  { n: "05", title: "提交申请·跟进审查", duration: "申请受理后1〜6个月", desc: "持牌专业人员代为提交申请，格式合规。审查期间跟踪进度，补充质询由我方全程处理。", points: ["专业人员代为提交", "审查进度定期汇报", "补充质询全程代理"] },
-  { n: "06", title: "获批通知·资金到账", duration: "获批后1〜3个月", desc: "获批后协助完成所有后续手续，资金到账后按约定支付服务费。后续追加申请也可商量。", points: ["获批手续全程陪同", "资金到账后再付费", "后续追加申请可商量"] },
-];
-
-const faqs = [
-  { q: "全程需要多长时间才能拿到补助金？", a: "从初次咨询到资金到账，通常需要6个月〜1年。省力化补助金约3〜6个月，AI导入补助金约2〜3个月，具体时间轴在初次咨询时会详细说明。" },
-  { q: "如果申请失败，需要支付费用吗？", a: "完全不需要。我们严格执行「无成功不收费」原则，申请失败时无需支付任何费用，包括资料制作费、交通费等，承诺书面写入合同。" },
-  { q: "日语不好的话可以申请吗？", a: "完全没有问题。顾问团队全程中文对接，所有日语文件由我们的专业人员处理，您只需配合提供企业信息和资料即可。" },
-  { q: "个人事业主也可以申请吗？", a: "可以申请。小规模持续化补助金、AI·IT导入补助金、员工转正助成金等均对个人事业主开放，具体资格请通过免费咨询确认。" },
-  { q: "成功报酬是多少？", a: "通常为获批金额的10%〜20%，因补助金种类和申请金额而异。具体报酬率在签署合同前完全透明告知，不存在任何隐藏费用。" },
-  { q: "刚创业的企业也可以申请吗？", a: "大部分补助金要求企业已在运营，但也有针对创业初期的特例（如小规模持续化补助金创业框架），请通过免费咨询了解适合您的选项。" },
-];
-
 export default function ServicePage() {
-  return (
-    <main>
-      <NavClient />
-
-      <PageHero
-        eyebrow="服务流程"
-        title={<>6步全程代办<br /><span style={{ color: 'var(--gold)' }}>从咨询到到账</span></>}
-        desc="从初次咨询到资金到账，全程中文陪同。不获批不收费，彻底消除申请风险。"
-      />
-
-      {/* Steps — 编辑式时间线（金描边衬线序号 + hairline，与首页五步区同基因） */}
-      <section className="sec" style={{ background: "var(--surface)" }}>
-        <div className="wrap">
-          <div style={{ maxWidth: 560, marginBottom: 56 }}>
-            <div className="eyebrow">申请流程</div>
-            <h2 className="h2 ed-h" style={{ marginBottom: 12 }}>6步流程详解</h2>
-            <p className="sub" style={{ fontSize: 15 }}>清晰透明，让您随时掌握申请进度。</p>
-          </div>
-          <div style={{ maxWidth: 820, borderTop: "1.5px solid var(--ink)" }}>
-            {steps.map((s, i) => (
-              <div key={i} className="svc-step-row" style={{
-                display: "grid", gridTemplateColumns: "88px 1fr", gap: 28,
-                padding: "34px 0", borderBottom: "1px solid var(--line)",
-              }}>
-                {/* 金描边衬线大序号 */}
-                <div className="serif" aria-hidden="true" style={{
-                  fontSize: 44, fontWeight: 900, lineHeight: 1,
-                  color: "transparent", WebkitTextStroke: "1.3px var(--gold)",
-                }}>
-                  {s.n}
-                </div>
-                <div>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 8, flexWrap: "wrap" }}>
-                    <span className="serif" style={{ fontSize: 19, fontWeight: 700, color: "var(--ink)" }}>{s.title}</span>
-                    <span style={{ fontSize: 12, color: "var(--gold)", fontWeight: 700, letterSpacing: ".06em", whiteSpace: "nowrap" }}>
-                      {s.duration}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: 14.5, color: "var(--body)", lineHeight: 1.75, marginBottom: 14, maxWidth: "62ch" }}>{s.desc}</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
-                    {s.points.map((p, j) => (
-                      <div key={j} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13.5, color: "var(--ink-3)" }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                        {p}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ — hairline 行表（与 /faq 页 V2 同基因，details 原生展开） */}
-      <section className="sec" style={{ background: "var(--surface-warm)" }}>
-        <div className="wrap">
-          <div style={{ maxWidth: 560, marginBottom: 48 }}>
-            <div className="eyebrow">FAQ</div>
-            <h2 className="h2 ed-h" style={{ marginBottom: 12 }}>常见问题解答</h2>
-            <p className="sub" style={{ fontSize: 15 }}>关于补助金申请，您最常问到的问题。</p>
-          </div>
-          <div className="faq-list" style={{ maxWidth: 820 }}>
-            {faqs.map((f, i) => (
-              <details key={i} className="faq-item">
-                <summary className="faq-q">
-                  <span className="faq-q-marker serif">Q</span>
-                  <span className="faq-q-text">{f.q}</span>
-                  <span className="faq-toggle" aria-hidden="true" />
-                </summary>
-                <div className="faq-a"><p>{f.a}</p></div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaSection
-        title={<>立即开始<span style={{ color: 'var(--gold-bright)' }}>免费咨询</span></>}
-        desc="3分钟问诊，精准推荐最优补助金方案。完全免费，无任何购买义务。"
-      />
-
-      <Footer />
-    </main>
-  );
+  return <ServiceContent locale="zh" />;
 }

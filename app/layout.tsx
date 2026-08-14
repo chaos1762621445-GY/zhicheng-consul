@@ -3,6 +3,7 @@ import { Inter, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import WechatFloat from "./components/WechatFloat";
 import PageCurtain from "./components/PageCurtain";
+import HtmlLang from "./components/HtmlLang";
 
 // 自托管字体：消除阻塞渲染的 Google Fonts <link>，display:swap 先用系统字体秒出、字体到位无缝替换
 const inter = Inter({
@@ -48,13 +49,12 @@ export const metadata: Metadata = {
   publisher: "株式会社 志成コンサル",
   alternates: {
     canonical: "/",
-    // hreflang：声明中日双语版本对应关系（GEO/多语言SEO）
-    // 日文版为独立站 shiseiconsult.com；x-default 指向中文站（本站为主）
+    // hreflang：三向握手（本站中/英/日三语自成体系）
     languages: {
       "zh-CN": "https://shisei-consult.jp",
       "zh-Hans": "https://shisei-consult.jp",
-      ja: "https://shiseiconsult.com",
-      "ja-JP": "https://shiseiconsult.com",
+      en: "https://shisei-consult.jp/en",
+      ja: "https://shisei-consult.jp/ja",
       "x-default": "https://shisei-consult.jp",
     },
   },
@@ -179,6 +179,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <HtmlLang />
         <PageCurtain />
         {children}
         <WechatFloat />

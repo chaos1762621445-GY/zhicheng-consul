@@ -1,34 +1,39 @@
 'use client';
 import Link from 'next/link';
+import { localizedHref } from '@/lib/i18n/href';
+import type { Locale } from '@/lib/i18n/config';
+import type { Dictionary } from '@/messages/zh';
+import { zh } from '@/messages/zh';
 
-const cols = [
-  { title: '补助金', links: [
-    { label: '省力化补助金', href: '/subsidies/seiryoka' },
-    { label: 'AI 导入补助金', href: '/subsidies/ai-it' },
-    { label: '员工转正助成金', href: '/subsidies/career-up' },
-    { label: '员工培训助成金', href: '/subsidies/training' },
-    { label: '空调节能补助', href: '/subsidies/aircon' },
-  ]},
-  { title: '服务', links: [
-    { label: '服务流程', href: '/service' },
-    { label: '成功案例', href: '/cases' },
-    { label: '代理合作', href: '/partner' },
-    { label: '常见问题', href: '/faq' },
-    { label: '知识库', href: '/blog' },
-  ]},
-  { title: '公司', links: [
-    { label: '关于我们', href: '/about' },
-    { label: '免费咨询', href: '/contact' },
-    { label: '隐私政策', href: '/privacy' },
-  ]},
-];
+export default function Footer({ locale = 'zh', dict }: { locale?: Locale; dict?: Dictionary }) {
+  const d = dict ?? (zh as unknown as Dictionary);
+  const f = d.footer;
+  const nav = d.nav;
+  const L = (p: string) => localizedHref(locale, p);
 
-/**
- * Footer V2 — 编辑式页脚（无素材图）
- * 比 CTA 更深一档的墨绿收底 + 金色 hairline 分层 +
- * 衬线品牌题字 + 结构化联络行。手机端双列链接不再无限竖排。
- */
-export default function Footer() {
+  const cols = [
+    { title: f.colSubsidies, links: [
+      { label: nav.subItems.seiryoka, href: '/subsidies/seiryoka' },
+      { label: nav.subItems['ai-it'], href: '/subsidies/ai-it' },
+      { label: nav.subItems['career-up'], href: '/subsidies/career-up' },
+      { label: nav.subItems.training, href: '/subsidies/training' },
+      { label: nav.subItems.aircon, href: '/subsidies/aircon' },
+    ]},
+    { title: f.colService, links: [
+      { label: nav.service, href: '/service' },
+      { label: nav.cases, href: '/cases' },
+      { label: nav.partner, href: '/partner' },
+      { label: nav.faq, href: '/faq' },
+      { label: nav.blog, href: '/blog' },
+    ]},
+    { title: f.colCompany, links: [
+      { label: nav.about, href: '/about' },
+      { label: d.common.freeConsult, href: '/contact' },
+      { label: '隐私政策', href: '/privacy', privacyKey: true },
+    ]},
+  ];
+  const privacyLabel = { zh: '隐私政策', en: 'Privacy Policy', ja: 'プライバシーポリシー' }[locale];
+
   return (
     <footer style={{
       position: 'relative',
@@ -36,7 +41,7 @@ export default function Footer() {
       borderTop: '1px solid rgba(196,162,58,0.35)',
       overflow: 'hidden',
     }}>
-      {/* 品牌名巨型描边水印 — 与 CTA「診断」同一语言，右下角退隐 */}
+      {/* 品牌名巨型描边水印 */}
       <div aria-hidden="true" className="serif" style={{
         position: 'absolute', right: -8, bottom: -30,
         fontSize: 'clamp(120px, 16vw, 220px)', fontWeight: 900, lineHeight: 1,
@@ -55,11 +60,11 @@ export default function Footer() {
               lineHeight: 1.55, letterSpacing: '0.01em', wordBreak: 'keep-all',
               maxWidth: '20em', margin: 0,
             }}>
-              让每一位在日华人企业主，<br />
-              都能平等享受<span style={{ color: 'var(--gold)' }}>政府补助金</span>的红利。
+              {f.tagline1}<br />
+              {f.tagline2Pre}<span style={{ color: 'var(--gold)' }}>{f.tagline2Highlight}</span>{f.tagline2Post}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 22px', marginTop: 22 }}>
-              {['不获批不收费', '全程中文', '四类持牌专家'].map(t => (
+              {f.badges.map(t => (
                 <span key={t} style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   fontSize: 12.5, fontWeight: 500, color: 'rgba(255,255,255,0.55)',
@@ -71,7 +76,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 企业微信面板：二维码 + 说明，横向组合，可点击进线 */}
+          {/* 企业微信面板 */}
           <a href="https://work.weixin.qq.com/kfid/kfcdeef8ec4573ef9f3" target="_blank" rel="noopener noreferrer" style={{
             display: 'flex', alignItems: 'center', gap: 18,
             border: '1px solid rgba(255,255,255,0.13)',
@@ -79,9 +84,9 @@ export default function Footer() {
           }}>
             <img src="/qiwei-qr.png" alt="企业微信二维码" style={{ width: 96, height: 96, display: 'block', flexShrink: 0, background: '#fff', padding: 5, boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }} />
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--gold)', marginBottom: 8 }}>企业微信扫码咨询</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 4 }}>营业部客服群</div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>点击联系客服 · 免费咨询<br />工作日当日回复</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--gold)', marginBottom: 8 }}>{f.wechatLabel}</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{f.wechatTitle}</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{f.wechatDesc1}<br />{f.wechatDesc2}</div>
             </div>
           </a>
         </div>
@@ -103,10 +108,10 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
                 {col.links.map(l => (
-                  <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
+                  <Link key={l.href} href={L(l.href)} className="footer-link">{(l as { privacyKey?: boolean }).privacyKey ? privacyLabel : l.label}</Link>
                 ))}
-                {col.title === '公司' && (
-                  <a href="https://shiseiconsult.com/" rel="noopener" className="footer-link">日文官网 志成コンサル</a>
+                {col.title === f.colCompany && (
+                  <a href="https://shiseiconsult.com/" rel="noopener" className="footer-link">{f.linkJpSite}</a>
                 )}
               </div>
             </div>
@@ -120,13 +125,13 @@ export default function Footer() {
               borderBottom: '1px solid rgba(196,162,58,0.35)',
               display: 'inline-block', paddingRight: 18,
             }}>
-              联络
+              {f.colContact}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
               {[
-                ['电话', '03-6265-9756'],
-                ['企业微信', '扫码添加营业部'],
-                ['地址', '東京都千代田区平河町1-8-2 半蔵門パレス8階'],
+                [f.contactPhone, '03-6265-9756'],
+                [f.contactWechat, f.contactWechatVal],
+                [f.contactAddr, f.contactAddrVal],
               ].map(([k, v]) => (
                 <div key={k} style={{ fontSize: 13, lineHeight: 1.6 }}>
                   <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{k}</span>
@@ -143,10 +148,10 @@ export default function Footer() {
           borderTop: '1px solid rgba(255,255,255,0.09)', paddingTop: 20,
         }}>
           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.03em' }}>
-            © 2026 株式会社 志成コンサル
+            {f.copyright}
           </span>
           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.03em' }}>
-            行政书士 · 社労士 · 税理士 · 中小企業診断士
+            {f.credentials}
           </span>
         </div>
       </div>

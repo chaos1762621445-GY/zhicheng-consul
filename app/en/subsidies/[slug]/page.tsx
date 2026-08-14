@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+import SubsidyDetail, { subsidyParams, subsidyMetadata } from "../../../components/pages/SubsidyDetail";
+
+export function generateStaticParams() {
+  return subsidyParams();
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  return subsidyMetadata("en", slug);
+}
+
+export default async function SubsidyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  return <SubsidyDetail locale="en" slug={slug} />;
+}

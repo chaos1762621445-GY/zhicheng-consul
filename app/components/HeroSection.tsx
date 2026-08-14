@@ -1,21 +1,21 @@
 import Link from 'next/link';
+import { localizedHref } from '@/lib/i18n/href';
+import type { Locale } from '@/lib/i18n/config';
+import type { Dictionary } from '@/messages/zh';
+import { zh } from '@/messages/zh';
 
-// 自托管 hero 背景（webp 195KB，替代 unsplash 外链 730KB：消除第三方依赖 + LCP 提速）
-const BG = '/hero-tokyo.webp'; // Tokyo night
+// 自托管 hero 背景（webp 195KB）
+const BG = '/hero-tokyo.webp';
 
-const trust = [
-  '不获批不收费',
-  '3,000+ 企业成功',
-  '四类国家认定专家',
-  '全程中文',
-];
+export default function HeroSection({ locale = 'zh', dict }: { locale?: Locale; dict?: Dictionary }) {
+  const d = dict ?? (zh as unknown as Dictionary);
+  const h = d.hero;
+  const L = (p: string) => localizedHref(locale, p);
 
-export default function HeroSection() {
   return (
     <>
       {/* ── HERO — dark cinematic ── */}
       <section className="hero-section">
-        {/* Photo — LCP 元素，fetchpriority 提示浏览器优先加载 */}
         <img
           src={BG}
           alt=""
@@ -29,19 +29,16 @@ export default function HeroSection() {
             opacity: 0.30,
           }}
         />
-        {/* Brand-tinted gradient overlay — teal 调，与开屏帘幕统一 */}
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(160deg, rgba(15,57,55,0.72) 0%, rgba(10,43,41,0.86) 55%, #0a2b29 100%)',
         }} />
-        {/* 金色径向光晕 — 右上呼吸 */}
         <div className="hero-glow" style={{
           position: 'absolute', top: '-12%', right: '-6%',
           width: 620, height: 620, borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(196,162,58,0.16) 0%, rgba(196,162,58,0.05) 40%, transparent 70%)',
           pointerEvents: 'none',
         }} />
-        {/* 细网格纹理（极淡） */}
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
@@ -52,7 +49,6 @@ export default function HeroSection() {
 
         {/* Content */}
         <div className="wrap hero-content">
-          {/* Label */}
           <div className="hero-anim hero-anim-1" style={{
             fontFamily: 'ui-monospace, Menlo, monospace',
             fontSize: 11, fontWeight: 400,
@@ -61,10 +57,9 @@ export default function HeroSection() {
             color: 'rgba(255,255,255,0.55)',
             marginBottom: 24,
           }}>
-            国家认定 · 四类持牌专家联合团队
+            {h.label}
           </div>
 
-          {/* Main headline — 衬线体，金色实色强调（无渐变文字） */}
           <h1 className="hero-anim hero-anim-2 serif" style={{
             fontSize: 'clamp(38px, 6vw, 82px)',
             fontWeight: 900,
@@ -74,12 +69,11 @@ export default function HeroSection() {
             marginBottom: 28,
             maxWidth: 860,
           }}>
-            在日经营<br />
-            <span style={{ color: '#e3c766' }}>政府补助金</span><br />
-            全程代办到账
+            {h.h1Line1}<br />
+            <span style={{ color: '#e3c766' }}>{h.h1Highlight}</span><br />
+            {h.h1Line3}
           </h1>
 
-          {/* Sub */}
           <p className="hero-anim hero-anim-3" style={{
             fontSize: 17,
             color: 'rgba(255,255,255,0.68)',
@@ -87,13 +81,12 @@ export default function HeroSection() {
             maxWidth: 480,
             marginBottom: 40,
           }}>
-            日本政府每年向中小企业发放大量补助金，大多数企业因不了解政策而白白错过。
-            <strong style={{ color: '#fff', fontWeight: 600 }}>不获批，不收费。</strong>
+            {h.sub}
+            <strong style={{ color: '#fff', fontWeight: 600 }}>{h.subStrong}</strong>
           </p>
 
-          {/* CTA */}
           <div className="hero-cta-row hero-anim hero-anim-4" style={{ marginBottom: 52 }}>
-            <Link href="/contact" style={{
+            <Link href={L('/contact')} style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: '#fff', color: '#1a5c5a',
               padding: '13px 28px',
@@ -101,12 +94,12 @@ export default function HeroSection() {
               letterSpacing: '0.04em',
               transition: 'opacity .15s',
             }}>
-              免费获取诊断报告
+              {h.ctaPrimary}
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </Link>
-            <Link href="/subsidies" style={{
+            <Link href={L('/subsidies')} style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'transparent', color: 'rgba(255,255,255,0.8)',
               border: '1px solid rgba(255,255,255,0.3)',
@@ -114,13 +107,12 @@ export default function HeroSection() {
               fontSize: 14, fontWeight: 500,
               letterSpacing: '0.04em',
             }}>
-              查看补助金种类
+              {h.ctaSecondary}
             </Link>
           </div>
 
-          {/* Trust bar — 细竖线分隔（无装饰点） */}
           <div className="hero-trust-bar hero-anim hero-anim-5">
-            {trust.map((t, i) => (
+            {h.trust.map((t, i) => (
               <div key={t} style={{
                 display: 'flex', alignItems: 'center', gap: 14,
                 fontSize: 12.5, color: 'rgba(255,255,255,0.55)',
@@ -134,15 +126,11 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* ── STATS — 深 teal 数据带（与 hero 同一深色世界，金线收边） ── */}
+      {/* ── STATS — 深 teal 数据带 ── */}
       <section className="stats-band">
         <div className="wrap">
           <div className="grid-stats-3">
-            {[
-              { val: '3,000+', label: '企业成功申请', note: '餐饮·零售·制造·IT' },
-              { val: '¥8.5億+', label: '累计到账补助金', note: '真实到账金额' },
-              { val: '4 种', label: '国家认定专业资质', note: '行政书士·社劳士·税理士·诊断士' },
-            ].map((s, i) => (
+            {h.stats.map((s, i) => (
               <div key={i} style={{
                 padding: '46px 0',
                 textAlign: 'center',
