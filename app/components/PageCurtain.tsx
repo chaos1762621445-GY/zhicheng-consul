@@ -12,7 +12,7 @@ const CURTAIN_TAGLINE: Record<string, string> = {
 /**
  * 开屏帘幕 V2 — 编辑式题词卡
  * 逐字升起的衬线品牌名 + 金线展开 + 帘幕上提退场（内容视差）。
- * 每个会话只播一次；总时长 2.2s，比 V1 更快更克制。
+ * 每个会话只播一次；总时长约 1.2s（提速版，改善移动端 LCP，观感层次保留）。
  */
 export default function PageCurtain() {
   const pathname = usePathname() || '/';
@@ -30,12 +30,12 @@ export default function PageCurtain() {
       return;
     }
 
-    const t1 = setTimeout(() => setStage(1), 60);
-    const t2 = setTimeout(() => setStage(2), 1400);
+    const t1 = setTimeout(() => setStage(1), 40);
+    const t2 = setTimeout(() => setStage(2), 720);
     const t3 = setTimeout(() => {
       setMounted(false);
       sessionStorage.setItem('zc-curtain', '1');
-    }, 2250);
+    }, 1230);
     return () => [t1, t2, t3].forEach(clearTimeout);
   }, []);
 
@@ -51,7 +51,7 @@ export default function PageCurtain() {
         background: 'linear-gradient(180deg, #0f3937 0%, #114240 55%, #0d3331 100%)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         overflow: 'hidden',
-        transition: stage === 2 ? 'transform .85s cubic-bezier(.83,0,.17,1)' : 'none',
+        transition: stage === 2 ? 'transform .55s cubic-bezier(.83,0,.17,1)' : 'none',
         transform: stage === 2 ? 'translateY(-100.5%)' : 'translateY(0)',
         pointerEvents: 'none',
         willChange: 'transform',
@@ -68,7 +68,7 @@ export default function PageCurtain() {
       <div
         style={{
           position: 'relative', textAlign: 'center',
-          transition: stage === 2 ? 'transform .85s cubic-bezier(.83,0,.17,1), opacity .5s ease' : 'none',
+          transition: stage === 2 ? 'transform .55s cubic-bezier(.83,0,.17,1), opacity .35s ease' : 'none',
           transform: stage === 2 ? 'translateY(60px)' : 'translateY(0)',
           opacity: stage === 2 ? 0.4 : 1,
         }}
@@ -84,7 +84,7 @@ export default function PageCurtain() {
               <span style={{
                 display: 'inline-block',
                 transform: stage >= 1 ? 'translateY(0)' : 'translateY(110%)',
-                transition: `transform .7s cubic-bezier(.22,1,.36,1) ${0.08 + i * 0.055}s`,
+                transition: `transform .42s cubic-bezier(.22,1,.36,1) ${0.05 + i * 0.03}s`,
                 // 假名比汉字小一号，形成节奏
                 fontSize: i >= 2 ? '0.62em' : '1em',
                 color: i >= 2 ? 'rgba(255,255,255,0.85)' : '#fff',
@@ -97,7 +97,7 @@ export default function PageCurtain() {
         <div style={{
           width: stage >= 1 ? 64 : 0, height: 2, margin: '26px auto 22px',
           background: 'var(--gold, #c4a23a)',
-          transition: 'width .8s cubic-bezier(.22,1,.36,1) .45s',
+          transition: 'width .5s cubic-bezier(.22,1,.36,1) .24s',
         }} />
 
         {/* 题词 — 衬线，淡入 */}
@@ -107,7 +107,7 @@ export default function PageCurtain() {
           color: 'rgba(255,255,255,0.55)',
           opacity: stage >= 1 ? 1 : 0,
           transform: stage >= 1 ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity .7s ease .6s, transform .7s cubic-bezier(.22,1,.36,1) .6s',
+          transition: 'opacity .45s ease .3s, transform .45s cubic-bezier(.22,1,.36,1) .3s',
         }}>
           {tagline}
         </div>

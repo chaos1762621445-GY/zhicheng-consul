@@ -246,17 +246,17 @@ img { max-width: 100%; display: block; }
   background: var(--brand-deep);
 }
 
-/* Hero 入场动画 — 逐行上浮淡入（开屏帘幕退场后启动） */
+/* Hero 入场动画 — 逐行上浮淡入（提速版：缩短延迟/时长，让 H1(LCP 元素)尽早绘制，改善移动端 LCP） */
 @keyframes heroRise {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-anim { opacity: 0; animation: heroRise .9s cubic-bezier(.22,1,.36,1) forwards; }
-.hero-anim-1 { animation-delay: .15s; }
-.hero-anim-2 { animation-delay: .28s; }
-.hero-anim-3 { animation-delay: .44s; }
-.hero-anim-4 { animation-delay: .58s; }
-.hero-anim-5 { animation-delay: .72s; }
+.hero-anim { opacity: 0; animation: heroRise .5s cubic-bezier(.22,1,.36,1) forwards; }
+.hero-anim-1 { animation-delay: .04s; }
+.hero-anim-2 { animation-delay: .10s; }
+.hero-anim-3 { animation-delay: .20s; }
+.hero-anim-4 { animation-delay: .30s; }
+.hero-anim-5 { animation-delay: .40s; }
 
 /* 金色光晕缓慢呼吸 */
 @keyframes heroGlow {
