@@ -142,6 +142,8 @@ export const zh = {
     colContact: "联络",
     linkJpSite: "日文官网 志成コンサル",
     contactPhone: "电话",
+    contactEmail: "邮箱",
+    contactEmailVal: "info@shisei-consult.jp",
     contactWechat: "企业微信",
     contactWechatVal: "扫码添加营业部",
     contactAddr: "地址",

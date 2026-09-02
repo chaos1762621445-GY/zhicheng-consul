@@ -131,6 +131,8 @@ export const ja: Dictionary = {
     colContact: "連絡先",
     linkJpSite: "日本語サイト 志成コンサル",
     contactPhone: "電話",
+    contactEmail: "メール",
+    contactEmailVal: "info@shisei-consult.jp",
     contactWechat: "企業WeChat",
     contactWechatVal: "QRで営業部を追加",
     contactAddr: "所在地",

@@ -128,8 +128,15 @@ export default function Footer({ locale = 'zh', dict }: { locale?: Locale; dict?
               {f.colContact}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
+              <div style={{ fontSize: 13, lineHeight: 1.6 }}>
+                <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{f.contactPhone}</span>
+                <span style={{ color: 'rgba(255,255,255,0.62)' }}>03-6265-9756</span>
+              </div>
+              <div style={{ fontSize: 13, lineHeight: 1.6 }}>
+                <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{f.contactEmail}</span>
+                <a href={`mailto:${f.contactEmailVal}`} className="footer-link" style={{ color: 'rgba(255,255,255,0.62)' }}>{f.contactEmailVal}</a>
+              </div>
               {[
-                [f.contactPhone, '03-6265-9756'],
                 [f.contactWechat, f.contactWechatVal],
                 [f.contactAddr, f.contactAddrVal],
               ].map(([k, v]) => (
