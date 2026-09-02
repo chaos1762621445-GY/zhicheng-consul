@@ -1,7 +1,7 @@
 ---
 title: "Japan Subsidy & Grant Data Report 2026｜Adoption Rates, Caps & the Application Landscape for Chinese Businesses in Japan (Official Data Edition)"
 date: "2026-08-12"
-excerpt: "A subsidy data report built on first-hand figures published by the Japanese government: a 35.1% adoption rate for the Monozukuri Subsidy, 43.6% for the IT Adoption Subsidy, a cap of up to JPY 100 million on the Labor-Saving Investment Subsidy, and the number of Chinese nationals residing in Japan topping 900,000 for the first time. Every figure is tagged with its source agency and year, helping Chinese business owners in Japan use data to decide which subsidy to apply for and how strong their odds really are."
+excerpt: "A subsidy data report built on first-hand figures published by the Japanese government: a 35.1% adoption rate for the Monozukuri Subsidy, 43.6% for the IT Adoption Subsidy, a cap of up to JPY 100 million on the Labor-Saving Investment Subsidy, and the number of Chinese nationals residing in Japan reaching 930,000 (year-end 2025 confirmed). Every figure is tagged with its source agency and year, helping Chinese business owners in Japan use data to decide which subsidy to apply for and how strong their odds really are."
 keywords: ["Japan subsidy adoption rate", "subsidy data 2026", "Labor-Saving Investment Subsidy cap", "IT Adoption Subsidy adoption rate", "Monozukuri Subsidy adoption rate", "subsidies for Chinese businesses in Japan"]
 ---
 
@@ -94,8 +94,8 @@ A note for Chinese business owners: **be wary of the timeliness of old ads for "
 
 Behind the subsidy application environment lies the continued expansion of the Chinese economic presence in Japan. According to figures published by the **Immigration Services Agency (出入国在留管理庁, Ministry of Justice):**
 
-- **The total number of foreign residents reached 3,956,619** (end of June 2025), a record high, up by roughly 187,000 (+5.0%) in half a year.
-- **The number of Chinese nationals residing in Japan topped 900,000 for the first time**, accounting for about **1/4** of all foreign residents — the most prominent group.
+- **The total number of foreign residents reached 4,125,395** (end of 2025), a record high, up by roughly 356,000 (+9.5%) over the year.
+- **The number of Chinese nationals residing in Japan reached 930,428 (about 930,000) at year-end 2025**, accounting for about **22.6%** of all foreign residents — the most prominent group.
 - Of these: mid- to long-term residents 3.686 million / special permanent residents 270,000 / specified skilled workers 336,000.
 
 **What the data means:**
@@ -103,7 +103,7 @@ Behind the subsidy application environment lies the continued expansion of the C
 - But the entire application process is in Japanese, confronting complex government documents — this is the core obstacle behind many Chinese owners "qualifying yet never applying."
 - Japan's subsidy system **places no restriction on the nationality of the company or its operators**; it only requires being a legally operating Japanese corporation. Chinese-owned and Japanese-owned companies are **completely equal** in eligibility — the gap lies only in information and document quality.
 
-(Data source: Immigration Services Agency, "Number of Foreign Residents as of the End of June 2025 (令和7年6月末現在)," published October 2025)
+(Data source: Immigration Services Agency, "Number of Foreign Residents as of the End of 2025 (令和7年末現在)," published March 27, 2026 (confirmed figures))
 
 ## 7. Key Takeaways: The Numbers in One Line Each
 
@@ -111,7 +111,7 @@ Behind the subsidy application environment lies the continued expansion of the C
 - **IT Adoption Subsidy adoption rate 43.6%** — nearly 10 points higher than Monozukuri, a more realistic starting point for SMEs.
 - **Labor-Saving Investment Subsidy up to JPY 100 million**, subsidy rate 1/2–2/3 — raising wages buys a higher rate.
 - **The Business Restructuring Subsidy has ended** — don't be misled by expired ads; always defer to the current year's official public-offering guidelines.
-- **Chinese nationals in Japan top 900,000 for the first time**, 1/4 of all foreign residents — the Chinese subsidy market base keeps expanding.
+- **Chinese nationals in Japan reach 930,428 (about 930,000, year-end 2025)**, 22.6% of all foreign residents — the Chinese subsidy market base keeps expanding.
 - **Nationality does not affect eligibility** — Chinese-owned and Japanese-owned companies apply on completely equal terms; the gap is only information and documentation.
 
 ## 8. Action Recommendations for Chinese Business Owners in Japan
@@ -145,7 +145,7 @@ Behind the subsidy application environment lies the continued expansion of the C
 
 ### Q6: What is the biggest obstacle for Chinese businesses in Japan applying for subsidies?
 
-**A:** Not eligibility, but information and language. With Chinese nationals in Japan now exceeding 900,000 — about 1/4 of all foreign residents — the base of eligible Chinese-owned corporations is large, yet the entire application process is in Japanese, facing complex government public-offering documents, which leaves many Chinese owners "qualifying yet never applying." A fully Chinese-language service, with a professional team familiar with the public-offering guidelines helping draft the business plan, is the most direct way to overcome this obstacle.
+**A:** Not eligibility, but information and language. With Chinese nationals in Japan now at 930,428 (about 930,000, year-end 2025) — about 22.6% of all foreign residents — the base of eligible Chinese-owned corporations is large, yet the entire application process is in Japanese, facing complex government public-offering documents, which leaves many Chinese owners "qualifying yet never applying." A fully Chinese-language service, with a professional team familiar with the public-offering guidelines helping draft the business plan, is the most direct way to overcome this obstacle.
 
 ---
 

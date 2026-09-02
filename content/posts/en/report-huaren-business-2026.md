@@ -1,7 +1,7 @@
 ---
 title: "Chinese Business Owners in Japan: Data White Paper 2026｜Resident Population, New Business Manager Visa Rules & Subsidy Opportunities (Official Data Edition)"
 date: "2026-08-12"
-excerpt: "A data white paper for Chinese business owners in Japan: Chinese nationals residing in Japan topped 900,000 for the first time, about 1/4 of all foreign residents; the capital requirement for the Business Manager visa rose from JPY 5 million to JPY 30 million (6x) from October 2025, with a new Japanese N2 requirement added; and Chinese-owned companies are completely equal to Japanese companies in subsidy eligibility. Every figure is tagged with its official source and year."
+excerpt: "A data white paper for Chinese business owners in Japan: Chinese nationals residing in Japan reached 930,428 (about 930,000) at year-end 2025, about 22.6% of all foreign residents; the capital requirement for the Business Manager visa rose from JPY 5 million to JPY 30 million (6x) from October 2025, with a new Japanese N2 requirement added; and Chinese-owned companies are completely equal to Japanese companies in subsidy eligibility. Every figure is tagged with its official source and year."
 keywords: ["Chinese businesses in Japan", "new Business Manager visa rules", "Chinese resident population data", "Chinese entrepreneurship in Japan", "subsidies for Chinese businesses", "Chinese business owners in Japan"]
 ---
 
@@ -13,25 +13,25 @@ This white paper uses **first-hand data published by the Japanese government** t
 
 > Compliance note: All data in this article are official figures as of the publication date. Visa and subsidy policies are updated by fiscal year; specific applications are subject to each competent authority's latest rules and the reviewing authority's decision.
 
-## 1. The Scale of Chinese Residents in Japan: Chinese Nationals Top 900,000 for the First Time
+## 1. The Scale of Chinese Residents in Japan: Chinese Nationals Reach 930,000
 
 According to figures published by the **Immigration Services Agency (出入国在留管理庁, Ministry of Justice):**
 
 | Indicator | Figure | Point in Time |
 |---|---|---|
-| Total foreign residents | **3,956,619** | End of June 2025 (record high) |
+| Total foreign residents | **4,125,395** | End of 2025 (record high) |
 | Half-year increase | +187,642 (+5.0%) | vs. end of 2024 |
-| Chinese nationals residing in Japan | **Topped 900,000 for the first time** | End of June 2025 |
-| Chinese share of foreign residents | **About 1/4** | The most prominent group |
-| Mid- to long-term residents | 3,686,327 | End of June 2025 |
-| Special permanent residents | 270,292 | End of June 2025 |
+| Chinese nationals residing in Japan | **930,428 (about 930,000)** | End of 2025 |
+| Chinese share of foreign residents | **About 22.6%** | The most prominent group |
+| Mid- to long-term residents | 3,858,499 | End of 2025 |
+| Special permanent residents | 266,896 | End of 2025 |
 
 **What the data means:**
-- Foreign residents grew by a net 187,000 in half a year, and Chinese nationals topped 900,000 for the first time — **the absolute base of the Chinese economic sphere in Japan is still expanding.**
-- Chinese nationals make up about 1/4 of all foreign residents, the largest and most prominent group among all nationalities.
+- Foreign residents grew by a net 356,000 over the year, and Chinese nationals reached 930,428 (about 930,000) at year-end 2025 — **the absolute base of the Chinese economic sphere in Japan is still expanding.**
+- Chinese nationals make up about 22.6% of all foreign residents, the largest and most prominent group among all nationalities.
 - The growth of the group means an ever-increasing number of Chinese business owners who qualify to set up a Japanese corporation, operate a business, and apply for subsidies.
 
-(Data source: Immigration Services Agency, "Number of Foreign Residents as of the End of June 2025 (令和7年6月末現在)," published October 2025)
+(Data source: Immigration Services Agency, "Number of Foreign Residents as of the End of 2025 (令和7年末現在)," published March 27, 2026 (confirmed figures))
 
 ## 2. Chinese Nationals Are the Largest Group Holding the "Business Manager" Visa
 
@@ -83,7 +83,7 @@ The real data on the major subsidies (see our [Subsidy Data Report 2026](/blog/r
 
 ## 5. Key Takeaways: The Numbers in One Line Each
 
-- **Chinese nationals in Japan top 900,000 for the first time**, about 1/4 of all foreign residents — the Chinese economic sphere in Japan keeps expanding.
+- **Chinese nationals in Japan reach 930,428 (about 930,000, year-end 2025)**, about 22.6% of all foreign residents — the Chinese economic sphere in Japan keeps expanding.
 - **Chinese nationals are the largest group holding the "Business Manager" (経営・管理) visa**, the mainstay of foreign entrepreneurs.
 - **The Business Manager visa capital requirement rose from JPY 5 million to JPY 30 million (6x) from October 2025**, with a new Japanese N2 requirement added — the startup bar has risen sharply.
 - **Under the tightened bar, "strengthening the existing business" is more practical than "founding a new company"** — and subsidies are the key tool.
@@ -101,7 +101,7 @@ The real data on the major subsidies (see our [Subsidy Data Report 2026](/blog/r
 
 ### Q1: How many Chinese residents are in Japan now? Are many of them entrepreneurs?
 
-**A:** According to figures published by the Immigration Services Agency in October 2025, Chinese nationals residing in Japan have topped 900,000 for the first time, accounting for about 1/4 of the total foreign resident population (3.95 million) — the largest group. At the same time, Chinese nationals are the most numerous among holders of the "Business Manager" (経営・管理) status of residence, showing that Chinese nationals are the mainstay of the foreign entrepreneur community in Japan.
+**A:** According to the year-end 2025 confirmed figures published by the Immigration Services Agency on March 27, 2026, Chinese nationals residing in Japan have reached 930,428 (about 930,000) at year-end 2025, accounting for about 22.6% of the total foreign resident population (4.13 million) — the largest group. At the same time, Chinese nationals are the most numerous among holders of the "Business Manager" (経営・管理) status of residence, showing that Chinese nationals are the mainstay of the foreign entrepreneur community in Japan.
 
 ### Q2: I hear the Business Manager visa has become stricter — what exactly changed?
 
