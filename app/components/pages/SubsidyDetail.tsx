@@ -115,7 +115,7 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
             <section>
               <div className="section-label">{ui.overviewLabel}</div>
               <h2 style={{ fontSize: 22, fontWeight: 600, color: "var(--heading)", marginBottom: 24 }}>{ui.overviewHeading}</h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+              <div className="sd-overview-grid">
                 {data.overview.map((item, i) => (
                   <div key={i} style={{ background: "var(--bg-outer)", border: "1px solid var(--border)", borderRadius: 10, padding: "24px 20px" }}>
                     <div style={{ fontSize: 12, color: "var(--body)", marginBottom: 8, fontWeight: 400 }}>{item.label}</div>
@@ -144,7 +144,7 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
               <h2 style={{ fontSize: 22, fontWeight: 600, color: "var(--heading)", marginBottom: 20 }}>{ui.targetHeading}</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {data.targets.map((t, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 16, padding: "16px 20px", border: "1px solid var(--border)", borderRadius: 8, alignItems: "center" }}>
+                  <div key={i} className="sd-target-row">
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--primary)", flexShrink: 0 }} />
                       <span style={{ fontSize: 14, fontWeight: 600, color: "var(--heading)" }}>{t.item}</span>
@@ -178,7 +178,7 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
               <div className="section-label">{ui.materialsLabel}</div>
               <h2 style={{ fontSize: 22, fontWeight: 600, color: "var(--heading)", marginBottom: 20 }}>{ui.materialsHeading}</h2>
               <div style={{ background: "var(--bg-outer)", border: "1px solid var(--border)", borderRadius: 10, padding: "24px 28px" }}>
-                <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 24px" }}>
+                <ul className="sd-materials-grid">
                   {data.materials.map((m, i) => (
                     <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "var(--heading)", lineHeight: 1.6 }}>
                       <span style={{ color: "var(--primary)", flexShrink: 0, marginTop: 3 }}><IconCheck /></span>{m}

@@ -2051,3 +2051,13 @@ html, body { overflow-x: clip; }
   body { padding-bottom: 64px; }
   @media (prefers-reduced-transparency: reduce) { .zc-mbar { background: #fff; backdrop-filter: none; } }
 }
+
+/* 补助金详情页响应式网格（修复手机端三列挤压成竖排单字） */
+.sd-overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.sd-target-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 16px; padding: 16px 20px; border: 1px solid var(--border); border-radius: 8px; align-items: center; }
+.sd-materials-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+@media (max-width: 767px) {
+  .sd-overview-grid { grid-template-columns: minmax(0,1fr); gap: 12px; }
+  .sd-target-row { grid-template-columns: minmax(0,1fr); gap: 6px; }
+  .sd-materials-grid { grid-template-columns: minmax(0,1fr); }
+}
