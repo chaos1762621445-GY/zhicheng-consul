@@ -144,6 +144,7 @@ export default function HeroSection({ locale = 'zh', dict }: { locale?: Locale; 
               </div>
             ))}
           </div>
+          <p className="stat-footnote">{h.statsNote}</p>
         </div>
       </section>
     </>

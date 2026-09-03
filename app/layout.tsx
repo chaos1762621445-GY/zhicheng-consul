@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import WechatFloat from "./components/WechatFloat";
+import MobileActionBar from "./components/MobileActionBar";
 import PageCurtain from "./components/PageCurtain";
 import HtmlLang from "./components/HtmlLang";
 
@@ -183,6 +184,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PageCurtain />
         {children}
         <WechatFloat />
+        <MobileActionBar />
       </body>
     </html>
   );

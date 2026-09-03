@@ -20,6 +20,11 @@ export default function Footer({ locale = 'zh', dict }: { locale?: Locale; dict?
       { label: nav.subItems.aircon, href: '/subsidies/aircon' },
     ]},
     { title: f.colService, links: [
+      { label: nav.owners, href: '/for/chinese-owners' },
+      { label: nav.sole, href: '/for/sole-proprietor' },
+      { label: nav.compare, href: '/compare' },
+      { label: nav.schedule, href: '/schedule' },
+      { label: nav.tokyo, href: '/area/tokyo' },
       { label: nav.service, href: '/service' },
       { label: nav.cases, href: '/cases' },
       { label: nav.partner, href: '/partner' },

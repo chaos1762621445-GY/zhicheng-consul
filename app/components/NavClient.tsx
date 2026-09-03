@@ -19,6 +19,13 @@ export default function NavClient({ locale = 'zh', dict }: { locale?: Locale; di
       { label: t.subItems.training, href: '/subsidies/training' },
       { label: t.subItems.aircon, href: '/subsidies/aircon' },
     ]},
+    { label: t.who, href: '/for/chinese-owners', children: [
+      { label: t.owners, href: '/for/chinese-owners' },
+      { label: t.sole, href: '/for/sole-proprietor' },
+      { label: t.compare, href: '/compare' },
+      { label: t.tokyo, href: '/area/tokyo' },
+    ]},
+    { label: t.schedule, href: '/schedule' },
     { label: t.service, href: '/service' },
     { label: t.cases, href: '/cases' },
     { label: t.whitepaper, href: '/whitepaper' },

@@ -1964,3 +1964,90 @@ html, body { overflow-x: clip; }
 @media (prefers-reduced-transparency: reduce) {
   .nav-mobile-menu { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 1px solid var(--line); }
 }
+
+/* 实绩口径脚注（GEO 可信度） */
+.stat-footnote { font-size: 11.5px; line-height: 1.7; color: rgba(255,255,255,.48); max-width: 72em; margin: 0 auto; padding: 0 0 28px; text-align: center; }
+@media (max-width: 767px) { .stat-footnote { text-align: left; font-size: 11px; padding-bottom: 22px; } }
+
+/* ═══ 支柱页（PillarContent）编辑式版式 ═══ */
+.pl-crumbs { margin-top: 26px; font-size: 12.5px; color: rgba(255,255,255,.55); display: flex; flex-wrap: wrap; gap: 4px; }
+.pl-crumbs a { color: rgba(255,255,255,.75); text-decoration: none; }
+.pl-crumbs a:hover { color: var(--gold-bright); }
+.pl-crumb-sep { margin: 0 8px; color: rgba(255,255,255,.3); }
+.pl-grid { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 64px; align-items: start; }
+.pl-main { min-width: 0; max-width: 760px; }
+.pl-summary { font-size: 18px; line-height: 1.85; color: var(--ink); font-weight: 600; padding: 4px 0 28px 22px; border-left: 3px solid var(--gold); margin: 0 0 40px; overflow-wrap: anywhere; }
+.pl-facts { margin: 0 0 48px; padding: 28px 28px 22px; background: var(--surface-warm); border-top: 1.5px solid var(--ink); }
+.pl-facts .eyebrow { margin-bottom: 14px; }
+.pl-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px,100%),1fr)); gap: 18px 28px; }
+.pl-fact-label { font-size: 12px; color: var(--muted); letter-spacing: .04em; margin-bottom: 6px; }
+.pl-fact-value { font-size: 20px; font-weight: 700; color: var(--brand); line-height: 1.3; overflow-wrap: anywhere; }
+.pl-fact-sub { font-size: 12.5px; color: var(--body); margin-top: 6px; line-height: 1.6; }
+.pl-section { margin: 0 0 56px; scroll-margin-top: 80px; }
+.pl-h2 { margin-bottom: 20px !important; }
+.pl-h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin: 30px 0 12px; }
+.pl-p { font-size: 15.5px; line-height: 1.9; color: var(--body); margin: 0 0 16px; overflow-wrap: anywhere; }
+.pl-ul, .pl-ol { margin: 0 0 18px; padding-left: 1.4em; font-size: 15px; line-height: 1.85; color: var(--body); }
+.pl-ul li, .pl-ol li { margin-bottom: 6px; overflow-wrap: anywhere; }
+.pl-ul li::marker { color: var(--gold); }
+.pl-ol li::marker { color: var(--brand); font-weight: 700; }
+.pl-note { font-size: 14px; line-height: 1.8; color: var(--ink-3); background: var(--surface-2); border-left: 3px solid var(--brand); padding: 14px 18px; margin: 0 0 20px; }
+.pl-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 4px 0 22px; }
+.pl-link { font-size: 14.5px; font-weight: 600; color: var(--brand); text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
+.pl-link:hover { border-bottom-color: var(--gold); }
+.pl-table-wrap { overflow-x: auto; margin: 0 0 22px; -webkit-overflow-scrolling: touch; }
+.pl-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; line-height: 1.6; }
+.pl-table caption { text-align: left; font-size: 12.5px; color: var(--muted); padding: 0 0 8px; caption-side: top; }
+.pl-table th { text-align: left; background: var(--brand); color: #fff; font-weight: 600; padding: 11px 12px; font-size: 13px; letter-spacing: .02em; }
+.pl-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); color: var(--body); vertical-align: top; }
+.pl-table tr:nth-child(even) td { background: var(--surface-3); }
+.pl-table td:first-child { color: var(--ink); font-weight: 600; }
+.pl-sources { border-top: 1.5px solid var(--ink); padding-top: 24px; margin-top: 8px; }
+.pl-sources ul { list-style: none; padding: 0; margin: 0 0 14px; }
+.pl-sources li { font-size: 13.5px; margin-bottom: 6px; overflow-wrap: anywhere; }
+.pl-sources a { color: var(--brand); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.pl-verified { font-size: 12.5px; color: var(--ink-3); font-weight: 600; margin-bottom: 10px; }
+.pl-disclaimer { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 0; }
+.pl-aside { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 22px; }
+.pl-toc, .pl-related { border-top: 1.5px solid var(--ink); padding-top: 14px; }
+.pl-toc-title { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
+.pl-toc-link { display: block; font-size: 13.5px; color: var(--ink-3); text-decoration: none; padding: 6px 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
+.pl-toc-link:hover { color: var(--brand); }
+.pl-aside-cta { background: linear-gradient(158deg,#124442,#0f3937,#0a2b29); color: #fff; padding: 24px 22px 22px; border-top: 3px solid var(--gold); }
+.pl-aside-cta-title { font-size: 19px; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
+.pl-aside-cta p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.72); margin: 0 0 16px; }
+@media (max-width: 1023px) {
+  .pl-grid { grid-template-columns: minmax(0,1fr); gap: 40px; }
+  .pl-aside { position: static; }
+  .pl-toc { display: none; }
+}
+@media (max-width: 767px) {
+  .pl-summary { font-size: 16px; padding-left: 16px; margin-bottom: 30px; }
+  .pl-facts { padding: 20px 18px 16px; margin-bottom: 36px; }
+  .pl-fact-value { font-size: 18px; }
+  .pl-section { margin-bottom: 42px; }
+  .pl-p { font-size: 15px; }
+  .pl-table { min-width: 480px; font-size: 13px; }
+}
+
+/* ═══ 移动端底部操作栏 ═══ */
+.zc-mbar { display: none; }
+@media (max-width: 767px) {
+  .zc-mbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 998;
+    display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.92); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%); transition: transform .38s cubic-bezier(.22,1,.36,1);
+  }
+  .zc-mbar.show { transform: translateY(0); }
+  .zc-mbar-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 44px; border-radius: 10px; font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--brand); border: 1px solid var(--brand); background: #fff; white-space: nowrap; }
+  .zc-mbar-primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .zc-mbar-btn:active { transform: scale(.97); }
+  /* 悬浮客服按钮避让底栏 */
+  /* 手机端底栏已含企微入口，隐藏悬浮按钮避免三重 CTA 堆叠 */
+  .zc-cs-fab { display: none !important; }
+  body { padding-bottom: 64px; }
+  @media (prefers-reduced-transparency: reduce) { .zc-mbar { background: #fff; backdrop-filter: none; } }
+}

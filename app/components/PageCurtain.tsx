@@ -6,7 +6,7 @@ import { localeFromPathname } from '@/lib/i18n/from-path';
 const CURTAIN_TAGLINE: Record<string, string> = {
   zh: '在日华人 · 补助金全程代办',
   en: 'Japan Subsidies · Full-Service Support in Chinese',
-  ja: '在日華人 · 補助金の全工程代行',
+  ja: '在日華人 · 補助金の全工程サポート',
 };
 
 /**

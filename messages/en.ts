@@ -26,6 +26,12 @@ export const en: Dictionary = {
       training: "Human Resource Development Grant",
       aircon: "Energy-Efficient AC Subsidy",
     },
+    who: "Who Can Apply",
+    sole: "Sole Proprietors",
+    owners: "Chinese Business Owners",
+    compare: "Subsidy vs. Grant",
+    schedule: "2026 Calendar",
+    tokyo: "Tokyo Area",
     ctaButton: "Free Diagnosis",
   },
 
@@ -44,6 +50,7 @@ export const en: Dictionary = {
       { val: "¥850M+", label: "Total subsidies secured", note: "Actual funds disbursed" },
       { val: "4", label: "National professional licenses", note: "Gyoseishoshi · Sharoshi · Zeirishi · Diagnostician" },
     ],
+    statsNote: "※ Cumulative figures since founding (as of Aug 2026). Successful applications = engagements that reached grant/payment decision; total secured = confirmed disbursements; approval rate = share of reviewed cases adopted. Individual outcomes depend on the authority’s review.",
   },
 
   services: {
@@ -113,6 +120,11 @@ export const en: Dictionary = {
     main: "Free Consultation",
     sub: "Online advisor · Instant reply",
     aria: "Contact online support for a free consultation",
+  },
+  mobileBar: {
+    call: "Call",
+    wecom: "WeChat Work",
+    diagnose: "Free Diagnosis",
   },
 
   footer: {

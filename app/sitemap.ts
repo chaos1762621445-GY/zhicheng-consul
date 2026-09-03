@@ -15,6 +15,11 @@ const STATIC_PATHS: { path: string; cf: MetadataRoute.Sitemap[number]["changeFre
   { path: "/faq", cf: "monthly", pr: 0.7 },
   { path: "/partner", cf: "monthly", pr: 0.7 },
   { path: "/contact", cf: "monthly", pr: 0.9 },
+  { path: "/for/sole-proprietor", cf: "monthly", pr: 0.9 },
+  { path: "/for/chinese-owners", cf: "monthly", pr: 0.9 },
+  { path: "/compare", cf: "monthly", pr: 0.85 },
+  { path: "/schedule", cf: "weekly", pr: 0.9 },
+  { path: "/area/tokyo", cf: "monthly", pr: 0.85 },
   { path: "/blog", cf: "daily", pr: 0.9 },
   { path: "/privacy", cf: "yearly", pr: 0.3 },
 ];

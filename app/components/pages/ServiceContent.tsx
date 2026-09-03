@@ -64,7 +64,7 @@ const T: Record<Locale, {
   },
   ja: {
     heroEyebrow: "サービスの流れ",
-    heroTitle1: "6ステップで全面代行", heroTitle2: "相談から受給まで",
+    heroTitle1: "6ステップで全面サポート", heroTitle2: "相談から受給まで",
     heroDesc: "初回相談から受給まで、全工程を中国語でサポート。不採択なら無料で、申請リスクを徹底的に取り除きます。",
     stepsEyebrow: "申請の流れ", stepsHeading: "6ステップを詳しく解説", stepsSub: "明確で透明、申請の進捗をいつでも把握できます。",
     faqEyebrow: "FAQ", faqHeading: "よくあるご質問", faqSub: "補助金申請について、最もよくいただくご質問です。",

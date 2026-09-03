@@ -31,7 +31,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Next.js（App Router）+ Tailwind v4 + shadcn，全站尽量 Server Components
 - 设计系统见 `design.md`（改任何视觉前必读）
 - SEO/GEO 资产：sitemap.ts / robots.ts / llms.txt route / opengraph-image.tsx / 全站 JSON-LD / hreflang（中日双向）——**改动页面时不得破坏这些**
-- NAP 统一口径：東京都新宿区高田馬場1-25-32 7階 / 03-6265-9756 / info@shisei-consult.jp（六处同步，改一处必须全改）
+- NAP 统一口径：〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階 / 03-6265-9756 / info@shisei-consult.jp（六处同步，改一处必须全改）
 
 ## 上线流程
 1. `npm run build` 必须 0 error

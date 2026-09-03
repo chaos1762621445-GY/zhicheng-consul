@@ -4,6 +4,7 @@ import html from "remark-html";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import NavClient from "./NavClient";
+import { PILLAR_LINKS } from "@/lib/pillars/links";
 import Footer from "./Footer";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
@@ -55,7 +56,7 @@ export async function blogMetadataFor(locale: Locale, slug: string) {
     ? ["在日华人补助金", "日本补助金中文", "在日华人企业补助金", "日本补助金代办中文", "在日华人 补助金 申请", "日本政府补助金 华人"]
     : locale === "en"
     ? ["Japan subsidy for Chinese businesses", "Japan government subsidy support", "hojokin application English", "subsidy consulting Japan"]
-    : ["在日中国人 補助金", "日本 補助金 申請代行", "外国人経営者 補助金", "補助金 中国語サポート"];
+    : ["在日中国人 補助金", "日本 補助金 申請サポート", "外国人経営者 補助金", "補助金 中国語サポート"];
   const mergedKeywords = Array.from(new Set([...(post.keywords || []), ...IDENTITY_KEYWORDS]));
   return {
     title: post.title,
@@ -188,6 +189,15 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
             </div>
           </div>
         )}
+
+        <div style={{ margin: "0 0 64px", maxWidth: 760 }}>
+          <div className="pl-related">
+            <div className="pl-toc-title">{PILLAR_LINKS[locale].title}</div>
+            {PILLAR_LINKS[locale].items.map((p) => (
+              <Link key={p.href} href={L(p.href)} prefetch={false} className="pl-toc-link">{p.label}</Link>
+            ))}
+          </div>
+        </div>
       </div>
 
       <Footer locale={locale} dict={dict} />

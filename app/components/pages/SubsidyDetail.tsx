@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
 import { getSubsidies, getSubsidy, detailUI } from "@/lib/subsidies";
+import { PILLAR_LINKS } from "@/lib/pillars/links";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
 import { localeHreflang, localeOg, type Locale } from "@/lib/i18n/config";
@@ -31,7 +32,7 @@ export async function subsidyMetadata(locale: Locale, slug: string) {
   const kw: Record<Locale, string[]> = {
     zh: ["在日华人补助金", "省力化补助金", "AI导入补助金", "员工转正助成金", "空调节能补助", "日本政府补助金代办"],
     en: ["Japan government subsidy", "Labor-Saving Subsidy", "AI IT Adoption Subsidy", "Career-Up Grant", "energy-efficient AC subsidy", "subsidy consulting Japan"],
-    ja: ["補助金申請代行", "省力化補助金", "AI・IT導入補助金", "キャリアアップ助成金", "空調省エネ補助", "中国語対応 補助金"],
+    ja: ["補助金申請サポート", "省力化補助金", "AI・IT導入補助金", "キャリアアップ助成金", "空調省エネ補助", "中国語対応 補助金"],
   };
   return {
     title: data.metaTitle,
@@ -257,6 +258,13 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
                 ))}
                 <Link href={L("/subsidies")} style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "10px 14px", fontSize: 13, color: "var(--primary)", marginTop: 4 }}>{ui.viewAll}</Link>
               </div>
+            </div>
+
+            <div className="pl-related" style={{ marginTop: 8 }}>
+              <div className="pl-toc-title">{PILLAR_LINKS[locale].title}</div>
+              {PILLAR_LINKS[locale].items.map((p) => (
+                <Link key={p.href} href={L(p.href)} className="pl-toc-link">{p.label}</Link>
+              ))}
             </div>
           </aside>
         </div>

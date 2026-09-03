@@ -53,7 +53,7 @@ const T: Record<Locale, {
   ja: {
     heroEyebrow: "補助金の種類 · Subsidies",
     heroTitle1: "主要な補助金", heroTitle2: "・助成金の一覧",
-    heroDesc: "志成コンサルが代行する6種類の主要な補助金・助成金を詳しくご紹介。申請条件やご利用方法はお気軽にご相談ください。",
+    heroDesc: "志成コンサルがサポートする6種類の主要な補助金・助成金を詳しくご紹介。申請条件やご利用方法はお気軽にご相談ください。",
     condLabel: "申請条件", usageLabel: "主な用途", detailLabel: "詳細を見る",
     bottomTitle: "どの補助金があなたに最適？", bottomDesc: "3分の無料診断で、貴社に最適な補助金プランを的確にマッチングします。", bottomCta: "無料診断を始める",
     tabs: [{ value: "all", label: "すべて" }, { value: "seiryoka", label: "省力化 / AI" }, { value: "grant", label: "助成金" }, { value: "aircon", label: "省エネ補助" }],

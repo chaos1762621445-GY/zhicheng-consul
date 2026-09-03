@@ -27,7 +27,7 @@ export function canonicalFor(locale: Locale, path: string): string {
 const DEFAULT_KEYWORDS: Record<Locale, string[]> = {
   zh: ["在日华人补助金", "日本补助金申请", "省力化补助金", "AI导入补助金", "员工转正助成金", "日本政府补助金代办", "行政书士", "税理士", "社会保险劳务士", "中小企业诊断士"],
   en: ["Japan government subsidy", "subsidy support for businesses in Japan", "Labor-Saving Subsidy", "AI IT Adoption Subsidy", "Career-Up Grant", "hojokin application", "Gyoseishoshi", "Zeirishi", "Sharoshi", "subsidy consulting Japan"],
-  ja: ["補助金申請代行", "省力化補助金", "AI・IT導入補助金", "キャリアアップ助成金", "人材開発支援助成金", "在日華人 補助金", "外国人経営者 補助金", "行政書士", "税理士", "中国語対応 補助金"],
+  ja: ["補助金申請サポート", "省力化補助金", "AI・IT導入補助金", "キャリアアップ助成金", "人材開発支援助成金", "在日華人 補助金", "外国人経営者 補助金", "行政書士", "税理士", "中国語対応 補助金"],
 };
 
 interface PageMetaInput {
