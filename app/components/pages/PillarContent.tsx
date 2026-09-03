@@ -133,19 +133,12 @@ export default function PillarContent({ locale, data }: { locale: Locale; data: 
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={crumbs.map((c, i) => (i < crumbs.length - 1 ? { label: c.name, href: c.item.replace(SITE_URL, "") || "/" } : { label: c.name }))}
         eyebrow={data.heroEyebrow}
-        title={<>{data.heroTitle1}<br /><span style={{ color: "var(--gold)" }}>{data.heroTitle2}</span></>}
+        title={<>{data.heroTitle1}<br /><span>{data.heroTitle2}</span></>}
         desc={data.heroDesc}
-      >
-        <nav aria-label="breadcrumb" className="pl-crumbs">
-          {crumbs.map((c, i) => (
-            <span key={i}>
-              {i > 0 && <span className="pl-crumb-sep">/</span>}
-              {i < crumbs.length - 1 ? <Link href={c.item.replace(SITE_URL, "") || "/"}>{c.name}</Link> : <span>{c.name}</span>}
-            </span>
-          ))}
-        </nav>
-      </PageHero>
+        facts={data.quickFacts?.slice(0, 3).map((q) => ({ label: q.label, value: q.value }))}
+      />
 
       <section className="sec-sm" style={{ background: "var(--surface)" }}>
         <div className="wrap pl-grid">

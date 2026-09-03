@@ -3,13 +3,14 @@ import Link from "next/link";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
 import PageHero from "../PageHero";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckIcon, ArrowRightIcon } from "lucide-react";
+import { useState } from "react";
+import { ArrowRightIcon } from "lucide-react";
+import { statusOf, STATUS_LABEL, NEED_TABS } from "@/lib/subsidies/status";
+import { getSubsidy } from "@/lib/subsidies";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
 
 type Subsidy = { slug?: string; tag: string; name: string; amount: string; rate: string; desc: string; conditions: string[]; usage: string[] };
 
@@ -23,7 +24,7 @@ const T: Record<Locale, {
   zh: {
     heroEyebrow: "补助金种类 · Subsidies",
     heroTitle1: "主要补助金", heroTitle2: "与助成金一览",
-    heroDesc: "志成コンサル代办的6种主要补助金·助成金详细介绍。申请条件及使用方法欢迎随时咨询。",
+    heroDesc: "先按需求筛选，再看对象·状态·截止。不确定选哪个，点「确认条件」由我们判断。",
     condLabel: "申请条件", usageLabel: "主要用途", detailLabel: "查看详情",
     bottomTitle: "哪种补助金最适合您？", bottomDesc: "3分钟免费诊断，为您的企业精准匹配最优补助金方案。", bottomCta: "开始免费诊断",
     tabs: [{ value: "all", label: "全部" }, { value: "seiryoka", label: "省力化 / AI" }, { value: "grant", label: "助成金" }, { value: "aircon", label: "节能补助" }],
@@ -67,99 +68,82 @@ const T: Record<Locale, {
   },
 };
 
-function SubsidyCard({ s, ui, L }: { s: Subsidy; ui: (typeof T)["zh"]; L: (p: string) => string }) {
-  return (
-    <Card style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: 16 }}>
-      <CardContent className="p-8">
-        <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 24 }}>
-          <div>
-            <Badge style={{ marginBottom: 12, background: "var(--brand-bg)", color: "#1a5c5a", border: "1px solid var(--brand-mid)" }} className="hover:bg-[var(--brand-bg)]">{s.tag}</Badge>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "var(--ink)", marginBottom: 4 }}>{s.name}</div>
-            <div style={{ fontSize: 28, fontWeight: 700, color: "#1a5c5a", letterSpacing: "-0.5px", lineHeight: 1, marginBottom: 4 }}>{s.amount}</div>
-            <div style={{ fontSize: 14, color: "var(--ink-3)", marginTop: 4 }}>{s.rate}</div>
-          </div>
-        </div>
-        <p style={{ fontSize: 14, color: "var(--ink-3)", lineHeight: 1.75, marginBottom: 24 }}>{s.desc}</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-          <div>
-            <h4 style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", marginBottom: 12 }}>{ui.condLabel}</h4>
-            <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {s.conditions.map((c, j) => (
-                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "var(--ink-3)" }}>
-                  <CheckIcon style={{ width: 14, height: 14, color: "#1a5c5a", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />{c}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", marginBottom: 12 }}>{ui.usageLabel}</h4>
-            <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {s.usage.map((u, j) => (
-                <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: "var(--ink-3)" }}>
-                  <CheckIcon style={{ width: 14, height: 14, color: "#1a5c5a", marginTop: 2, flexShrink: 0 }} strokeWidth={2} />{u}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        {s.slug && (
-          <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid var(--line)", display: "flex", justifyContent: "flex-end" }}>
-            <Link href={L(`/subsidies/${s.slug}`)} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 600, color: "#1a5c5a", textDecoration: "none" }}>
-              {ui.detailLabel}<ArrowRightIcon style={{ width: 14, height: 14 }} />
-            </Link>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function SubsidiesContent({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = T[locale];
   const L = (p: string) => localizedHref(locale, p);
-  const filterFor = (v: string) => {
-    if (v === "all") return t.subsidies;
-    if (v === "seiryoka") return t.subsidies.filter(s => s.slug === "seiryoka" || s.slug === "ai-it");
-    if (v === "grant") return t.subsidies.filter(s => s.slug === "career-up" || s.slug === "training");
-    return t.subsidies.filter(s => s.slug === "aircon");
-  };
+  const [need, setNeed] = useState<string>("all");
+  const tabs = NEED_TABS[locale];
+  const btn = { detail: dict.home.detailBtn, check: dict.home.checkBtn };
+  const list = t.subsidies.filter((s) => {
+    if (need === "all") return true;
+    const st = s.slug ? statusOf(s.slug) : undefined;
+    if (need === "startup") return s.slug === "ai-it" || s.slug === "seiryoka";
+    return st?.need === need;
+  });
 
   return (
     <main>
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: L("/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
         eyebrow={t.heroEyebrow}
-        title={<>{t.heroTitle1}<br /><span style={{ color: 'var(--gold)' }}>{t.heroTitle2}</span></>}
+        title={<>{t.heroTitle1}<span>{t.heroTitle2}</span></>}
         desc={t.heroDesc}
       />
 
-      <section className="section" style={{ background: "var(--surface-2)" }}>
-        <div className="page-wrap">
-          <Tabs defaultValue="all">
-            <TabsList style={{ marginBottom: 32, height: "auto", background: "#fff", border: "1px solid var(--line)", borderRadius: 12, padding: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
-              {t.tabs.map(cat => (
-                <TabsTrigger key={cat.value} value={cat.value} className="px-5 py-2.5 text-sm rounded-md data-active:bg-[#1a5c5a] data-active:text-white data-active:shadow-none">
-                  {cat.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {t.tabs.map(cat => (
-              <TabsContent key={cat.value} value={cat.value} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {filterFor(cat.value).map((s, i) => (
-                  <SubsidyCard key={i} s={s} ui={t} L={L} />
-                ))}
-              </TabsContent>
+      <section className="sec-sm" style={{ background: "var(--surface-2)" }}>
+        <div className="wrap">
+          <div className="need-tabs" role="group">
+            {tabs.map((tb) => (
+              <button key={tb.value} type="button" className="need-tab" aria-pressed={need === tb.value} onClick={() => setNeed(tb.value)}>{tb.label}</button>
             ))}
-          </Tabs>
+          </div>
 
-          <div style={{ textAlign: "center", marginTop: 64, paddingTop: 56, borderTop: "1px solid var(--line)" }}>
-            <div style={{ fontSize: 24, fontWeight: 800, color: "var(--ink)", marginBottom: 12 }}>{t.bottomTitle}</div>
-            <p style={{ fontSize: 15, color: "var(--ink-3)", marginBottom: 32, lineHeight: 1.75 }}>{t.bottomDesc}</p>
-            <Link href={L("/contact")} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#1a5c5a", color: "#fff", padding: "14px 36px", borderRadius: 8, fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
-              {t.bottomCta}<ArrowRightIcon style={{ width: 14, height: 14 }} />
-            </Link>
+          <div className="sub-grid">
+            {list.map((s, i) => {
+              const st = s.slug ? statusOf(s.slug) : undefined;
+              const full = s.slug ? getSubsidy(locale, s.slug) : undefined;
+              return (
+                <article key={i} className="sub-card">
+                  <div className="sub-card-head">
+                    <div>
+                      <div className="sub-card-name">{s.name}</div>
+                      {full?.nameJa && <div className="sub-card-ja">{full.nameJa}</div>}
+                    </div>
+                    {st && <span className={`chip chip-dot chip-${st.status}`}>{STATUS_LABEL[locale][st.status]}</span>}
+                  </div>
+                  <div>
+                    <div className="sub-card-amount">{s.amount}</div>
+                    <div className="sub-card-rate">{s.rate}</div>
+                  </div>
+                  <div className="sub-card-meta">
+                    {st && <span className="chip chip-audience">{st.audience[locale]}</span>}
+                    <span className="chip">{s.tag}</span>
+                  </div>
+                  {st && <div className="sub-card-deadline">{st.deadline[locale]}</div>}
+                  <div className="sub-card-actions">
+                    {s.slug && <Link href={L(`/subsidies/${s.slug}`)} className="svc-btn svc-btn-ghost">{btn.detail}</Link>}
+                    <Link href={L("/contact")} className="svc-btn svc-btn-fill">{btn.check}</Link>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          {need === "startup" && (
+            <div className="pl-note" style={{ marginTop: 20 }}>
+              <Link href={L("/for/sole-proprietor")} className="pl-link">{dict.nav.sole} →</Link>
+            </div>
+          )}
+
+          <div style={{ textAlign: "center", marginTop: 56, paddingTop: 48, borderTop: "1px solid var(--line)" }}>
+            <div className="serif" style={{ fontSize: 26, fontWeight: 800, color: "var(--ink)", marginBottom: 12 }}>{t.bottomTitle}</div>
+            <p style={{ fontSize: 15.5, color: "var(--ink-3)", marginBottom: 28, lineHeight: 1.75 }}>{t.bottomDesc}</p>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href={L("/contact")} className="btn btn-fill">{btn.check}<ArrowRightIcon style={{ width: 14, height: 14 }} /></Link>
+              <Link href={L("/compare")} className="btn btn-ghost">{dict.nav.compare}</Link>
+            </div>
           </div>
         </div>
       </section>

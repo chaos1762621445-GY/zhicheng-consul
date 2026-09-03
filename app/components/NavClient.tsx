@@ -28,9 +28,9 @@ export default function NavClient({ locale = 'zh', dict }: { locale?: Locale; di
     { label: t.schedule, href: '/schedule' },
     { label: t.service, href: '/service' },
     { label: t.cases, href: '/cases' },
-    { label: t.whitepaper, href: '/whitepaper' },
     { label: t.about, href: '/about', children: [
       { label: t.companyIntro, href: '/about' },
+      { label: t.whitepaper, href: '/whitepaper' },
       { label: t.partner, href: '/partner' },
       { label: t.faq, href: '/faq' },
       { label: t.blog, href: '/blog' },

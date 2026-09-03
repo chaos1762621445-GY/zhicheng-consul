@@ -1,9 +1,12 @@
+import Link from "next/link";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
 import PageHero from "../PageHero";
 import CtaSection from "../CtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
+import { localizedHref } from "@/lib/i18n/href";
 
 // 本页三语文案（结构一致，翻译值并行维护）
 const T: Record<Locale, {
@@ -13,6 +16,7 @@ const T: Record<Locale, {
   teamHeading: string; teamSub: string;
   storyHeading: string; storyQuote: string; storyAttr: string; storyP1: string; storyP2: string; storyP3: string;
   companyHeading: string;
+  timelineHeading: string; timeline: { y: string; t: string }[]; mapHeading: string; areaHeading: string; areas: string;
   ctaTitle1: string; ctaTitle2: string; ctaDesc: string; ctaPrimary: string; ctaSecondary: string;
   stats: { num: string; label: string }[];
   team: { title: string; name: string; en: string; specialty: string; desc: string; initial: string }[];
@@ -36,6 +40,12 @@ const T: Record<Locale, {
     storyP2: "创业初期，团队走访了大阪、东京、名古屋的数十家华人经营的企业。他们发现，许多企业主甚至不知道自己符合申请条件，更不知道这些补助金是真实存在、可以申请的。语言不通、信息缺失，让他们在不知不觉中与本该属于自己的资金擦肩而过。",
     storyP3: "如今，志成コンサル已累计服务 3,000 余家在日华人企业，协助获批补助金总额超过 8.5 亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。",
     companyHeading: "公司信息",
+    timelineHeading: "发展历程",
+    timeline: [
+      { y: "2022", t: "株式会社志成コンサル成立，聚焦在日华人企业的补助金申请支持" },
+      { y: "2026", t: "总部迁至东京千代田区平河町（GビズINFO 登记本店）；中·日·英三语官网、专题页与公募日历上线" },
+    ],
+    mapHeading: "事务所位置", areaHeading: "服务地域", areas: "东京·神奈川·千叶·埼玉为主；大阪·名古屋·福冈等线上对应，日本全国可委托",
     ctaTitle1: "与我们一起", ctaTitle2: "让补助金触手可及",
     ctaDesc: "免费咨询资格诊断，专业顾问当日回复，助您把握每一次政策红利。",
     ctaPrimary: "申请免费咨询", ctaSecondary: "了解代理合作",
@@ -79,6 +89,12 @@ const T: Record<Locale, {
     storyP2: "In its early days, the team visited dozens of Chinese-run businesses in Osaka, Tokyo, and Nagoya. They found that many owners did not even know they were eligible to apply, nor that these subsidies were real and available. Language gaps and missing information meant they were unknowingly letting funds that should have been theirs slip away.",
     storyP3: "Today, Shisei Consulting has served over 3,000 Chinese-owned businesses in Japan and helped secure more than 850 million yen in approved subsidies. Behind every success story is a Chinese family's entrepreneurial dream that received the support it deserved. We will keep going — until language is no longer an obstacle for any Chinese person in Japan seeking the chance to grow.",
     companyHeading: "Company Information",
+    timelineHeading: "Milestones",
+    timeline: [
+      { y: "2022", t: "Shisei Consulting founded, focusing on subsidy support for Chinese-owned businesses in Japan" },
+      { y: "2026", t: "HQ moved to Hirakawacho, Chiyoda; trilingual site, pillar pages and calendar launched" },
+    ],
+    mapHeading: "Office location", areaHeading: "Service area", areas: "Tokyo, Kanagawa, Chiba, Saitama primarily; Osaka, Nagoya, Fukuoka and nationwide online",
     ctaTitle1: "Together With Us,", ctaTitle2: "Make Subsidies Within Reach",
     ctaDesc: "A free eligibility consultation, with a professional advisor replying the same day, to help you seize every policy opportunity.",
     ctaPrimary: "Request a Free Consultation", ctaSecondary: "Explore Partner Program",
@@ -122,6 +138,12 @@ const T: Record<Locale, {
     storyP2: "創業初期、チームは大阪・東京・名古屋の華人経営の企業数十社を訪ねました。多くの経営者が自社が申請条件を満たしていることすら知らず、こうした補助金が実在し申請できることも知らなかったのです。言葉が通じず情報も不足し、本来自分のものであるはずの資金を、知らぬ間に取り逃していました。",
     storyP3: "今日、志成コンサルは在日華人企業3,000社超にサービスを提供し、補助金の採択総額8.5億円超を支援してきました。一つひとつの成功の背後には、しかるべき支援を得た華人家族の起業の夢があります。言語が、いかなる在日華人にとっても発展の機会を得る障害でなくなるその日まで、私たちは歩み続けます。",
     companyHeading: "会社概要",
+    timelineHeading: "沿革",
+    timeline: [
+      { y: "2022", t: "株式会社志成コンサル設立、在日華人企業の補助金申請サポートに特化" },
+      { y: "2026", t: "本店を千代田区平河町へ移転、3言語サイト・特集ページ・公募カレンダー公開" },
+    ],
+    mapHeading: "事務所所在地", areaHeading: "対応地域", areas: "東京・神奈川・千葉・埼玉を中心に、大阪・名古屋・福岡等はオンライン対応、全国からご依頼可",
     ctaTitle1: "私たちとともに、", ctaTitle2: "補助金を身近なものに",
     ctaDesc: "無料の資格診断相談、専門顧問が当日中にご返答し、あらゆる政策のチャンスを逃さずお手伝いします。",
     ctaPrimary: "無料相談を申し込む", ctaSecondary: "代理店提携について",
@@ -158,8 +180,9 @@ export default function AboutContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: localizedHref(locale, "/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
         eyebrow={t.heroEyebrow}
-        title={<>{t.heroTitle1}<br /><span style={{ color: 'var(--gold)' }}>{t.heroTitle2}</span></>}
+        title={<>{t.heroTitle1}<br /><span>{t.heroTitle2}</span></>}
         desc={t.heroDesc}
       />
 
@@ -276,6 +299,33 @@ export default function AboutContent({ locale }: { locale: Locale }) {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div style={{ marginTop: 56 }}>
+            <h2 className="h2 ed-h" style={{ fontSize: 26, marginBottom: 20 }}>{t.timelineHeading}</h2>
+            <div className="ed-rows">
+              {t.timeline.map((r, i) => (
+                <div key={i} className="ed-row" style={{ gridTemplateColumns: "88px 1fr" }}>
+                  <span className="serif" style={{ fontSize: 22, fontWeight: 900, color: "transparent", WebkitTextStroke: "1.2px var(--gold)" }}>{r.y}</span>
+                  <p style={{ fontSize: 15, color: "var(--body)", lineHeight: 1.7, margin: 0 }}>{r.t}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginTop: 56, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(360px,100%),1fr))", gap: 28, alignItems: "start" }}>
+            <div>
+              <h2 className="h2 ed-h" style={{ fontSize: 26, marginBottom: 16 }}>{t.mapHeading}</h2>
+              <div style={{ border: "1px solid var(--line)", borderRadius: 12, overflow: "hidden", background: "#fff" }}>
+                <iframe title="map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ width: "100%", height: 280, border: 0, display: "block" }}
+                  src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%B9%B3%E6%B2%B3%E7%94%BA1-8-2&output=embed" />
+              </div>
+            </div>
+            <div>
+              <h2 className="h2 ed-h" style={{ fontSize: 26, marginBottom: 16 }}>{t.areaHeading}</h2>
+              <p style={{ fontSize: 15.5, color: "var(--body)", lineHeight: 1.8 }}>{t.areas}</p>
+              <Link href={localizedHref(locale, "/area/tokyo")} className="pl-link" style={{ marginTop: 8, display: "inline-block" }}>{dict.nav.tokyo} →</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import CtaSection from "../CtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
 
 // 图标三语共用，不翻译
 const icons: ReactNode[] = [
@@ -57,6 +58,7 @@ const icons: ReactNode[] = [
 // 本页三语文案（结构一致，翻译值并行维护）
 const T: Record<Locale, {
   heroEyebrow: string; heroTitle1: string; heroTitle2: string; heroDesc: string;
+  boundaryHeading: string; boundary: string[]; protectHeading: string; protect: string[];
   heroBtnPrimary: string; heroBtnGhost: string;
   targetTag: string; targetHeading: string; targetSub: string;
   mechTag: string; mechHeading1: string; mechHeading2: string; mechIntro: string;
@@ -74,8 +76,12 @@ const T: Record<Locale, {
 }> = {
   zh: {
     heroEyebrow: "代理合作计划",
-    heroTitle1: "与我们合作", heroTitle2: "最高 60% 透明分成",
-    heroDesc: "无需专业资质，无需承担风险，只需连接有需求的在日华人企业主。每次成功案例，您最高可获得服务费的 60%。",
+    boundaryHeading: "服务边界与分工（合规）",
+    boundary: ["补助金申请书类的有偿作成由行政书士执行；雇用类助成金的申请代理由社会保险劳务士执行；财务数据由税理士核对；事业计划由中小企业诊断士把关。", "合作方不需要、也不应以自己名义代客申请或收取申请代理费；合作方负责介绍与客户关系，专业执行由志成持牌人完成。", "我们不承诺获批；补助金为竞争审查、助成金为要件审查，结果以主管机关为准。合作方对客户的说明须同样避免「保证」表述。", "分成基于志成实际收到的成功报酬，比例与结算周期在合作协议中书面约定。"],
+    protectHeading: "客户信息保护机制",
+    protect: ["客户资料仅用于该客户的补助金评估与申请，不用于其他营销；不向第三方提供。", "合作方介绍的客户归属记录在案，志成不会绕过合作方直接向该客户推销与合作范围无关的服务。", "资料通过加密渠道传输与保存，申请完成后按约定期限销毁或归还。", "遵守个人情報保護法；详见隐私政策。"],
+    heroTitle1: "为您的客户", heroTitle2: "补上补助金服务",
+    heroDesc: "税理士·行政书士·社劳士·咨询公司·设备商·系统商：您的客户问补助金而您不做时，转给我们。持牌人分工合规执行，透明分成，客户信息受保护。",
     heroBtnPrimary: "立即报名成为代理", heroBtnGhost: "了解合作机制",
     targetTag: "适合人群", targetHeading: "哪些人适合成为代理？",
     targetSub: "只要您身边有在日本经营企业的华人，您就是理想的合作代理人选。",
@@ -129,8 +135,12 @@ const T: Record<Locale, {
   },
   en: {
     heroEyebrow: "Partner Program",
-    heroTitle1: "Partner With Us", heroTitle2: "Up to 60% Transparent Commission",
-    heroDesc: "No professional qualification required, no risk to bear — simply connect Chinese business owners in Japan who have a need. For every successful case, you can earn up to 60% of the service fee.",
+    boundaryHeading: "Scope and licensed division of work",
+    boundary: ["Subsidy documents are prepared by Gyoseishoshi; employment-grant representation by Sharoshi; financials verified by Zeirishi; business plans by SME consultants.", "Partners do not apply on clients' behalf or charge representation fees; partners handle referral and relationship, Shisei's licensed professionals handle execution.", "No approval is guaranteed; partners must avoid 'guarantee' language with clients.", "Revenue share is based on success fees actually received; rates and settlement are set in writing."],
+    protectHeading: "Client data protection",
+    protect: ["Client data is used only for that client's assessment and application; never shared with third parties.", "Referred clients are recorded; Shisei will not bypass partners to sell unrelated services.", "Encrypted transfer and storage; data destroyed or returned after completion as agreed.", "Compliant with the Act on the Protection of Personal Information; see our Privacy Policy."],
+    heroTitle1: "Add subsidy services", heroTitle2: "for your clients",
+    heroDesc: "Zeirishi, Gyoseishoshi, Sharoshi, consultancies, equipment and system vendors: when clients ask about subsidies you do not handle, refer them to us. Licensed execution, transparent revenue share, client data protected.",
     heroBtnPrimary: "Apply to Become a Partner", heroBtnGhost: "How It Works",
     targetTag: "Who It's For", targetHeading: "Who Makes a Good Partner?",
     targetSub: "If there are Chinese owners running businesses in Japan around you, you are an ideal partner candidate.",
@@ -184,8 +194,12 @@ const T: Record<Locale, {
   },
   ja: {
     heroEyebrow: "代理店提携プログラム",
-    heroTitle1: "私たちと提携して", heroTitle2: "最大60%の透明な分配",
-    heroDesc: "専門資格は不要、リスクを負う必要もなく、ニーズのある在日華人の企業経営者をつなぐだけ。成功事例ごとに、サービス料の最大60%を獲得できます。",
+    boundaryHeading: "業務範囲と士業の分担（コンプライアンス）",
+    boundary: ["補助金申請書類の有償作成は行政書士、雇用関係助成金の申請代理は社会保険労務士、財務確認は税理士、事業計画は中小企業診断士が担当。", "提携先が自ら申請代理や代理報酬の受領を行う必要はなく、行ってはなりません。紹介と顧客関係は提携先、専門執行は当社の有資格者。", "採択の保証はしません。提携先もお客様への説明で「保証」表現を避けてください。", "分配は当社が実際に受領した成功報酬に基づき、料率・精算周期は契約書で明記。"],
+    protectHeading: "顧客情報の保護",
+    protect: ["顧客情報は当該顧客の評価・申請のみに使用し、第三者に提供しません。", "紹介顧客の帰属を記録し、提携範囲外のサービスを当社が直接営業することはありません。", "暗号化した経路で送受信・保管し、完了後は合意した期間で削除または返却。", "個人情報保護法を遵守。詳細はプライバシーポリシー。"],
+    heroTitle1: "お客様に", heroTitle2: "補助金サービスを追加",
+    heroDesc: "税理士・行政書士・社労士・コンサル・設備商・システム会社の皆様へ。お客様から補助金の相談があり自社で扱わない場合は当社へ。士業の適法な分担執行、透明な分配、顧客情報の保護。",
     heroBtnPrimary: "今すぐ代理店に申し込む", heroBtnGhost: "提携の仕組みを見る",
     targetTag: "対象となる方", targetHeading: "どんな方が代理店に向いていますか？",
     targetSub: "身近に日本で企業を経営する華人がいれば、あなたは理想的な提携代理店の候補です。",
@@ -249,8 +263,9 @@ export default function PartnerContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: localizedHref(locale, "/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
         eyebrow={t.heroEyebrow}
-        title={<>{t.heroTitle1}<br /><span style={{ color: 'var(--gold)' }}>{t.heroTitle2}</span></>}
+        title={<>{t.heroTitle1}<br /><span>{t.heroTitle2}</span></>}
         desc={t.heroDesc}
       >
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 36, position: 'relative' }}>
@@ -400,6 +415,19 @@ export default function PartnerContent({ locale }: { locale: Locale }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec-sm" style={{ background: "var(--surface-warm)", borderTop: "1px solid var(--line)" }}>
+        <div className="wrap" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(420px,100%),1fr))", gap: 40 }}>
+          <div>
+            <h2 className="h2 ed-h" style={{ marginBottom: 16, fontSize: 26 }}>{t.boundaryHeading}</h2>
+            <ul className="pl-ul" style={{ fontSize: 15 }}>{t.boundary.map((b, i) => <li key={i}>{b}</li>)}</ul>
+          </div>
+          <div>
+            <h2 className="h2 ed-h" style={{ marginBottom: 16, fontSize: 26 }}>{t.protectHeading}</h2>
+            <ul className="pl-ul" style={{ fontSize: 15 }}>{t.protect.map((b, i) => <li key={i}>{b}</li>)}</ul>
           </div>
         </div>
       </section>

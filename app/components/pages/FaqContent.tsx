@@ -4,6 +4,8 @@ import PageHero from "../PageHero";
 import CtaSection from "../CtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
+import { localizedHref } from "@/lib/i18n/href";
 
 type FaqItem = { q: string; a: string };
 type FaqCategory = { title: string; items: FaqItem[] };
@@ -103,6 +105,30 @@ const T: Record<Locale, {
             q: "公司的财务报表需要由税理士签章吗？",
             a: "申请补助金时提交的财务资料（确定申告书等）通常需要附上税务署受理印章，或e-Tax申报的受理通知，无需专门由税理士额外出具签章报告。若您的申告是由税理士代办，直接使用税理士提交的申告书副本即可。我们合作的税理士团队可协助准备相关文件。"
           },
+        ]
+      },
+      {
+        title: "赤字企业·新设法人",
+        items: [
+          { q: "公司目前赤字，能申请补助金吗？", a: "可以。省力化補助金、デジタル化・AI導入補助金、持続化補助金均不以盈利为要件，审查看的是事业计划的可行性与效果。但赤字状态下自筹资金与融资能力会被关注，建议同步规划政策融资。厚劳省系助成金与盈亏无关，满足雇用要件即可。" },
+          { q: "刚成立、还没有第一期決算的公司能申请吗？", a: "省力化与 AI導入没有硬性年限，但审查需要财务基础；新设法人通常建议先用持続化補助金（创业型特例），或等第一期決算后再报大额制度。具体按当回公募要領。" },
+          { q: "员工人数会影响能申请的制度和金额吗？", a: "会。省力化一般型按常勤员工数分 5 档（5 人以下 750 万〜101 人以上 8,000 万円）；持続化要求商业·服务业常时员工 5 人以下、制造业等 20 人以下；助成金则要求有雇用保险被保险者。人数以申请时的常勤员工为准。" },
+        ]
+      },
+      {
+        title: "采购与合同时间",
+        items: [
+          { q: "什么时候才能签合同、付款？", a: "補助金原则上只补助「交付決定」之后签订合同并支付的费用。採択（审查通过）不等于交付決定，中间还要提交交付申请。在交付決定前签约付款，该费用将不被认可——这是最常见的失误。部分制度设有「事前着手承认」，需另行申请获准。" },
+          { q: "已经和供应商签了合同，还能补申请吗？", a: "原则上不能。若尚未付款且合同可撤回，可先解除合同，等交付決定后重签。若已付款，该费用无法作为补助对象，只能考虑其他尚未发生的投资项目。" },
+          { q: "採択后能改变采购内容吗？", a: "可以但须事前提交计划变更申请并获批。未经批准擅自变更设备型号、数量、金额或供应商，实绩报告时可能被减额甚至取消交付決定。" },
+        ]
+      },
+      {
+        title: "未获批时的处理",
+        items: [
+          { q: "不採択了怎么办？", a: "补助金多回公募，不採択可在下一回改善计划后重报，没有次数惩罚。我们会先分析原因：要件不满足（先补要件）还是计划评分低（改计划书）。不採択时不收取成功报酬。" },
+          { q: "不获批不收费的范围是什么？", a: "指申请不採択时不收取成功报酬。着手金、实费（公证·翻译等）如有，签约时明示。客户单方中止、提供虚假资料导致的不採択或返还，不在该范围内。" },
+          { q: "採択了但最后没拿到钱，可能吗？", a: "可能。採択后若交付申请不通过、实施期间违规变更、实绩报告不合规、或未在期限内完成，都可能减额或取消。这就是为什么我们的服务覆盖到入金确认为止。" },
         ]
       },
       {
@@ -214,6 +240,30 @@ const T: Record<Locale, {
         ]
       },
       {
+        title: "Loss-making & new companies",
+        items: [
+          { q: "We are loss-making. Can we apply?", a: "Yes. Labor-Saving, AI Adoption and Sustainability subsidies do not require profitability; reviews assess plan feasibility and effect. Cash and financing capacity are scrutinized, so plan policy loans in parallel. MHLW grants are unrelated to profit." },
+          { q: "Newly founded, no first-year financials?", a: "No hard minimum for Labor-Saving or AI Adoption, but financial basis is reviewed; new companies usually start with the Sustainability Subsidy (startup track) or wait for the first closing." },
+          { q: "Does headcount affect eligibility and amount?", a: "Yes. Labor-Saving has 5 tiers by regular staff (¥7.5M for ≤5 to ¥80M for 101+); Sustainability requires ≤5 (retail/services) or ≤20 (manufacturing); grants require employment-insured staff." },
+        ]
+      },
+      {
+        title: "Purchase & contract timing",
+        items: [
+          { q: "When can we sign and pay?", a: "Only costs contracted and paid after the grant decision (交付決定) are eligible. Adoption is not the grant decision. Signing earlier makes the cost ineligible — the most common mistake." },
+          { q: "Already signed with a vendor?", a: "Generally ineligible. If unpaid and cancellable, cancel and re-sign after the grant decision. If paid, consider other future investments." },
+          { q: "Can we change the purchase after adoption?", a: "Only with a prior change request approved. Unapproved changes can reduce or cancel the grant." },
+        ]
+      },
+      {
+        title: "If not adopted",
+        items: [
+          { q: "Rejected — what now?", a: "Reapply next round after fixing requirements or improving the plan; no penalty. No success fee is charged on rejection." },
+          { q: "What does 'no approval, no fee' cover?", a: "No success fee if not adopted. Any retainer or out-of-pocket costs are stated at contract. Client withdrawal or false information is excluded." },
+          { q: "Adopted but no payment — possible?", a: "Yes, if the grant application fails, unapproved changes occur, the final report is non-compliant, or deadlines are missed. That is why our service runs to disbursement." },
+        ]
+      },
+      {
         title: "Other",
         items: [
           {
@@ -322,6 +372,30 @@ const T: Record<Locale, {
         ]
       },
       {
+        title: "赤字企業・新設法人",
+        items: [
+          { q: "赤字でも申請できますか？", a: "可能です。省力化・AI導入・持続化は利益を要件とせず、計画の実現性と効果を審査します。自己資金・融資能力は注視されるため政策融資も並行検討を。厚労省系助成金は損益と無関係です。" },
+          { q: "設立直後で第1期決算がありません", a: "省力化・AI導入に年数要件はありませんが財務基盤が審査されます。新設法人は持続化補助金（創業型）や第1期決算後の申請が現実的です。" },
+          { q: "従業員数は影響しますか？", a: "します。省力化一般型は常勤従業員数で5区分（5人以下750万〜101人以上8,000万円）、持続化は商業・サービス業5人以下等、助成金は雇用保険被保険者が必要です。" },
+        ]
+      },
+      {
+        title: "購入・契約のタイミング",
+        items: [
+          { q: "いつ契約・支払いできますか？", a: "交付決定後に契約・支払った経費のみ対象です。採択＝交付決定ではありません。それ以前の契約は対象外——最も多い失敗です。事前着手承認制度がある場合は別途申請。" },
+          { q: "既に業者と契約済みです", a: "原則対象外。未払いで解約可能なら解約し、交付決定後に再契約。支払済みなら別の未実施投資を検討。" },
+          { q: "採択後に購入内容を変えられますか？", a: "事前の計画変更申請と承認が必要。無断変更は減額・取消の対象。" },
+        ]
+      },
+      {
+        title: "不採択の場合",
+        items: [
+          { q: "不採択になったら？", a: "要件を整えるか計画を改善して次回再申請、ペナルティなし。不採択時は成功報酬をいただきません。" },
+          { q: "「不採択なら無料」の範囲は？", a: "不採択時に成功報酬なし。着手金・実費がある場合は契約時に明示。お客様の一方的中止・虚偽資料は対象外。" },
+          { q: "採択されても入金されないことは？", a: "あります。交付申請不承認、無断変更、実績報告不備、期限超過で減額・取消。だから当社は入金確認まで対応します。" },
+        ]
+      },
+      {
         title: "その他",
         items: [
           {
@@ -367,8 +441,9 @@ export default function FaqContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: localizedHref(locale, "/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
         eyebrow={t.heroEyebrow}
-        title={<>{t.heroTitle1}<br /><span style={{ color: 'var(--gold)' }}>{t.heroTitle2}</span></>}
+        title={<>{t.heroTitle1}<br /><span>{t.heroTitle2}</span></>}
         desc={t.heroDesc}
       />
 

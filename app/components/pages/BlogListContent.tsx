@@ -4,6 +4,7 @@ import NavClient from "../NavClient";
 import Footer from "../Footer";
 import PageHero from "../PageHero";
 import CtaSection from "../CtaSection";
+import BlogList from "../BlogList";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
 import type { Locale } from "@/lib/i18n/config";
@@ -30,8 +31,9 @@ export default async function BlogListContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: { zh: '首页', en: 'Home', ja: 'ホーム' }[locale], href: localizedHref(locale, '/') }, { label: `${t.title1}${t.title2}` }]}
         eyebrow={t.eyebrow}
-        title={<>{t.title1}<span style={{ color: 'var(--gold)' }}>{t.title2}</span></>}
+        title={<>{t.title1}<span>{t.title2}</span></>}
         desc={t.desc}
       />
 
@@ -43,22 +45,7 @@ export default async function BlogListContent({ locale }: { locale: Locale }) {
               <Link href={L("/contact")} className="btn btn-fill">{t.emptyCta}</Link>
             </div>
           ) : (
-            <div className="ed-rows" style={{ background: 'var(--surface)', padding: '0 32px' }}>
-              {posts.map(post => (
-                <Link key={post.slug} href={L(`/blog/${post.slug}`)} prefetch={false} className="ed-row" style={{ textDecoration: "none" }}>
-                  <span style={{ fontSize: 12.5, color: "var(--muted)", fontVariantNumeric: 'tabular-nums' }}>{post.date}</span>
-                  <div>
-                    <div className="serif" style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", marginBottom: 6, lineHeight: 1.5 }}>{post.title}</div>
-                    <p style={{ fontSize: 13.5, color: "var(--body)", lineHeight: 1.7, maxWidth: '72ch' }}>{(post.excerpt || "").slice(0, 100)}...</p>
-                  </div>
-                  <span style={{ color: "var(--brand)" }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}>
-                      <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </Link>
-              ))}
-            </div>
+            <BlogList locale={locale} posts={posts.map((p) => ({ slug: p.slug, title: p.title, date: p.date, excerpt: p.excerpt, keywords: p.keywords }))} />
           )}
         </div>
       </section>

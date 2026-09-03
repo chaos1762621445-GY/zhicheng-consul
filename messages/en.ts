@@ -37,14 +37,14 @@ export const en: Dictionary = {
 
   hero: {
     label: "Nationally Certified · Four Licensed-Expert Team",
-    h1Line1: "Government Subsidies",
-    h1Highlight: "for Businesses in Japan",
-    h1Line3: "Handled End-to-End",
-    sub: "The Japanese government disburses vast subsidies to SMEs every year — most companies miss out simply because they don't know the policies.",
+    h1Line1: "Subsidy & grant application support",
+    h1Highlight: "for Chinese-owned businesses",
+    h1Line3: "in Japan",
+    sub: "Find out in 3 minutes which programs you qualify for. Full Chinese-language support by four licensed professions.",
     subStrong: "No approval, no fee.",
-    ctaPrimary: "Get a Free Diagnosis Report",
-    ctaSecondary: "Explore Subsidy Types",
-    trust: ["No approval, no fee", "3,000+ successful firms", "Four nationally certified experts", "Full Chinese support"],
+    ctaPrimary: "Check eligibility for free",
+    ctaSecondary: "See available programs",
+    trust: ["Full Chinese support", "Four licensed professions", "No approval, no fee", "3,000+ businesses※"],
     stats: [
       { val: "3,000+", label: "Successful applications", note: "F&B · Retail · Manufacturing · IT" },
       { val: "¥850M+", label: "Total subsidies secured", note: "Actual funds disbursed" },
@@ -54,7 +54,7 @@ export const en: Dictionary = {
   },
 
   services: {
-    heading: "Six Core Subsidies, Fully Managed",
+    heading: "Six main programs: which one fits you",
     sub: "These are the subsidies most frequently applied for by Chinese-owned businesses in Japan. We handle the entire process — no approval, no fee.",
     items: [
       { tag: "By company size", name: "Labor-Saving Subsidy", amount: "7.5M–80M", unit: "JPY", rate: "Subsidy rate 1/2 (small-scale 2/3)", desc: "For adopting DX systems and automation equipment to cut costs and boost efficiency. Five tiers by headcount: 7.5M JPY for under 5 staff, 15M for 6–20, up to 80M JPY.", slug: "seiryoka" },
@@ -67,6 +67,25 @@ export const en: Dictionary = {
   },
 
   home: {
+    whoTitle: "Which describes you?",
+    whoSub: "Eligible programs differ by status and need. Start with the right entry point.",
+    who: [
+      { t: "Chinese business owners", d: "The 5 most-used programs, visa relationship, 6 common mistakes.", a: "For business owners", href: "/for/chinese-owners" },
+      { t: "Sole proprietors", d: "No company, no staff — still eligible: Sustainability ¥500k, AI Adoption ¥4.5M, Labor-Saving ¥7.5M.", a: "For sole proprietors", href: "/for/sole-proprietor" },
+      { t: "Deadlines", d: "Labor-Saving R8, AI Adoption 10/7, Sustainability R20, Tokyo AC R4 — verified monthly.", a: "2026 calendar", href: "/schedule" },
+    ],
+    casesTitle: "What businesses like yours received",
+    casesSub: "Real, anonymized cases; amounts shown as ranges. Outcomes depend on the authority’s review.",
+    casesAll: "All cases",
+    detailBtn: "Details", checkBtn: "Check eligibility",
+    stepSplit: [
+      { you: "Share status, industry, headcount, goal", we: "Reply within one business day" },
+      { you: "Provide financials and quotes", we: "Matching, estimate, timeline" },
+      { you: "Confirm plan, sign, obtain GビズID", we: "Licensed professionals prepare documents" },
+      { you: "Supply supplements", we: "Submit, track review, corrections" },
+      { you: "Implement, keep invoices", we: "Final report, disbursement" },
+    ],
+    youLabel: "You", weLabel: "We",
     teamVert: "Expert Collaboration",
     teamTitle1: "A Professional Team,",
     teamTitle2: "So You Don't Need Japanese",
@@ -90,7 +109,7 @@ export const en: Dictionary = {
       { title: "Four certified experts handle everything", desc: "Gyoseishoshi, labor attorney, tax accountant, and management consultant collaborate across every stage of the application." },
       { title: "3,000+ real success stories", desc: "We've served over 3,000 Chinese-owned businesses in Japan across F&B, IT, manufacturing, beauty, and more." },
     ],
-    stepsTitle: "Five Steps, Fully Managed",
+    stepsTitle: "Five steps: what you do, what we do",
     stepsSub: "Throughout the process, you do very little — mainly providing materials. We handle everything else.",
     steps: [
       { n: "01", title: "Free Diagnosis", desc: "Scan to add us on WeChat Work, describe your business in 3 minutes, and get a matched plan the same day." },

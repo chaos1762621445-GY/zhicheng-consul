@@ -2,6 +2,15 @@ import NavClient from "../NavClient";
 import Footer from "../Footer";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+import PageHero from "../PageHero";
+import Link from "next/link";
+import { localizedHref } from "@/lib/i18n/href";
+const HOME: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
+const PRIV: Record<Locale, { pre: string; link: string; post: string }> = {
+  zh: { pre: "提交即表示您已阅读并同意", link: "隐私政策", post: "。我们仅用于回复您的咨询，不会提供给第三方。" },
+  en: { pre: "By submitting you agree to our ", link: "Privacy Policy", post: ". Used only to respond to your inquiry; never shared with third parties." },
+  ja: { pre: "送信により", link: "プライバシーポリシー", post: "に同意したものとみなします。お問い合わせへの回答のみに使用し、第三者に提供しません。" },
+};
 
 // 结构性图标（不随语言变化），按顺序对应 contacts 数组
 const contactIcons = [
@@ -103,45 +112,12 @@ export default function ContactContent({ locale }: { locale: Locale }) {
     <main style={{ background: "#fff" }}>
       <NavClient locale={locale} dict={dict} />
 
-      {/* Page hero — Vercel style, centered, minimal */}
-      <section style={{
-        padding: "116px 0 80px",
-        background: "linear-gradient(180deg, #0f3937 0%, #114240 55%, #12403d 100%)",
-        borderBottom: "3px solid var(--gold)",
-        textAlign: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        <div aria-hidden style={{
-          position: "absolute", top: "-30%", right: "-10%",
-          width: 560, height: 560, pointerEvents: "none",
-          background: "radial-gradient(circle, rgba(196,162,58,0.13) 0%, rgba(196,162,58,0.04) 40%, transparent 70%)",
-        }} />
-        <div className="wrap" style={{ maxWidth: 640, position: "relative", zIndex: 1 }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            border: "1px solid rgba(255,255,255,0.22)",
-            borderRadius: 9999, padding: "6px 16px",
-            fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.75)",
-            letterSpacing: ".08em", textTransform: "uppercase",
-            marginBottom: 28,
-          }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80" }} />
-            {t.badge}
-          </div>
-          <h1 className="serif" style={{
-            fontSize: "clamp(34px, 5vw, 58px)",
-            fontWeight: 900, color: "#fff",
-            letterSpacing: "-0.5px", lineHeight: 1.15,
-            marginBottom: 20, wordBreak: "keep-all",
-          }}>
-            {t.heroTitle1}<br /><span style={{ color: "var(--gold)" }}>{t.heroTitle2}</span>
-          </h1>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>
-            {t.heroDesc}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: HOME[locale], href: localizedHref(locale, "/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
+        eyebrow={t.badge}
+        title={<>{t.heroTitle1}<span>{t.heroTitle2}</span></>}
+        desc={t.heroDesc}
+      />
 
       {/* Main two-col */}
       <section className="contact-main" style={{ background: "white" }}>
@@ -149,7 +125,7 @@ export default function ContactContent({ locale }: { locale: Locale }) {
           <div className="grid-contact">
 
             {/* Left: contacts */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className="contact-info" style={{ display: "flex", flexDirection: "column" }}>
               <div style={{
                 fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
                 fontSize: 11, fontWeight: 500,
@@ -228,7 +204,7 @@ export default function ContactContent({ locale }: { locale: Locale }) {
             </div>
 
             {/* Right: quiz iframe */}
-            <div>
+            <div className="contact-quiz">
               <div style={{
                 fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
                 fontSize: 11, fontWeight: 500,
@@ -254,6 +230,9 @@ export default function ContactContent({ locale }: { locale: Locale }) {
                   title={t.iframeTitle}
                 />
               </div>
+              <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.7, marginTop: 12 }}>
+                {PRIV[locale].pre}<Link href={localizedHref(locale, "/privacy")} style={{ color: "var(--brand)", textDecoration: "underline" }}>{PRIV[locale].link}</Link>{PRIV[locale].post}
+              </p>
             </div>
           </div>
         </div>

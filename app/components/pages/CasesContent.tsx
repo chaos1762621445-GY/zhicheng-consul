@@ -4,8 +4,11 @@ import PageHero from "../PageHero";
 import CtaSection from "../CtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
+import { localizedHref } from "@/lib/i18n/href";
+import CaseGrid from "../CaseGrid";
 
-type CaseItem = {
+export type CaseItem = {
   industry: string;
   company: string;
   subsidy: string;
@@ -117,6 +120,8 @@ const T: Record<Locale, {
   },
 };
 
+export function getCases(locale: Locale): CaseItem[] { return T[locale].cases; }
+
 export default function CasesContent({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = T[locale];
@@ -126,8 +131,9 @@ export default function CasesContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: localizedHref(locale, "/") }, { label: `${t.heroTitle1}${t.heroTitle2}` }]}
         eyebrow={t.heroEyebrow}
-        title={<>{t.heroTitle1}<span style={{ color: 'var(--gold)' }}>{t.heroTitle2}</span></>}
+        title={<>{t.heroTitle1}<span>{t.heroTitle2}</span></>}
         desc={t.heroDesc}
       />
 
@@ -157,45 +163,7 @@ export default function CasesContent({ locale }: { locale: Locale }) {
             {t.sectionSub}
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(460px, 100%), 1fr))", gap: 24, alignItems: "stretch" }}>
-            {t.cases.map((c, i) => (
-              <div key={i} style={{ background: "#fff", border: "1px solid var(--line)", borderRadius: "var(--r-xl)", padding: "28px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", height: "100%", boxShadow: "var(--shadow-sm)" }}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, var(--brand), var(--gold))" }} />
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 20 }}>
-                  <div>
-                    <span
-                      style={{ display: "inline-block", fontSize: 11, fontWeight: 600, padding: "3px 11px", borderRadius: 20, letterSpacing: "0.5px", background: "var(--brand-bg)", color: "var(--brand)", border: "1px solid var(--brand-mid)" }}
-                    >
-                      {c.industry}
-                    </span>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: "var(--ink)", marginTop: 8, lineHeight: 1.4 }}>{c.company}</div>
-                  </div>
-                  <div style={{ textAlign: "right", flexShrink: 0 }}>
-                    <div style={{ fontSize: 28, fontWeight: 800, color: "var(--brand)", letterSpacing: "-0.5px", lineHeight: 1 }}>{c.amount}</div>
-                    <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 4 }}>{t.amountLabel}</div>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "var(--ink-3)", background: "var(--surface-2)", border: "1px solid var(--line)", borderRadius: 6, padding: "4px 10px" }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", flexShrink: 0 }} />
-                    <span>{c.subsidy}</span>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "var(--ink-3)", background: "var(--surface-2)", border: "1px solid var(--line)", borderRadius: 6, padding: "4px 10px" }}>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-                    <span>{t.periodLabel} {c.period}</span>
-                  </div>
-                </div>
-
-                <hr style={{ border: "none", borderTop: "1px solid var(--line)", margin: "16px 0" }} />
-
-                <div style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.8, paddingLeft: 14, borderLeft: "2px solid var(--gold)", flex: 1 }}>
-                  <span style={{ fontSize: 22, color: "var(--gold)", lineHeight: 1, display: "block", marginBottom: 6, fontWeight: 700 }}>&ldquo;</span>
-                  {c.quote}
-                </div>
-              </div>
-            ))}
-          </div>
+          <CaseGrid locale={locale} cases={t.cases} amountLabel={t.amountLabel} periodLabel={t.periodLabel} />
 
           <p style={{ textAlign: "center", fontSize: 12, color: "var(--muted)", marginTop: 40, padding: "16px 24px", background: "#fff", border: "1px solid var(--line)", borderRadius: 8, lineHeight: 1.8 }}>
             {t.disclaimer}

@@ -5,16 +5,13 @@ import { localizedHref } from '@/lib/i18n/href';
 import type { Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/messages/zh';
 import { zh } from '@/messages/zh';
+import { statusOf, STATUS_LABEL } from '@/lib/subsidies/status';
 
-const Arrow = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-  </svg>
-);
 
 export default function ServicesSection({ locale = 'zh', dict }: { locale?: Locale; dict?: Dictionary }) {
   const d = dict ?? (zh as unknown as Dictionary);
   const s = d.services;
+  const hm = d.home;
   const L = (p: string) => localizedHref(locale, p);
 
   return (
@@ -32,22 +29,36 @@ export default function ServicesSection({ locale = 'zh', dict }: { locale?: Loca
         </Reveal>
 
         <div className="svc-table">
-          {s.items.map((item, i) => (
-            <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
-              <Link href={item.slug ? L(`/subsidies/${item.slug}`) : L('/partner')} className="svc-item">
-                <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.08em', marginBottom: 6 }}>{item.tag}</div>
-                  <div className="svc-name">{item.name}</div>
+          {s.items.map((item, i) => {
+            const st = item.slug ? statusOf(item.slug) : undefined;
+            const href = item.slug ? L(`/subsidies/${item.slug}`) : L('/partner');
+            return (
+              <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
+                <div className="svc-item">
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--gold)', letterSpacing: '.08em', marginBottom: 6 }}>{item.tag}</div>
+                    <Link href={href} className="svc-name" style={{ textDecoration: 'none', display: 'block' }}>{item.name}</Link>
+                    {st && (
+                      <div className="svc-meta">
+                        <span className="chip chip-audience">{st.audience[locale]}</span>
+                        <span className={`chip chip-dot chip-${st.status}`}>{STATUS_LABEL[locale][st.status]}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div className="svc-amount">{item.amount}<span className="svc-unit">{item.unit}</span></div>
+                    <div style={{ fontSize: 12, color: '#86868b', marginTop: 4 }}>{item.rate}</div>
+                    {st && <div style={{ fontSize: 12.5, color: 'var(--ink-3)', marginTop: 6, fontWeight: 600 }}>{st.deadline[locale]}</div>}
+                  </div>
+                  <p className="svc-desc">{item.desc}</p>
+                  <div className="svc-actions">
+                    <Link href={href} className="svc-btn svc-btn-ghost">{hm.detailBtn}</Link>
+                    {item.slug && <Link href={L('/contact')} className="svc-btn svc-btn-fill">{hm.checkBtn}</Link>}
+                  </div>
                 </div>
-                <div>
-                  <div className="svc-amount">{item.amount}<span className="svc-unit">{item.unit}</span></div>
-                  <div style={{ fontSize: 12, color: '#86868b', marginTop: 4 }}>{item.rate}</div>
-                </div>
-                <p className="svc-desc">{item.desc}</p>
-                <span className="svc-arrow"><Arrow /></span>
-              </Link>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

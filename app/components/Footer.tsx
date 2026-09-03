@@ -35,6 +35,7 @@ export default function Footer({ locale = 'zh', dict }: { locale?: Locale; dict?
       { label: nav.about, href: '/about' },
       { label: d.common.freeConsult, href: '/contact' },
       { label: '隐私政策', href: '/privacy', privacyKey: true },
+      { label: { zh: '法定信息·责任边界', en: 'Legal & Disclosure', ja: '特定商取引法表記' }[locale], href: '/legal' },
     ]},
   ];
   const privacyLabel = { zh: '隐私政策', en: 'Privacy Policy', ja: 'プライバシーポリシー' }[locale];

@@ -4,6 +4,8 @@ import NavClient from "./NavClient";
 import HeroSection from "./HeroSection";
 import ServicesSection from "./ServicesSection";
 import Footer from "./Footer";
+import { getCases } from "./pages/CasesContent";
+import { CASE_META, CASE_FILTER_LABELS, amountRange } from "@/lib/cases/meta";
 import Reveal from "./Reveal";
 import CtaSection from "./CtaSection";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -33,6 +35,8 @@ const ArrowIcon = () => (
 export default async function HomeContent({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.home;
+  const CF = CASE_FILTER_LABELS[locale];
+  const featuredCases = [1, 3, 6].map((i) => ({ c: getCases(locale)[i], m: CASE_META[i] }));
   const L = (p: string) => localizedHref(locale, p);
   // en/ja 有本地化文章则用，否则回退中文列表（避免空白）
   const posts = (await getAllPostsLocalized(locale)).slice(0, 3);
@@ -42,6 +46,30 @@ export default async function HomeContent({ locale }: { locale: Locale }) {
     <main>
       <NavClient locale={locale} dict={dict} />
       <HeroSection locale={locale} dict={dict} />
+
+      {/* ── 谁能申请：三入口 ── */}
+      <section className="sec-sm" style={{ background: 'var(--surface-warm)', borderBottom: '1px solid var(--line)' }}>
+        <div className="wrap">
+          <Reveal>
+            <div style={{ maxWidth: 560, marginBottom: 28 }}>
+              <h2 className="h2 ed-h" style={{ marginBottom: 10 }}>{t.whoTitle}</h2>
+              <p className="sub" style={{ fontSize: 15 }}>{t.whoSub}</p>
+            </div>
+          </Reveal>
+          <div className="home-who">
+            {t.who.map((w, i) => (
+              <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
+                <Link href={L(w.href)}>
+                  <div className="home-who-t">{w.t}</div>
+                  <div className="home-who-d">{w.d}</div>
+                  <span className="home-who-a">{w.a} →</span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ServicesSection locale={locale} dict={dict} />
 
       {/* ── 专家团队 ── */}
@@ -167,7 +195,45 @@ export default async function HomeContent({ locale }: { locale: Locale }) {
                   <div className="ed-num" style={{ fontSize: 'clamp(44px,4.6vw,64px)', marginBottom: 20 }}>{s.n}</div>
                   <div className="serif" style={{ fontSize: 17, fontWeight: 700, color: 'var(--ink)', marginBottom: 10 }}>{s.title}</div>
                   <p style={{ fontSize: 13.5, color: 'var(--body)', lineHeight: 1.7 }}>{s.desc}</p>
+                  {t.stepSplit[i] && (
+                    <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <div style={{ fontSize: 12.5, lineHeight: 1.6, color: 'var(--ink-3)' }}><b style={{ display: 'block', fontSize: 11, letterSpacing: '.1em', color: 'var(--gold)' }}>{t.youLabel}</b>{t.stepSplit[i].you}</div>
+                      <div style={{ fontSize: 12.5, lineHeight: 1.6, color: 'var(--ink-3)' }}><b style={{ display: 'block', fontSize: 11, letterSpacing: '.1em', color: 'var(--brand)' }}>{t.weLabel}</b>{t.stepSplit[i].we}</div>
+                    </div>
+                  )}
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 精选案例 ── */}
+      <section className="sec" style={{ background: 'var(--surface)' }}>
+        <div className="wrap">
+          <Reveal>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
+              <div style={{ maxWidth: 560 }}>
+                <h2 className="h2 ed-h" style={{ marginBottom: 10 }}>{t.casesTitle}</h2>
+                <p className="sub" style={{ fontSize: 15 }}>{t.casesSub}</p>
+              </div>
+              <Link href={L('/cases')} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 600, color: 'var(--brand)', paddingBottom: 6 }}>
+                {t.casesAll} <ArrowIcon />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="home-cases">
+            {featuredCases.map(({ c, m }, i) => (
+              <Reveal key={i} delay={(i % 3) as 0|1|2|3|4|5}>
+                <Link href={L('/cases')} className="home-case">
+                  <div className="home-case-meta">
+                    <span className="chip chip-audience">{CF.industry[m.industryKey]}</span>
+                    <span className="chip chip-audience">{CF.region[m.regionKey]}</span>
+                    <span className="chip chip-yearround">{CF.subsidy[m.subsidyKey]}</span>
+                  </div>
+                  <div className="home-case-amount">{amountRange(m.amountMan, locale)}</div>
+                  <p className="home-case-text"><b>{c.company}</b> — {c.quote.slice(0, 70)}…</p>
+                </Link>
               </Reveal>
             ))}
           </div>

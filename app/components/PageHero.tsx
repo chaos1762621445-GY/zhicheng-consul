@@ -1,51 +1,54 @@
 import React from 'react';
+import Link from 'next/link';
 
+interface Crumb { label: string; href?: string }
 interface PageHeroProps {
-  eyebrow: string; // 渲染为金线上方的小字引导
+  eyebrow: string;
   title: React.ReactNode;
   desc?: string;
   children?: React.ReactNode;
+  crumbs?: Crumb[];
+  /** 右侧速查标签（如 受付状态 / 截止 / 对象） */
+  facts?: { label: string; value: string }[];
+  /** 默认浅暖底；仅少数页需要深底时传 'dark' */
+  tone?: 'light' | 'dark';
 }
 
 /**
- * 内页深 teal 开场带 — 与首页 hero/数据带同一深色世界。
- * 白衬线大标题 + 金色短线 + 金色径向光晕，底部 3px 金线收边。
+ * 内页开场带（2026-09 改版）：默认浅暖底 + 左金竖条 + 面包屑 + 可选速查标签。
+ * 深底只保留首页 hero / CTA / Footer，减少全站深色比例。
  */
-export default function PageHero({ eyebrow, title, desc, children }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, desc, children, crumbs, facts, tone = 'light' }: PageHeroProps) {
+  const dark = tone === 'dark';
   return (
-    <section
-      style={{
-        position: 'relative',
-        background: 'linear-gradient(180deg, #0f3937 0%, #114240 55%, #12403d 100%)',
-        borderBottom: '3px solid var(--gold)',
-        padding: 'clamp(88px, 12vw, 148px) 0 clamp(56px, 7vw, 88px)',
-        overflow: 'hidden',
-      }}
-    >
-      {/* 金色径向光晕（右上角，呼应首页团队区） */}
-      <div aria-hidden style={{
-        position: 'absolute', top: '-30%', right: '-10%',
-        width: 560, height: 560, pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(196,162,58,0.13) 0%, rgba(196,162,58,0.04) 40%, transparent 70%)',
-      }} />
-      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{
-          fontSize: 12, fontWeight: 600, letterSpacing: '0.22em',
-          color: 'rgba(255,255,255,0.55)', marginBottom: 14,
-        }}>{eyebrow}</div>
-        <div style={{ width: 40, height: 2, background: 'var(--gold)', marginBottom: 22 }} />
-        <h1 className="serif" style={{
-          fontSize: 'clamp(30px, 4.6vw, 54px)', fontWeight: 900,
-          color: '#fff', lineHeight: 1.2, letterSpacing: '-0.3px',
-          margin: 0, wordBreak: 'keep-all',
-        }}>{title}</h1>
-        {desc && (
-          <p style={{
-            fontSize: 15.5, lineHeight: 1.85, color: 'rgba(255,255,255,0.72)',
-            maxWidth: '46em', marginTop: 20,
-          }}>{desc}</p>
+    <section className={`ph ${dark ? 'ph-dark' : 'ph-light'}`}>
+      <div className="wrap ph-inner">
+        <div className="ph-main">
+          {crumbs && crumbs.length > 0 && (
+            <nav aria-label="breadcrumb" className="ph-crumbs">
+              {crumbs.map((c, i) => (
+                <span key={i}>
+                  {i > 0 && <span className="ph-crumb-sep">/</span>}
+                  {c.href ? <Link href={c.href}>{c.label}</Link> : <span aria-current="page">{c.label}</span>}
+                </span>
+              ))}
+            </nav>
+          )}
+          <div className="ph-eyebrow">{eyebrow}</div>
+          <h1 className="serif ph-title">{title}</h1>
+          {desc && <p className="ph-desc">{desc}</p>}
+          {children}
+        </div>
+        {facts && facts.length > 0 && (
+          <aside className="ph-facts" aria-label="quick facts">
+            {facts.map((f, i) => (
+              <div key={i} className="ph-fact">
+                <span className="ph-fact-label">{f.label}</span>
+                <span className="ph-fact-value">{f.value}</span>
+              </div>
+            ))}
+          </aside>
         )}
-        {children}
       </div>
     </section>
   );

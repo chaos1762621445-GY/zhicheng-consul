@@ -3,6 +3,8 @@ import Footer from "../Footer";
 import PageHero from "../PageHero";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
+import { localizedHref } from "@/lib/i18n/href";
 
 // 本页三语文案（结构一致，翻译值可并行维护）
 type Section = { h: string; body: string[]; list?: string[]; contact?: boolean };
@@ -236,6 +238,7 @@ export default function PrivacyContent({ locale }: { locale: Locale }) {
       <NavClient locale={locale} dict={dict} />
 
       <PageHero
+        crumbs={[{ label: HOME_LABEL[locale], href: localizedHref(locale, "/") }, { label: t.heroTitle }]}
         eyebrow={t.heroEyebrow}
         title={<>{t.heroTitle}</>}
         desc={t.heroDesc}

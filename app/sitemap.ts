@@ -22,6 +22,7 @@ const STATIC_PATHS: { path: string; cf: MetadataRoute.Sitemap[number]["changeFre
   { path: "/area/tokyo", cf: "monthly", pr: 0.85 },
   { path: "/blog", cf: "daily", pr: 0.9 },
   { path: "/privacy", cf: "yearly", pr: 0.3 },
+  { path: "/legal", cf: "yearly", pr: 0.3 },
 ];
 
 // 为一条路径生成 zh/en/ja 三条 sitemap 项 + hreflang alternates

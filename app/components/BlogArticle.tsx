@@ -156,6 +156,9 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
             {ui.back}
           </Link>
           <div className="article-date">{post.date}</div>
+          <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6, lineHeight: 1.7 }}>
+            {({ zh: "更新日期", en: "Updated", ja: "更新日" } as Record<string, string>)[locale]}：{post.date} · {({ zh: "信息来源：各主管机关公募要領（経産省・中小企業庁・厚労省・東京都）；金额·期限以官方最新公告为准", en: "Sources: official guidelines (METI, SME Agency, MHLW, Tokyo Metropolitan Government); figures subject to latest official notices", ja: "出典：各主管機関の公募要領（経産省・中小企業庁・厚労省・東京都）；金額・期限は公式最新公告に準じます" } as Record<string, string>)[locale]}
+          </div>
           <h1 className="article-title">{post.title}</h1>
           {post.excerpt && <p className="article-excerpt">{post.excerpt}</p>}
         </div>
