@@ -45,4 +45,4 @@ print(key)
 
 export ANTHROPIC_API_KEY="$KEY"
 cd "$(dirname "$0")/.."
-node scripts/generate-post.mjs
+if [ $# -gt 0 ]; then "$@"; else node scripts/generate-post.mjs; fi
