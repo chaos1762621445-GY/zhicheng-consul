@@ -57,11 +57,9 @@ export function amountRange(man: number, locale: Locale): string {
   return `${f(r[0])}万〜${f(r[1])}万円`;
 }
 
-/** 详情页 slug → 相关案例 index */
+/** 详情页 slug → 相关案例 index。
+ *  严格按同一制度标识匹配（subsidyKey === slug）；没有同制度案例返回空数组，详情页据此隐藏「同类制度的获批实例」区块。
+ *  不再用「近似制度」填充——把事業再構築/ものづくり案例挂到空调页下会误导读者。 */
 export function relatedCaseIdx(slug: string): number[] {
-  const map: Record<string, CaseMeta["subsidyKey"][]> = {
-    seiryoka: ["monodukuri", "saikochiku"], "ai-it": ["ai-it"], "career-up": ["jizokuka", "saikochiku"], training: ["ai-it", "monodukuri"], aircon: ["saikochiku", "monodukuri"],
-  };
-  const keys = map[slug] ?? [];
-  return CASE_META.map((m, i) => (keys.includes(m.subsidyKey) ? i : -1)).filter((i) => i >= 0).slice(0, 2);
+  return CASE_META.map((m, i) => (m.subsidyKey === slug ? i : -1)).filter((i) => i >= 0).slice(0, 2);
 }

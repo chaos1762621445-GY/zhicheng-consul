@@ -55,7 +55,7 @@ export const detailUI: Record<Locale, {
     sidebarWechat: "企业微信：扫码添加营业部", sidebarPhone: "电话：03-6265-9756",
     otherSubsidies: "其他补助金", viewAll: "查看全部补助金 →",
     bottomTitlePre: "申请", bottomTitleHighlight: "从咨询到领取全程代办",
-    bottomDesc: "行政书士·社会保险劳务士·税理士组成的专业团队，全程中文无障碍。不获批不收费，风险为零。",
+    bottomDesc: "行政书士·社会保险劳务士·税理士组成的专业团队，全程中文无障碍。不获批不收费（成功报酬制，具体以合同约定为准）。",
     bottomCta1: "立即免费咨询", bottomCta2: "查看其他补助金",
     breadcrumbHome: "首页", breadcrumbList: "补助金一览",
   },

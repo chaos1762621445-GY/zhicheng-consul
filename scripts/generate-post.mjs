@@ -11,6 +11,31 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const POSTS_DIR = path.join(__dirname, "../content/posts");
+const FACTS_PATH = path.join(__dirname, "../content/facts/subsidies.json");
+// 制度事实单一真相源（金额/比例/期限只允许从这里取；status 非 verified_* 的制度不给模型数字）
+const FACTS = JSON.parse(fs.readFileSync(FACTS_PATH, "utf-8"));
+function pickFacts(topic) {
+  const t = `${topic.title} ${topic.keywords.join(" ")}`;
+  const hit = FACTS.subsidies.filter((s) => {
+    const names = [s.name_zh, s.name_ja, s.id].join(" ");
+    return /省力化/.test(t) && /省力化/.test(names)
+      || /AI导入|IT导入|数字化|デジタル化/.test(t) && /digital-ai/.test(s.id)
+      || /转正|キャリアアップ|正社员|正社員/.test(t) && /career-up/.test(s.id)
+      || /培训|人材開発|リスキリング|人才开发/.test(t) && /reskilling/.test(s.id)
+      || /業務改善|业务改善|最低工资|最低賃金/.test(t) && /gyomu/.test(s.id)
+      || /持续化|持続化/.test(t) && /jizokuka/.test(s.id)
+      || /空调|空調|ゼロエミ|节能/.test(t) && /aircon/.test(s.id);
+  });
+  return hit;
+}
+function factsBlock(list) {
+  if (!list.length) return { block: "（本主题未匹配到已核验制度事实：正文不得出现任何具体金额/比例/期限，涉及数字一律写「以官方最新公募要领为准」）", ids: [], stale: [] };
+  const ok = list.filter((s) => /^verified_/.test(s.status));
+  const stale = list.filter((s) => !/^verified_/.test(s.status));
+  const lines = ok.map((s) => `- 【${s.name_zh}】${s.fiscal} ${s.round}｜条件：${s.conditions_zh}｜金额：${s.amount_zh}｜补助率：${s.rate_zh}｜日程：${Object.entries(s.schedule).map(([k, v]) => `${k}=${v}`).join("，")}｜官方：${s.official_url}｜核验日：${s.verified_at}`);
+  const staleLines = stale.map((s) => `- 【${s.name_zh}】状态=${s.status}：数字未核验，正文只能写制度名和「以官方要领为准」，不得写金额/比例/期限`);
+  return { block: [...lines, ...staleLines].join("\n"), ids: ok.map((s) => s.id), stale: stale.map((s) => s.id) };
+}
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!ANTHROPIC_API_KEY) {
@@ -171,19 +196,20 @@ function buildStructure(type) {
 结构要求：
 1. 第一段（约120字）直接给结论/最关键的一句话答案，别铺垫（读者是带着焦虑来的，先给定心丸）。
 2. 中间用3-5个H2大节，每节是一个可执行步骤或一个关键要点，步骤要具体到"做什么、找谁、准备什么材料、大概多久、要花多少钱"。
-3. 穿插1个"真实场景举例"（虚构但合理的在日华人企业案例），说明这个问题实际怎么发生、怎么解决的。
+3. 可穿插1个明确标注「示例情景（非真实客户）」的场景，说明这个问题实际怎么发生、怎么解决；不写获批金额或结果。
 4. 结尾H2「核心建议总结」：3-5条一句话可带走的行动建议。`;
   }
   return `【本篇为「终极指南型」内容——用户在了解认知阶段，要系统全面】
 结构要求：
-1. 开头1段（约150字）用「权威数据开场」：第一句就抛一个官方权威数据（厚生劳动省/中小企业厅/经济产业省/总务省统计，如行业缺口人数、市场规模、政府年度预算规模等），用数字+权威机构立刻建立可信度，并顺势论证「所以政府一定会给这个行业发钱」的逻辑，再一句话讲清主题是什么、给谁、能拿多少。
-2. 5-8个H2核心模块，每模块300-400字，覆盖：制度概要、补助金额与补助率、申请对象/资格要件、对象经费范围、申请流程与时间线、常见误区或加分要点等。每个模块至少含1-2个具体数据点。
-3. 金额必须写成读者能「自己代入计算」的实数区间，例如「月15–30万円 / 年180–360万円」「补助率30–50%、最高数千万円」「首年可拿到约XX万円」，让老板一眼算出自己能拿多少。
-4. 正文中段插入一个「真实案例锚定」：用一个具体人物+时间线的虚构但合理案例（如「李女士第6个月同时申请3个补助金，首年拿到约XX万円，覆盖了前半年大部分成本」），带代入感，可信度远超干讲政策。
-5. 适当用条列、表格化描述（用文字排版模拟）让信息易扫读。`;
+1. 开头1段（约150字）直接回答标题问题：这个制度是什么、给谁、解决什么问题。可以引用「已核验制度事实」里的数字，不得为了开场效果引入事实清单之外的统计数字。
+2. 5-8个H2核心模块，每模块300-400字，覆盖：制度概要、补助金额与补助率、申请对象/资格要件、不适用/常见不符合情况、对象经费范围、申请流程与时间线、常见误区。数字只能来自「已核验制度事实」。
+3. 金额按事实清单原样表述；可以按事实清单里的上限和比例做「代入示例」（明确写「例：设备投资 X 万円 × 补助率 Y = Z 万円（上限内）」），示例的输入值要标明是假设。
+4. 可以用一个明确标注为「示例情景（非真实客户）」的场景说明流程怎么走，不写获批金额、不写「某某女士拿到了 XX 万」这类看似真实的结果。
+5. 适当用条列、表格化描述（用文字排版模拟）让信息易扫读。
+6. 结尾前加一节「## 官方依据与核验」：列出本文引用的官方页面链接和核验日期（从事实清单照抄），并写明「制度内容以主管机关最新公募要领为准」。`;
 }
 
-async function generateArticle(topic) {
+async function generateArticle(topic, facts) {
   const type = inferType(topic);
   const structure = buildStructure(type);
   const prompt = `你是一个专业的日本补助金顾问，同时也是精通 SEO 与 GEO（AI搜索引用优化）的内容专家。
@@ -195,13 +221,16 @@ async function generateArticle(topic) {
 ${structure}
 
 通用要求（所有类型都必须满足）：
-1. 字数2500-3000字（中文字符，内容要深度、具体、可操作，绝不空话套话）。
+1. 字数2000-3000字（中文字符），内容具体、可操作，围绕读者真实会问的问题写，不为凑字数铺陈。
 2. 用H2（##）/H3（###）分级标题，标题里自然含目标关键词。
-3. 【数据密度铁律·GEO核心】平均每150-200字就要出现一个可量化指标——具体金额（万円）、补助率（%/分数）、期限（月/日）、件数、通过率、人数等。AI搜索引擎优先引用含明确数字的段落，纯文字段落引用率低3倍。数字必须符合日本补助金真实口径，不确定的数字宁可写"以官方公募要领为准"也绝不编造。
-4. 必须包含「## 常见问题解答（FAQ）」板块，至少6个常见问题，每个用「### Q1：问题内容」格式，答案用「**A：**」开头，每个答案不少于80字且尽量含具体数字。
-5. 语言亲切专业，适合华人老板阅读；多用真实场景举例。
-6. 合规红线：补助金不保证获批，禁用"保証拿到/一定通过/最快N个月到账"等承诺性表述，涉及成败一律加"以主管机关审查结果为准"。
-7. 结尾用「爆款转化钩子」自然收尾（不要写死联系方式/电话/微信号，链接由系统统一处理）：先点破读者的核心痛点（如「怕日文申请太难而错过募集窗口」「自己摸索踩坑反而损失更大」），再给一个低门槛动作引导——用「3分钟免费自测你能拿哪些补助金」这类轻量钩子 +「与其自己钻研，不如花小钱请专业指导避免更大损失」的价值锚，最后一句「欢迎免费咨询」。让读者从痛点→低门槛动作，闭环干净。
+3. 【事实铁律】补助金额、补助率、期限、回次、资格条件只能使用下面「已核验制度事实」中的数值，逐字一致；事实清单没有的数字不写，改写为「以官方最新公募要领为准」。不得引用未在清单内的政府统计数据、通过率、平均金额。
+4. 包含「## 常见问题解答（FAQ）」板块：写读者真实会问的问题，3-6个即可（有几个写几个，不凑数），每个用「### Q1：问题内容」格式，答案用「**A：**」开头，答案要能直接解决问题。
+5. 语言亲切专业，适合华人老板阅读。
+6. 合规红线：补助金不保证获批，禁用"保証拿到/一定通过/最快N个月到账"等承诺性表述，涉及成败一律加"以主管机关审查结果为准"。不写具体收费金额、不写退款承诺。
+7. 结尾自然收尾：点出读者常见顾虑（日文材料、募集窗口、材料准备），给一个低门槛动作「3分钟免费自测你能申请哪些补助金」，最后一句「欢迎免费咨询」。不写电话/微信号，链接由系统统一处理。
+
+已核验制度事实（唯一允许使用的数字来源）：
+${facts.block}
 
 只输出文章正文的Markdown格式，不要包含frontmatter。`;
 
@@ -247,7 +276,10 @@ async function main() {
   const topic = available[Math.floor(Math.random() * available.length)];
   console.log(`可用主题数: ${available.length}，本次生成: ${topic.title}`);
 
-  const rawContent = await generateArticle(topic);
+  const factHits = pickFacts(topic);
+  const facts = factsBlock(factHits);
+  console.log(`匹配制度事实: ${facts.ids.join(",") || "(无)"}${facts.stale.length ? `；未核验制度: ${facts.stale.join(",")}` : ""}`);
+  const rawContent = await generateArticle(topic, facts);
   // 正文占位链接清洗：模型常产出 [免费咨询](联系方式)/[立即预约](预约链接) 这类中文占位链接，
   // 相对链接会被解析成 /blog/联系方式 → 中文 slug 路由抛 500。统一改指 /contact。
   const content = rawContent.replace(
@@ -279,13 +311,17 @@ title: "${yamlSafe(topic.title)}"
 date: "${date}"
 excerpt: "${yamlSafe(excerpt.substring(0, 120))}..."
 keywords: [${topic.keywords.map((k) => `"${yamlSafe(k)}"`).join(", ")}]
+status: "draft"
+facts_used: [${facts.ids.map((k) => `"${k}"`).join(", ")}]
+facts_verified_at: "${facts.ids.length ? factHits.filter((s) => facts.ids.includes(s.id)).map((s) => s.verified_at).sort()[0] : ""}"
+generated_at: "${new Date().toISOString()}"
 ---
 
 `;
 
   const filePath = path.join(POSTS_DIR, `${slug}.md`);
   fs.writeFileSync(filePath, frontmatter + content, "utf-8");
-  console.log(`✅ 文章已保存: ${filePath}`);
+  console.log(`✅ 草稿已保存（status=draft，需 publish-check 通过后置为 published 才会上线）: ${filePath}`);
   console.log(`标题: ${topic.title}`);
   console.log(`日期: ${date}`);
 }

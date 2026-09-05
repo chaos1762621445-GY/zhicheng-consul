@@ -3,6 +3,7 @@ import Footer from "../Footer";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import PageHero from "../PageHero";
+import QuizFrame from "../QuizFrame";
 import Link from "next/link";
 import { localizedHref } from "@/lib/i18n/href";
 const HOME: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホーム" };
@@ -224,11 +225,7 @@ export default function ContactContent({ locale }: { locale: Locale }) {
                 borderRadius: 8, overflow: "hidden",
                 background: "#fff",
               }}>
-                <iframe
-                  src="https://zhicheng-subsidy.surge.sh/?client=official_website"
-                  style={{ width: "100%", height: 660, border: "none", display: "block" }}
-                  title={t.iframeTitle}
-                />
+                <QuizFrame client="official_website" lang={locale === "ja" ? "ja" : undefined} title={t.iframeTitle} />
               </div>
               <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.7, marginTop: 12 }}>
                 {PRIV[locale].pre}<Link href={localizedHref(locale, "/privacy")} style={{ color: "var(--brand)", textDecoration: "underline" }}>{PRIV[locale].link}</Link>{PRIV[locale].post}

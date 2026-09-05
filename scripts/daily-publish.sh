@@ -49,7 +49,13 @@ if ! node scripts/generate-post.mjs 2>&1 | tee -a "$LOG"; then
   echo "❌ 文章生成失败" | tee -a "$LOG"; exit 1
 fi
 
-# 3) 把新生成(及历史遗漏)的中文文章翻译成 en/ja（幂等，只译缺的）
+# 2.5) 发布关卡：机器校验（合规红线 / 事实依据 / 占位 / 官方来源）。通过→published；拦截→pending_review（不上线、不翻译）
+echo ">> 发布关卡 publish-check..." | tee -a "$LOG"
+node scripts/publish-check.mjs 2>&1 | tee -a "$LOG"
+PC=${PIPESTATUS[0]}
+if [ "$PC" = "2" ]; then echo "⚠️ 有草稿被拦截为 pending_review（见上方原因），已通过的照常发布" | tee -a "$LOG"; fi
+
+# 3) 把已发布的中文文章翻译成 en/ja（幂等，只译缺的；草稿不译）
 echo ">> 翻译新文章为 en/ja..." | tee -a "$LOG"
 if ! node scripts/translate-new-posts.mjs 2>&1 | tee -a "$LOG"; then
   echo "⚠️ 部分文章翻译失败，已成功的照常提交，缺失的下次补译（前端会回退中文，不影响上线）" | tee -a "$LOG"
@@ -62,7 +68,7 @@ if git diff --cached --quiet; then
 fi
 ZH_COUNT=$(git diff --cached --name-only | grep -E "content/posts/[^/]+\.md$" | grep -c .)
 TR_COUNT=$(git diff --cached --name-only | grep -E "content/posts/(en|ja)/" | grep -c .)
-git commit -m "chore: 每日自动文章 $(date +%F)（中文${ZH_COUNT}篇 + 译文${TR_COUNT}个）" 2>&1 | tee -a "$LOG"
+git commit -m "chore: 每日自动文章 $(date +%F)（中文${ZH_COUNT}篇 + 译文${TR_COUNT}个；含发布关卡状态）" 2>&1 | tee -a "$LOG"
 
 # 5) 推送(带3次重试)
 PUSHED=0

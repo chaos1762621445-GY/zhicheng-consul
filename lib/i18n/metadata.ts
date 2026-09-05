@@ -36,13 +36,15 @@ interface PageMetaInput {
   title: string;
   description: string;
   keywords?: string[];
+  /** 首页等 title 已自带品牌名时设 true：绕过 layout 的 title.template，避免「xxx | 品牌 | 品牌」双重拼接 */
+  absoluteTitle?: boolean;
 }
 
 /** 为任意本地化页面生成完整 metadata（canonical + 三向 hreflang + og + 语言化 keywords）。 */
-export function buildPageMetadata({ locale, path, title, description, keywords }: PageMetaInput): Metadata {
+export function buildPageMetadata({ locale, path, title, description, keywords, absoluteTitle }: PageMetaInput): Metadata {
   const canonical = canonicalFor(locale, path);
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: keywords ?? DEFAULT_KEYWORDS[locale],
     alternates: {

@@ -80,7 +80,20 @@ async function translateOne(slug, srcMd, lang, destPath) {
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const out = await callClaude(system, srcMd);
-      if (looksValid(out)) { fs.writeFileSync(destPath, out, "utf-8"); return true; }
+      if (looksValid(out)) {
+        // 沿用同一事实版本：从中文源 frontmatter 抄 status / facts_used / facts_verified_at / expert_reviewed
+        const srcFm = srcMd.match(/^---([\s\S]*?)\n---/)?.[1] || "";
+        const carry = ["status", "facts_used", "facts_verified_at", "expert_reviewed"]
+          .map((k) => srcFm.match(new RegExp(`\\n${k}:.*`))?.[0])
+          .filter(Boolean);
+        let finalOut = out;
+        if (carry.length) {
+          const endIdx = finalOut.indexOf("\n---", 3);
+          const head = finalOut.slice(0, endIdx).replace(/\n(status|facts_used|facts_verified_at|expert_reviewed):.*/g, "");
+          finalOut = head + carry.join("") + `\ntranslated_from_zh: "${slug}"` + finalOut.slice(endIdx);
+        }
+        fs.writeFileSync(destPath, finalOut, "utf-8"); return true;
+      }
       last = "frontmatter invalid";
     } catch (e) { last = e.message; }
     if (attempt < 2) await new Promise(r => setTimeout(r, 3000));
@@ -98,6 +111,11 @@ async function main() {
   for (const f of srcFiles) {
     const slug = f.replace(/\.md$/, "");
     if (onlySet && !onlySet.has(slug)) continue;
+    // 发布关卡：draft / pending_review 不翻译（译文必须沿用已通过校验的同一事实版本）
+    const fmRaw = fs.readFileSync(path.join(POSTS_DIR, f), "utf-8");
+    const stMatch = fmRaw.match(/^---[\s\S]*?\n---/)?.[0].match(/\nstatus:\s*"?([\w_]+)"?/);
+    const st = stMatch ? stMatch[1] : "";
+    if (st && st !== "published") { console.log(`· 跳过未发布草稿(${st}): ${slug}`); continue; }
     const needEn = !fs.existsSync(path.join(EN_DIR, f));
     const needJa = !fs.existsSync(path.join(JA_DIR, f));
     if (needEn) jobs.push({ f, slug, lang: "en", dest: path.join(EN_DIR, f) });

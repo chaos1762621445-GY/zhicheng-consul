@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "description": "志成官网制度事实数据源（单一真相源）。正文/FAQ/日历/llms.txt 生成时从这里取数字，不允许脚本或模型自行编数字。",
+    "status_values": ["verified_ai", "verified_expert", "stale", "pending"],
+    "status_note": "verified_ai=AI 已对照官方页面核对（未经持牌专家确认，对客口径需专家确认后升级为 verified_expert）；stale=已过核验有效期或官方页面已变更；pending=待核验。",
+    "review_cycle_days": 45,
+    "updated": "2026-09-05"
+  },
+  "subsidies": [
+    {
+      "id": "seiryoka-ippan",
+      "name_zh": "省力化投资补助金（一般型）",
+      "name_ja": "中小企業省力化投資補助金（一般型）",
+      "fiscal": "2026年度（令和8年度）",
+      "round": "第8回",
+      "region": "全国",
+      "conditions_zh": "中小企业·小规模事业者，导入省力化设备/系统并制定劳动生产性提升计划；第1〜5回採択者、第6/7回申请中者不可申请第8回",
+      "amount_zh": "按员工规模 5人以下750万 / 6〜20人1,500万 / 21〜50人3,000万 / 51〜100人5,000万 / 101人以上8,000万円（大幅涨薪特例上限更高，最高1亿円）",
+      "rate_zh": "1/2（小规模事业者·再生事业者 2/3；大幅涨薪特例适用时中小 2/3）",
+      "schedule": {
+        "open": "2026-08-18",
+        "accept_start": "2026-09-中旬（预定）",
+        "deadline": "2026-10-中旬（预定）",
+        "result": "2027-02-上旬（预定）",
+        "status": "公募中（受付开始待官方确定日期）"
+      },
+      "official_url": "https://shoryokuka.smrj.go.jp/ippan/schedule/",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对官方页面 shoryokuka.smrj.go.jp",
+      "status": "verified_ai"
+    },
+    {
+      "id": "digital-ai",
+      "name_zh": "数字化·AI导入补助金2026（旧 IT导入补助金）",
+      "name_ja": "デジタル化・AI導入補助金2026",
+      "fiscal": "2026年度",
+      "round": "5次締切",
+      "region": "全国",
+      "conditions_zh": "中小企业·小规模事业者，通过已登录的 IT導入支援事業者共同申请，导入官方名录内的软件/工具；需 GビズID プライム + SECURITY ACTION 宣言",
+      "amount_zh": "通常枠 5万〜150万円未満（1プロセス以上）/ 150万〜450万円（4プロセス以上）；インボイス枠、セキュリティ対策推進枠另有上限",
+      "rate_zh": "通常枠 1/2 以内（最低工资近傍事业者 2/3）",
+      "schedule": {
+        "deadline": "2026-09-29 17:00",
+        "result": "2026-11-09（予定）",
+        "implement_until": "2027-04-30",
+        "status": "5次受付中；1〜4次已终；后续视预算有6次"
+      },
+      "official_url": "https://it-shien.smrj.go.jp/schedule/",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对官方日程页 + 中小机构补助金活用ナビ",
+      "status": "verified_ai"
+    },
+    {
+      "id": "career-up-seishain",
+      "name_zh": "キャリアアップ助成金 正社員化コース（转正助成金）",
+      "name_ja": "キャリアアップ助成金（正社員化コース）",
+      "fiscal": "令和8年度",
+      "round": "随时（要件满足原则支给）",
+      "region": "全国",
+      "conditions_zh": "雇用保险适用事业所；就业规则明记正社员转换制度；有期/无期雇用 6 个月以上员工转正后继续雇用 6 个月且工资提升 3% 以上",
+      "amount_zh": "中小企业：重点支援対象者 有期→正规 80万円/人（40万×2期）、無期→正规 40万円；重点対象以外 40万/20万円；情報公表加算 20万円/事业所（大企业15万，1事业所1回，令和8年4月8日〜）",
+      "rate_zh": "定额支给",
+      "schedule": { "deadline": "转正后6个月支给申请（申请期2个月）", "status": "常年受理" },
+      "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/career-up_00001.html",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对厚労省页面 + 令和8年度案内",
+      "status": "verified_ai"
+    },
+    {
+      "id": "jinzai-reskilling",
+      "name_zh": "人材開発支援助成金 事業展開等リスキリング支援コース（员工培训助成金）",
+      "name_ja": "人材開発支援助成金（事業展開等リスキリング支援コース）",
+      "fiscal": "令和8年度",
+      "round": "随时（训练开始前提交计划）",
+      "region": "全国",
+      "conditions_zh": "雇用保险适用事业所；伴随新事业展开或 DX/GX 的训练（10小时以上）；训练开始前 6 个月〜1 个月提交计划届",
+      "amount_zh": "经费助成 中小 75%（大企业 60%）；賃金助成 中小 960円/小时；年度事业所上限 1亿円；令和8年度新设设备投资加算（导入费 50%，1人15万/10人以上150万円）",
+      "rate_zh": "经费 75%（中小）",
+      "schedule": { "deadline": "训练开始前1个月提交计划", "status": "常年受理（时限措置）" },
+      "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000082805_00006.html",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对厚労省 R8 リーフレット",
+      "status": "verified_ai"
+    },
+    {
+      "id": "gyomu-kaizen",
+      "name_zh": "業務改善助成金",
+      "name_ja": "業務改善助成金",
+      "fiscal": "令和8年度",
+      "round": "令和8年度受付",
+      "region": "全国（申请到各都道府県劳动局）",
+      "conditions_zh": "中小企业·小规模事业者；事业场内最低賃金低于令和8年度地域別最低賃金；引上 50 円以上并进行生产性提升设备投资；对象劳动者=雇用保险加入者且雇入 6 个月以上",
+      "amount_zh": "50円/70円/90円 三コース；上限按引上人数：最高 600万円（90円コース·10人以上·特例事业者）；事业主年度合计上限 600万円",
+      "rate_zh": "事业场内最低賃金 1,050円未满 4/5、以上 3/4",
+      "schedule": {
+        "accept_start": "2026-09-01",
+        "deadline": "地域別最低賃金発効日前日 或 2026-11-30 二者早者",
+        "status": "受付中（窗口极短）"
+      },
+      "official_url": "https://www.mhlw.go.jp/content/11200000/001693416.pdf",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对厚労省令和8年度リーフレット",
+      "status": "verified_ai"
+    },
+    {
+      "id": "jizokuka",
+      "name_zh": "小規模事業者持続化補助金（一般型·通常枠）",
+      "name_ja": "小規模事業者持続化補助金",
+      "fiscal": "2026年度",
+      "round": "第20回",
+      "region": "全国",
+      "conditions_zh": "小规模事业者（商业·服务业 5 人以下 / 制造业等 20 人以下）；需商工会/商工会议所发行事業支援計画書（様式4）",
+      "amount_zh": "通常枠上限 50万円；インボイス特例 +50万；賃上げ特例 +150万（叠加最大 250万円）",
+      "rate_zh": "2/3（赤字事业者賃上げ特例 3/4）",
+      "schedule": {
+        "accept_start": "2026-11-05",
+        "form4_deadline": "2026-12-04",
+        "deadline": "2026-12-15 17:00",
+        "result": "2027-03頃（予定）",
+        "status": "第20回受付日程已公布（受付未开始）"
+      },
+      "official_url": "https://official.jizokukanb.com/shinsei",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对官方申请页",
+      "status": "verified_ai"
+    },
+    {
+      "id": "tokyo-aircon",
+      "name_zh": "东京都 高效空调等节能设备补助（ゼロエミッション系）",
+      "name_ja": "東京都 省エネ設備導入補助（クール・ネット東京）",
+      "fiscal": "令和8年度",
+      "round": "按公募窗口",
+      "region": "東京都",
+      "conditions_zh": "都内中小企业等；导入高效空调/LED/冷冻冷藏等指定设备；各回次窗口短",
+      "amount_zh": "以官方要领为准（网站现行口径：最高 4,500万円、助成率 3/4）",
+      "rate_zh": "3/4（现行口径，需专家核对当年度要领）",
+      "schedule": { "deadline": "以クール・ネット東京官网/jGrants 实时为准", "status": "pending" },
+      "official_url": "https://www.tokyo-co2down.jp/",
+      "verified_at": "",
+      "verified_by": "",
+      "status": "pending"
+    }
+  ]
+}

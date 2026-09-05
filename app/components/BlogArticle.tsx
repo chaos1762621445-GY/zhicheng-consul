@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import NavClient from "./NavClient";
 import { PILLAR_LINKS } from "@/lib/pillars/links";
+import { inferSubsidySlugs, SUBSIDY_LINK_LABEL } from "@/lib/subsidies/post-links";
 import Footer from "./Footer";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { localizedHref } from "@/lib/i18n/href";
@@ -104,9 +105,16 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
   const contentHtml = processed.toString();
 
   const allPosts = await getAllPostsLocalized(locale);
+  // 制度关联：按标题/关键词确定性命中制度标识（不只靠 keywords 交集）
+  const postSubsidies = inferSubsidySlugs(post.title, post.keywords || []);
   const related = allPosts
     .filter((p) => p.slug !== slug)
-    .map((p) => ({ p, score: (p.keywords || []).filter((k) => (post.keywords || []).includes(k)).length }))
+    .map((p) => {
+      const ps = inferSubsidySlugs(p.title, p.keywords || []);
+      const sameSubsidy = ps.filter((s) => postSubsidies.includes(s)).length;
+      const kw = (p.keywords || []).filter((k) => (post.keywords || []).includes(k)).length;
+      return { p, score: sameSubsidy * 10 + kw };
+    })
     .sort((a, b) => b.score - a.score || (a.p.date < b.p.date ? 1 : -1))
     .slice(0, 3)
     .map((s) => s.p);
@@ -194,6 +202,14 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
         )}
 
         <div style={{ margin: "0 0 64px", maxWidth: 760 }}>
+          {postSubsidies.length > 0 && (
+            <div className="pl-related" style={{ marginBottom: 16 }}>
+              <div className="pl-toc-title">{SUBSIDY_LINK_LABEL[locale].title}</div>
+              {postSubsidies.map((s) => (
+                <Link key={s} href={L(`/subsidies/${s}`)} prefetch={false} className="pl-toc-link">{SUBSIDY_LINK_LABEL[locale].names[s]}</Link>
+              ))}
+            </div>
+          )}
           <div className="pl-related">
             <div className="pl-toc-title">{PILLAR_LINKS[locale].title}</div>
             {PILLAR_LINKS[locale].items.map((p) => (

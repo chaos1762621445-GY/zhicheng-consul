@@ -230,6 +230,7 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
               </ol>
             </section>
 
+            {relCases.length > 0 && (
             <section>
               <H2 label={x.casesLabel}>{x.casesHeading}</H2>
               <div className="home-cases home-cases-2" style={{ marginBottom: 16 }}>
@@ -247,6 +248,7 @@ export default function SubsidyDetail({ locale, slug }: { locale: Locale; slug: 
               </div>
               <Link href={L("/cases")} className="pl-link">{x.casesAll}</Link>
             </section>
+            )}
 
             <section>
               <H2 label={ui.faqLabel}>{ui.faqHeadingPre}{data.name}{ui.faqHeadingPost}</H2>
