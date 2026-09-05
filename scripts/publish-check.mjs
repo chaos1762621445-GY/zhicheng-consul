@@ -44,7 +44,10 @@ function check(file) {
   for (const re of FORBIDDEN) if (re.test(content) || re.test(String(data.title))) notes.push(`合规红线命中: ${re}`);
   for (const re of PLACEHOLDER) if (re.test(content)) notes.push(`占位内容未清洗: ${re}`);
   // 中文正文里混入整句日文（制度名等日文名词允许，句子级助词/句尾不允许）
-  const jaSentences = content.split("\n").filter((l) => /(?:だった|である|ます。|です。|ました。|ください。|でしょう|場合、|ことが|ことを|については)/.test(l));
+  const isJaNative = data.lang === "ja" || file.startsWith("ja/");
+  const zhInJa = isJaNative ? content.split("\n").filter((l) => /[们这那您吗呢啊吧的了]/.test(l) && !/[\u3040-\u30ff]/.test(l) && l.trim().length > 6) : [];
+  if (zhInJa.length) notes.push(`日文正文混入中文句子 ${zhInJa.length} 行（如：${zhInJa[0].trim().slice(0, 40)}）`);
+  const jaSentences = isJaNative ? [] : content.split("\n").filter((l) => /(?:だった|である|ます。|です。|ました。|ください。|でしょう|場合、|ことが|ことを|については)/.test(l));
   if (jaSentences.length) notes.push(`中文正文混入日文句子 ${jaSentences.length} 行（如：${jaSentences[0].trim().slice(0, 40)}）`);
   const used = Array.isArray(data.facts_used) ? data.facts_used : [];
   if (SUBSIDY_HINT.test(String(data.title)) && used.length === 0) notes.push("标题涉及制度但 facts_used 为空：缺事实依据");
@@ -61,8 +64,19 @@ function check(file) {
   if (used.length > 0) {
     const factText = used.map((id) => JSON.stringify(FACTS.subsidies.find((s) => s.id === id) || {})).join(" ");
     const nums = factualLines.match(/\d[\d,\.]*\s*(?:万円|億円)|\d+\/\d+|\d+(?:\.\d+)?\s*[%％]/g) || [];
-    const norm = (x) => x.replace(/[\s,，]/g, "").replace("％", "%");
-    const bad = [...new Set(nums.map(norm))].filter((n) => !norm(factText).includes(n.replace(/%$/, "")) && !/^\d+\/\d+$/.test(n) || (/^\d+\/\d+$/.test(n) && !factText.includes(n)));
+    // 归一：去空格/千分位，全角%，亿↔億，「万円」「万日元」「万」等价，「1億円」=「10000万円」
+    const norm = (x) => {
+      let v = String(x).replace(/[\s,，]/g, "").replace("％", "%").replace(/亿/g, "億").replace(/万日元|万元/g, "万円").replace(/億日元/g, "億円");
+      const m = v.match(/^(\d+(?:\.\d+)?)億円?$/);
+      if (m) v = String(Math.round(parseFloat(m[1]) * 10000)) + "万円";
+      return v.replace(/万$/, "万円");
+    };
+    const factNorm = norm(factText).replace(/(\d+(?:\.\d+)?)億/g, (_, n) => String(Math.round(parseFloat(n) * 10000)) + "万");
+    const bad = [...new Set(nums.map(norm))].filter((n) => {
+      if (/^\d+\/\d+$/.test(n)) return !factText.includes(n);
+      const core = n.replace(/%$/, "").replace(/円$/, "");
+      return !factNorm.includes(core);
+    });
     if (bad.length) notes.push(`正文数字不在事实清单内 ${bad.length} 处（如 ${bad.slice(0, 4).join(" / ")}）`);
   }
   const now = new Date();
@@ -72,7 +86,7 @@ function check(file) {
     if (!/^verified_/.test(f.status)) notes.push(`制度 ${id} 状态=${f.status} 未核验`);
     if (f.verified_at && daysBetween(new Date(f.verified_at), now) > CYCLE) notes.push(`制度 ${id} 核验已超 ${CYCLE} 天（${f.verified_at}）`);
   }
-  const hasSource = /官方依据与核验|https?:\/\/(www\.)?(mhlw\.go\.jp|smrj\.go\.jp|meti\.go\.jp|jizokukanb\.com|it-shien\.smrj\.go\.jp|shoryokuka\.smrj\.go\.jp|tokyo-co2down\.jp)/.test(content);
+  const hasSource = /官方依据与核验|公式情報・確認日|https?:\/\/(www\.)?(it-shien\.smrj\.go\.jp|jizokukanb\.com|meti\.go\.jp|mhlw\.go\.jp|official\.jizokukanb\.com|shoryokuka\.smrj\.go\.jp|smrj\.go\.jp|tokyo-co2down\.jp)/.test(content);
   if (used.length > 0 && !hasSource) notes.push("正文缺官方依据链接/核验节");
   return { ok: notes.length === 0, notes, data, content, raw };
 }
@@ -85,7 +99,11 @@ function rewriteStatus(file, raw, data, status, extra) {
   fs.writeFileSync(path.join(POSTS_DIR, file), out, "utf-8");
 }
 
-const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
+// 中文草稿在 posts/，日文原创草稿在 posts/ja/（native: true）；译文由翻译脚本沿用状态，不在此处审
+const files = [
+  ...fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md")),
+  ...(fs.existsSync(path.join(POSTS_DIR, "ja")) ? fs.readdirSync(path.join(POSTS_DIR, "ja")).filter((f) => f.endsWith(".md")).map((f) => "ja/" + f) : []),
+];
 let pub = 0, hold = 0, legacy = 0;
 for (const f of files) {
   const r = check(f);

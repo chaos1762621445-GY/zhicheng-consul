@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import RootShell from "../components/RootShell";
+import ZhSwitchBar from "../components/ZhSwitchBar";
 
 const SITE_URL = "https://shisei-consult.jp";
 
@@ -30,5 +31,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 export default function EnRootLayout({ children }: { children: React.ReactNode }) {
-  return <RootShell locale="en">{children}</RootShell>;
+  return (
+    <RootShell locale="en">
+      <ZhSwitchBar />
+      {children}
+    </RootShell>
+  );
 }

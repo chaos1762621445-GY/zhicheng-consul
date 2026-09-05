@@ -64,5 +64,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (jaSlugs.has(p.slug)) postPages.push({ url: `${SITE_URL}/ja/blog/${p.slug}`, lastModified: lm, changeFrequency: "monthly", priority: 0.6, alternates: { languages } });
   }
 
+  // 日文原创文章（无中文源）：单独进 sitemap，hreflang 只有 ja
+  const zhSlugs = new Set(zhPosts.map((p) => p.slug));
+  for (const p of jaPosts) {
+    if (zhSlugs.has(p.slug)) continue;
+    const lm = p.date ? new Date(p.date) : now;
+    const url = `${SITE_URL}/ja/blog/${p.slug}`;
+    postPages.push({ url, lastModified: lm, changeFrequency: "monthly", priority: 0.7, alternates: { languages: { ja: url, "x-default": url } } });
+  }
+
   return [...staticPages, ...subsidyPages, ...postPages];
 }

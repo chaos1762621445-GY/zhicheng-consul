@@ -2179,3 +2179,9 @@ html, body { overflow-x: clip; }
 
 /* contact：手机端表单优先 */
 @media (max-width: 900px) { .grid-contact { display: flex !important; flex-direction: column; } .contact-quiz { order: -1; } .contact-main { padding-top: 24px !important; } }
+
+/* 英文页顶部中文切换条（品牌 teal 软底 + 金 CTA） */
+.zc-zhbar { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; padding: 8px 16px; background: #e7f1f1; color: #1a5c5a; font-size: 14px; line-height: 1.4; border-bottom: 1px solid rgba(26,92,90,.12); position: relative; z-index: 60; }
+.zc-zhbar-link { color: #1a5c5a; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.zc-zhbar-cta { background: #c4a23a; color: #1d1d1f; font-weight: 700; padding: 4px 14px; border-radius: 999px; text-decoration: none; font-size: 13px; }
+@media (max-width: 480px) { .zc-zhbar { font-size: 13px; gap: 8px 12px; } .zc-zhbar > span { flex-basis: 100%; text-align: center; } }

@@ -205,15 +205,42 @@ const TOPIC_POOL = [
   { title: "补助金采择后计划变更怎么申请？设备型号·金额变动的处理", keywords: ["补助金计划变更", "計画変更承認", "采择后变更"] },
 ];
 
+// ===== 日文原创话题池（2026-09，依据 GSC 3个月数据：这些词已有展示但排名 6〜96 位，日文页仅 345 展示）=====
+// 直接面向日本国内搜索的个人事业主/中小企业主，非翻译。数字同样只能来自 content/facts。
+const TOPIC_POOL_JA = [
+  { title: "個人事業主が使える補助金・助成金まとめ【2026年度】対象・上限額・申請時期", keywords: ["個人事業主 補助金", "個人事業主 助成金", "補助金 コンサル 個人事業主"] },
+  { title: "補助金コンサルの選び方と手数料の相場：成功報酬・着手金・適正価格の見方", keywords: ["補助金 コンサル", "補助金 申請代行 手数料", "補助金 コンサル 東京"] },
+  { title: "IT化補助金（IT導入補助金）2026年度：対象ツール・補助率・申請の流れ", keywords: ["it化補助金", "IT導入補助金 2026", "デジタル化 AI導入補助金"] },
+  { title: "ものづくり補助金は個人事業主でも申請できる？要件と採択のポイント", keywords: ["ものづくり補助金 個人事業主", "monozukuri subsidy", "ものづくり補助金 コンサルティング"] },
+  { title: "AI開発・AI導入に使える補助金2026：デジタル化・AI導入補助金と省力化投資補助金の違い", keywords: ["ai開発補助金", "AI導入補助金", "デジタル化 ai導入補助金 相場"] },
+  { title: "キャリアアップ助成金（正社員化コース）2026年度：1人あたり支給額と情報公表加算の要件", keywords: ["キャリアアップ助成金", "正社員化コース", "キャリアアップ助成金 2026"] },
+  { title: "補助対象経費とは？認められる費用・認められない費用を制度別に整理", keywords: ["補助対象経費とは", "補助対象経費", "補助金 経費 対象外"] },
+  { title: "国の補助金と自治体の補助金の違い：併用できる？どちらを先に申請すべき？", keywords: ["国の補助金", "自治体 補助金 併用", "補助金 併用"] },
+  { title: "gBizIDプライムの取得方法と所要日数：補助金申請の前に必ずやること", keywords: ["gbizid", "gBizIDプライム 取得", "補助金 電子申請"] },
+  { title: "省力化投資補助金（一般型）第8回：対象設備・上限額・申請スケジュール", keywords: ["省力化", "省力化投資補助金 一般型", "省力化補助金 第8回"] },
+  { title: "スタートアップ・創業1年目が申請できる補助金：創業期に使える制度と時期", keywords: ["startup subsidies in japan", "創業 補助金", "創業1年目 補助金"] },
+  { title: "神奈川県・横浜市で新事業を始める際の補助金相談の流れ", keywords: ["神奈川 新事業補助金 相談 流れ", "横浜市 補助金", "神奈川県 補助金 相談"] },
+  { title: "補助金はいつ入る？採択から入金までのスケジュールと資金繰りの注意点", keywords: ["補助金 いつ入る", "補助金 入金 時期", "補助金 資金繰り"] },
+  { title: "業務改善助成金 令和8年度：50円・70円・90円コースの選び方と上限額", keywords: ["業務改善助成金", "業務改善助成金 令和8年度", "最低賃金 引上げ 助成金"] },
+  { title: "小規模事業者持続化補助金 第20回：受付期間・様式4の準備・採択発表時期", keywords: ["持続化補助金 第20回", "小規模事業者持続化補助金 2026", "様式4"] },
+  { title: "東京都 省エネ設備導入助成（ゼロエミッション）第4回：空調更新の助成率と上限額", keywords: ["東京都 省エネ 助成金", "ゼロエミッション 助成金", "空調 補助金 東京"] },
+  { title: "外国人経営者・外資系中小企業も補助金は申請できる？在留資格と要件の整理", keywords: ["外国人 経営者 補助金", "外国人 会社 補助金", "経営管理ビザ 補助金"] },
+  { title: "中国語対応の補助金コンサルを探す前に知っておきたい3つのこと", keywords: ["補助金 コンサル 中国語", "中国語 対応 補助金", "在日中国人 経営者 補助金"] },
+];
+
 // 读取所有已有文章的 frontmatter title（用于按标题去重）
+const LANG_ARG = process.argv.indexOf("--lang");
+const LANG = LANG_ARG > -1 ? process.argv[LANG_ARG + 1] : "zh"; // zh | ja
+const OUT_DIR = LANG === "ja" ? path.join(POSTS_DIR, "ja") : POSTS_DIR;
+
 async function getExistingTitles() {
-  if (!fs.existsSync(POSTS_DIR)) {
-    fs.mkdirSync(POSTS_DIR, { recursive: true });
+  if (!fs.existsSync(OUT_DIR)) {
+    fs.mkdirSync(OUT_DIR, { recursive: true });
     return [];
   }
   const titles = [];
-  for (const f of fs.readdirSync(POSTS_DIR).filter((x) => x.endsWith(".md"))) {
-    const raw = fs.readFileSync(path.join(POSTS_DIR, f), "utf-8");
+  for (const f of fs.readdirSync(OUT_DIR).filter((x) => x.endsWith(".md"))) {
+    const raw = fs.readFileSync(path.join(OUT_DIR, f), "utf-8");
     const m = raw.match(/^---\s*\n([\s\S]*?)\n---/);
     const tm = m && m[1].match(/^title:\s*"?(.*?)"?\s*$/m);
     if (tm) titles.push(tm[1].trim());
@@ -263,7 +290,35 @@ function buildStructure(type) {
 6. 结尾前加一节「## 官方依据与核验」：列出本文引用的官方页面链接和核验日期（从事实清单照抄），并写明「制度内容以主管机关最新公募要领为准」。`;
 }
 
+function buildPromptJa(topic, facts) {
+  return `あなたは日本の中小企業向け補助金・助成金の専門コンサルタントであり、SEO/GEO（AI検索での引用最適化）にも精通したライターです。
+以下のテーマで、日本国内の個人事業主・中小企業経営者向けの日本語記事を書いてください（翻訳ではなく、日本語で最初から書くこと）。
+
+テーマ：${topic.title}
+狙うキーワード：${topic.keywords.join("、")}
+
+構成：
+1. 冒頭1段落（150字程度）でタイトルの問いに直接答える。結論先行。
+2. H2（##）5〜7本、各300〜400字。制度概要／対象者／補助上限額と補助率／対象経費／申請の流れとスケジュール／よくある不採択・対象外のケース／注意点、のうちテーマに必要なものを選ぶ。
+3. 「## よくある質問」を設け、読者が実際に検索する質問を3〜6問（### Q1：… の形式、回答は **A：** で始める）。数を埋めるための質問は書かない。
+4. 末尾の前に「## 公式情報・確認日」を置き、下の事実リストにある公式URLと確認日をそのまま記載し、「最新の公募要領をご確認ください」と明記する。
+5. 最後に、多言語（中国語）対応で在日外国人経営者の申請も支援していることを一文だけ自然に添える。連絡先・電話番号・料金は書かない。
+
+厳守事項：
+- 【事実の鉄則】補助上限額・補助率・締切・回次・要件などの数値は、下の「確認済み制度事実」にある値のみ、文字どおりに使う。リストにない数字は書かず「最新の公募要領で確認」と書く。採択率・平均額など統計値の創作禁止。**リストの数値を足し引きして新しい金額（合計額・差額・月割りなど）を作ることも禁止**（例：上乗せ額と通常枠を合算した「合計○万円」は書かない。合算後の上限がリストにある場合のみその値を使う）。
+- 事例を書く場合は「例（架空の設定）」と明記し、採択金額や結果は書かない。
+- 「必ず採択」「確実に」「最短N日で入金」などの断定・保証表現は禁止。採否は審査機関の判断である旨を明記。
+- 文体は「です・ます」調、専門用語は初出で簡潔に説明。
+- 文字数：2,000〜3,000字。
+
+確認済み制度事実（使用できる唯一の数値ソース）：
+${facts.block}
+
+Markdown本文のみを出力し、frontmatterは含めないこと。`;
+}
+
 async function generateArticle(topic, facts) {
+  if (LANG === "ja") return callModel(buildPromptJa(topic, facts));
   const type = inferType(topic);
   const structure = buildStructure(type);
   const prompt = `你是一个专业的日本补助金顾问，同时也是精通 SEO 与 GEO（AI搜索引用优化）的内容专家。
@@ -287,7 +342,10 @@ ${structure}
 ${facts.block}
 
 只输出文章正文的Markdown格式，不要包含frontmatter。`;
+  return callModel(prompt);
+}
 
+async function callModel(prompt) {
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -320,7 +378,8 @@ async function main() {
   console.log(`现有文章数: ${existingTitles.length}`);
 
   // 按标题精确去重：只挑标题没用过的主题
-  const available = TOPIC_POOL.filter((t) => !existingTitles.includes(t.title));
+  const pool = LANG === "ja" ? TOPIC_POOL_JA : TOPIC_POOL;
+  const available = pool.filter((t) => !existingTitles.includes(t.title));
 
   if (available.length === 0) {
     console.log("⚠️ 所有预设主题都已生成，请扩充 TOPIC_POOL 后再运行。本次不生成，避免重复内容。");
@@ -328,7 +387,7 @@ async function main() {
   }
 
   const topic = available[Math.floor(Math.random() * available.length)];
-  console.log(`可用主题数: ${available.length}，本次生成: ${topic.title}`);
+  console.log(`[${LANG}] 可用主题数: ${available.length}，本次生成: ${topic.title}`);
 
   const factHits = pickFacts(topic);
   // 无事实命中时：提示词禁止一切具体百分比/金额，只允许引导查官方公募要領
@@ -367,6 +426,7 @@ date: "${date}"
 excerpt: "${yamlSafe(excerpt.substring(0, 120))}..."
 keywords: [${topic.keywords.map((k) => `"${yamlSafe(k)}"`).join(", ")}]
 status: "draft"
+lang: "${LANG}"${LANG === "ja" ? "\nnative: true" : ""}
 facts_used: [${facts.ids.map((k) => `"${k}"`).join(", ")}]
 facts_verified_at: "${facts.ids.length ? factHits.filter((s) => facts.ids.includes(s.id)).map((s) => s.verified_at).sort()[0] : ""}"
 generated_at: "${new Date().toISOString()}"
@@ -374,7 +434,7 @@ generated_at: "${new Date().toISOString()}"
 
 `;
 
-  const filePath = path.join(POSTS_DIR, `${slug}.md`);
+  const filePath = path.join(OUT_DIR, `${slug}.md`);
   fs.writeFileSync(filePath, frontmatter + content, "utf-8");
   console.log(`✅ 草稿已保存（status=draft，需 publish-check 通过后置为 published 才会上线）: ${filePath}`);
   console.log(`标题: ${topic.title}`);

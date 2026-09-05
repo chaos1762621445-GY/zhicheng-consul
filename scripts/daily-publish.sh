@@ -43,9 +43,16 @@ print(key)
 if [ -z "$KEY" ]; then echo "❌ 无法获取API key" | tee -a "$LOG"; exit 1; fi
 export ANTHROPIC_API_KEY="$KEY"
 
-# 2) 生成文章
-echo ">> 生成文章..." | tee -a "$LOG"
-if ! node scripts/generate-post.mjs 2>&1 | tee -a "$LOG"; then
+# 2) 生成文章。节奏（2026-09-05 依据 GSC 3个月数据调整）：
+#    周一/三/五 = 中文 1 篇；周二/四 = 日文原创 1 篇（针对 GSC 已有展示但排名 20〜90 的日文长尾词）；周末不发。
+#    可用 LANG_OVERRIDE=zh|ja 强制。
+DOW=$(date +%u)
+if [ -n "${LANG_OVERRIDE:-}" ]; then GEN_LANG="$LANG_OVERRIDE"
+elif [ "$DOW" = "2" ] || [ "$DOW" = "4" ]; then GEN_LANG="ja"
+elif [ "$DOW" = "6" ] || [ "$DOW" = "7" ]; then echo "ℹ️ 周末不发文" | tee -a "$LOG"; exit 0
+else GEN_LANG="zh"; fi
+echo ">> 生成文章（lang=$GEN_LANG）..." | tee -a "$LOG"
+if ! node scripts/generate-post.mjs --lang "$GEN_LANG" 2>&1 | tee -a "$LOG"; then
   echo "❌ 文章生成失败" | tee -a "$LOG"; exit 1
 fi
 
@@ -55,9 +62,11 @@ node scripts/publish-check.mjs 2>&1 | tee -a "$LOG"
 PC=${PIPESTATUS[0]}
 if [ "$PC" = "2" ]; then echo "⚠️ 有草稿被拦截为 pending_review（见上方原因），已通过的照常发布" | tee -a "$LOG"; fi
 
-# 3) 把已发布的中文文章翻译成 en/ja（幂等，只译缺的；草稿不译）
-echo ">> 翻译新文章为 en/ja..." | tee -a "$LOG"
-if ! node scripts/translate-new-posts.mjs 2>&1 | tee -a "$LOG"; then
+# 3) 把已发布的中文文章翻译成 ja（幂等，只译缺的；草稿不译）。
+#    2026-09-05 起停止新增 en 译文：GSC 显示英文页 2,922 展示中 1,966 来自美国、0 点击，无客户价值，省 API 费。
+#    历史 en 译文保留在线。需要恢复时去掉 --skip-en。
+echo ">> 翻译新文章为 ja（en 已停）..." | tee -a "$LOG"
+if ! node scripts/translate-new-posts.mjs --skip-en 2>&1 | tee -a "$LOG"; then
   echo "⚠️ 部分文章翻译失败，已成功的照常提交，缺失的下次补译（前端会回退中文，不影响上线）" | tee -a "$LOG"
 fi
 
@@ -67,8 +76,9 @@ if git diff --cached --quiet; then
   echo "ℹ️ 无新文章需提交" | tee -a "$LOG"; exit 0
 fi
 ZH_COUNT=$(git diff --cached --name-only | grep -E "content/posts/[^/]+\.md$" | grep -c .)
+JA_NATIVE=$(git diff --cached --name-only | grep -E "content/posts/ja/" | xargs -r grep -l "^native: true" 2>/dev/null | grep -c .)
 TR_COUNT=$(git diff --cached --name-only | grep -E "content/posts/(en|ja)/" | grep -c .)
-git commit -m "chore: 每日自动文章 $(date +%F)（中文${ZH_COUNT}篇 + 译文${TR_COUNT}个；含发布关卡状态）" 2>&1 | tee -a "$LOG"
+git commit -m "chore: 自动文章 $(date +%F)（中文${ZH_COUNT} / 日文原创${JA_NATIVE} / 译文${TR_COUNT}；lang=${GEN_LANG}）" 2>&1 | tee -a "$LOG"
 
 # 5) 推送(带3次重试)
 PUSHED=0

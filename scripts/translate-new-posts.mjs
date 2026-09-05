@@ -116,7 +116,8 @@ async function main() {
     const stMatch = fmRaw.match(/^---[\s\S]*?\n---/)?.[0].match(/\nstatus:\s*"?([\w_]+)"?/);
     const st = stMatch ? stMatch[1] : "";
     if (st && st !== "published") { console.log(`· 跳过未发布草稿(${st}): ${slug}`); continue; }
-    const needEn = !fs.existsSync(path.join(EN_DIR, f));
+    const SKIP_EN = process.argv.includes("--skip-en");
+    const needEn = !SKIP_EN && !fs.existsSync(path.join(EN_DIR, f));
     const needJa = !fs.existsSync(path.join(JA_DIR, f));
     if (needEn) jobs.push({ f, slug, lang: "en", dest: path.join(EN_DIR, f) });
     if (needJa) jobs.push({ f, slug, lang: "ja", dest: path.join(JA_DIR, f) });

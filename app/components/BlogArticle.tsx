@@ -59,19 +59,22 @@ export async function blogMetadataFor(locale: Locale, slug: string) {
     ? ["Japan subsidy for Chinese businesses", "Japan government subsidy support", "hojokin application English", "subsidy consulting Japan"]
     : ["在日中国人 補助金", "日本 補助金 申請サポート", "外国人経営者 補助金", "補助金 中国語サポート"];
   const mergedKeywords = Array.from(new Set([...(post.keywords || []), ...IDENTITY_KEYWORDS]));
+  // hreflang 只指向真实存在的语言版本（未翻译/日文原创文章不能指向 404）
+  const [zhP, enP, jaP] = await Promise.all([
+    locale === "zh" ? post : getPostLocalized(slug, "zh"),
+    locale === "en" ? post : getPostLocalized(slug, "en"),
+    locale === "ja" ? post : getPostLocalized(slug, "ja"),
+  ]);
+  const languages: Record<string, string> = {};
+  if (zhP) languages["zh-Hans"] = `${SITE_URL}${path}`;
+  if (enP) languages.en = `${SITE_URL}/en${path}`;
+  if (jaP) languages.ja = `${SITE_URL}/ja${path}`;
+  languages["x-default"] = zhP ? `${SITE_URL}${path}` : `${SITE_URL}${canonical}`;
   return {
     title: post.title,
     description: post.excerpt,
     keywords: mergedKeywords,
-    alternates: {
-      canonical,
-      languages: {
-        "zh-Hans": `${SITE_URL}${path}`,
-        en: `${SITE_URL}/en${path}`,
-        ja: `${SITE_URL}/ja${path}`,
-        "x-default": `${SITE_URL}${path}`,
-      },
-    },
+    alternates: { canonical, languages },
     openGraph: {
       type: "article" as const,
       title: post.title,
