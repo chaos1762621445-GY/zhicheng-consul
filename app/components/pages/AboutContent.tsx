@@ -38,7 +38,7 @@ const T: Record<Locale, {
     storyAttr: "—— 创始人 李 忠良",
     storyP1: "2022年，李忠良与几位志同道合的专业人士共同创立了志成コンサル。他们有一个共同的信念：在日华人企业主所面临的，不是能力不足，而是信息不对称和语言障碍所造成的机会不平等。",
     storyP2: "创业初期，团队走访了大阪、东京、名古屋的数十家华人经营的企业。他们发现，许多企业主甚至不知道自己符合申请条件，更不知道这些补助金是真实存在、可以申请的。语言不通、信息缺失，让他们在不知不觉中与本该属于自己的资金擦肩而过。",
-    storyP3: "如今，志成コンサル已累计服务 3,000 余家在日华人企业，协助获批补助金总额超过 8.5 亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。",
+    storyP3: "如今，志成コンサル已累计协助在日华人企业获批补助金·助成金 3,000 余件，获批总额超过 8.5 亿日元。每一个成功案例背后，都是一个华人家庭的创业梦想得到了应有的支持。我们会继续走下去，直到语言不再是任何在日华人获取发展机会的阻碍。",
     companyHeading: "公司信息",
     timelineHeading: "发展历程",
     timeline: [
@@ -50,7 +50,7 @@ const T: Record<Locale, {
     ctaDesc: "免费咨询资格诊断，专业顾问当日回复，助您把握每一次政策红利。",
     ctaPrimary: "申请免费咨询", ctaSecondary: "了解代理合作",
     stats: [
-      { num: "3,000+", label: "累计服务企业" },
+      { num: "3,000+", label: "累计获批案件" },
       { num: "¥8.5億", label: "协助获批总额" },
       { num: "92%", label: "申请成功率" },
       { num: "4类", label: "国家认定资质" },
@@ -87,7 +87,7 @@ const T: Record<Locale, {
     storyAttr: "— Founder, Li Zhongliang",
     storyP1: "In 2022, Li Zhongliang founded Shisei Consulting together with several like-minded professionals. They shared one conviction: what Chinese business owners in Japan face is not a lack of ability, but an inequality of opportunity created by information asymmetry and the language barrier.",
     storyP2: "In its early days, the team visited dozens of Chinese-run businesses in Osaka, Tokyo, and Nagoya. They found that many owners did not even know they were eligible to apply, nor that these subsidies were real and available. Language gaps and missing information meant they were unknowingly letting funds that should have been theirs slip away.",
-    storyP3: "Today, Shisei Consulting has served over 3,000 Chinese-owned businesses in Japan and helped secure more than 850 million yen in approved subsidies. Behind every success story is a Chinese family's entrepreneurial dream that received the support it deserved. We will keep going — until language is no longer an obstacle for any Chinese person in Japan seeking the chance to grow.",
+    storyP3: "Today, Shisei Consulting has secured over 3,000 approved subsidy and grant applications for Chinese-owned businesses in Japan, totaling more than 850 million yen in approved funding. Behind every success story is a Chinese family's entrepreneurial dream that received the support it deserved. We will keep going — until language is no longer an obstacle for any Chinese person in Japan seeking the chance to grow.",
     companyHeading: "Company Information",
     timelineHeading: "Milestones",
     timeline: [
@@ -99,7 +99,7 @@ const T: Record<Locale, {
     ctaDesc: "A free eligibility consultation, with a professional advisor replying the same day, to help you seize every policy opportunity.",
     ctaPrimary: "Request a Free Consultation", ctaSecondary: "Explore Partner Program",
     stats: [
-      { num: "3,000+", label: "Businesses served" },
+      { num: "3,000+", label: "Approved cases" },
       { num: "¥8.5億", label: "Total subsidies secured (JPY)" },
       { num: "92%", label: "Application success rate" },
       { num: "4", label: "National qualifications" },
@@ -136,7 +136,7 @@ const T: Record<Locale, {
     storyAttr: "—— 創業者 李 忠良",
     storyP1: "2022年、李忠良は志を同じくする数名の専門家とともに志成コンサルを設立しました。彼らには共通の信念がありました——在日華人の企業経営者が直面しているのは能力不足ではなく、情報の非対称性と言語の壁がもたらす機会の不平等だ、と。",
     storyP2: "創業初期、チームは大阪・東京・名古屋の華人経営の企業数十社を訪ねました。多くの経営者が自社が申請条件を満たしていることすら知らず、こうした補助金が実在し申請できることも知らなかったのです。言葉が通じず情報も不足し、本来自分のものであるはずの資金を、知らぬ間に取り逃していました。",
-    storyP3: "今日、志成コンサルは在日華人企業3,000社超にサービスを提供し、補助金の採択総額8.5億円超を支援してきました。一つひとつの成功の背後には、しかるべき支援を得た華人家族の起業の夢があります。言語が、いかなる在日華人にとっても発展の機会を得る障害でなくなるその日まで、私たちは歩み続けます。",
+    storyP3: "今日、志成コンサルは在日華人企業の補助金・助成金申請を累計3,000件超採択まで支援し、採択総額は8.5億円を超えました。一つひとつの成功の背後には、しかるべき支援を得た華人家族の起業の夢があります。言語が、いかなる在日華人にとっても発展の機会を得る障害でなくなるその日まで、私たちは歩み続けます。",
     companyHeading: "会社概要",
     timelineHeading: "沿革",
     timeline: [
@@ -148,7 +148,7 @@ const T: Record<Locale, {
     ctaDesc: "無料の資格診断相談、専門顧問が当日中にご返答し、あらゆる政策のチャンスを逃さずお手伝いします。",
     ctaPrimary: "無料相談を申し込む", ctaSecondary: "代理店提携について",
     stats: [
-      { num: "3,000+", label: "累計支援企業数" },
+      { num: "3,000+", label: "累計採択件数" },
       { num: "¥8.5億", label: "採択支援総額" },
       { num: "92%", label: "申請成功率" },
       { num: "4種", label: "国家認定資格" },

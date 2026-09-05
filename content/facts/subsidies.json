@@ -1,7 +1,12 @@
 {
   "_meta": {
     "description": "志成官网制度事实数据源（单一真相源）。正文/FAQ/日历/llms.txt 生成时从这里取数字，不允许脚本或模型自行编数字。",
-    "status_values": ["verified_ai", "verified_expert", "stale", "pending"],
+    "status_values": [
+      "verified_ai",
+      "verified_expert",
+      "stale",
+      "pending"
+    ],
     "status_note": "verified_ai=AI 已对照官方页面核对（未经持牌专家确认，对客口径需专家确认后升级为 verified_expert）；stale=已过核验有效期或官方页面已变更；pending=待核验。",
     "review_cycle_days": 45,
     "updated": "2026-09-05"
@@ -60,7 +65,10 @@
       "conditions_zh": "雇用保险适用事业所；就业规则明记正社员转换制度；有期/无期雇用 6 个月以上员工转正后继续雇用 6 个月且工资提升 3% 以上",
       "amount_zh": "中小企业：重点支援対象者 有期→正规 80万円/人（40万×2期）、無期→正规 40万円；重点対象以外 40万/20万円；情報公表加算 20万円/事业所（大企业15万，1事业所1回，令和8年4月8日〜）",
       "rate_zh": "定额支给",
-      "schedule": { "deadline": "转正后6个月支给申请（申请期2个月）", "status": "常年受理" },
+      "schedule": {
+        "deadline": "转正后6个月支给申请（申请期2个月）",
+        "status": "常年受理"
+      },
       "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/career-up_00001.html",
       "verified_at": "2026-09-05",
       "verified_by": "AI核对厚労省页面 + 令和8年度案内",
@@ -76,7 +84,10 @@
       "conditions_zh": "雇用保险适用事业所；伴随新事业展开或 DX/GX 的训练（10小时以上）；训练开始前 6 个月〜1 个月提交计划届",
       "amount_zh": "经费助成 中小 75%（大企业 60%）；賃金助成 中小 960円/小时；年度事业所上限 1亿円；令和8年度新设设备投资加算（导入费 50%，1人15万/10人以上150万円）",
       "rate_zh": "经费 75%（中小）",
-      "schedule": { "deadline": "训练开始前1个月提交计划", "status": "常年受理（时限措置）" },
+      "schedule": {
+        "deadline": "训练开始前1个月提交计划",
+        "status": "常年受理（时限措置）"
+      },
       "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000082805_00006.html",
       "verified_at": "2026-09-05",
       "verified_by": "AI核对厚労省 R8 リーフレット",
@@ -127,18 +138,27 @@
     {
       "id": "tokyo-aircon",
       "name_zh": "东京都 高效空调等节能设备补助（ゼロエミッション系）",
-      "name_ja": "東京都 省エネ設備導入補助（クール・ネット東京）",
-      "fiscal": "令和8年度",
-      "round": "按公募窗口",
-      "region": "東京都",
-      "conditions_zh": "都内中小企业等；导入高效空调/LED/冷冻冷藏等指定设备；各回次窗口短",
-      "amount_zh": "以官方要领为准（网站现行口径：最高 4,500万円、助成率 3/4）",
-      "rate_zh": "3/4（现行口径，需专家核对当年度要领）",
-      "schedule": { "deadline": "以クール・ネット東京官网/jGrants 实时为准", "status": "pending" },
-      "official_url": "https://www.tokyo-co2down.jp/",
-      "verified_at": "",
-      "verified_by": "",
-      "status": "pending"
+      "name_ja": "ゼロエミッション化に向けた省エネ設備導入・運用改善支援事業（クール・ネット東京）",
+      "fiscal": "2026年度（令和8年度）",
+      "round": "第4回（受付 2026-09-16〜10-02）",
+      "region": "东京都",
+      "conditions_zh": "中小企业等（含学校法人/医疗法人/社福法人等）在都内所有或使用的中小规模事业所，导入高效空调·全热交换器·LED·高效锅炉·断热窗等省能设备或运用改善；须提交地球温暖化对策报告书；交付决定后才能签工程合同；预算超额时抽签非先到先得；申请后不可变更区分",
+      "amount_zh": "三档：年减 CO2 ≥28t → 上限 4,500万円；经省能诊断/省能咨询后减 3t 或 30% → 上限 2,500万円；自行制定计划减 3t 或 30% → 上限 1,000万円",
+      "rate_zh": "3/4（28t 档）；2/3（诊断档·自计划档）。对象经费=设计费·设备费·工程费",
+      "schedule": {
+        "r4_start": "2026-09-16",
+        "r4_deadline": "2026-10-02 17:00",
+        "r5": "2026-11-09〜11-20",
+        "r6": "2027-01-18〜01-29",
+        "completion_deadline_r4": "2027-10-29",
+        "status": "令和8年度第3回受付中/第4回9月16日开始",
+        "budget": "令和8年度 102.3亿円",
+        "program_end": "事业实施至令和8年度，交付至令和9年度"
+      },
+      "official_url": "https://www.tokyo-co2down.jp/subsidy/zeroemi-shoene/",
+      "verified_at": "2026-09-05",
+      "verified_by": "AI核对官方页面 tokyo-co2down.jp（用户提供链接）",
+      "status": "verified_ai"
     }
   ]
 }

@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { endVal: 3000, prefix: '', suffix: '+', label: '企业成功申请', desc: '餐饮·零售·制造·IT' },
-  { endVal: 8.5,  prefix: '¥', suffix: '億+', label: '累计到账补助金', desc: '真实到账金额' },
+  { endVal: 3000, prefix: '', suffix: '+', label: '累计获批案件', desc: '餐饮·零售·制造·IT' },
+  { endVal: 8.5,  prefix: '¥', suffix: '億+', label: '累计获批补助金', desc: '已获交付决定合计' },
   { endVal: 4,    prefix: '', suffix: '种', label: '国家认定专业资质', desc: '行政书士·社劳士·税理士·诊断士' },
 ];
 

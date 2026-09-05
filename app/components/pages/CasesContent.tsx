@@ -32,7 +32,7 @@ const T: Record<Locale, {
     heroEyebrow: "Success Cases · 成功案例",
     heroTitle1: "客户", heroTitle2: "成功案例",
     heroDesc: "来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。",
-    statsNote: "※ 以上为本团队及合作持牌专家自 2022 年成立以来的累计口径（截至 2026 年 7 月）：服务企业数为累计咨询·委托家数；获批总额为经手申请中已收到交付决定的补助金·助成金合计；通过率为已完成审查案件中的採択比例，因补助金种类与公募回而异，个案结果以主管机关审查为准。",
+    statsNote: "※ 以上为本团队及合作持牌专家自 2022 年成立以来的累计口径（截至 2026 年 7 月）：获批案件数为经手申请中已收到交付决定/支給決定的案件数（1 家企业多件按件计）；获批总额为上述案件的交付决定金额合计（非到账金额）；通过率为已完成审查案件中的採択比例，因补助金种类与公募回而异，个案结果以主管机关审查为准。",
     sectionTag: "真实案例 · 匿名脱敏处理",
     sectionHeading: "各行业获批实例",
     sectionSub: "以下案例均来自我们服务过的真实客户，已做匿名化处理，补助金金额及周期均为实际数据。",
@@ -42,7 +42,7 @@ const T: Record<Locale, {
     ctaDesc: "免费咨询资格诊断，专业顾问当日回复，助您了解可申请的补助金方案。",
     ctaPrimary: "立即免费咨询", ctaSecondary: "查看常见问题",
     stats: [
-      { num: "3,000+", label: "累计服务客户" },
+      { num: "3,000+", label: "累计获批案件" },
       { num: "8.5億円", label: "累计获批补助金总额" },
       { num: "92%", label: "申请通过率" },
       { num: "4年", label: "专业服务年限" },
@@ -72,7 +72,7 @@ const T: Record<Locale, {
     ctaDesc: "A free eligibility consultation, with a professional advisor replying the same day, to help you understand which subsidies you can apply for.",
     ctaPrimary: "Get a Free Consultation Now", ctaSecondary: "View FAQ",
     stats: [
-      { num: "3,000+", label: "Clients served" },
+      { num: "3,000+", label: "Approved cases" },
       { num: "8.5億円", label: "Total subsidies secured (JPY)" },
       { num: "92%", label: "Application success rate" },
       { num: "4yrs", label: "Years of specialist service" },
@@ -102,7 +102,7 @@ const T: Record<Locale, {
     ctaDesc: "無料の資格診断相談、専門顧問が当日中にご返答し、申請可能な補助金プランをご案内します。",
     ctaPrimary: "今すぐ無料相談", ctaSecondary: "よくある質問を見る",
     stats: [
-      { num: "3,000+", label: "累計支援顧客数" },
+      { num: "3,000+", label: "累計採択件数" },
       { num: "8.5億円", label: "累計採択補助金総額" },
       { num: "92%", label: "申請採択率" },
       { num: "4年", label: "専門サービス実績年数" },
