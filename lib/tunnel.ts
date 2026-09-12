@@ -1,2 +1,2 @@
 // Dify 临时隧道当前主机名（由 watchdog 自动更新，勿手改）
-export const TUNNEL_HOST = "scene-born-clone-blades.trycloudflare.com";
+export const TUNNEL_HOST = "timely-memorabilia-aurora-lightweight.trycloudflare.com";
