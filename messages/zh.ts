@@ -179,7 +179,7 @@ export const zh = {
     contactWechat: "企业微信",
     contactWechatVal: "扫码添加营业部",
     contactAddr: "地址",
-    contactAddrVal: "東京都千代田区平河町1-8-2 半蔵門パレス8階",
+    contactAddrVal: "東京都江戸川区北小岩6-39-2 方円ビル301号",
     copyright: "© 2026 株式会社 志成コンサル",
     credentials: "行政书士 · 社労士 · 税理士 · 中小企業診断士",
   },

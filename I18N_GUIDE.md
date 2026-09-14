@@ -58,7 +58,7 @@ en.ts / ja.ts **必须保持完全相同的 key 结构**，只换值。数组长
 | 社会保险劳务士 / 社劳士 | Sharoshi (labor & social security attorney) | 社会保険労務士 |
 | 中小企业诊断士 | SME Management Consultant | 中小企業診断士 |
 | 在日华人企业主 | Chinese business owners in Japan | 在日華人の企業経営者 |
-| 不获批不收费 / 成功报酬制 | No approval, no fee / success-fee model | 不採択なら無料 / 成功報酬制 |
+| 不获批不收成功报酬 / 成功报酬制 | No approval, no success fee / success-fee model | 不採択なら成功報酬なし / 成功報酬制 |
 | 免费诊断 | free diagnosis | 無料診断 |
 | 企业微信 | WeChat Work | 企業WeChat |
 | 株式会社 志成コンサル | Shisei Consulting Co., Ltd. | 株式会社 志成コンサル |

@@ -168,7 +168,7 @@ export const ja: Dictionary = {
     contactWechat: "企業WeChat",
     contactWechatVal: "QRで営業部を追加",
     contactAddr: "所在地",
-    contactAddrVal: "東京都千代田区平河町1-8-2 半蔵門パレス8階",
+    contactAddrVal: "東京都江戸川区北小岩6-39-2 方円ビル301号",
     copyright: "© 2026 株式会社 志成コンサル",
     credentials: "行政書士 · 社労士 · 税理士 · 中小企業診断士",
   },

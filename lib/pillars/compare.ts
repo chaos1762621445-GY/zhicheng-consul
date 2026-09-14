@@ -336,7 +336,7 @@ export const compare: PillarSet = {
     related: REL.ja,
     ctaTitle1: "どちらの路線か迷ったら ",
     ctaTitle2: "無料で判断します",
-    ctaDesc: "目的と従業員数をお知らせください。1営業日以内に「補助金か助成金か、併用可否、優先順」をご回答。不採択なら費用はいただきません。",
+    ctaDesc: "目的と従業員数をお知らせください。1営業日以内に「補助金か助成金か、併用可否、優先順」をご回答。不採択時は成功報酬をいただきません。",
     breadcrumbParent: { label: "補助金の種類", href: "/subsidies" },
     ui: UI.ja,
   },

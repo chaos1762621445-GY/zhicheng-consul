@@ -44,7 +44,7 @@ const T: Record<Locale, {
     timelineHeading: "发展历程",
     timeline: [
       { y: "2022", t: "株式会社志成コンサル成立，聚焦在日华人企业的补助金申请支持" },
-      { y: "2026", t: "总部迁至东京千代田区平河町；中·日·英三语官网、专题页与公募日历上线" },
+      { y: "2026", t: "中·日·英三语官网、专题页与公募日历上线" },
     ],
     mapHeading: "事务所位置", areaHeading: "服务地域", areas: "东京·神奈川·千叶·埼玉为主；大阪·名古屋·福冈等线上对应，日本全国可委托",
     ctaTitle1: "与我们一起", ctaTitle2: "让补助金触手可及",
@@ -65,7 +65,7 @@ const T: Record<Locale, {
     companyInfo: [
       { label: "商号", value: "株式会社 志成コンサル" },
       { label: "成立时间", value: "2022年4月" },
-      { label: "所在地", value: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階" },
+      { label: "所在地", value: "〒133-0051 東京都江戸川区北小岩6-39-2 方円ビル301号" },
       { label: "业务内容", value: "补助金·助成金申请代办、经营咨询、行政书士业务、税务申报支援" },
       { label: "专业资质", value: "行政书士事务所登记 / 社会保险劳务士事务所登记 / 税理士事务所登记 / 中小企业诊断士登记" },
       { label: "服务语言", value: "日语 · 普通话 · 广东话" },
@@ -93,7 +93,7 @@ const T: Record<Locale, {
     timelineHeading: "Milestones",
     timeline: [
       { y: "2022", t: "Shisei Consulting founded, focusing on subsidy support for Chinese-owned businesses in Japan" },
-      { y: "2026", t: "HQ moved to Hirakawacho, Chiyoda; trilingual site, pillar pages and calendar launched" },
+      { y: "2026", t: "Trilingual site, pillar pages and calendar launched" },
     ],
     mapHeading: "Office location", areaHeading: "Service area", areas: "Tokyo, Kanagawa, Chiba, Saitama primarily; Osaka, Nagoya, Fukuoka and nationwide online",
     ctaTitle1: "Together With Us,", ctaTitle2: "Make Subsidies Within Reach",
@@ -114,7 +114,7 @@ const T: Record<Locale, {
     companyInfo: [
       { label: "Company name", value: "Shisei Consulting Co., Ltd. (株式会社 志成コンサル)" },
       { label: "Founded", value: "April 2022" },
-      { label: "Address", value: "Hanzomon Palace 8F, 1-8-2 Hirakawacho, Chiyoda-ku, Tokyo 102-0093" },
+      { label: "Address", value: "Hoen Bldg. 301, 6-39-2 Kitakoiwa, Edogawa-ku, Tokyo 133-0051" },
       { label: "Business", value: "Subsidy & grant application services, management consulting, Gyoseishoshi services, tax filing support" },
       { label: "Qualifications", value: "Registered Gyoseishoshi office / Registered Sharoshi office / Registered Zeirishi office / Registered SME Management Consultant" },
       { label: "Languages", value: "Japanese · Mandarin · Cantonese" },
@@ -142,7 +142,7 @@ const T: Record<Locale, {
     timelineHeading: "沿革",
     timeline: [
       { y: "2022", t: "株式会社志成コンサル設立、在日華人企業の補助金申請サポートに特化" },
-      { y: "2026", t: "本部を千代田区平河町へ移転、3言語サイト・特集ページ・公募カレンダー公開" },
+      { y: "2026", t: "3言語サイト・特集ページ・公募カレンダー公開" },
     ],
     mapHeading: "事務所所在地", areaHeading: "対応地域", areas: "東京・神奈川・千葉・埼玉を中心に、大阪・名古屋・福岡等はオンライン対応、全国からご依頼可",
     ctaTitle1: "私たちとともに、", ctaTitle2: "補助金を身近なものに",
@@ -163,7 +163,7 @@ const T: Record<Locale, {
     companyInfo: [
       { label: "商号", value: "株式会社 志成コンサル" },
       { label: "設立", value: "2022年4月" },
-      { label: "所在地", value: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階" },
+      { label: "所在地", value: "〒133-0051 東京都江戸川区北小岩6-39-2 方円ビル301号" },
       { label: "事業内容", value: "補助金・助成金申請サポート、経営コンサルティング、行政書士業務、税務申告支援" },
       { label: "専門資格", value: "行政書士事務所登録 / 社会保険労務士事務所登録 / 税理士事務所登録 / 中小企業診断士登録" },
       { label: "対応言語", value: "日本語 · 標準中国語 · 広東語" },
@@ -322,7 +322,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
               <h2 className="h2 ed-h" style={{ fontSize: 26, marginBottom: 16 }}>{t.mapHeading}</h2>
               <div style={{ border: "1px solid var(--line)", borderRadius: 12, overflow: "hidden", background: "#fff" }}>
                 <iframe title="map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" style={{ width: "100%", height: 280, border: 0, display: "block" }}
-                  src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%B9%B3%E6%B2%B3%E7%94%BA1-8-2&output=embed" />
+                  src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA%E5%8C%97%E5%B0%8F%E5%B2%A96-39-2&output=embed" />
               </div>
             </div>
             <div>

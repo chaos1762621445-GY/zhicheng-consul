@@ -136,7 +136,7 @@ export default function Footer({ locale = 'zh', dict }: { locale?: Locale; dict?
             <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
               <div style={{ fontSize: 13, lineHeight: 1.6 }}>
                 <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{f.contactPhone}</span>
-                <span style={{ color: 'rgba(255,255,255,0.62)' }}>03-6265-9756</span>
+                <span style={{ color: 'rgba(255,255,255,0.62)' }}>03-6205-6789</span>
               </div>
               <div style={{ fontSize: 13, lineHeight: 1.6 }}>
                 <span style={{ color: 'rgba(255,255,255,0.35)', marginRight: 10 }}>{f.contactEmail}</span>

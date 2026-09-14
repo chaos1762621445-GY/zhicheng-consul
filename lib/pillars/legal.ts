@@ -2,7 +2,7 @@ import type { PillarSet } from "./types";
 import { UI } from "./types";
 
 const V = "2026-09-03";
-const NAP = { addr: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階", tel: "03-6265-9756", mail: "info@shisei-consult.jp", hojin: "5010401158340" };
+const NAP = { addr: "〒133-0051 東京都江戸川区北小岩6-39-2 方円ビル301号", tel: "03-6205-6789", mail: "info@shisei-consult.jp", hojin: "5010401158340" };
 
 export const legal: PillarSet = {
   zh: {
@@ -14,7 +14,7 @@ export const legal: PillarSet = {
     heroTitle1: "事业者信息与",
     heroTitle2: "服务责任边界",
     heroDesc: "依据特定商取引法及相关规范，公开事业者信息、费用与服务边界。",
-    summary: "株式会社志成コンサル（法人番号 5010401158340，東京都千代田区平河町1-8-2 半蔵門パレス8階，电话 03-6265-9756）提供日本补助金·助成金申请支持服务，采用成功报酬制；补助金书类作成由行政书士、雇用类助成金申请代理由社会保险劳务士依法执行；本公司不保证获批，结果以各主管机关审查为准。",
+    summary: "株式会社志成コンサル（法人番号 5010401158340，東京都江戸川区北小岩6-39-2 方円ビル301号，电话 03-6205-6789）提供日本补助金·助成金申请支持服务，采用成功报酬制；补助金书类作成由行政书士、雇用类助成金申请代理由社会保险劳务士依法执行；本公司不保证获批，结果以各主管机关审查为准。",
     sections: [
       { id: "company", h2: "事业者信息", blocks: [{ type: "table", head: ["项目", "内容"], rows: [["事业者名", "株式会社 志成コンサル"], ["法人番号", NAP.hojin], ["所在地", NAP.addr], ["电话", NAP.tel + "（工作日 9:00〜18:00）"], ["邮箱", NAP.mail], ["事业内容", "补助金·助成金申请支持、经营咨询；相关手续由持牌行政书士·社会保险劳务士·税理士执行"]] }] },
       { id: "fee", h2: "费用与支付", blocks: [{ type: "ul", items: ["成功报酬制：以交付決定／支給決定金额的一定比例计算，比例按制度与金额在签约前书面告知。", "着手金、实费（公证·翻译等）如有，签约时明示；不採択时不收取成功报酬。", "支付时点：原则上在补助金入金后；具体以合同为准。", "客户单方中止、提供虚假资料导致的不採択或返还，不在「不获批不收成功报酬」范围内。"] }] },
@@ -40,9 +40,9 @@ export const legal: PillarSet = {
     heroTitle1: "Business disclosure and",
     heroTitle2: "scope of responsibility",
     heroDesc: "Disclosures under the Act on Specified Commercial Transactions and related rules.",
-    summary: "Shisei Consulting Co., Ltd. (corporate number 5010401158340, Hanzomon Palace 8F, 1-8-2 Hirakawacho, Chiyoda-ku, Tokyo; tel. 03-6265-9756) provides subsidy and grant application support on a success-fee basis; subsidy documents are prepared by Gyoseishoshi and employment-grant representation by Sharoshi. Approval is not guaranteed; outcomes rest with the reviewing authority.",
+    summary: "Shisei Consulting Co., Ltd. (corporate number 5010401158340, Hoen Bldg. 301, 6-39-2 Kitakoiwa, Edogawa-ku, Tokyo; tel. 03-6205-6789) provides subsidy and grant application support on a success-fee basis; subsidy documents are prepared by Gyoseishoshi and employment-grant representation by Sharoshi. Approval is not guaranteed; outcomes rest with the reviewing authority.",
     sections: [
-      { id: "company", h2: "Business information", blocks: [{ type: "table", head: ["Item", "Detail"], rows: [["Company", "Shisei Consulting Co., Ltd."], ["Corporate number", NAP.hojin], ["Address", "Hanzomon Palace 8F, 1-8-2 Hirakawacho, Chiyoda-ku, Tokyo 102-0093"], ["Tel", NAP.tel + " (weekdays 9:00–18:00)"], ["Email", NAP.mail], ["Business", "Subsidy/grant application support and consulting; procedures executed by licensed professionals"]] }] },
+      { id: "company", h2: "Business information", blocks: [{ type: "table", head: ["Item", "Detail"], rows: [["Company", "Shisei Consulting Co., Ltd."], ["Corporate number", NAP.hojin], ["Address", "Hoen Bldg. 301, 6-39-2 Kitakoiwa, Edogawa-ku, Tokyo 133-0051"], ["Tel", NAP.tel + " (weekdays 9:00–18:00)"], ["Email", NAP.mail], ["Business", "Subsidy/grant application support and consulting; procedures executed by licensed professionals"]] }] },
       { id: "fee", h2: "Fees and payment", blocks: [{ type: "ul", items: ["Success fee: a percentage of the approved amount, disclosed in writing before contract.", "Any retainer or out-of-pocket costs are stated at contract; no success fee if not adopted.", "Payment in principle after disbursement; per contract.", "Client withdrawal or false information is excluded from the no-success-fee commitment."] }] },
       { id: "scope", h2: "Scope and responsibility", blocks: [{ type: "ul", items: ["We provide matching, scheduling, document organization and follow-up; subsidy documents by Gyoseishoshi, grant representation by Sharoshi, financials by Zeirishi, plans by SME consultants.", "No guarantee of adoption, amount or timing; subsidies are competitive, grants requirement-based, Tokyo Zero-Emission a lottery.", "Figures on this site follow official guidelines with verification dates; confirm the latest notice before applying.", "Immigration and tax questions are answered by licensed professionals; site content is not legal or tax advice.", "Clients are responsible for the accuracy of information provided."] }] },
       { id: "privacy", h2: "Personal information", blocks: [{ type: "p", text: "Handled under the Act on the Protection of Personal Information and our Privacy Policy." }, { type: "links", items: [{ label: "Privacy Policy", href: "/privacy" }] }] },
@@ -66,7 +66,7 @@ export const legal: PillarSet = {
     heroTitle1: "事業者情報と",
     heroTitle2: "業務範囲・責任",
     heroDesc: "特定商取引法および関連法令に基づき、事業者情報・料金・業務範囲を表記します。",
-    summary: "株式会社志成コンサル（法人番号5010401158340、東京都千代田区平河町1-8-2 半蔵門パレス8階、電話03-6265-9756）は補助金・助成金の申請サポートを成功報酬制で提供。補助金書類の作成は行政書士、雇用関係助成金の申請代理は社会保険労務士が法令に基づき執行。採択を保証せず、結果は各主管機関の審査によります。",
+    summary: "株式会社志成コンサル（法人番号5010401158340、東京都江戸川区北小岩6-39-2 方円ビル301号、電話03-6205-6789）は補助金・助成金の申請サポートを成功報酬制で提供。補助金書類の作成は行政書士、雇用関係助成金の申請代理は社会保険労務士が法令に基づき執行。採択を保証せず、結果は各主管機関の審査によります。",
     sections: [
       { id: "company", h2: "事業者情報", blocks: [{ type: "table", head: ["項目", "内容"], rows: [["事業者名", "株式会社 志成コンサル"], ["法人番号", NAP.hojin], ["所在地", NAP.addr], ["電話", NAP.tel + "（平日9:00〜18:00）"], ["メール", NAP.mail], ["事業内容", "補助金・助成金申請サポート、経営コンサルティング；手続きは有資格の行政書士・社労士・税理士が執行"]] }] },
       { id: "fee", h2: "料金と支払", blocks: [{ type: "ul", items: ["成功報酬制：交付決定・支給決定額の一定割合。料率は契約前に書面提示。", "着手金・実費（公証・翻訳等）がある場合は契約時に明示。不採択時は成功報酬なし。", "支払時期：原則として補助金入金後。契約書に準じます。", "お客様の一方的中止、虚偽資料による不採択・返還は対象外。"] }] },

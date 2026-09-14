@@ -131,7 +131,7 @@ export const DETAIL_EXTRA_UI: Record<Locale, {
     notEligibleLabel: "Not eligible", notEligibleHeading: "When you cannot apply (or will likely fail)",
     failLabel: "Common failure causes", failHeading: "Five most common reasons for rejection or reduction",
     casesLabel: "Related cases", casesHeading: "Approved cases under similar programs", casesAll: "All cases →",
-    midCtaT: "Does this program fit your business?", midCtaD: "Four questions, reply within one business day. No approval, no fee.", midCtaBtn: "Check eligibility for free",
+    midCtaT: "Does this program fit your business?", midCtaD: "Four questions, reply within one business day. No approval, no success fee.", midCtaBtn: "Check eligibility for free",
     you: "You provide", we: "We handle",
     facts: { audience: "Eligible", status: "Status", deadline: "Deadline" },
   },

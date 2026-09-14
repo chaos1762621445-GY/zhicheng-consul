@@ -13,7 +13,7 @@
 4. frontmatter 双引号字段内若含英文双引号会破坏 YAML → 内层改中文引号「」，保证 YAML 合法。
 
 【术语表·三语严格统一】
-补助金=subsidy/補助金；助成金=grant/助成金；省力化补助金=Labor-Saving Subsidy/省力化補助金；AI导入补助金/IT导入补助金=AI / IT Adoption Subsidy/AI・IT導入補助金；员工转正助成金=Career-Up (Regularization) Grant/キャリアアップ助成金；员工培训助成金/人材开发支援助成金=Human Resource Development Grant/人材開発支援助成金；空调节能补助=Energy-Efficient AC Subsidy/空調省エネ補助；持续化补助金=Sustainability Subsidy/持続化補助金；事业承继=Business Succession/事業承継；行政书士=Gyoseishoshi/行政書士；税理士=Zeirishi/税理士；社会保险劳务士/社劳士=Sharoshi/社会保険労務士；中小企业诊断士=SME Management Consultant/中小企業診断士；在日华人企业主=Chinese business owners in Japan/在日華人の企業経営者；不获批不收费/成功报酬制=No approval, no fee / success-fee model/不採択なら無料 / 成功報酬制；免费诊断=free diagnosis/無料診断；企业微信=WeChat Work/企業WeChat；株式会社 志成コンサル=Shisei Consulting Co., Ltd./株式会社 志成コンサル；公募締切=public-offering deadline/公募締切；补助率=subsidy rate/補助率。
+补助金=subsidy/補助金；助成金=grant/助成金；省力化补助金=Labor-Saving Subsidy/省力化補助金；AI导入补助金/IT导入补助金=AI / IT Adoption Subsidy/AI・IT導入補助金；员工转正助成金=Career-Up (Regularization) Grant/キャリアアップ助成金；员工培训助成金/人材开发支援助成金=Human Resource Development Grant/人材開発支援助成金；空调节能补助=Energy-Efficient AC Subsidy/空調省エネ補助；持续化补助金=Sustainability Subsidy/持続化補助金；事业承继=Business Succession/事業承継；行政书士=Gyoseishoshi/行政書士；税理士=Zeirishi/税理士；社会保险劳务士/社劳士=Sharoshi/社会保険労務士；中小企业诊断士=SME Management Consultant/中小企業診断士；在日华人企业主=Chinese business owners in Japan/在日華人の企業経営者；不获批不收成功报酬/成功报酬制=No approval, no success fee / success-fee model/不採択なら成功報酬なし / 成功報酬制；免费诊断=free diagnosis/無料診断；企业微信=WeChat Work/企業WeChat；株式会社 志成コンサル=Shisei Consulting Co., Ltd./株式会社 志成コンサル；公募締切=public-offering deadline/公募締切；补助率=subsidy rate/補助率。
 
 【合规红线】禁「保证获批/一定通过/最快N个月到账」承诺；成败表述保留「以主管机关审查结果为准」(en: subject to the reviewing authority's decision; ja: 審査結果によります)。原文有免责表述必须译出保留。
 

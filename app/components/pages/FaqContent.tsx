@@ -145,7 +145,7 @@ const T: Record<Locale, {
           },
           {
             q: "志成コンサル的服务范围涵盖哪些地区？",
-            a: "我们总部位于东京（千代田区平河町），服务范围覆盖全日本。由于补助金申请大部分流程为线上办理，无论您在东京、大阪、名古屋还是其他城市，均可通过微信·电话·视频会议进行全程中文服务。如有需要，我们也可安排上门拜访（关东地区）。"
+            a: "我们总部位于东京（江戸川区），服务范围覆盖全日本。由于补助金申请大部分流程为线上办理，无论您在东京、大阪、名古屋还是其他城市，均可通过微信·电话·视频会议进行全程中文服务。如有需要，我们也可安排上门拜访（关东地区）。"
           },
         ]
       },
@@ -277,7 +277,7 @@ const T: Record<Locale, {
           },
           {
             q: "Which regions does Shisei Consulting's service cover?",
-            a: "Our headquarters is in Tokyo (Hirakawacho, Chiyoda-ku), and our service covers all of Japan. Since most of the subsidy application process is handled online, whether you are in Tokyo, Osaka, Nagoya, or another city, we provide full Chinese-language service via WeChat, phone, and video conference. If needed, we can also arrange on-site visits (Kanto region)."
+            a: "Our headquarters is in Tokyo (Edogawa-ku), and our service covers all of Japan. Since most of the subsidy application process is handled online, whether you are in Tokyo, Osaka, Nagoya, or another city, we provide full Chinese-language service via WeChat, phone, and video conference. If needed, we can also arrange on-site visits (Kanto region)."
           },
         ]
       },
@@ -409,7 +409,7 @@ const T: Record<Locale, {
           },
           {
             q: "志成コンサルのサービス対応地域はどこですか？",
-            a: "当社の本部は東京（千代田区平河町）にあり、サービスは日本全国をカバーします。補助金申請の大部分の工程はオンラインで対応するため、東京・大阪・名古屋その他どの都市にいらしても、WeChat・電話・ビデオ会議で全工程を中国語でサービスします。ご希望に応じて訪問（関東地域）も手配可能です。"
+            a: "当社の本部は東京（江戸川区）にあり、サービスは日本全国をカバーします。補助金申請の大部分の工程はオンラインで対応するため、東京・大阪・名古屋その他どの都市にいらしても、WeChat・電話・ビデオ会議で全工程を中国語でサービスします。ご希望に応じて訪問（関東地域）も手配可能です。"
           },
         ]
       },

@@ -168,7 +168,7 @@ export const en: Dictionary = {
     contactWechat: "WeChat Work",
     contactWechatVal: "Scan to add Sales Dept.",
     contactAddr: "Address",
-    contactAddrVal: "Hanzomon Palace 8F, 1-8-2 Hirakawacho, Chiyoda-ku, Tokyo",
+    contactAddrVal: "Hoen Bldg. 301, 6-39-2 Kitakoiwa, Edogawa-ku, Tokyo",
     copyright: "© 2026 Shisei Consulting Co., Ltd.",
     credentials: "Gyoseishoshi · Sharoshi · Zeirishi · SME Management Consultant",
   },

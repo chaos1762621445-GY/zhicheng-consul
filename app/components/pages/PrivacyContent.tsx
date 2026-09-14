@@ -20,8 +20,8 @@ const T: Record<Locale, {
     heroDesc: "本政策说明株式会社志成コンサル如何收集、使用、保管和保护您的个人信息。我们依据日本《个人信息保护法》妥善处理您的信息。",
     lastUpdated: "最后更新：2026 年 8 月 1 日",
     contactCompany: "株式会社 志成コンサル",
-    contactAddr: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階",
-    contactPhoneLabel: "电话：", contactPhone: "03-6265-9756",
+    contactAddr: "〒133-0051 東京都江戸川区北小岩6-39-2 方円ビル301号",
+    contactPhoneLabel: "电话：", contactPhone: "03-6205-6789",
     contactEmailLabel: "邮箱：",
     sections: [
       {
@@ -91,8 +91,8 @@ const T: Record<Locale, {
     heroDesc: "This policy explains how Shisei Consulting Co., Ltd. collects, uses, stores, and protects your personal information. We handle your information appropriately in accordance with Japan's Act on the Protection of Personal Information.",
     lastUpdated: "Last updated: August 1, 2026",
     contactCompany: "株式会社 志成コンサル (Shisei Consulting Co., Ltd.)",
-    contactAddr: "〒102-0093 Hanzomon Palace 8F, 1-8-2 Hirakawacho, Chiyoda-ku, Tokyo",
-    contactPhoneLabel: "Tel: ", contactPhone: "03-6265-9756",
+    contactAddr: "Hoen Bldg. 301, 6-39-2 Kitakoiwa, Edogawa-ku, Tokyo 133-0051",
+    contactPhoneLabel: "Tel: ", contactPhone: "03-6205-6789",
     contactEmailLabel: "Email: ",
     sections: [
       {
@@ -162,8 +162,8 @@ const T: Record<Locale, {
     heroDesc: "本ポリシーは、株式会社志成コンサルがお客様の個人情報をどのように収集・利用・保管・保護するかを説明します。当社は日本の「個人情報保護法」に基づき、お客様の情報を適切に取り扱います。",
     lastUpdated: "最終更新：2026年8月1日",
     contactCompany: "株式会社 志成コンサル",
-    contactAddr: "〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階",
-    contactPhoneLabel: "電話：", contactPhone: "03-6265-9756",
+    contactAddr: "〒133-0051 東京都江戸川区北小岩6-39-2 方円ビル301号",
+    contactPhoneLabel: "電話：", contactPhone: "03-6205-6789",
     contactEmailLabel: "メール：",
     sections: [
       {
