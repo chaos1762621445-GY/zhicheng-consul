@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 构建时间戳内联进服务端与客户端 bundle（同一字面量），供制度受付状态按日期推导；
+  // 不能在组件里直接 new Date()——客户端加载时间≠构建时间会导致水合不一致。
+  env: {
+    BUILD_TIME: new Date().toISOString(),
+  },
   images: {
     remotePatterns: [
       {

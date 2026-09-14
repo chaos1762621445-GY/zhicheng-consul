@@ -39,7 +39,7 @@ const orgJsonLd = {
   ],
   description:
     "专为在日华人企业主提供日本政府补助金（省力化补助金、AI导入补助金、员工转正助成金等）全程代办服务。行政书士、社会保险劳务士、税理士、中小企业诊断士联合团队，全程中文，无成功不收费。",
-  slogan: "在日华人补助金全程代办，不获批不收费",
+  slogan: "在日华人补助金全程代办，不获批不收成功报酬",
   knowsLanguage: ["zh-CN", "ja-JP"],
   areaServed: { "@type": "Country", name: "日本" },
   address: {

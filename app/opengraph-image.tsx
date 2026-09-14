@@ -86,7 +86,7 @@ export default function OpengraphImage() {
             letterSpacing: 2,
           }}
         >
-          行政书士 · 税理士 · 社劳士 · 诊断士联合团队　·　不获批不收费
+          行政书士 · 税理士 · 社劳士 · 诊断士　·　不获批不收成功报酬
         </div>
         {/* 底部金线 */}
         <div

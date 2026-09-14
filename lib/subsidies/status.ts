@@ -55,12 +55,29 @@ export const SUBSIDY_SCHEDULE = {
   },
 } as const;
 
+// ── 受付状态按日期推导（构建时刻，日本时间）──
+// facts 里的日期形如 "2026-09-18 10:00" / "2026-10-02 17:00"，一律视为 JST。
+// 状态只在 next build 时计算一次（BUILD_TIME 由 next.config.ts 内联，服务端/客户端同值，无水合差异）；
+// 站点每次 push 自动重建，所以 9/18 开放、9/29·10/2·10/16 截止会随下一次构建自动翻转，不必手改。
+const BUILD_NOW = Date.parse(process.env.BUILD_TIME ?? "") || Date.now();
+
+function jst(value: string): number {
+  const m = value.match(/^(\d{4}-\d{2}-\d{2})(?:\s+(\d{2}:\d{2}))?/);
+  if (!m) throw new Error(`Unparseable JST datetime: ${value}`);
+  return Date.parse(`${m[1]}T${m[2] ?? "00:00"}:00+09:00`);
+}
+
+export function deriveStatus(opens: string, deadline: string, now = BUILD_NOW): SubsidyStatus {
+  if (now < jst(opens)) return "upcoming";
+  if (now <= jst(deadline)) return "open";
+  return "closed";
+}
 
 export const SUBSIDY_STATUS: StatusRow[] = [
-  { slug: "seiryoka", status: "upcoming", need: "equipment",
+  { slug: "seiryoka", status: deriveStatus(SUBSIDY_SCHEDULE.seiryoka.opens, SUBSIDY_SCHEDULE.seiryoka.deadline), need: "equipment",
     deadline: { zh: `第 8 回 · ${SUBSIDY_SCHEDULE.seiryoka.deadline.slice(5)} 截止`, en: `Round 8 · ${SUBSIDY_SCHEDULE.seiryoka.deadline.slice(5)} JST`, ja: `第8回・${SUBSIDY_SCHEDULE.seiryoka.deadline.slice(5)} 締切` },
     audience: { zh: "法人 · 个人事业主", en: "Companies · sole proprietors", ja: "法人・個人事業主" } },
-  { slug: "ai-it", status: "open", need: "digital",
+  { slug: "ai-it", status: deriveStatus(SUBSIDY_SCHEDULE["ai-it"].opens, SUBSIDY_SCHEDULE["ai-it"].deadline), need: "digital",
     deadline: { zh: `第 5 次 · ${SUBSIDY_SCHEDULE["ai-it"].deadline.slice(5)} 截止`, en: `5th deadline · ${SUBSIDY_SCHEDULE["ai-it"].deadline.slice(5)} JST`, ja: `第5次締切 ${SUBSIDY_SCHEDULE["ai-it"].deadline.slice(5)}` },
     audience: { zh: "法人 · 个人事业主", en: "Companies · sole proprietors", ja: "法人・個人事業主" } },
   { slug: "career-up", status: "yearround", need: "hiring",
@@ -69,7 +86,7 @@ export const SUBSIDY_STATUS: StatusRow[] = [
   { slug: "training", status: "yearround", need: "training",
     deadline: { zh: "通年 · 训练前 1〜6 个月提计划届", en: "Year-round · plan 1–6 months before", ja: "通年・訓練1〜6か月前に計画届" },
     audience: { zh: "有雇用保险被保险者的事业所", en: "Employers with insured staff", ja: "雇用保険適用事業所" } },
-  { slug: "aircon", status: "upcoming", need: "energy",
+  { slug: "aircon", status: deriveStatus(SUBSIDY_SCHEDULE.aircon.opens, SUBSIDY_SCHEDULE.aircon.deadline), need: "energy",
     deadline: { zh: `第 4 回 ${SUBSIDY_SCHEDULE.aircon.opens.slice(5, 10)}〜${SUBSIDY_SCHEDULE.aircon.deadline.slice(5)} · 抽签制`, en: `Round 4 ${SUBSIDY_SCHEDULE.aircon.opens.slice(5, 10)}–${SUBSIDY_SCHEDULE.aircon.deadline.slice(5)} JST · lottery`, ja: `第4回 ${SUBSIDY_SCHEDULE.aircon.opens.slice(5, 10)}〜${SUBSIDY_SCHEDULE.aircon.deadline.slice(5)}・抽選制` },
     audience: { zh: "东京都内事业所（法人 · 个人）", en: "Tokyo sites (companies · sole props)", ja: "都内事業所（法人・個人）" } },
 ];

@@ -149,7 +149,7 @@ export const chineseOwners: PillarSet = {
     related: REL.zh,
     ctaTitle1: "你的企业能报哪一个？",
     ctaTitle2: "免费中文诊断",
-    ctaDesc: "在留资格、行业、员工数、想做的事——4 个问题，工作日 1 个营业日内给出能报的制度与准备清单。不获批不收费。",
+    ctaDesc: "在留资格、行业、员工数、想做的事——4 个问题，工作日 1 个营业日内给出能报的制度与准备清单。不获批不收成功报酬。",
     breadcrumbParent: { label: "补助金种类", href: "/subsidies" },
     ui: UI.zh,
   },

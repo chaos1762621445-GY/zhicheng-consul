@@ -143,7 +143,7 @@ export const schedule: PillarSet = {
     ],
     ctaTitle1: "想赶这一回？",
     ctaTitle2: "先做 3 分钟免费诊断",
-    ctaDesc: "告诉我们目标制度与现状，1 个营业日内给出「能不能赶上、现在该办什么」的倒推表。不获批不收费。",
+    ctaDesc: "告诉我们目标制度与现状，1 个营业日内给出「能不能赶上、现在该办什么」的倒推表。不获批不收成功报酬。",
     breadcrumbParent: { label: "补助金种类", href: "/subsidies" },
     ui: UI.zh,
   },

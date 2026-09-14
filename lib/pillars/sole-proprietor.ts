@@ -164,7 +164,7 @@ export const soleProprietor: PillarSet = {
     related: RELATED.zh,
     ctaTitle1: "不确定自己能不能报？",
     ctaTitle2: "3 分钟中文免费诊断",
-    ctaDesc: "告诉我们在留资格、行业、员工数、想做的事，工作日 1 个营业日内回复「能报什么·先补哪一步」。不获批不收费。",
+    ctaDesc: "告诉我们在留资格、行业、员工数、想做的事，工作日 1 个营业日内回复「能报什么·先补哪一步」。不获批不收成功报酬。",
     breadcrumbParent: { label: "谁能申请", href: "/subsidies" },
     ui: UI.zh,
   },
