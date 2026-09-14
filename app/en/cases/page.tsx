@@ -5,8 +5,8 @@ import { buildPageMetadata } from "@/lib/i18n/metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/cases",
-  title: "Subsidy Success Cases | 3,000+ Businesses · ¥850M Secured · 92% Rate",
-  description: "Shisei Consulting subsidy success cases — real Chinese-owned businesses in Japan across food service, beauty, IT, construction, retail, education, manufacturing, and logistics. 3,000+ served, ¥850M in subsidies secured, 92% success rate, up to ¥30M in a single approval.",
+  title: "Subsidy Case Studies | 3,000+ Approved Applications · JPY 850M Approved",
+  description: "Shisei Consulting case studies across industries. As of August 2026: 3,000+ applications with grant/payment decisions, JPY 850M in approved amounts, not disbursements; 92% approval among reviewed cases. Individual results depend on the reviewing authority.",
 });
 
 export default function EnCasesPage() {

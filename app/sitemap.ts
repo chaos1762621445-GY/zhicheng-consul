@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getAllPostsLocalized } from "@/lib/posts";
+import { locales, localeHreflang } from "@/lib/i18n/config";
+import { localizedHref } from "@/lib/i18n/href";
+import { SITE_URL } from "@/lib/i18n/metadata";
+import { blogPageCount, blogPagePath, blogPageLanguages } from "@/lib/blog-pagination";
 
-const SITE_URL = "https://shisei-consult.jp";
 const SUBSIDY_SLUGS = ["seiryoka", "ai-it", "career-up", "training", "aircon"];
 
 // 静态页路径（不带语言前缀）
@@ -25,53 +28,53 @@ const STATIC_PATHS: { path: string; cf: MetadataRoute.Sitemap[number]["changeFre
   { path: "/legal", cf: "yearly", pr: 0.3 },
 ];
 
-// 为一条路径生成 zh/en/ja 三条 sitemap 项 + hreflang alternates
-function trilingual(path: string, lastModified: Date, cf: MetadataRoute.Sitemap[number]["changeFrequency"], pr: number): MetadataRoute.Sitemap {
+// Omit lastmod when there is no recorded substantive revision. Build time is not a content update.
+function trilingual(path: string, cf: MetadataRoute.Sitemap[number]["changeFrequency"], pr: number): MetadataRoute.Sitemap {
+  const zhUrl = `${SITE_URL}${localizedHref("zh", path)}`;
   const languages = {
-    "zh-Hans": `${SITE_URL}${path === "/" ? "" : path}` || `${SITE_URL}/`,
-    en: `${SITE_URL}/en${path === "/" ? "" : path}`,
-    ja: `${SITE_URL}/ja${path === "/" ? "" : path}`,
+    "zh-Hans": zhUrl,
+    en: `${SITE_URL}${localizedHref("en", path)}`,
+    ja: `${SITE_URL}${localizedHref("ja", path)}`,
+    "x-default": zhUrl,
   };
-  const zhUrl = path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
-  return [
-    { url: zhUrl, lastModified, changeFrequency: cf, priority: pr, alternates: { languages } },
-    { url: `${SITE_URL}/en${path === "/" ? "" : path}`, lastModified, changeFrequency: cf, priority: pr, alternates: { languages } },
-    { url: `${SITE_URL}/ja${path === "/" ? "" : path}`, lastModified, changeFrequency: cf, priority: pr, alternates: { languages } },
-  ];
+  return locales.map((locale) => ({
+    url: `${SITE_URL}${localizedHref(locale, path)}`,
+    changeFrequency: cf, priority: pr, alternates: { languages },
+  }));
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-
-  const staticPages = STATIC_PATHS.flatMap((p) => trilingual(p.path, now, p.cf, p.pr));
-  const subsidyPages = SUBSIDY_SLUGS.flatMap((slug) => trilingual(`/subsidies/${slug}`, now, "monthly", 0.85));
-
-  // 博客：zh 全量；en/ja 仅已翻译的（未译不进 sitemap，避免死链）
-  const zhPosts = await getAllPostsLocalized("zh");
-  const enPosts = await getAllPostsLocalized("en");
-  const jaPosts = await getAllPostsLocalized("ja");
-  const enSlugs = new Set(enPosts.map((p) => p.slug));
-  const jaSlugs = new Set(jaPosts.map((p) => p.slug));
+  const staticPages = STATIC_PATHS.flatMap((p) => trilingual(p.path, p.cf, p.pr));
+  const subsidyPages = SUBSIDY_SLUGS.flatMap((slug) => trilingual(`/subsidies/${slug}`, "monthly", 0.85));
+  const [zh, en, ja] = await Promise.all(locales.map((locale) => getAllPostsLocalized(locale)));
+  const postsByLocale = { zh, en, ja };
+  const slugSets = { zh: new Set(zh.map((p) => p.slug)), en: new Set(en.map((p) => p.slug)), ja: new Set(ja.map((p) => p.slug)) };
 
   const postPages: MetadataRoute.Sitemap = [];
-  for (const p of zhPosts) {
-    const lm = p.date ? new Date(p.date) : now;
-    const languages: Record<string, string> = { "zh-Hans": `${SITE_URL}/blog/${p.slug}` };
-    if (enSlugs.has(p.slug)) languages.en = `${SITE_URL}/en/blog/${p.slug}`;
-    if (jaSlugs.has(p.slug)) languages.ja = `${SITE_URL}/ja/blog/${p.slug}`;
-    postPages.push({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: lm, changeFrequency: "monthly", priority: 0.7, alternates: { languages } });
-    if (enSlugs.has(p.slug)) postPages.push({ url: `${SITE_URL}/en/blog/${p.slug}`, lastModified: lm, changeFrequency: "monthly", priority: 0.6, alternates: { languages } });
-    if (jaSlugs.has(p.slug)) postPages.push({ url: `${SITE_URL}/ja/blog/${p.slug}`, lastModified: lm, changeFrequency: "monthly", priority: 0.6, alternates: { languages } });
+  const archivePages: MetadataRoute.Sitemap = [];
+  for (const locale of locales) {
+    // Include original articles in every language, even when no Chinese source exists.
+    for (const post of postsByLocale[locale]) {
+      const path = `/blog/${post.slug}`;
+      const languages: Record<string, string> = {};
+      for (const other of locales) {
+        if (slugSets[other].has(post.slug)) languages[localeHreflang[other]] = `${SITE_URL}${localizedHref(other, path)}`;
+      }
+      languages["x-default"] = languages["zh-Hans"] ?? languages.ja ?? languages.en;
+      postPages.push({
+        url: `${SITE_URL}${localizedHref(locale, path)}`,
+        lastModified: post.updated || post.date || undefined,
+        changeFrequency: "monthly", priority: 0.7, alternates: { languages },
+      });
+    }
+    // Page one is already in staticPages; redirect aliases and invalid pages are excluded.
+    for (let page = 2; page <= blogPageCount(postsByLocale[locale].length); page++) {
+      archivePages.push({
+        url: `${SITE_URL}${localizedHref(locale, blogPagePath(page))}`,
+        changeFrequency: "weekly", priority: 0.6,
+        alternates: { languages: blogPageLanguages(locale, page, postsByLocale, SITE_URL) },
+      });
+    }
   }
-
-  // 日文原创文章（无中文源）：单独进 sitemap，hreflang 只有 ja
-  const zhSlugs = new Set(zhPosts.map((p) => p.slug));
-  for (const p of jaPosts) {
-    if (zhSlugs.has(p.slug)) continue;
-    const lm = p.date ? new Date(p.date) : now;
-    const url = `${SITE_URL}/ja/blog/${p.slug}`;
-    postPages.push({ url, lastModified: lm, changeFrequency: "monthly", priority: 0.7, alternates: { languages: { ja: url, "x-default": url } } });
-  }
-
-  return [...staticPages, ...subsidyPages, ...postPages];
+  return [...staticPages, ...subsidyPages, ...archivePages, ...postPages];
 }

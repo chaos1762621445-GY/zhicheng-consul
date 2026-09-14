@@ -81,7 +81,7 @@ export default function HeroSection({ locale = 'zh', dict }: { locale?: Locale; 
             maxWidth: 480,
             marginBottom: 40,
           }}>
-            {h.sub}
+            {h.sub}{locale === "en" ? " " : ""}
             <strong style={{ color: '#fff', fontWeight: 600 }}>{h.subStrong}</strong>
           </p>
 

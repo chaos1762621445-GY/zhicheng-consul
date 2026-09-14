@@ -1,14 +1,16 @@
 import type { PillarSet } from "./types";
 import { UI } from "./types";
+import { SUBSIDY_SCHEDULE as DATES } from "../subsidies/status";
 
-// 公募日历：所有日期均来自官方页面（核验 2026-09-03）。更新时只改 ROWS 与 VERIFIED。
+// 全量核验基线保留 2026-09-03；三项日程的单独复核见 DATES.verifiedAt。
+// 已集中管理的日期只从 content/facts/subsidies.json 读取，避免三语及详情不同步。
 const VERIFIED = "2026-09-03";
 const SRC = {
-  seiryoka: "https://shoryokuka.smrj.go.jp/ippan/",
-  itshien: "https://it-shien.smrj.go.jp/schedule/",
+  seiryoka: DATES.seiryoka.source,
+  itshien: DATES["ai-it"].source,
   shinmono: "https://shinjigyou-monodukuri.smrj.go.jp/",
   jizokuka: "https://r6.jizokukahojokin.info/",
-  zeroemi: "https://www.tokyo-co2down.jp/subsidy/zeroemi-shoene",
+  zeroemi: DATES.aircon.source,
   career: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
   jinzai: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html",
 };
@@ -21,29 +23,29 @@ const HEAD = {
 };
 const ROWS = {
   zh: [
-    ["中小企業省力化投資補助事業（一般型）", "第 8 回", "2026-08-18 公募开始；9 月中旬受付开始", "10 月中旬（预定）", "公募中·待受付", "第 7 回已于 7/31 17:00 截止；21 人以上需公表一般事業主行動計画"],
-    ["デジタル化・AI導入補助金2026", "第 5 次締切", "受付中（2026-03-30 起）", "2026-10-07（予定）", "受付中", "第 4 次 8/25 已截止；须经 IT 導入支援事業者；17:00 截止"],
+    ["中小企業省力化投資補助事業（一般型）", "第 8 回", DATES.seiryoka.opens, DATES.seiryoka.deadline, "公募中·待受付", `日程核验 ${DATES.seiryoka.verifiedAt}；日本时间`],
+    ["デジタル化・AI導入補助金2026", "通常枠 第 5 次締切", DATES["ai-it"].opens, DATES["ai-it"].deadline, "受付中", `日程核验 ${DATES["ai-it"].verifiedAt}；须经 IT 導入支援事業者；日本时间`],
     ["新事業進出・ものづくり商業サービス補助金", "第 1 回", "2026-09-30", "2026-10-30 18:00 厳守", "公募开始", "两制度合并后首回；按经费区分有上限"],
     ["小規模事業者持続化補助金〈一般型 通常枠〉", "第 20 回", "2026-11-05", "2026-12-15 17:00", "受付前（公募要領第 8 版已公开）", "様式4（事業支援計画書）发行截止 12-04；须提前联系商工会"],
-    ["東京都 ゼロエミ 省エネ設備導入支援事業", "令和 8 年度 第 4 回", "2026-09-16", "2026-10-02", "受付前", "预算超额抽签，非先着；第 5 回 11/09〜11/20；第 6 回 2027-01-18〜01-29"],
+    ["東京都 ゼロエミ 省エネ設備導入支援事業", "令和 8 年度 第 4 回", DATES.aircon.opens, DATES.aircon.deadline, "受付前", `日程核验 ${DATES.aircon.verifiedAt}；日本时间；预算超额抽签；第 5 回 ${DATES.aircon.round5}；第 6 回 ${DATES.aircon.round6}`],
     ["キャリアアップ助成金（正社員化コース）", "—", "通年", "—", "受付中", "转正前提交キャリアアップ計画届（届出のみ）；2026-04 新设情报公表加算 20 万円"],
     ["人材開発支援助成金", "—", "通年（训练开始前 1〜6 个月提计划届）", "—", "受付中", "事業展開等リスキリング支援コース·人への投資促進コース：令和 8 年度（至 2027-03-31）为最终年度，官方尚未公布延长"],
   ],
   en: [
-    ["Labor-Saving Investment Subsidy (general)", "Round 8", "Call opened 2026-08-18; intake mid-Sep", "Mid-Oct (planned)", "Call open · intake pending", "Round 7 closed 7/31 17:00; 21+ staff must publish action plan"],
-    ["Digitalization & AI Adoption Subsidy 2026", "5th deadline", "Open since 2026-03-30", "2026-10-07 (planned)", "Open", "4th deadline 8/25 passed; via registered IT vendor; 17:00 cutoff"],
+    ["Labor-Saving Investment Subsidy (general)", "Round 8", DATES.seiryoka.opens, DATES.seiryoka.deadline, "Call open · intake pending", `Dates checked ${DATES.seiryoka.verifiedAt}; JST`],
+    ["Digitalization & AI Adoption Subsidy 2026", "Normal frame · 5th deadline", DATES["ai-it"].opens, DATES["ai-it"].deadline, "Open", `Dates checked ${DATES["ai-it"].verifiedAt}; registered IT vendor required; JST`],
     ["New Business / Monozukuri Subsidy", "Round 1", "2026-09-30", "2026-10-30 18:00", "Call open", "First round after merger; caps vary by cost category"],
     ["Small Business Sustainability Subsidy (general)", "Round 20", "2026-11-05", "2026-12-15 17:00", "Pre-intake (guidelines v8 published)", "Form 4 from Chamber by 12-04"],
-    ["Tokyo Zero-Emission energy-saving grant", "FY2026 Round 4", "2026-09-16", "2026-10-02", "Pre-intake", "Lottery if oversubscribed; Round 5 11/09–11/20; Round 6 2027-01-18–01-29"],
+    ["Tokyo Zero-Emission energy-saving grant", "FY2026 Round 4", DATES.aircon.opens, DATES.aircon.deadline, "Pre-intake", `Dates checked ${DATES.aircon.verifiedAt}; JST; lottery if oversubscribed; Round 5 ${DATES.aircon.round5}; Round 6 ${DATES.aircon.round6}`],
     ["Career-Up Grant (regularization)", "—", "Year-round", "—", "Open", "File plan before conversion; new ¥200k disclosure bonus from Apr 2026"],
     ["HR Development Grant", "—", "Year-round (plan 1–6 months before training)", "—", "Open", "Reskilling and Investment-in-People courses end FY2026 (2027-03-31) unless extended"],
   ],
   ja: [
-    ["中小企業省力化投資補助事業（一般型）", "第8回", "2026-08-18 公募開始；9月中旬受付開始", "10月中旬（予定）", "公募中・受付前", "第7回は7/31 17:00締切；21人以上は一般事業主行動計画の公表要件"],
-    ["デジタル化・AI導入補助金2026", "第5次締切", "受付中（2026-03-30〜）", "2026-10-07（予定）", "受付中", "第4次は8/25締切済；IT導入支援事業者経由；17:00締切"],
+    ["中小企業省力化投資補助事業（一般型）", "第8回", DATES.seiryoka.opens, DATES.seiryoka.deadline, "公募中・受付前", `日程確認 ${DATES.seiryoka.verifiedAt}；日本時間`],
+    ["デジタル化・AI導入補助金2026", "通常枠 第5次締切", DATES["ai-it"].opens, DATES["ai-it"].deadline, "受付中", `日程確認 ${DATES["ai-it"].verifiedAt}；IT導入支援事業者経由；日本時間`],
     ["新事業進出・ものづくり商業サービス補助金", "第1回", "2026-09-30", "2026-10-30 18:00厳守", "公募開始", "統合後初回；経費区分別に上限"],
     ["小規模事業者持続化補助金〈一般型 通常枠〉", "第20回", "2026-11-05", "2026-12-15 17:00", "受付前（公募要領第8版公開）", "様式4発行締切 12-04；商工会へ早めに"],
-    ["東京都 ゼロエミ 省エネ設備導入支援事業", "令和8年度 第4回", "2026-09-16", "2026-10-02", "受付前", "予算超過時は抽選（先着ではない）；第5回 11/09〜11/20；第6回 2027-01-18〜01-29"],
+    ["東京都 ゼロエミ 省エネ設備導入支援事業", "令和8年度 第4回", DATES.aircon.opens, DATES.aircon.deadline, "受付前", `日程確認 ${DATES.aircon.verifiedAt}；日本時間；予算超過時は抽選；第5回 ${DATES.aircon.round5}；第6回 ${DATES.aircon.round6}`],
     ["キャリアアップ助成金（正社員化コース）", "—", "通年", "—", "受付中", "転換前にキャリアアップ計画届；2026-04新設 情報公表加算20万円"],
     ["人材開発支援助成金", "—", "通年（訓練開始1〜6か月前に計画届）", "—", "受付中", "事業展開等リスキリング支援・人への投資促進コースは令和8年度が最終年度（延長未公表）"],
   ],
@@ -59,10 +61,10 @@ export const schedule: PillarSet = {
     heroTitle1: "2026 补助金·助成金",
     heroTitle2: "公募日历与截止时间",
     heroDesc: "只列志成核验过的官方日期。补助金的第一道门槛不是条件，是时间——多数人是错过締切，不是不符合要件。",
-    summary: "截至 2026 年 9 月 3 日核验：中小企業省力化投資補助金一般型第 8 回 8/18 公募开始、9 月中旬受付、10 月中旬締切（预定）；デジタル化・AI導入補助金2026 第 5 次締切 10/7（予定）；新事業進出・ものづくり商業サービス補助金第 1 回 9/30〜10/30 18:00；小規模事業者持続化補助金第 20 回 11/5〜12/15 17:00（様式4 截止 12/4）；东京都ゼロエミ省エネ助成第 4 回 9/16〜10/2、第 5 回 11/9〜11/20、第 6 回 2027/1/18〜1/29（抽签制）；キャリアアップ助成金与人材開発支援助成金通年受付，但需实施前提交计划届。日期以各官方页面为准。",
+    summary: `最近一次日期复核：${DATES["ai-it"].verifiedAt}。通常枠 AI 导入补助金第 5 次截止 ${DATES["ai-it"].deadline}；省力化一般型第 8 回受付 ${DATES.seiryoka.opens} 至 ${DATES.seiryoka.deadline}；东京ゼロエミ第 4 回受付 ${DATES.aircon.opens} 至 ${DATES.aircon.deadline}，预算超额时抽签。以上时间均为日本时间。其余制度资料沿用 ${VERIFIED} 核验版本，见下表与官方来源；本次日期更新不代表金额或申请要件重新核验。`,
     quickFacts: [
-      { label: "最近截止", value: "10/2 东京ゼロエミ 第 4 回", sub: "9/16 受付开始；抽签制" },
-      { label: "10 月", value: "AI導入 10/7 · 省力化 10 月中旬 · 新事業進出 10/30", sub: "三大経産省系制度集中" },
+      { label: "最近截止", value: `AI 导入第 5 次 · ${DATES["ai-it"].deadline}`, sub: "日本时间；需经登记的 IT 支援事业者" },
+      { label: "10 月", value: `东京ゼロエミ ${DATES.aircon.deadline.slice(5, 10)} · 省力化 ${DATES.seiryoka.deadline.slice(5, 10)}`, sub: "东京抽签制；省力化审查採択制" },
       { label: "年底前", value: "持続化 第 20 回 12/15", sub: "様式4 须 12/4 前向商工会申请" },
       { label: "随时", value: "キャリアアップ · 人材開発", sub: "通年，但要在转正/训练前提计划届" },
     ],
@@ -72,7 +74,7 @@ export const schedule: PillarSet = {
         h2: "2026 年 9 月〜2027 年 1 月 公募一览",
         blocks: [
           { type: "table", caption: "全部日期来自各制度官方页面；「予定」为官方预告值，正式公告后更新", head: HEAD.zh, rows: ROWS.zh },
-          { type: "note", text: "本页每月 1 日例行更新，官方公告变化当周补更。本次核验日：2026-09-03。日期若与官方页面不一致，以官方为准。" },
+          { type: "note", text: `省力化・AI 导入・东京ゼロエミ日程复核日：${DATES["ai-it"].verifiedAt}；其他制度资料核验基线：${VERIFIED}。提交前请再次确认官方公告。` },
         ],
       },
       {
@@ -106,17 +108,17 @@ export const schedule: PillarSet = {
         blocks: [
           { type: "ul", items: [
             "人材開発支援助成金「事業展開等リスキリング支援コース」（年度上限 1 亿円）与「人への投資促進コース」（2,500 万円）：令和 8 年度（至 2027-03-31）为最终年度，官方尚未公布延长。计划用这两档的企业本年度内必须提出计划届。",
-            "东京ゼロエミ事业期已延至令和 11 年度、年度预算约 102.3 亿円，但每回抽签，建议从第 4 回起连续参加。",
+            "东京ゼロエミ事业实施至令和 8 年度，助成金交付至令和 9 年度；年度预算约 102.3 亿円。各回预算超额时抽签。",
             "省力化一般型自 2026 起 21 人以上企业新增「一般事業主行動計画公表」要件，需在申请前完成公表。",
           ] },
         ],
       },
     ],
     faq: [
-      { q: "省力化補助金第 8 回具体哪天截止？", a: "官方公告为「8 月 18 日公募开始、9 月中旬申请受付开始、10 月中旬申请締切予定」，具体日期待事务局公布后本页更新。第 7 回于 7/31 17:00 截止可作参考。" },
-      { q: "デジタル化・AI導入補助金还能报今年的吗？", a: "能。第 5 次締切为 2026-10-07（予定），此后是否还有轮次以官方 schedule 页为准。须先与登记的 IT 導入支援事業者对接，由其发起申请。" },
+      { q: "省力化補助金第 8 回具体哪天截止？", a: `第 8 回受付从 ${DATES.seiryoka.opens} 开始，截止为 ${DATES.seiryoka.deadline}（日本时间），已于 ${DATES.seiryoka.verifiedAt} 对照官方日程页确认。` },
+      { q: "デジタル化・AI導入補助金还能报今年的吗？", a: `截至 ${DATES["ai-it"].verifiedAt}，通常枠第 5 次受付中，截止为 ${DATES["ai-it"].deadline}（日本时间）。须先对接登记的 IT 導入支援事業者；后续轮次请确认官方日程页。` },
       { q: "持続化補助金第 20 回什么时候开始？", a: "受付开始 2026-11-05，締切 12-15 17:00；商工会/商工会議所发行様式4 的截止为 12-04。公募要領第 8 版已公开，可提前准备。" },
-      { q: "东京空调助成是先到先得吗？", a: "不是。各回受付期内提交的申请在预算超额时统一抽签。第 4 回 9/16〜10/2，第 5 回 11/9〜11/20，第 6 回 2027/1/18〜1/29。" },
+      { q: "东京空调助成是先到先得吗？", a: `不是。预算超额时对受付期间内的申请抽签。第 4 回为 ${DATES.aircon.opens} 至 ${DATES.aircon.deadline}（日本时间）；第 5 回 ${DATES.aircon.round5}，第 6 回 ${DATES.aircon.round6}。` },
       { q: "助成金通年受付，是不是随时报都行？", a: "受付是通年，但キャリアアップ需在转正前提交計画届、人材開発支援需在训练开始前 1〜6 个月提计划届。实施后再报不受理。" },
       { q: "错过締切怎么办？", a: "公募型等下一回（通常 2〜4 个月后），利用这段时间把 GビズID、見積、计划书做扎实；抽签型下回再报；通年型随时可报但要重排实施日期。" },
       { q: "这些日期会变吗？", a: "会。事务局会因系统维护、灾害等调整（如第 7 回对熊本地震受灾事业者延长）。本页标注核验日期，重大变化当周更新，提交前请再确认官方页面。" },
@@ -154,17 +156,17 @@ export const schedule: PillarSet = {
     heroTitle1: "2026 subsidy & grant",
     heroTitle2: "calendar and deadlines",
     heroDesc: "Only dates we have verified against official pages. The first barrier is time, not eligibility — most people miss the deadline rather than fail the requirements.",
-    summary: "As verified on 2026-09-03: Labor-Saving Investment Subsidy Round 8 opened 8/18 with intake mid-September and deadline mid-October (planned); Digitalization & AI Adoption Subsidy 2026 5th deadline 10/7 (planned); New Business/Monozukuri Round 1 9/30–10/30 18:00; Small Business Sustainability Round 20 11/5–12/15 17:00 (Form 4 by 12/4); Tokyo Zero-Emission Round 4 9/16–10/2, Round 5 11/9–11/20, Round 6 2027/1/18–1/29 (lottery); Career-Up and HR Development grants year-round with prior plan filing.",
+    summary: `Latest date check: ${DATES["ai-it"].verifiedAt}. Normal frame AI Adoption 5th deadline: ${DATES["ai-it"].deadline}; Labor-Saving Round 8 applications: ${DATES.seiryoka.opens} to ${DATES.seiryoka.deadline}; Tokyo Zero-Emission Round 4: ${DATES.aircon.opens} to ${DATES.aircon.deadline}, with a lottery if oversubscribed. All times are JST. Other program information retains its ${VERIFIED} verification baseline; see the table and official sources. This date update does not re-verify amounts or eligibility.`,
     quickFacts: [
-      { label: "Next deadline", value: "10/2 Tokyo Zero-Emission R4", sub: "Opens 9/16; lottery" },
-      { label: "October", value: "AI 10/7 · Labor-Saving mid-Oct · New Business 10/30", sub: "Three METI programs cluster" },
+      { label: "Next deadline", value: `AI Adoption 5th · ${DATES["ai-it"].deadline} JST`, sub: "Apply via a registered IT vendor" },
+      { label: "October", value: `Tokyo ${DATES.aircon.deadline.slice(5, 10)} · Labor-Saving ${DATES.seiryoka.deadline.slice(5, 10)}`, sub: "Tokyo lottery; Labor-Saving competitive review" },
       { label: "Year-end", value: "Sustainability R20 12/15", sub: "Form 4 by 12/4" },
       { label: "Anytime", value: "Career-Up · HR Development", sub: "Plan filing before implementation" },
     ],
     sections: [
       { id: "calendar", h2: "September 2026 – January 2027", blocks: [
         { type: "table", caption: "All dates from official pages; 'planned' values updated when announced", head: HEAD.en, rows: ROWS.en },
-        { type: "note", text: "Updated on the 1st of each month and within the week of official changes. Verified 2026-09-03." },
+        { type: "note", text: `Labor-Saving, AI Adoption and Tokyo Zero-Emission dates checked on ${DATES["ai-it"].verifiedAt}. Other program information retains its ${VERIFIED} verification baseline. Check official announcements before submitting.` },
       ] },
       { id: "countdown", h2: "Countdown checklist", blocks: [
         { type: "table", head: ["Time left", "Round-based (Labor-Saving / New Business / Sustainability)", "AI Adoption (via IT vendor)", "Tokyo Zero-Emission (lottery)"], rows: [
@@ -185,16 +187,16 @@ export const schedule: PillarSet = {
       { id: "deadline-risk", h2: "FY2026 time-limited items", blocks: [
         { type: "ul", items: [
           "HR Development Grant Reskilling (¥100M cap) and Investment-in-People (¥25M) courses end FY2026 (2027-03-31) unless extended.",
-          "Tokyo Zero-Emission extended to FY2029 with ~¥10.23B FY2026 budget; lottery each round.",
+          "Tokyo Zero-Emission implementation continues through FY2026, with grant disbursement through FY2027 and a FY2026 budget of about ¥10.23B; lottery if oversubscribed.",
           "Labor-Saving: 21+ staff must publish a general employer action plan from 2026.",
         ] },
       ] },
     ],
     faq: [
-      { q: "Exact Round 8 Labor-Saving deadline?", a: "Officially 'mid-October (planned)'; updated here once announced. Round 7 closed 7/31 17:00." },
-      { q: "Can I still apply for AI Adoption this year?", a: "Yes, 5th deadline 2026-10-07 (planned). Work through a registered IT vendor." },
+      { q: "Exact Round 8 Labor-Saving deadline?", a: `Applications open ${DATES.seiryoka.opens} and close ${DATES.seiryoka.deadline} JST, checked against the official schedule on ${DATES.seiryoka.verifiedAt}.` },
+      { q: "Can I still apply for AI Adoption this year?", a: `As of ${DATES["ai-it"].verifiedAt}, Normal frame round 5 is open with a deadline of ${DATES["ai-it"].deadline} JST. Apply through a registered IT vendor and check the official schedule for later rounds.` },
       { q: "When does Sustainability Round 20 open?", a: "Intake 2026-11-05 to 12-15 17:00; Form 4 by 12-04." },
-      { q: "Is Tokyo AC first-come?", a: "No, lottery. Rounds: 9/16–10/2, 11/9–11/20, 2027/1/18–1/29." },
+      { q: "Is Tokyo AC first-come?", a: `Lottery if oversubscribed. Round 4: ${DATES.aircon.opens} to ${DATES.aircon.deadline} JST; Round 5: ${DATES.aircon.round5}; Round 6: ${DATES.aircon.round6}.` },
       { q: "Grants are year-round — apply anytime?", a: "Intake is year-round, but plans must be filed before conversion/training." },
       { q: "Missed the deadline?", a: "Wait for the next round and use the time to prepare GビズID, quotes and the plan." },
       { q: "Do dates change?", a: "Yes. Verify the official page before submitting." },
@@ -232,17 +234,17 @@ export const schedule: PillarSet = {
     heroTitle1: "2026年 補助金・助成金",
     heroTitle2: "公募カレンダーと締切",
     heroDesc: "当社が公式ページで確認した日付のみ掲載。最初の壁は要件ではなく時間——多くの方は要件不足ではなく締切を逃しています。",
-    summary: "2026年9月3日確認：中小企業省力化投資補助金一般型 第8回は8/18公募開始・9月中旬受付・10月中旬締切（予定）；デジタル化・AI導入補助金2026 第5次締切 10/7（予定）；新事業進出・ものづくり商業サービス補助金 第1回 9/30〜10/30 18:00；小規模事業者持続化補助金 第20回 11/5〜12/15 17:00（様式4は12/4まで）；東京都ゼロエミ省エネ助成 第4回 9/16〜10/2、第5回 11/9〜11/20、第6回 2027/1/18〜1/29（抽選制）；キャリアアップ助成金・人材開発支援助成金は通年受付だが実施前の計画届が必要。日付は各公式ページに準じます。",
+    summary: `直近日程確認：${DATES["ai-it"].verifiedAt}。AI導入補助金通常枠第5次締切は ${DATES["ai-it"].deadline}、省力化一般型第8回受付は ${DATES.seiryoka.opens} から ${DATES.seiryoka.deadline}、東京ゼロエミ第4回受付は ${DATES.aircon.opens} から ${DATES.aircon.deadline}（予算超過時は抽選）です。すべて日本時間です。その他の制度情報は ${VERIFIED} 確認版を維持しています。今回の日程更新は金額・要件の再確認を意味しません。`,
     quickFacts: [
-      { label: "直近の締切", value: "10/2 東京ゼロエミ 第4回", sub: "9/16受付開始；抽選制" },
-      { label: "10月", value: "AI導入 10/7・省力化 10月中旬・新事業進出 10/30", sub: "経産省系3制度が集中" },
+      { label: "直近締切", value: `AI導入第5次 · ${DATES["ai-it"].deadline}`, sub: "日本時間；登録IT導入支援事業者経由" },
+      { label: "10月", value: `東京ゼロエミ ${DATES.aircon.deadline.slice(5, 10)}・省力化 ${DATES.seiryoka.deadline.slice(5, 10)}`, sub: "東京は抽選；省力化は審査採択" },
       { label: "年内", value: "持続化 第20回 12/15", sub: "様式4は12/4までに商工会へ" },
       { label: "随時", value: "キャリアアップ・人材開発", sub: "通年；転換・訓練前に計画届" },
     ],
     sections: [
       { id: "calendar", h2: "2026年9月〜2027年1月 公募一覧", blocks: [
         { type: "table", caption: "全日付は公式ページに基づく。「予定」は公式予告値で正式公表後に更新", head: HEAD.ja, rows: ROWS.ja },
-        { type: "note", text: "毎月1日に定期更新、公式変更は当週に反映。確認日：2026-09-03。" },
+        { type: "note", text: `省力化・AI導入・東京ゼロエミの日程確認：${DATES["ai-it"].verifiedAt}。その他の制度情報の確認基準日は ${VERIFIED} です。提出前に公式公告をご確認ください。` },
       ] },
       { id: "countdown", h2: "締切までの週数別チェックリスト", blocks: [
         { type: "table", head: ["残り期間", "公募型（省力化・新事業進出・持続化）", "AI導入（IT支援事業者経由）", "東京ゼロエミ（抽選型）"], rows: [
@@ -263,16 +265,16 @@ export const schedule: PillarSet = {
       { id: "deadline-risk", h2: "令和8年度に注意すべき時限", blocks: [
         { type: "ul", items: [
           "人材開発支援助成金「事業展開等リスキリング支援コース」（上限1億円）・「人への投資促進コース」（2,500万円）は令和8年度（2027-03-31）が最終年度、延長未公表。",
-          "東京ゼロエミは令和11年度まで延長、令和8年度予算約102.3億円。毎回抽選。",
+          "東京ゼロエミの事業実施は令和8年度まで、助成金交付は令和9年度まで。令和8年度予算約102.3億円、予算超過時は抽選。",
           "省力化一般型は2026年から21人以上に一般事業主行動計画の公表要件。",
         ] },
       ] },
     ],
     faq: [
-      { q: "省力化補助金第8回の締切日は？", a: "公式は「10月中旬締切予定」。確定後に本ページを更新します。第7回は7/31 17:00締切でした。" },
-      { q: "AI導入補助金は今年まだ申請できますか？", a: "できます。第5次締切は2026-10-07（予定）。登録IT導入支援事業者経由で申請します。" },
+      { q: "省力化補助金第8回の締切日は？", a: `第8回受付は ${DATES.seiryoka.opens} から、締切は ${DATES.seiryoka.deadline}（日本時間）です。${DATES.seiryoka.verifiedAt} に公式日程で確認しました。` },
+      { q: "AI導入補助金は今年まだ申請できますか？", a: `${DATES["ai-it"].verifiedAt} 確認時点で通常枠第5次は受付中、締切は ${DATES["ai-it"].deadline}（日本時間）です。登録IT導入支援事業者経由で申請し、以降の募集回は公式日程をご確認ください。` },
       { q: "持続化補助金第20回はいつから？", a: "受付 2026-11-05〜12-15 17:00。様式4の発行締切は12-04。" },
-      { q: "東京の空調助成は先着ですか？", a: "いいえ、抽選です。第4回 9/16〜10/2、第5回 11/9〜11/20、第6回 2027/1/18〜1/29。" },
+      { q: "東京の空調助成は先着ですか？", a: `予算超過時は受付期間内の申請を対象に抽選します。第4回は ${DATES.aircon.opens}〜${DATES.aircon.deadline}（日本時間）、第5回 ${DATES.aircon.round5}、第6回 ${DATES.aircon.round6} です。` },
       { q: "助成金は通年ならいつでも？", a: "受付は通年ですが、転換・訓練開始前に計画届が必要です。" },
       { q: "締切を逃したら？", a: "公募型は次回（2〜4か月後）へ。GビズID・見積・計画書の準備期間に充ててください。" },
       { q: "日付は変わりますか？", a: "変わることがあります。提出前に公式ページをご確認ください。" },

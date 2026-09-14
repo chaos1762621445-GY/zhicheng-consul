@@ -1417,6 +1417,25 @@ h1, h2, h3, .display, .h2, .h3 {
   margin: 48px 0;
 }
 
+.article-content .article-table-hint { display: none; }
+@media (max-width: 767px) {
+  .article-content .article-table-hint { display: block; font-size: 12px; color: var(--muted); margin: 28px 0 8px; }
+  .article-table-hint + .article-table-scroll { margin-top: 0; }
+}
+.article-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 28px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.article-table-scroll:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+.article-content .article-table-scroll table { margin: 0; min-width: 520px; }
+.article-content th, .article-content td { overflow-wrap: anywhere; }
+
 .article-content table {
   width: 100%;
   border-collapse: collapse;

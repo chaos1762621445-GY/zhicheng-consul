@@ -1,3 +1,4 @@
+import { companyClaims } from "@/lib/company-claims";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
 import PageHero from "../PageHero";
@@ -57,7 +58,7 @@ const T: Record<Locale, {
         items: [
           {
             q: "委托志成コンサル申请，需要支付多少费用？",
-            a: "我们采用「前期零费用+成功报酬制」。前期咨询、资格诊断、申请书撰写均不收取固定费用；仅在补助金实际获批并收到资金后，按获批金额的一定比例收取成功报酬（一般为10%～15%，视补助金种类而定）。未获批则无需支付任何费用，风险完全由我们承担。"
+            a: [companyClaims.zh.feeRate, companyClaims.zh.feeTiming, companyClaims.zh.feeScope].join(" ")
           },
           {
             q: "补助金本身是完全免费的吗？需要还款吗？",
@@ -127,7 +128,7 @@ const T: Record<Locale, {
         title: "未获批时的处理",
         items: [
           { q: "不採択了怎么办？", a: "补助金多回公募，不採択可在下一回改善计划后重报，没有次数惩罚。我们会先分析原因：要件不满足（先补要件）还是计划评分低（改计划书）。不採択时不收取成功报酬。" },
-          { q: "不获批不收费的范围是什么？", a: "指申请不採択时不收取成功报酬。着手金、实费（公证·翻译等）如有，签约时明示。客户单方中止、提供虚假资料导致的不採択或返还，不在该范围内。" },
+          { q: "不获批不收成功报酬的范围是什么？", a: companyClaims.zh.feeScope },
           { q: "採択了但最后没拿到钱，可能吗？", a: "可能。採択后若交付申请不通过、实施期间违规变更、实绩报告不合规、或未在期限内完成，都可能减额或取消。这就是为什么我们的服务覆盖到入金确认为止。" },
         ]
       },
@@ -189,7 +190,7 @@ const T: Record<Locale, {
         items: [
           {
             q: "How much does it cost to have Shisei Consulting handle my application?",
-            a: "We work on a \"zero upfront cost + success-fee\" basis. Initial consultation, eligibility diagnosis, and application drafting carry no fixed fee; we charge a success fee only after the subsidy is actually approved and the funds are received, as a set percentage of the approved amount (generally 10%–15%, depending on the subsidy type). If it is not approved, you pay nothing at all — we bear the risk entirely."
+            a: [companyClaims.en.feeRate, companyClaims.en.feeTiming, companyClaims.en.feeScope].join(" ")
           },
           {
             q: "Is the subsidy itself completely free? Does it have to be repaid?",
@@ -259,7 +260,7 @@ const T: Record<Locale, {
         title: "If not adopted",
         items: [
           { q: "Rejected — what now?", a: "Reapply next round after fixing requirements or improving the plan; no penalty. No success fee is charged on rejection." },
-          { q: "What does 'no approval, no fee' cover?", a: "No success fee if not adopted. Any retainer or out-of-pocket costs are stated at contract. Client withdrawal or false information is excluded." },
+          { q: "What does 'no approval, no success fee' cover?", a: companyClaims.en.feeScope },
           { q: "Adopted but no payment — possible?", a: "Yes, if the grant application fails, unapproved changes occur, the final report is non-compliant, or deadlines are missed. That is why our service runs to disbursement." },
         ]
       },
@@ -321,7 +322,7 @@ const T: Record<Locale, {
         items: [
           {
             q: "志成コンサルに申請を委託すると、費用はいくらかかりますか？",
-            a: "当社は「初期費用ゼロ＋成功報酬制」を採用しています。初期相談・資格診断・申請書作成には固定費用をいただきません。補助金が実際に採択され資金を受給した後にのみ、採択額の一定割合を成功報酬として頂戴します（一般に10%～15%、補助金の種類によります）。不採択の場合は費用は一切不要で、リスクは当社が全面的に負担します。"
+            a: [companyClaims.ja.feeRate, companyClaims.ja.feeTiming, companyClaims.ja.feeScope].join(" ")
           },
           {
             q: "補助金そのものは完全に無料ですか？返済は必要ですか？",
@@ -391,7 +392,7 @@ const T: Record<Locale, {
         title: "不採択の場合",
         items: [
           { q: "不採択になったら？", a: "要件を整えるか計画を改善して次回再申請、ペナルティなし。不採択時は成功報酬をいただきません。" },
-          { q: "「不採択なら無料」の範囲は？", a: "不採択時に成功報酬なし。着手金・実費がある場合は契約時に明示。お客様の一方的中止・虚偽資料は対象外。" },
+          { q: "「不採択なら成功報酬なし」の範囲は？", a: companyClaims.ja.feeScope },
           { q: "採択されても入金されないことは？", a: "あります。交付申請不承認、無断変更、実績報告不備、期限超過で減額・取消。だから当社は入金確認まで対応します。" },
         ]
       },

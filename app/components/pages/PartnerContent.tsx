@@ -1,3 +1,4 @@
+import { companyClaims } from "@/lib/company-claims";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import NavClient from "../NavClient";
@@ -12,7 +13,7 @@ const HOME_LABEL: Record<Locale, string> = { zh: "首页", en: "Home", ja: "ホ�
 // 图标三语共用，不翻译
 const icons: ReactNode[] = [
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="documents" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
       <line x1="16" y1="13" x2="8" y2="13" />
@@ -20,14 +21,14 @@ const icons: ReactNode[] = [
     </svg>
   ),
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="systems" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <rect x="2" y="3" width="20" height="14" rx="2" />
       <line x1="8" y1="21" x2="16" y2="21" />
       <line x1="12" y1="17" x2="12" y2="21" />
     </svg>
   ),
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="community" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -35,19 +36,19 @@ const icons: ReactNode[] = [
     </svg>
   ),
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="education" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
       <path d="M6 12v5c3 3 9 3 12 0v-5" />
     </svg>
   ),
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="property" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
       <polyline points="9 22 9 12 15 12 15 22" />
     </svg>
   ),
   (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
+    <svg key="network" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -87,8 +88,8 @@ const T: Record<Locale, {
     targetSub: "只要您身边有在日本经营企业的华人，您就是理想的合作代理人选。",
     mechTag: "分成机制", mechHeading1: "透明、公平、", mechHeading2: "按时结算",
     mechIntro: "我们相信透明是最好的合作基础。分成比例、结算周期、计算方式，全部在合同中明文规定，没有任何隐藏条款。",
-    exampleLabel: "收入计算示例", exampleAmountLabel: "获批金额", exampleRateLabel: "服务费率", exampleIncomeLabel: "您的收入（最高 60%）",
-    exampleTotalLabel: "月推荐3单合计", exampleTotal: "¥72.6万",
+    exampleLabel: "假设计算示例（非报价或收益承诺）", exampleAmountLabel: "获批金额", exampleRateLabel: "假设费率", exampleIncomeLabel: "您的收入（最高 60%）",
+    exampleTotalLabel: "三个假设示例合计", exampleTotal: "¥72.6万",
     flowTag: "合作流程", flowHeading: "4步开始代理合作",
     flowSub: "从报名到获得分成，流程简单清晰，最快1周即可完成首单对接。",
     faqTag: "常见问题", faqHeading: "代理合作 FAQ",
@@ -102,7 +103,7 @@ const T: Record<Locale, {
     ],
     targetGroups: [
       { title: "税理士·会计师事务所", desc: "您已与客户建立深厚信任关系，将补助金服务作为增值项目，在不增加额外负担的前提下为客户创造更大价值，同时为您带来可观的分成收入。" },
-      { title: "行政书士·社会保険労務士", desc: "您的专业资质与我们的服务天然契合。通过与我们合作，您可以扩展业务边界，为客户提供一站式的补助金申请服务，无需承担申请失败的风险。" },
+      { title: "行政书士·社会保険労務士", desc: "您的专业资质与我们的服务天然契合。通过与我们合作，您可以扩展业务边界，为客户提供一站式的补助金申请服务，由志成持牌人负责专业执行，双方责任按合作协议明确。" },
       { title: "微信群主·社群运营者", desc: "如果您运营在日华人社群、企业家群或商会，您的社交影响力就是最有价值的资产。每成功推荐一家企业，即可获得最高 60% 的服务费分成。" },
       { title: "留学中介·教育顾问", desc: "您服务的许多留学生毕业后在日本创业。为他们的企业对接补助金申请服务，既是对客户长期关系的深化，也能为您带来额外的合作收入。" },
       { title: "房产中介·商业地产顾问", desc: "购买或租赁商业物业的客户，往往正处于创业扩张阶段，是补助金申请的理想候选人。您的一次介绍，可能为客户带来数百万円的资金支持。" },
@@ -111,7 +112,7 @@ const T: Record<Locale, {
     mechItems: [
       { label: "分成比例", value: "最高 60%", desc: "您最高可获得服务费的 60%，无任何上限" },
       { label: "结算周期", value: "月结", desc: "每月固定结算，补助金到账后7个工作日内打款" },
-      { label: "失败风险", value: "零风险", desc: "申请失败时，您和客户均无需支付任何费用" },
+      { label: "收费边界", value: "按合同", desc: companyClaims.zh.feeScope },
       { label: "最低起步", value: "1单", desc: "没有业绩要求，1个成功案例即可结算" },
     ],
     examples: [
@@ -127,8 +128,8 @@ const T: Record<Locale, {
     ],
     faqs: [
       { q: "成为代理需要什么资格条件吗？", a: "没有任何资格限制。无论您是专业人士（税理士、行政书士等）还是社群运营者、普通介绍人，只要您能接触到有需求的在日华人企业主，都可以申请成为我们的合作代理。" },
-      { q: "最高 60% 分成是如何计算的？", a: "我们向客户收取的服务费（成功报酬）通常为获批补助金额的10%〜20%。其中最高 60% 归代理所有，40%归志成コンサル。例如，客户获批500万円补助金，服务费 15% 即 75 万円，代理最高可获得 75 万 × 60% = 45 万円。" },
-      { q: "如果客户申请失败，我需要承担损失吗？", a: "完全不需要。我们实行严格的「无成功不收费」原则，申请失败时客户无需支付费用，代理同样无需承担任何风险或费用。" },
+      { q: "最高 60% 分成是如何计算的？", a: "分成以志成实际收到的成功报酬为基数，最高为60%；客户服务费率、合作分成比例与结算周期分别在合同中书面约定。仅举例：假设批准金额500万日元、服务费率15%、分成比例60%，且志成实际收到75万日元成功报酬，则分成为75万×60%=45万日元。该示例不是统一报价或收入保证。" },
+      { q: "如果客户申请失败，我需要承担损失吗？", a: companyClaims.zh.feeScope + " 合作方的费用与责任以合作协议为准。" },
       { q: "我需要参与申请的具体工作吗？", a: "不需要。您只需要负责客户介绍和基本信息收集，所有的专业工作（书类制作、申请提交、审查跟进等）全部由志成コンサル的专业团队处理。您的工作就是「连接」，我们负责「交付」。" },
       { q: "可以同时代理多个客户吗？收入上限如何？", a: "代理数量没有上限。您可以同时推荐多个客户，每成功一个都能获得分成。我们的合作代理中，月收入最高的已超过100万円。收入完全取决于您的推荐数量和客户质量。" },
     ],
@@ -146,8 +147,8 @@ const T: Record<Locale, {
     targetSub: "If there are Chinese owners running businesses in Japan around you, you are an ideal partner candidate.",
     mechTag: "Commission Model", mechHeading1: "Transparent, Fair,", mechHeading2: "Settled on Time",
     mechIntro: "We believe transparency is the best foundation for partnership. The commission rate, settlement cycle, and calculation method are all spelled out in the contract, with no hidden clauses.",
-    exampleLabel: "Income Calculation Examples", exampleAmountLabel: "Amount approved", exampleRateLabel: "Service fee rate", exampleIncomeLabel: "Your income (up to 60%)",
-    exampleTotalLabel: "3 referrals/month total", exampleTotal: "¥72.6万",
+    exampleLabel: "Illustrative calculations, not quotes or income guarantees", exampleAmountLabel: "Amount approved", exampleRateLabel: "Assumed fee rate", exampleIncomeLabel: "Your income (up to 60%)",
+    exampleTotalLabel: "Total of the three illustrations", exampleTotal: "¥72.6万",
     flowTag: "Process", flowHeading: "Start Partnering in 4 Steps",
     flowSub: "From sign-up to earning commission, the process is simple and clear — your first client match can be completed in as little as one week.",
     faqTag: "FAQ", faqHeading: "Partner Program FAQ",
@@ -161,7 +162,7 @@ const T: Record<Locale, {
     ],
     targetGroups: [
       { title: "Zeirishi · Accounting firms", desc: "You have already built deep trust with clients. Offering subsidy services as a value-added item creates greater value for clients with no extra burden, while bringing you substantial commission income." },
-      { title: "Gyoseishoshi · Sharoshi", desc: "Your professional qualifications fit naturally with our services. By partnering with us, you can expand your business scope and offer clients a one-stop subsidy application service, without bearing the risk of a failed application." },
+      { title: "Gyoseishoshi · Sharoshi", desc: "Your professional qualifications fit naturally with our services. By partnering with us, you can expand your business scope and offer clients a one-stop subsidy application service, with licensed professionals handling execution and responsibilities set in the partnership agreement." },
       { title: "WeChat group owners · Community managers", desc: "If you run a Chinese community in Japan, an entrepreneurs' group, or a chamber of commerce, your social influence is your most valuable asset. For every business you successfully refer, you can earn up to 60% of the service fee." },
       { title: "Study-abroad agents · Education advisors", desc: "Many of the students you serve go on to start businesses in Japan after graduating. Connecting their companies to subsidy application services deepens your long-term client relationships and brings you additional partnership income." },
       { title: "Real-estate agents · Commercial property advisors", desc: "Clients buying or leasing commercial property are often in a startup or expansion phase — ideal candidates for a subsidy application. A single introduction from you could bring clients millions of yen in funding support." },
@@ -170,7 +171,7 @@ const T: Record<Locale, {
     mechItems: [
       { label: "Commission rate", value: "Up to 60%", desc: "You can earn up to 60% of the service fee, with no cap" },
       { label: "Settlement cycle", value: "Monthly", desc: "Fixed monthly settlement, paid within 7 business days of the subsidy arriving" },
-      { label: "Failure risk", value: "Zero risk", desc: "If an application fails, neither you nor the client pays anything" },
+      { label: "Fee terms", value: "Per contract", desc: companyClaims.en.feeScope },
       { label: "Minimum to start", value: "1 case", desc: "No performance quota — a single successful case can be settled" },
     ],
     examples: [
@@ -186,8 +187,8 @@ const T: Record<Locale, {
     ],
     faqs: [
       { q: "Do I need any qualifications to become a partner?", a: "There are no qualification requirements at all. Whether you are a professional (Zeirishi, Gyoseishoshi, etc.), a community manager, or an ordinary referrer, as long as you can reach Chinese business owners in Japan who have a need, you can apply to become our partner." },
-      { q: "How is the up-to-60% commission calculated?", a: "The service fee (success fee) we charge clients is typically 10%–20% of the approved subsidy amount. Of that, up to 60% goes to the partner and 40% to Shisei Consulting. For example, if a client is approved for a 5-million-yen subsidy at a 15% service fee (750,000 yen), the partner can earn up to 750,000 × 60% = 450,000 yen." },
-      { q: "If a client's application fails, do I bear a loss?", a: "Not at all. We strictly apply the \"no approval, no fee\" principle — if an application fails the client pays nothing, and the partner likewise bears no risk or cost." },
+      { q: "How is the up-to-60% commission calculated?", a: "Commission is based on success fees actually received by Shisei, with a share of up to 60%. The client fee rate, partner share and settlement schedule are specified in the respective contracts. Illustration only: assume approved funding of JPY 5 million, a 15% fee and a 60% share. If Shisei receives the JPY 750,000 success fee, the commission is JPY 750,000 × 60% = JPY 450,000. This is not a standard quote or income guarantee." },
+      { q: "If a client's application fails, do I bear a loss?", a: companyClaims.en.feeScope + " Partner costs and responsibilities follow the partnership agreement." },
       { q: "Do I need to take part in the actual application work?", a: "No. You are only responsible for client introductions and basic information collection; all the professional work (document preparation, submission, review follow-up, etc.) is handled by Shisei Consulting's professional team. Your job is to \"connect\"; we handle \"delivery.\"" },
       { q: "Can I refer multiple clients at once? Is there an income cap?", a: "There is no cap on the number of clients. You can refer multiple clients at the same time and earn commission for each success. Among our partners, the highest monthly income already exceeds 1 million yen. Income depends entirely on the number and quality of your referrals." },
     ],
@@ -205,8 +206,8 @@ const T: Record<Locale, {
     targetSub: "身近に日本で企業を経営する華人がいれば、あなたは理想的な提携代理店の候補です。",
     mechTag: "分配の仕組み", mechHeading1: "透明・公平・", mechHeading2: "期日どおりに精算",
     mechIntro: "透明性こそ最良の提携の基盤だと私たちは考えます。分配率・精算周期・計算方法はすべて契約書に明文で定め、隠れた条項は一切ありません。",
-    exampleLabel: "収入計算の例", exampleAmountLabel: "採択金額", exampleRateLabel: "サービス料率", exampleIncomeLabel: "あなたの収入（最大60%）",
-    exampleTotalLabel: "月3件紹介の合計", exampleTotal: "¥72.6万",
+    exampleLabel: "仮定の計算例（見積・収益保証ではありません）", exampleAmountLabel: "採択金額", exampleRateLabel: "仮定の料率", exampleIncomeLabel: "あなたの収入（最大60%）",
+    exampleTotalLabel: "3つの仮定例の合計", exampleTotal: "¥72.6万",
     flowTag: "提携の流れ", flowHeading: "4ステップで代理店提携をスタート",
     flowSub: "申し込みから分配獲得まで、流れはシンプルで明確。最短1週間で初回のお客様対応が完了します。",
     faqTag: "よくある質問", faqHeading: "代理店提携 FAQ",
@@ -220,7 +221,7 @@ const T: Record<Locale, {
     ],
     targetGroups: [
       { title: "税理士・会計事務所", desc: "すでにお客様と深い信頼関係を築いておられます。補助金サービスを付加価値の項目として、追加の負担なくお客様により大きな価値を生み出しつつ、相応の分配収入を得られます。" },
-      { title: "行政書士・社会保険労務士", desc: "あなたの専門資格は私たちのサービスと自然に合致します。提携により業務の幅を広げ、お客様にワンストップの補助金申請サービスを提供でき、申請不採択のリスクを負う必要もありません。" },
+      { title: "行政書士・社会保険労務士", desc: "あなたの専門資格は私たちのサービスと自然に合致します。提携により業務の幅を広げ、お客様にワンストップの補助金申請サービスを提供でき、専門業務は当社の有資格者が担当し、双方の責任は提携契約で明記します。" },
       { title: "WeChatグループ主・コミュニティ運営者", desc: "在日華人コミュニティ、起業家グループ、商工会などを運営されているなら、その影響力こそ最も価値ある資産です。企業を1社成功紹介するごとに、サービス料の最大60%の分配を得られます。" },
       { title: "留学エージェント・教育コンサルタント", desc: "ご支援された留学生の多くは卒業後、日本で起業します。彼らの企業に補助金申請サービスをつなぐことは、長期的なお客様関係の深化であると同時に、追加の提携収入にもなります。" },
       { title: "不動産仲介・商業用不動産アドバイザー", desc: "商業用物件を購入・賃借するお客様は、起業・拡大の段階にあることが多く、補助金申請の理想的な候補です。あなたの一度のご紹介が、お客様に数百万円の資金支援をもたらすかもしれません。" },
@@ -229,7 +230,7 @@ const T: Record<Locale, {
     mechItems: [
       { label: "分配率", value: "最大60%", desc: "サービス料の最大60%を獲得でき、上限はありません" },
       { label: "精算周期", value: "月次", desc: "毎月定期精算、補助金の入金後7営業日以内にお支払い" },
-      { label: "不採択リスク", value: "ゼロリスク", desc: "申請不採択の場合、あなたもお客様も費用は一切不要" },
+      { label: "費用の範囲", value: "契約に準拠", desc: companyClaims.ja.feeScope },
       { label: "最低スタート", value: "1件", desc: "実績要件なし、成功事例1件から精算可能" },
     ],
     examples: [
@@ -245,8 +246,8 @@ const T: Record<Locale, {
     ],
     faqs: [
       { q: "代理店になるには資格条件が必要ですか？", a: "資格の制限は一切ありません。専門家（税理士、行政書士など）でも、コミュニティ運営者や一般の紹介者でも、ニーズのある在日華人の企業経営者に接触できる方なら、どなたでも当社の提携代理店にお申し込みいただけます。" },
-      { q: "最大60%の分配はどのように計算されますか？", a: "当社がお客様からいただくサービス料（成功報酬）は通常、採択された補助金額の10%〜20%です。そのうち最大60%が代理店、40%が志成コンサルに帰属します。例えばお客様が500万円の補助金を採択され、サービス料15%（75万円）の場合、代理店は最大で75万×60%=45万円を得られます。" },
-      { q: "お客様の申請が不採択の場合、損失を負担しますか？", a: "まったく不要です。当社は「不採択なら無料」の原則を厳守しており、申請が不採択の場合、お客様は費用を支払う必要がなく、代理店も一切のリスクや費用を負担しません。" },
+      { q: "最大60%の分配はどのように計算されますか？", a: "分配は当社が実際に受領した成功報酬を基に、最大60%とします。お客様の料率・提携先の分配率・精算時期はそれぞれ契約で明記します。計算例として決定額500万円、料率15%、分配率60%と仮定し、当社が成功報酬75万円を受領した場合、分配は75万×60%=45万円です。一律の見積や収益保証ではありません。" },
+      { q: "お客様の申請が不採択の場合、損失を負担しますか？", a: companyClaims.ja.feeScope + " 提携先の費用・責任は提携契約に準じます。" },
       { q: "申請の具体的な作業に参加する必要はありますか？", a: "不要です。あなたはお客様のご紹介と基本情報の収集のみを担当し、専門的な作業（書類作成、申請提出、審査フォローなど）はすべて志成コンサルの専門チームが処理します。あなたの役割は「つなぐ」こと、私たちが「届ける」ことを担います。" },
       { q: "複数のお客様を同時に担当できますか？収入の上限は？", a: "担当できるお客様数に上限はありません。複数のお客様を同時にご紹介でき、成功ごとに分配を得られます。当社の提携代理店の中には、月収が最高で100万円を超える方もいます。収入はご紹介の件数とお客様の質次第です。" },
     ],

@@ -1,10 +1,11 @@
 import type { PillarSet } from "./types";
 import { UI } from "./types";
+import { SUBSIDY_SCHEDULE as DATES } from "../subsidies/status";
 
 const SRC = {
   jizokuka: "https://r6.jizokukahojokin.info/",
   itshien: "https://it-shien.smrj.go.jp/",
-  seiryoka: "https://shoryokuka.smrj.go.jp/ippan/",
+  seiryoka: DATES.seiryoka.source,
   career: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
   jinzai: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html",
   kosha: "https://www.tokyo-kosha.or.jp/support/josei/index.html",
@@ -76,7 +77,7 @@ export const soleProprietor: PillarSet = {
             rows: [
               ["小規模事業者持続化補助金〈一般型 通常枠〉", "开拓客源：网站、宣传、店铺改装、展会", "50 万円 / 2/3（赁金引上等特例最高 200 万円，インボイス特例 +50 万円）", "公募回制；第 20 回受付 2026-11-05〜12-15 17:00，様式4 发行截止 12-04", "无（商业·服务业常时员工 ≤5 人）"],
               ["デジタル化・AI導入補助金2026（旧 IT導入補助金）", "上会计/预约/POS/AI 工具、系统", "通常枠 5 万〜450 万円 / 1/2 以内（满足最低工资要件 2/3）", "按月轮次締切；须与登记的 IT 導入支援事業者共同申请", "无"],
-              ["中小企業省力化投資補助事業（一般型）", "买自动化设备、省人化系统", "5 人以下 750 万円（大幅涨薪特例 1,000 万）/ 1/2（小規模 2/3）", "公募回制；第 8 回 8/18 公募开始、9 月中旬受付、10 月中旬締切预定", "无"],
+              ["中小企業省力化投資補助事業（一般型）", "买自动化设备、省人化系统", "5 人以下 750 万円（大幅涨薪特例 1,000 万）/ 1/2（小規模 2/3）", `公募回制；第 8 回受付 ${DATES.seiryoka.opens} 至 ${DATES.seiryoka.deadline}（日本时间；日程复核 ${DATES.seiryoka.verifiedAt}）`, "无"],
               ["東京都中小企業振興公社 各类助成金", "产品开发、贩路开拓、展会出展等", "按事业不同：300 万〜2,000 万円 / 1/2〜2/3", "各事业独立公募，多数明确写「個人事業主可」", "无"],
               ["キャリアアップ助成金（正社員化コース）", "把有期/兼职员工转为正社员", "每人 20 万〜80 万円（有期→正規·重点支援对象 80 万）", "通年受付；转正前需提交キャリアアップ計画（届出のみ）", "有：需雇用保险被保险者"],
               ["人材開発支援助成金", "给员工做培训", "经费助成 45%〜75% + 赁金助成 800〜1,000 円/小时", "训练开始前 1〜6 个月提计划届", "有"],
@@ -193,10 +194,10 @@ export const soleProprietor: PillarSet = {
         { type: "p", text: "The Sustainability Subsidy requires an opened business and, normally, a tax return (first-year businesses may substitute the opening notice per the round's guidelines). AI Adoption and Labor-Saving have no hard minimum, but at least one filed return strengthens the review." },
       ] },
       { id: "list", h2: "Programs open to sole proprietors in 2026", blocks: [
-        { type: "table", caption: "Per official guidelines, verified 2026-09-03", head: ["Program", "Use", "Cap / rate", "Window", "Staff required?"], rows: [
+        { type: "table", caption: "Amounts and eligibility: official guidelines checked 2026-09-03; the separate date check is shown in the window column", head: ["Program", "Use", "Cap / rate", "Window", "Staff required?"], rows: [
           ["Small Business Sustainability Subsidy (general, standard)", "Marketing, website, renovation, trade shows", "¥500k / 2/3 (special tracks up to ¥2M; invoice special +¥500k)", "Round-based; 20th round 2026-11-05 to 12-15 17:00, Form 4 by 12-04", "No (≤5 regular staff in retail/services)"],
           ["Digitalization & AI Adoption Subsidy 2026", "Accounting, booking, POS, AI tools", "¥50k–¥4.5M / up to 1/2 (2/3 with wage condition)", "Monthly deadlines; joint application with registered IT vendor", "No"],
-          ["Labor-Saving Investment Subsidy (general)", "Automation equipment, labor-saving systems", "¥7.5M (≤5 staff; ¥10M with wage-raise special) / 1/2 (2/3 small)", "Round 8: opens 8/18, intake mid-Sep, deadline mid-Oct (planned)", "No"],
+          ["Labor-Saving Investment Subsidy (general)", "Automation equipment, labor-saving systems", "¥7.5M (≤5 staff; ¥10M with wage-raise special) / 1/2 (2/3 small)", `Round 8: applications ${DATES.seiryoka.opens}–${DATES.seiryoka.deadline} JST (dates checked ${DATES.seiryoka.verifiedAt})`, "No"],
           ["Tokyo SME Support Center grants", "Product development, market expansion, exhibitions", "¥3M–¥20M / 1/2–2/3 by program", "Separate calls; most explicitly list sole proprietors", "No"],
           ["Career-Up Grant (regularization)", "Convert fixed-term/part-time staff to regular", "¥200k–¥800k per person", "Year-round; plan notification before conversion", "Yes"],
           ["Human Resource Development Grant", "Staff training", "45–75% of costs + ¥800–1,000/hour wage support", "Plan filed 1–6 months before training", "Yes"],
@@ -298,7 +299,7 @@ export const soleProprietor: PillarSet = {
         { type: "table", caption: "金額・補助率は各制度の公募要領に準じます（2026-09-03確認）", head: ["制度", "使途", "上限／補助率", "受付", "従業員要件"], rows: [
           ["小規模事業者持続化補助金〈一般型 通常枠〉", "販路開拓：Web・広告・店舗改装・展示会", "50万円／2/3（賃金引上げ等特例で最大200万円、インボイス特例+50万円）", "公募回制；第20回 2026-11-05〜12-15 17:00、様式4発行締切 12-04", "なし（商業・サービス業は常時従業員5人以下）"],
           ["デジタル化・AI導入補助金2026", "会計・予約・POS・AIツール等", "通常枠5万〜450万円／1/2以内（最低賃金要件で2/3）", "月次締切；登録IT導入支援事業者と共同申請", "なし"],
-          ["中小企業省力化投資補助事業（一般型）", "自動化設備・省人化システム", "5人以下750万円（大幅賃上げ特例1,000万）／1/2（小規模2/3）", "公募回制；第8回 8/18公募開始・9月中旬受付・10月中旬締切予定", "なし"],
+          ["中小企業省力化投資補助事業（一般型）", "自動化設備・省人化システム", "5人以下750万円（大幅賃上げ特例1,000万）／1/2（小規模2/3）", `公募回制；第8回受付 ${DATES.seiryoka.opens}〜${DATES.seiryoka.deadline}（日本時間；日程確認 ${DATES.seiryoka.verifiedAt}）`, "なし"],
           ["東京都中小企業振興公社 各助成金", "製品開発・販路開拓・展示会出展", "事業により300万〜2,000万円／1/2〜2/3", "事業ごとに公募；多くが「個人事業主可」", "なし"],
           ["キャリアアップ助成金（正社員化コース）", "有期・パートの正社員転換", "1人20万〜80万円", "通年；転換前にキャリアアップ計画の届出", "あり"],
           ["人材開発支援助成金", "従業員の訓練", "経費助成45〜75%＋賃金助成800〜1,000円/時", "訓練開始1〜6か月前に計画届", "あり"],

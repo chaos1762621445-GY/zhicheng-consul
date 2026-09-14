@@ -24,10 +24,11 @@
       "rate_zh": "1/2（小规模事业者·再生事业者 2/3；大幅涨薪特例适用时中小 2/3）",
       "schedule": {
         "open": "2026-08-18",
-        "accept_start": "2026-09-中旬（预定）",
-        "deadline": "2026-10-中旬（预定）",
+        "accept_start": "2026-09-18 10:00",
+        "deadline": "2026-10-16 17:00",
         "result": "2027-02-上旬（预定）",
-        "status": "公募中（受付开始待官方确定日期）"
+        "status": "公募中（9月18日10:00受付开始）",
+        "verified_at": "2026-09-14"
       },
       "official_url": "https://shoryokuka.smrj.go.jp/ippan/schedule/",
       "verified_at": "2026-09-05",
@@ -47,8 +48,10 @@
       "schedule": {
         "deadline": "2026-09-29 17:00",
         "result": "2026-11-09（予定）",
-        "implement_until": "2027-04-30",
-        "status": "5次受付中；1〜4次已终；后续视预算有6次"
+        "implement_until": "2027-04-30 17:00（予定）",
+        "status": "第5次受付中；后续轮次以官方公布为准",
+        "accept_start": "2026-03-30 10:00",
+        "verified_at": "2026-09-14"
       },
       "official_url": "https://it-shien.smrj.go.jp/schedule/",
       "verified_at": "2026-09-05",
@@ -146,14 +149,15 @@
       "amount_zh": "三档：年减 CO2 ≥28t → 上限 4,500万円；经省能诊断/省能咨询后减 3t 或 30% → 上限 2,500万円；自行制定计划减 3t 或 30% → 上限 1,000万円",
       "rate_zh": "3/4（28t 档）；2/3（诊断档·自计划档）。对象经费=设计费·设备费·工程费",
       "schedule": {
-        "r4_start": "2026-09-16",
+        "r4_start": "2026-09-16 09:00",
         "r4_deadline": "2026-10-02 17:00",
         "r5": "2026-11-09〜11-20",
         "r6": "2027-01-18〜01-29",
         "completion_deadline_r4": "2027-10-29",
-        "status": "令和8年度第3回受付中/第4回9月16日开始",
+        "status": "第3回已截止；第4回9月16日开始",
         "budget": "令和8年度 102.3亿円",
-        "program_end": "事业实施至令和8年度，交付至令和9年度"
+        "program_end": "事业实施至令和8年度，交付至令和9年度",
+        "verified_at": "2026-09-14"
       },
       "official_url": "https://www.tokyo-co2down.jp/subsidy/zeroemi-shoene/",
       "verified_at": "2026-09-05",

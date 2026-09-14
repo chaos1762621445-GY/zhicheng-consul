@@ -1,50 +1,68 @@
 'use client';
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import { localizedHref } from "@/lib/i18n/href";
 import { CAT_LABEL, categorize, type Cat } from "@/lib/posts-category";
+import { BLOG_PAGE_SIZE, blogPageCount, blogPagePath } from "@/lib/blog-pagination";
 
 type P = { slug: string; title: string; date: string; excerpt?: string; keywords?: string[] };
-const PAGE = 20;
-const UI: Record<Locale, { search: string; count: (n: number) => string; prev: string; next: string; none: string }> = {
-  zh: { search: "搜索标题或关键词…", count: (n) => `${n} 篇`, prev: "上一页", next: "下一页", none: "没有匹配的文章" },
-  en: { search: "Search title or keywords…", count: (n) => `${n} articles`, prev: "Prev", next: "Next", none: "No matching articles" },
-  ja: { search: "タイトル・キーワードで検索…", count: (n) => `${n}件`, prev: "前へ", next: "次へ", none: "該当する記事がありません" },
+const UI: Record<Locale, { search: string; count: (n: number) => string; page: (n: number, total: number) => string; pagination: string; prev: string; next: string; none: string }> = {
+  zh: { search: "搜索标题或关键词…", count: (n) => `${n} 篇`, page: (n, total) => `第 ${n} / ${total} 页`, pagination: "文章分页", prev: "上一页", next: "下一页", none: "没有匹配的文章" },
+  en: { search: "Search title or keywords…", count: (n) => `${n} articles`, page: (n, total) => `Page ${n} of ${total}`, pagination: "Article pages", prev: "Prev", next: "Next", none: "No matching articles" },
+  ja: { search: "タイトル・キーワードで検索…", count: (n) => `${n}件`, page: (n, total) => `${n} / ${total} ページ`, pagination: "記事のページ", prev: "前へ", next: "次へ", none: "該当する記事がありません" },
 };
 
-export default function BlogList({ locale, posts }: { locale: Locale; posts: P[] }) {
+const paginationStyle: CSSProperties = { display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: 44, height: 44, borderRadius: 4, textDecoration: "none" };
+
+export default function BlogList({ locale, posts, initialPage = 1 }: { locale: Locale; posts: P[]; initialPage?: number }) {
   const L = (p: string) => localizedHref(locale, p);
   const u = UI[locale];
   const [cat, setCat] = useState<Cat>("all");
   const [q, setQ] = useState("");
-  const [page, setPage] = useState(1);
+  const [filterPage, setFilterPage] = useState(1);
+  const isFiltered = cat !== "all" || q.trim().length > 0;
 
   const tagged = useMemo(() => posts.map((p) => ({ ...p, cat: categorize(p.title, p.keywords, p.slug) })), [posts]);
   const filtered = useMemo(() => {
     const k = q.trim().toLowerCase();
     return tagged.filter((p) => (cat === "all" || p.cat === cat) && (!k || p.title.toLowerCase().includes(k) || (p.keywords || []).join(" ").toLowerCase().includes(k) || (p.excerpt || "").toLowerCase().includes(k)));
   }, [tagged, cat, q]);
-  const pages = Math.max(1, Math.ceil(filtered.length / PAGE));
-  const cur = Math.min(page, pages);
-  const slice = filtered.slice((cur - 1) * PAGE, cur * PAGE);
+  const pages = blogPageCount(filtered.length);
+  const cur = Math.min(isFiltered ? filterPage : initialPage, pages);
+  const slice = filtered.slice((cur - 1) * BLOG_PAGE_SIZE, cur * BLOG_PAGE_SIZE);
   const counts = useMemo(() => tagged.reduce<Record<string, number>>((a, p) => { a[p.cat] = (a[p.cat] || 0) + 1; return a; }, {}), [tagged]);
   const cats = (Object.keys(CAT_LABEL[locale]) as Cat[]).filter((c) => c === "all" || counts[c]);
+
+  function pageControl(n: number, label: string | number, rel?: "prev" | "next") {
+    const disabled = n < 1 || n > pages;
+    const current = n === cur && !rel;
+    if (disabled) {
+      return <span className="need-tab" aria-disabled="true" style={{ ...paginationStyle, cursor: "default", opacity: 0.45 }}>{label}</span>;
+    }
+    if (isFiltered) {
+      return <button type="button" className="need-tab" aria-pressed={current} aria-current={current ? "page" : undefined} onClick={() => setFilterPage(n)} style={paginationStyle}>{label}</button>;
+    }
+    if (current) {
+      return <span className="need-tab" aria-current="page" style={{ ...paginationStyle, cursor: "default", background: "var(--brand)", borderColor: "var(--brand)", color: "#fff" }}>{label}</span>;
+    }
+    return <Link href={L(blogPagePath(n))} prefetch={false} rel={rel} className="need-tab" style={paginationStyle}>{label}</Link>;
+  }
 
   return (
     <>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
         <div className="need-tabs" style={{ marginBottom: 0 }}>
           {cats.map((c) => (
-            <button key={c} type="button" className="need-tab" aria-pressed={cat === c} onClick={() => { setCat(c); setPage(1); }}>
+            <button key={c} type="button" className="need-tab" aria-pressed={cat === c} onClick={() => { setCat(c); setFilterPage(1); }} style={{ minHeight: 44 }}>
               {CAT_LABEL[locale][c]}{c !== "all" && <span style={{ opacity: .6, marginLeft: 4 }}>{counts[c]}</span>}
             </button>
           ))}
         </div>
-        <input type="search" value={q} onChange={(e) => { setQ(e.target.value); setPage(1); }} placeholder={u.search} aria-label={u.search}
-          style={{ height: 40, minWidth: 240, flex: "1 1 240px", maxWidth: 360, padding: "0 14px", border: "1px solid var(--line-strong)", borderRadius: 999, fontSize: 14, fontFamily: "inherit", background: "#fff" }} />
+        <input type="search" value={q} onChange={(e) => { setQ(e.target.value); setFilterPage(1); }} placeholder={u.search} aria-label={u.search}
+          style={{ height: 44, minWidth: 240, flex: "1 1 240px", maxWidth: 360, padding: "0 14px", border: "1px solid var(--line-strong)", borderRadius: 999, fontSize: 14, fontFamily: "inherit", background: "#fff" }} />
       </div>
-      <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>{u.count(filtered.length)}</div>
+      <div aria-live="polite" style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>{u.count(filtered.length)}{filtered.length > 0 && <> · {u.page(cur, pages)}</>}</div>
 
       {slice.length === 0 ? <div className="case-empty">{u.none}</div> : (
         <div className="ed-rows" style={{ background: "var(--surface)", padding: "0 32px" }}>
@@ -67,15 +85,15 @@ export default function BlogList({ locale, posts }: { locale: Locale; posts: P[]
       )}
 
       {pages > 1 && (
-        <nav aria-label="pagination" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, marginTop: 28, flexWrap: "wrap" }}>
-          <button type="button" className="need-tab" disabled={cur === 1} onClick={() => setPage(cur - 1)}>{u.prev}</button>
+        <nav aria-label={u.pagination} style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, marginTop: 28, flexWrap: "wrap" }}>
+          {pageControl(cur - 1, u.prev, "prev")}
           {Array.from({ length: pages }, (_, i) => i + 1).filter((n) => n === 1 || n === pages || Math.abs(n - cur) <= 2).map((n, i, arr) => (
             <span key={n} style={{ display: "contents" }}>
               {i > 0 && arr[i - 1] !== n - 1 && <span style={{ color: "var(--muted)" }}>…</span>}
-              <button type="button" className="need-tab" aria-pressed={n === cur} onClick={() => setPage(n)}>{n}</button>
+              {pageControl(n, n)}
             </span>
           ))}
-          <button type="button" className="need-tab" disabled={cur === pages} onClick={() => setPage(cur + 1)}>{u.next}</button>
+          {pageControl(cur + 1, u.next, "next")}
         </nav>
       )}
     </>

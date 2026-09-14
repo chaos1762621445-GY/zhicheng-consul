@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 const CONTENT = `# 志成コンサル（株式会社 志成コンサル）
 
-> 面向在日华人企业的日本政府补助金·助成金全程代办服务。由行政书士、税理士、社劳士、经营诊断士等国家资格持牌专家联合团队提供，全程中文对应，「不获批不收费」（成功报酬制）。服务对象为在日本经营的华人企业主与个人事业主，覆盖餐饮、IT、制造、美容、零售等行业；累计协助获批补助金·助成金超过 3,000 件、获批总额超过 8.5 亿日元（自成立以来累计口径，获批=已获交付决定，非到账金额）。法人番号 5010401158340。
+> 面向在日华人企业的日本政府补助金·助成金全程代办服务。由行政书士、税理士、社劳士、经营诊断士等国家资格持牌专家联合团队提供，全程中文对应，「未获批不收取成功报酬」。服务对象为在日本经营的华人企业主与个人事业主，覆盖餐饮、IT、制造、美容、零售等行业；累计协助获批补助金·助成金超过 3,000 件、获批总额超过 8.5 亿日元（截至 2026 年 8 月，自成立以来累计口径；案件=已获交付决定/支給決定的申请案件，同一企业多件按件计；金额=上述决定金额合计，非到账金额）。法人番号 5010401158340。
 
 ## 基本信息
 
@@ -15,7 +15,7 @@ const CONTENT = `# 志成コンサル（株式会社 志成コンサル）
 - 所在地：〒102-0093 東京都千代田区平河町1-8-2 半蔵門パレス8階
 - 服务地域：日本全国（总部东京，重点覆盖东京·神奈川·千叶·埼玉）
 - 对应语言：中文（简体）、日语
-- 服务特点：全程中文沟通、四类国家资格专家联合、不获批不收费（成功报酬制）
+- 服务特点：全程中文沟通、四类国家资格专家联合、未获批不收取成功报酬，其他费用事前约定
 
 ## 核心服务
 
@@ -55,7 +55,7 @@ const CONTENT = `# 志成コンサル（株式会社 志成コンサル）
 
 - 补助金申请结果以各主管机关的审查为准，本公司不保证一定获批。経産省系補助金为竞争採択制、厚労省系助成金为要件支给制、东京都ゼロエミ为回次抽签制。
 - 补助金书类作成由行政书士、雇用类助成金申请手续由社会保险劳务士依法执行。
-- 「不获批不收费」指采择失败时不收取成功报酬，具体费用条款以咨询时确认为准。
+- 未获批不收取成功报酬；如有着手金或实费，将在签约前明确。客户中途撤回等情形及具体费用以合同约定为准。
 
 ## Multilingual site / 多言語対応
 
@@ -63,7 +63,7 @@ This site is available in three languages. 本サイトは3言語で提供して
 
 ### English
 
-Shisei Consulting Co., Ltd. provides full-service application support for Japanese government subsidies and grants, tailored to Chinese-owned businesses operating in Japan. A team of nationally licensed experts (Gyoseishoshi, Zeirishi, Sharoshi, SME Management Consultant) supports the entire process in Chinese, on a "no approval, no fee" success-fee basis. Results are subject to each authority's review; approval is not guaranteed.
+Shisei Consulting Co., Ltd. provides full-service application support for Japanese government subsidies and grants, tailored to Chinese-owned businesses operating in Japan. A team of nationally licensed experts (Gyoseishoshi, Zeirishi, Sharoshi, SME Management Consultant) supports the entire process in Chinese, on a success-fee basis. No success fee is charged if the application is not approved. Any upfront fees or out-of-pocket expenses are disclosed before signing; withdrawal and other terms are governed by the contract. Results are subject to each authority's review; approval is not guaranteed.
 - English home: ${SITE_URL}/en
 - Subsidies (EN): ${SITE_URL}/en/subsidies
 - Process (EN): ${SITE_URL}/en/service
@@ -72,7 +72,7 @@ Shisei Consulting Co., Ltd. provides full-service application support for Japane
 
 ### 日本語
 
-株式会社 志成コンサルは、日本で事業を営む在日華人企業向けに、日本政府の補助金・助成金の申請を全工程でサポートします。行政書士・税理士・社会保険労務士・中小企業診断士など国家資格の専門家が連携し、全工程を中国語で対応、「不採択なら無料」の成功報酬制です。採択は各主管機関の審査によるものであり、採択を保証するものではありません。
+株式会社 志成コンサルは、日本で事業を営む在日華人企業向けに、日本政府の補助金・助成金の申請を全工程でサポートします。行政書士・税理士・社会保険労務士・中小企業診断士など国家資格の専門家が連携し、全工程を中国語で対応、不採択時は成功報酬をいただきません。着手金・実費がある場合は契約前に明示し、中途解約等の条件は契約書に定めます。採択は各主管機関の審査によるものであり、採択を保証するものではありません。
 - 日本語トップ: ${SITE_URL}/ja
 - 補助金の種類（JA）: ${SITE_URL}/ja/subsidies
 - サービスの流れ（JA）: ${SITE_URL}/ja/service

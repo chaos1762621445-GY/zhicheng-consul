@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/about",
   title: "About Us | Chinese-Language Subsidy Team of Gyoseishoshi & Zeirishi",
-  description: "Shisei Consulting provides subsidy application services exclusively for Chinese business owners in Japan. A team of Gyoseishoshi, Sharoshi, Zeirishi, and SME Management Consultants supports you entirely in Chinese — no approval, no fee.",
+  description: "Shisei Consulting provides subsidy application services exclusively for Chinese business owners in Japan. A team of Gyoseishoshi, Sharoshi, Zeirishi, and SME Management Consultants supports you entirely in Chinese — no approval, no success fee.",
 });
 
 export default function EnAboutPage() {

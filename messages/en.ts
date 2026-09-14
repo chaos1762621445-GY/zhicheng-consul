@@ -1,3 +1,4 @@
+import { companyClaims } from "@/lib/company-claims";
 import type { Dictionary } from "./zh";
 
 export const en: Dictionary = {
@@ -41,21 +42,21 @@ export const en: Dictionary = {
     h1Highlight: "for Chinese-owned businesses",
     h1Line3: "in Japan",
     sub: "Find out in 3 minutes which programs you qualify for. Full Chinese-language support by four licensed professions.",
-    subStrong: "No approval, no fee.",
+    subStrong: "No approval, no success fee.",
     ctaPrimary: "Check eligibility for free",
     ctaSecondary: "See available programs",
-    trust: ["Full Chinese support", "Four licensed professions", "No approval, no fee", "3,000+ approved cases※"],
+    trust: ["Full Chinese support", "Four licensed professions", "No approval, no success fee", "3,000+ approved cases※"],
     stats: [
       { val: "3,000+", label: "Approved applications", note: "F&B · Retail · Manufacturing · IT" },
-      { val: "¥850M+", label: "Total subsidies secured", note: "Actual funds disbursed" },
+      { val: "¥850M+", label: "Total approved funding", note: "Grant/payment decision amounts" },
       { val: "4", label: "National professional licenses", note: "Gyoseishoshi · Sharoshi · Zeirishi · Diagnostician" },
     ],
-    statsNote: "※ Cumulative figures since founding (as of Aug 2026). Successful applications = engagements that reached grant/payment decision; total secured = confirmed disbursements; approval rate = share of reviewed cases adopted. Individual outcomes depend on the authority’s review.",
+    statsNote: companyClaims.en.statsNote,
   },
 
   services: {
     heading: "Six main programs: which one fits you",
-    sub: "These are the subsidies most frequently applied for by Chinese-owned businesses in Japan. We handle the entire process — no approval, no fee.",
+    sub: "These are the subsidies most frequently applied for by Chinese-owned businesses in Japan. We handle the entire process — no approval, no success fee.",
     items: [
       { tag: "By company size", name: "Labor-Saving Subsidy", amount: "7.5M–80M", unit: "JPY", rate: "Subsidy rate 1/2 (small-scale 2/3)", desc: "For adopting DX systems and automation equipment to cut costs and boost efficiency. Five tiers by headcount: 7.5M JPY for under 5 staff, 15M for 6–20, up to 80M JPY.", slug: "seiryoka" },
       { tag: "Incl. sole proprietors", name: "Digital / AI Adoption Subsidy", amount: "Up to 4.5M", unit: "JPY", rate: "Subsidy rate up to 1/2", desc: "Covers AI/IT software, custom systems, and deployment training (formerly the IT Introduction Subsidy). Requires joint application via a certified IT vendor; has public-offering deadlines.", slug: "ai-it" },
@@ -72,7 +73,7 @@ export const en: Dictionary = {
     who: [
       { t: "Chinese business owners", d: "The 5 most-used programs, visa relationship, 6 common mistakes.", a: "For business owners", href: "/for/chinese-owners" },
       { t: "Sole proprietors", d: "No company, no staff — still eligible: Sustainability ¥500k, AI Adoption ¥4.5M, Labor-Saving ¥7.5M.", a: "For sole proprietors", href: "/for/sole-proprietor" },
-      { t: "Deadlines", d: "Labor-Saving R8, AI Adoption 10/7, Sustainability R20, Tokyo AC R4 — verified monthly.", a: "2026 calendar", href: "/schedule" },
+      { t: "Deadlines", d: "Labor-Saving R8, AI Adoption 9/29, Sustainability R20, Tokyo AC R4 — verified monthly.", a: "2026 calendar", href: "/schedule" },
     ],
     casesTitle: "What businesses like yours received",
     casesSub: "Real, anonymized cases; amounts shown as ranges. Outcomes depend on the authority’s review.",
@@ -102,10 +103,10 @@ export const en: Dictionary = {
     panelRateValue: "92",
     panelCredentials: ["Gyoseishoshi", "Labor & Social Security Attorney", "Tax Accountant", "SME Management Consultant"],
     panelBadge1: "Success-Fee Model",
-    panelBadge2: "No approval, no fee.",
+    panelBadge2: "No approval, no success fee.",
     reasons: [
       { title: "Full Chinese support, no language barrier", desc: "From first inquiry to funds in hand, all Japanese paperwork is handled by our professionals — you only provide company information." },
-      { title: "No approval, no fee — zero risk", desc: "If the application fails, you pay nothing — including document and consultation fees. We bear the risk." },
+      { title: companyClaims.en.noSuccessFee, desc: companyClaims.en.feeScope },
       { title: "Four certified experts handle everything", desc: "Gyoseishoshi, labor attorney, tax accountant, and management consultant collaborate across every stage of the application." },
       { title: "3,000+ approved cases", desc: "Over 3,000 subsidy and grant applications approved for Chinese-owned businesses in Japan across F&B, IT, manufacturing, beauty, and more." },
     ],
@@ -116,7 +117,7 @@ export const en: Dictionary = {
       { n: "02", title: "Plan Design", desc: "We select the optimal combination from 6+ subsidies and estimate your approvable amount." },
       { n: "03", title: "Document Prep", desc: "Our team collects, organizes, and translates all application materials on your behalf." },
       { n: "04", title: "Professional Filing", desc: "Licensed experts submit on your behalf in compliant format, with regular progress reports during review." },
-      { n: "05", title: "Approval & Disbursement", desc: "Once funds arrive, you pay the agreed success fee — fully transparent throughout." },
+      { n: "05", title: "Approval & Disbursement", desc: companyClaims.en.feeTiming },
     ],
     postsTitle: "In-Depth Subsidy Policy Analysis",
     postsViewAll: "View All Articles",
@@ -126,11 +127,11 @@ export const en: Dictionary = {
   },
 
   cta: {
-    descDefault: "A 3-minute free assessment to match your business with the optimal subsidy plan. Full Chinese support, no approval no fee.",
+    descDefault: "A 3-minute free assessment to match your business with the optimal subsidy plan. Full Chinese support, no approval, no success fee.",
     primaryDefault: "Start Free Diagnosis",
     secondaryDefault: "Explore Subsidy Types",
     guarantees: [
-      ["No approval, no fee", "Success-fee model — pay nothing if the application fails"],
+      [companyClaims.en.noSuccessFee, "Any retainer and expenses are disclosed at signing; withdrawal follows the contract"],
       ["Same-day reply on weekdays", "Scan to add WeChat Work and reach a Chinese-speaking advisor directly"],
     ],
   },
@@ -151,7 +152,7 @@ export const en: Dictionary = {
     tagline2Pre: "can equally enjoy the benefits of ",
     tagline2Highlight: "government subsidies",
     tagline2Post: ".",
-    badges: ["No approval, no fee", "Full Chinese support", "Four licensed experts"],
+    badges: ["No approval, no success fee", "Full Chinese support", "Four licensed experts"],
     wechatLabel: "Scan on WeChat Work",
     wechatTitle: "Sales Support Group",
     wechatDesc1: "Tap to reach support · Free consultation",

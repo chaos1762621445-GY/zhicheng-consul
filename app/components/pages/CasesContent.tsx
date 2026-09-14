@@ -1,3 +1,4 @@
+import { companyClaims } from "@/lib/company-claims";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
 import PageHero from "../PageHero";
@@ -32,7 +33,7 @@ const T: Record<Locale, {
     heroEyebrow: "Success Cases · 成功案例",
     heroTitle1: "客户", heroTitle2: "成功案例",
     heroDesc: "来自餐饮、美容、IT、建设等多个行业的真实获批案例，印证我们在日本政府补助金领域的专业实力。",
-    statsNote: "※ 以上为本团队及合作持牌专家自 2022 年成立以来的累计口径（截至 2026 年 7 月）：获批案件数为经手申请中已收到交付决定/支給決定的案件数（1 家企业多件按件计）；获批总额为上述案件的交付决定金额合计（非到账金额）；通过率为已完成审查案件中的採択比例，因补助金种类与公募回而异，个案结果以主管机关审查为准。",
+    statsNote: companyClaims.zh.statsNote,
     sectionTag: "真实案例 · 匿名脱敏处理",
     sectionHeading: "各行业获批实例",
     sectionSub: "以下案例均来自我们服务过的真实客户，已做匿名化处理，补助金金额及周期均为实际数据。",
@@ -62,7 +63,7 @@ const T: Record<Locale, {
     heroEyebrow: "Success Cases · Client Results",
     heroTitle1: "Client", heroTitle2: "Success Stories",
     heroDesc: "Real approved cases across food service, beauty, IT, construction, and more — proof of our expertise in Japan's government subsidy field.",
-    statsNote: "※ The figures above are cumulative for our team and affiliated licensed professionals since our founding in 2022 (as of July 2026): businesses served counts cumulative consultations and engagements; total secured is the sum of subsidies and grants that have received a disbursement decision among the applications handled; the success rate is the proportion of adopted cases among those with completed review, varying by subsidy type and public-offering round. Individual results are subject to the reviewing authority's decision.",
+    statsNote: companyClaims.en.statsNote,
     sectionTag: "Real cases · Anonymized",
     sectionHeading: "Approved Cases by Industry",
     sectionSub: "The following cases are all from real clients we have served, anonymized for privacy. Subsidy amounts and timelines are actual figures.",
@@ -73,7 +74,7 @@ const T: Record<Locale, {
     ctaPrimary: "Get a Free Consultation Now", ctaSecondary: "View FAQ",
     stats: [
       { num: "3,000+", label: "Approved cases" },
-      { num: "8.5億円", label: "Total subsidies secured (JPY)" },
+      { num: "8.5億円", label: "Total approved funding (JPY)" },
       { num: "92%", label: "Application success rate" },
       { num: "4yrs", label: "Years of specialist service" },
     ],
@@ -92,7 +93,7 @@ const T: Record<Locale, {
     heroEyebrow: "Success Cases · 成功事例",
     heroTitle1: "お客様の", heroTitle2: "成功事例",
     heroDesc: "飲食・美容・IT・建設など多様な業種の実際の採択事例。日本政府の補助金分野における私たちの専門性を証明します。",
-    statsNote: "※ 上記は当チームおよび提携有資格専門家の2022年設立以来の累計値（2026年7月時点）です。支援企業数は累計の相談・委託件数、採択総額は手がけた申請のうち交付決定を受けた補助金・助成金の合計、採択率は審査完了案件のうち採択された割合で、補助金の種類や公募回により異なります。個別の結果は主管機関の審査結果によります。",
+    statsNote: companyClaims.ja.statsNote,
     sectionTag: "実際の事例 · 匿名化処理済み",
     sectionHeading: "各業種の採択実例",
     sectionSub: "以下の事例はすべて実際にご支援したお客様のもので、匿名化処理を施しています。補助金額・期間はいずれも実データです。",
@@ -102,8 +103,8 @@ const T: Record<Locale, {
     ctaDesc: "無料の資格診断相談、専門顧問が当日中にご返答し、申請可能な補助金プランをご案内します。",
     ctaPrimary: "今すぐ無料相談", ctaSecondary: "よくある質問を見る",
     stats: [
-      { num: "3,000+", label: "累計採択件数" },
-      { num: "8.5億円", label: "累計採択補助金総額" },
+      { num: "3,000+", label: "累計決定件数" },
+      { num: "8.5億円", label: "累計交付・支給決定額" },
       { num: "92%", label: "申請採択率" },
       { num: "4年", label: "専門サービス実績年数" },
     ],

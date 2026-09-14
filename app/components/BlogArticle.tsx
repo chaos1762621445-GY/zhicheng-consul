@@ -1,6 +1,7 @@
 import { getPostLocalized, getAllPostsLocalized } from "@/lib/posts";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkGfm from "remark-gfm";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import NavClient from "./NavClient";
@@ -13,9 +14,9 @@ import { localeOg, localeHreflang, type Locale } from "@/lib/i18n/config";
 import { SITE_URL } from "@/lib/i18n/metadata";
 
 const UI = {
-  zh: { back: "返回知识库", ctaTitle: "想了解自己能申请哪些补助金？", ctaDesc: "3分钟免费自测，志成コンサル专业团队为您精准匹配方案，无成功不收费", ctaBtn: "免费测试我的资格", related: "相关阅读", home: "首页", blog: "知识库" },
-  en: { back: "Back to Insights", ctaTitle: "Want to know which subsidies you qualify for?", ctaDesc: "A 3-minute free self-check. Shisei Consulting's expert team matches you with the right plan — no approval, no fee.", ctaBtn: "Check My Eligibility for Free", related: "Related Reading", home: "Home", blog: "Insights" },
-  ja: { back: "お役立ち情報に戻る", ctaTitle: "自社が申請できる補助金を知りたいですか？", ctaDesc: "3分の無料セルフチェック。志成コンサルの専門家チームが最適プランをマッチング、不採択なら無料。", ctaBtn: "無料で受給資格をチェック", related: "関連記事", home: "ホーム", blog: "お役立ち情報" },
+  zh: { back: "返回知识库", ctaTitle: "想了解自己能申请哪些补助金？", ctaDesc: "3分钟免费自测，志成コンサル专业团队为您匹配可申请的方案；未获批不收取成功报酬，其他费用以事先约定为准", ctaBtn: "免费测试我的资格", related: "相关阅读", home: "首页", blog: "知识库" },
+  en: { back: "Back to Insights", ctaTitle: "Want to know which subsidies you qualify for?", ctaDesc: "A 3-minute free self-check. Shisei Consulting's expert team helps identify suitable programs. No success fee if an application is not approved; any other charges are agreed in advance.", ctaBtn: "Check My Eligibility for Free", related: "Related Reading", home: "Home", blog: "Insights" },
+  ja: { back: "お役立ち情報に戻る", ctaTitle: "自社が申請できる補助金を知りたいですか？", ctaDesc: "3分の無料セルフチェック。志成コンサルの専門家チームが対象制度をご案内。不採択時は成功報酬なし。その他の費用は事前の合意によります。", ctaBtn: "無料で受給資格をチェック", related: "関連記事", home: "ホーム", blog: "お役立ち情報" },
 } as const;
 
 // 从正文 Markdown 提取 FAQ 问答对
@@ -69,7 +70,7 @@ export async function blogMetadataFor(locale: Locale, slug: string) {
   if (zhP) languages["zh-Hans"] = `${SITE_URL}${path}`;
   if (enP) languages.en = `${SITE_URL}/en${path}`;
   if (jaP) languages.ja = `${SITE_URL}/ja${path}`;
-  languages["x-default"] = zhP ? `${SITE_URL}${path}` : `${SITE_URL}${canonical}`;
+  languages["x-default"] = languages["zh-Hans"] ?? languages.ja ?? languages.en;
   return {
     title: post.title,
     description: post.excerpt,
@@ -83,6 +84,7 @@ export async function blogMetadataFor(locale: Locale, slug: string) {
       siteName: "志成コンサル",
       locale: localeOg[locale],
       publishedTime: post.date || undefined,
+      modifiedTime: post.updated || post.date || undefined,
       authors: ["株式会社 志成コンサル"],
       images: [`${SITE_URL}/opengraph-image`],
     },
@@ -104,8 +106,13 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
       body = body.replace(/^[\s\S]*?(\r?\n\r?\n)/, "");
     }
   }
-  const processed = await remark().use(html).process(body);
-  const contentHtml = processed.toString();
+  // Server-only: preserve remark-html sanitization while rendering GFM tables.
+  const processed = await remark().use(remarkGfm).use(html).process(body);
+  const tableLabel = { zh: "数据表格，可横向滚动", en: "Data table, scroll horizontally", ja: "データ表、横方向にスクロール可能" }[locale];
+  const tableHint = { zh: "左右滑动查看完整表格", en: "Scroll sideways to view the full table", ja: "横にスクロールして表全体をご覧ください" }[locale];
+  const contentHtml = processed.toString()
+    .replace(/<table>/g, `<p class="article-table-hint">${tableHint}</p><div class="article-table-scroll" role="region" aria-label="${tableLabel}" tabindex="0"><table>`)
+    .replace(/<\/table>/g, "</table></div>");
 
   const allPosts = await getAllPostsLocalized(locale);
   // 制度关联：按标题/关键词确定性命中制度标识（不只靠 keywords 交集）
@@ -129,7 +136,7 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date || undefined,
-    dateModified: post.date || undefined,
+    dateModified: post.updated || post.date || undefined,
     inLanguage: localeHreflang[locale] === "zh-Hans" ? "zh-CN" : localeHreflang[locale],
     keywords: (post.keywords || []).join(", "),
     image: [`${SITE_URL}/opengraph-image`],
@@ -153,9 +160,9 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
 
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }} />}
       <NavClient locale={locale} dict={dict} />
 
       <div className="article-wrap">
@@ -166,9 +173,12 @@ export default async function BlogArticle({ locale, slug }: { locale: Locale; sl
             </svg>
             {ui.back}
           </Link>
-          <div className="article-date">{post.date}</div>
+          <div className="article-date">
+            {({ zh: "发布日期", en: "Published", ja: "公開日" } as const)[locale]}：<time dateTime={post.date}>{post.date}</time>
+            {post.updated && <> · {({ zh: "更新日期", en: "Updated", ja: "更新日" } as const)[locale]}：<time dateTime={post.updated}>{post.updated}</time></>}
+          </div>
           <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 6, lineHeight: 1.7 }}>
-            {({ zh: "更新日期", en: "Updated", ja: "更新日" } as Record<string, string>)[locale]}：{post.date} · {({ zh: "信息来源：各主管机关公募要領（経産省・中小企業庁・厚労省・東京都）；金额·期限以官方最新公告为准", en: "Sources: official guidelines (METI, SME Agency, MHLW, Tokyo Metropolitan Government); figures subject to latest official notices", ja: "出典：各主管機関の公募要領（経産省・中小企業庁・厚労省・東京都）；金額・期限は公式最新公告に準じます" } as Record<string, string>)[locale]}
+            {({ zh: "编辑", en: "By", ja: "編集" } as const)[locale]}：<Link href={L("/about")}>株式会社 志成コンサル</Link>
           </div>
           <h1 className="article-title">{post.title}</h1>
           {post.excerpt && <p className="article-excerpt">{post.excerpt}</p>}

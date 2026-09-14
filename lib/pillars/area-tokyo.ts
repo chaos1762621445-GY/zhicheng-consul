@@ -1,13 +1,14 @@
 import type { PillarSet } from "./types";
 import { UI } from "./types";
+import { SUBSIDY_SCHEDULE as DATES } from "../subsidies/status";
 
 const VERIFIED = "2026-09-03";
 const SRC = {
-  zeroemi: "https://www.tokyo-co2down.jp/subsidy/zeroemi-shoene",
+  zeroemi: DATES.aircon.source,
   kosha: "https://www.tokyo-kosha.or.jp/support/josei/index.html",
   tokyocci: "https://www.tokyo-cci.or.jp/soudan/hojokin",
   seiryoka: "https://shoryokuka.smrj.go.jp/ippan/",
-  itshien: "https://it-shien.smrj.go.jp/",
+  itshien: DATES["ai-it"].source,
   career: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
   gbizinfo: "https://info.gbiz.go.jp/hojin/ichiran?hojinBango=5010401158340",
 };
@@ -55,7 +56,7 @@ export const areaTokyo: PillarSet = {
         blocks: [
           { type: "ul", items: [
             "中小企業省力化投資補助事業（一般型）：5 人以下 750 万〜101 人以上 8,000 万円，补助率 1/2（小規模 2/3）。第 8 回 8/18 公募开始。",
-            "デジタル化・AI導入補助金2026：通常枠最高 450 万円，1/2 以内。第 5 次締切 10/7（予定）。",
+            `デジタル化・AI導入補助金2026：通常枠最高 450 万円，1/2 以内。第 5 次截止 ${DATES["ai-it"].deadline}（日本时间；日程复核 ${DATES["ai-it"].verifiedAt}，金额与要件核验基线不变）。`,
             "キャリアアップ助成金（正社員化コース）：每人 20 万〜80 万円，通年。东京劳动局管辖。",
             "人材開発支援助成金：经费助成 45%〜75%；リスキリング支援コース 2026 年度为最终年度。",
           ] },
@@ -114,7 +115,7 @@ export const areaTokyo: PillarSet = {
       { q: "东京个人事业主能用哪些？", a: "国家：持続化（50 万·2/3）、AI導入（450 万）、省力化（5 人以下 750 万）；东京都：ゼロエミ与公社多数助成明确含個人事業主。详见个人事业主专题。" },
       { q: "持続化補助金的様式4 在东京去哪办？", a: "向事业所所在地的商工会議所（東京商工会議所各支部）或商工会申请，第 20 回发行截止 12-04，需预约。" },
       { q: "可以先来事务所面谈再决定吗？", a: "可以，预约制。也可先做 3 分钟线上诊断，我们先判断能不能报再安排面谈，节省双方时间。" },
-      { q: "东京都制度每年都有吗？", a: "ゼロエミ事业期已延至令和 11 年度、令和 8 年度预算约 102.3 亿円；公社助成每年度按事业公募。具体以当年度公告为准。" },
+      { q: "东京都制度每年都有吗？", a: `东京ゼロエミ事业实施至令和 8 年度，助成金交付至令和 9 年度（期限复核 ${DATES.aircon.verifiedAt}）；令和 8 年度预算约 102.3 亿円。公社助成每年度按事业公募，具体以当年度公告为准。其他资料保留原核验基线。` },
     ],
     sources: [
       { label: "東京都 ゼロエミッション化 省エネ設備導入・運用改善支援事業（クール・ネット東京）", url: SRC.zeroemi },
@@ -170,7 +171,7 @@ export const areaTokyo: PillarSet = {
       { id: "national", h2: "National programs for Tokyo sites", blocks: [
         { type: "ul", items: [
           "Labor-Saving Investment Subsidy: ¥7.5M–¥80M, 1/2 (2/3 small). Round 8 opened 8/18.",
-          "Digitalization & AI Adoption 2026: up to ¥4.5M, up to 1/2. 5th deadline 10/7 (planned).",
+          `Digitalization & AI Adoption 2026: up to ¥4.5M, up to 1/2. Normal frame 5th deadline: ${DATES["ai-it"].deadline} JST (dates checked ${DATES["ai-it"].verifiedAt}; amounts and eligibility retain their verification baseline).`,
           "Career-Up Grant: ¥200k–¥800k per person, year-round.",
           "HR Development Grant: 45–75% of costs; reskilling course ends FY2026.",
         ] },
@@ -216,7 +217,7 @@ export const areaTokyo: PillarSet = {
       { q: "Sole proprietors in Tokyo?", a: "National Sustainability, AI Adoption, Labor-Saving; Tokyo Zero-Emission and most SME Center grants include sole proprietors." },
       { q: "Where to get Form 4 in Tokyo?", a: "Your local Tokyo Chamber of Commerce branch; deadline 12-04 for Round 20." },
       { q: "Can I visit before deciding?", a: "Yes, by appointment. A 3-minute online diagnosis first saves time." },
-      { q: "Do Tokyo programs recur yearly?", a: "Zero-Emission runs to FY2029 (~¥10.23B FY2026); SME Center grants are called annually." },
+      { q: "Do Tokyo programs recur yearly?", a: `Zero-Emission implementation continues through FY2026, with grant disbursement through FY2027 (duration checked ${DATES.aircon.verifiedAt}); FY2026 budget is about ¥10.23B. SME Center grants are called annually. Other information retains its verification baseline.` },
     ],
     sources: [
       { label: "Tokyo Zero-Emission energy-saving grant", url: SRC.zeroemi },
@@ -272,7 +273,7 @@ export const areaTokyo: PillarSet = {
       { id: "national", h2: "国の制度：都内事業所も対象", blocks: [
         { type: "ul", items: [
           "中小企業省力化投資補助事業（一般型）：750万〜8,000万円、1/2（小規模2/3）。第8回 8/18公募開始。",
-          "デジタル化・AI導入補助金2026：最大450万円、1/2以内。第5次締切10/7（予定）。",
+          `デジタル化・AI導入補助金2026：最大450万円、1/2以内。通常枠第5次締切 ${DATES["ai-it"].deadline}（日本時間；日程確認 ${DATES["ai-it"].verifiedAt}、金額・要件の確認基準日は変更なし）。`,
           "キャリアアップ助成金（正社員化コース）：1人20万〜80万円、通年。東京労働局管轄。",
           "人材開発支援助成金：経費助成45〜75%；リスキリングコースは令和8年度が最終年度。",
         ] },
@@ -318,7 +319,7 @@ export const areaTokyo: PillarSet = {
       { q: "東京の個人事業主は何が使えますか？", a: "国：持続化・AI導入・省力化；都：ゼロエミと公社助成の多くが個人事業主を含みます。" },
       { q: "持続化補助金の様式4はどこで？", a: "事業所所在地の商工会議所（東京商工会議所各支部）または商工会。第20回は12-04まで。" },
       { q: "事務所で面談してから決めたい", a: "予約制で対応。先に3分のオンライン診断で申請可否を確認すると効率的です。" },
-      { q: "都の制度は毎年ありますか？", a: "ゼロエミは令和11年度まで、令和8年度予算約102.3億円。公社助成は年度ごとに公募。" },
+      { q: "都の制度は毎年ありますか？", a: `ゼロエミの事業実施は令和8年度まで、助成金交付は令和9年度まで（期間確認 ${DATES.aircon.verifiedAt}）。令和8年度予算約102.3億円。公社助成は年度ごとに公募し、その他の情報は従来の確認基準日を維持しています。` },
     ],
     sources: [
       { label: "東京都 ゼロエミッション化 省エネ設備導入・運用改善支援事業", url: SRC.zeroemi },

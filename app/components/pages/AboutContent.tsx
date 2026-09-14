@@ -1,3 +1,4 @@
+import { companyClaims } from "@/lib/company-claims";
 import Link from "next/link";
 import NavClient from "../NavClient";
 import Footer from "../Footer";
@@ -29,7 +30,7 @@ const T: Record<Locale, {
     philoHeading1: "让语言不再成为", philoHeading2: "机会的壁垒",
     philoP1: "日本政府每年提供超过数千亿日元的补助金与助成金，专门用于扶持中小企业创新、雇用与发展。然而，对于大多数在日华人企业主而言，这些资金往往因为语言门槛和繁琐的申请程序而遥不可及。",
     philoP2: "我们相信，每一位用心经营、努力创业的在日华人，都应当平等地获得这些政策支持。志成コンサル成立的初衷，正是要消除这道语言与文化的屏障，让补助金申请变得简单、透明、真正可及。",
-    philoP3: "全程中文对接，不获批不收费——这不只是我们的服务承诺，更是我们对在日华人社区责任与信任的体现。",
+    philoP3: "全程中文对接，不获批不收成功报酬——这不只是我们的服务承诺，更是我们对在日华人社区责任与信任的体现。",
     statsCardLabel: "核心数据",
     teamHeading: "四士联合，全方位保障",
     teamSub: "行政书士·社会保险劳务士·税理士·中小企业诊断士，四种国家资格专家组成跨学科团队，覆盖补助金申请的每一个环节。",
@@ -78,7 +79,7 @@ const T: Record<Locale, {
     philoHeading1: "So Language No Longer", philoHeading2: "Blocks Opportunity",
     philoP1: "Each year the Japanese government provides hundreds of billions of yen in subsidies and grants to support the innovation, employment, and growth of small and medium-sized enterprises. Yet for most Chinese business owners in Japan, these funds remain out of reach due to the language barrier and complex application procedures.",
     philoP2: "We believe every Chinese entrepreneur in Japan who runs their business with care deserves equal access to this policy support. Shisei Consulting was founded precisely to remove this barrier of language and culture — to make subsidy applications simple, transparent, and genuinely accessible.",
-    philoP3: "Full support in Chinese, no approval no fee — this is not just our service promise, but an expression of our responsibility to, and trust within, the Chinese community in Japan.",
+    philoP3: "Full support in Chinese, no approval, no success fee — this is not just our service promise, but an expression of our responsibility to, and trust within, the Chinese community in Japan.",
     statsCardLabel: "Key Figures",
     teamHeading: "Four Specialists, Complete Coverage",
     teamSub: "Gyoseishoshi, Sharoshi (labor & social security attorney), Zeirishi, and SME Management Consultant — four national qualifications form a cross-disciplinary team covering every stage of the subsidy application.",
@@ -100,7 +101,7 @@ const T: Record<Locale, {
     ctaPrimary: "Request a Free Consultation", ctaSecondary: "Explore Partner Program",
     stats: [
       { num: "3,000+", label: "Approved cases" },
-      { num: "¥8.5億", label: "Total subsidies secured (JPY)" },
+      { num: "¥8.5億", label: "Total approved funding (JPY)" },
       { num: "92%", label: "Application success rate" },
       { num: "4", label: "National qualifications" },
     ],
@@ -127,7 +128,7 @@ const T: Record<Locale, {
     philoHeading1: "言語を、機会の", philoHeading2: "壁にしないために",
     philoP1: "日本政府は毎年、中小企業の革新・雇用・発展を支援するために、数千億円を超える補助金・助成金を提供しています。しかし多くの在日華人の企業経営者にとって、これらの資金は言語の壁と煩雑な申請手続きにより、手の届かないものになりがちです。",
     philoP2: "真摯に経営し、懸命に起業するすべての在日華人が、こうした政策支援を平等に受けられるべきだと私たちは信じています。志成コンサル設立の原点は、まさにこの言語と文化の壁を取り除き、補助金申請をシンプルで透明、そして本当に身近なものにすることにあります。",
-    philoP3: "全工程中国語対応・不採択なら無料——これは単なるサービスの約束ではなく、在日華人コミュニティに対する私たちの責任と信頼の表れです。",
+    philoP3: "全工程中国語対応・不採択なら成功報酬なし——これは単なるサービスの約束ではなく、在日華人コミュニティに対する私たちの責任と信頼の表れです。",
     statsCardLabel: "主要データ",
     teamHeading: "四士連携、あらゆる面で万全",
     teamSub: "行政書士・社会保険労務士・税理士・中小企業診断士。4つの国家資格を持つ専門家が学際的チームを組み、補助金申請のあらゆる工程をカバーします。",
@@ -148,8 +149,8 @@ const T: Record<Locale, {
     ctaDesc: "無料の資格診断相談、専門顧問が当日中にご返答し、あらゆる政策のチャンスを逃さずお手伝いします。",
     ctaPrimary: "無料相談を申し込む", ctaSecondary: "代理店提携について",
     stats: [
-      { num: "3,000+", label: "累計採択件数" },
-      { num: "¥8.5億", label: "採択支援総額" },
+      { num: "3,000+", label: "累計決定件数" },
+      { num: "¥8.5億", label: "累計交付・支給決定額" },
       { num: "92%", label: "申請成功率" },
       { num: "4種", label: "国家認定資格" },
     ],
@@ -229,6 +230,9 @@ export default function AboutContent({ locale }: { locale: Locale }) {
                       </div>
                     ))}
                   </div>
+                  <p style={{ fontSize: 11.5, color: 'var(--muted)', lineHeight: 1.8, marginTop: 24 }}>
+                    {companyClaims[locale].statsNote}
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { SUBSIDY_SCHEDULE as DATES } from "./status";
 import type { SubsidyData } from "./data-zh";
 
 // English translations of the 5 subsidy detail pages. Structure/slug/amounts/links/dates mirror data-zh.
@@ -9,9 +10,9 @@ export const subsidiesEn: SubsidyData[] = [
     nameJa: "中小企業省力化投資補助事業（一般型）(SME Labor-Saving Investment Subsidy, General Type)",
     amount: "Tiered by workforce size: 7.5M–80M JPY (101+ employees with the large wage-increase special exception: up to 100M JPY)",
     rate: "Subsidy rate 1/2 (small-scale / business-reconstruction operators 2/3); the portion above 15M JPY is subsidized at 1/3",
-    deadline: "Public-offering round system (fixed application deadlines, not accepted on a rolling basis)",
+    deadline: `Deadline: ${DATES.seiryoka.deadline} JST`,
     metaTitle: "How much does Japan's Labor-Saving Subsidy pay? 7.5M JPY (≤5 staff) to 15M (6–20), Round 8 opens Sept",
-    metaDesc: "For automation equipment and DX systems. Five caps by workforce size (7.5M–80M JPY), rate 1/2 (2/3 for small businesses). Round 8: applications mid-Sept 2026, deadline mid-Oct. 3-minute eligibility check, Chinese-language support.",
+    metaDesc: `For automation equipment and DX systems. Five caps by workforce size (7.5M–80M JPY), rate 1/2 (2/3 for small businesses). Round 8: applications from ${DATES.seiryoka.opens}, deadline ${DATES.seiryoka.deadline} JST. 3-minute eligibility check, Chinese-language support.`,
     heroDesc: "Cut costs and boost efficiency while reducing reliance on manual labor by introducing DX systems and automation equipment. The subsidy cap is tiered by workforce size: 5 or fewer employees 7.5M, 6–20 employees 15M, 21–50 employees 30M, 51–100 employees 50M, 101+ employees 80M JPY (with the large wage-increase special exception, 101+ employees can reach up to 100M JPY)",
     overview: [
       { label: "Subsidy cap (by workforce size)", value: "7.5M–80M JPY", sub: "5 or fewer 7.5M / 6–20 15M / 21–50 30M / 51–100 50M / 101+ 80M" },
@@ -78,9 +79,9 @@ export const subsidiesEn: SubsidyData[] = [
       },
     ],
     officialName: "中小企業省力化投資補助事業（一般型）事務局 (Secretariat, SME Labor-Saving Investment Subsidy, General Type)",
-    officialUrl: "https://shoryokuka.smrj.go.jp/ippan",
+    officialUrl: DATES.seiryoka.source,
     verifiedDate: "2026-08-01",
-    note: "The amounts and subsidy rates on this page reflect the Reiwa 8 (FY2026) basis (unchanged from Reiwa 7). The Labor-Saving Subsidy is a review-and-selection, public-offering round scheme; submitting an application does not guarantee selection. Reiwa 8 (FY2026) Round 7 acceptance begins July 1, 2026; and from Round 7 onward, businesses with \"21 or more employees\" must additionally publish a general employer action plan (一般事業主行動計画の公表) as a mandatory requirement. Specific acceptance deadlines are governed by the official application MyPage and the latest public-offering guidelines.",
+    note: `Round 8 applications run from ${DATES.seiryoka.opens} to ${DATES.seiryoka.deadline} JST. Dates checked against the official schedule on ${DATES.seiryoka.verifiedAt}; amounts and eligibility retain the separate verification date shown below. Confirm the latest guidelines before applying. Application does not guarantee selection.`,
   },
   {
     slug: "ai-it",
@@ -89,7 +90,7 @@ export const subsidiesEn: SubsidyData[] = [
     nameJa: "デジタル化・AI導入補助金2026（旧 IT導入補助金）(Digital / AI Adoption Subsidy 2026, formerly the IT Adoption Subsidy)",
     amount: "Normal frame up to 4.5M JPY (Invoice frame software up to 3.5M JPY)",
     rate: "Normal frame within 1/2 (within 2/3 when the minimum-wage requirement is met)",
-    deadline: "Public-offering deadline rounds (joint application required via an IT Adoption Support Provider)",
+    deadline: `Deadline: ${DATES["ai-it"].deadline} JST`,
     metaTitle: "How to apply for Japan's Digital/AI Adoption Subsidy 2026? Up to 4.5M JPY, joint filing with a registered IT vendor",
     metaDesc: "For AI software, systems and custom development. Normal frame 0.5M–4.5M JPY, rate 1/2 (2/3 if minimum-wage condition met). Must co-apply with a registered IT Adoption Support Vendor; fixed deadlines. Sole proprietors and loss-making firms may qualify—free check first.",
     heroDesc: "Japan's government funding dedicated to digital transformation (formerly the IT Adoption Subsidy): normal frame up to 4.5M JPY, subsidy rate within 1/2. Requires a joint application with a registered IT Adoption Support Provider and follows public-offering deadline rounds",
@@ -151,9 +152,9 @@ export const subsidiesEn: SubsidyData[] = [
       },
     ],
     officialName: "デジタル化・AI導入補助金2026 事務局（中小機構）(Secretariat, Digital / AI Adoption Subsidy 2026; SMRJ)",
-    officialUrl: "https://it-shien.smrj.go.jp/",
+    officialUrl: DATES["ai-it"].source,
     verifiedDate: "2026-08-01",
-    note: "This subsidy is a review-and-selection scheme (formerly the IT Adoption Subsidy), requiring a joint application through a registered IT Adoption Support Provider, with public-offering deadlines. The FY2026 frame structure and subsidy rates are unchanged from Reiwa 7; grant applications open March 30, 2026, and as of the verification date the latest available is the Normal frame 4th deadline of 17:00 on August 25, 2026 (monthly rounds thereafter). Amounts and deadlines are governed by the latest official public-offering guidelines; submitting an application does not guarantee selection.",
+    note: `The Normal frame 5th deadline is ${DATES["ai-it"].deadline} JST. Apply jointly with a registered IT Adoption Support Provider; consult the official schedule for later rounds. Dates checked on ${DATES["ai-it"].verifiedAt}; amounts and eligibility retain the separate verification date shown below. Confirm the latest guidelines before applying. Application does not guarantee selection.`,
   },
   {
     slug: "career-up",
@@ -316,7 +317,7 @@ export const subsidiesEn: SubsidyData[] = [
     nameJa: "ゼロエミッション化に向けた省エネ設備導入・運用改善支援事業（東京都）(Tokyo Metropolitan Support Project for Introducing Energy-Saving Equipment and Improving Operations toward Zero Emissions)",
     amount: "Tokyo Metropolitan: up to 45M JPY (subsidy rate 3/4)",
     rate: "Tokyo Metropolitan: subsidy rate up to 3/4 (3 tiers by CO2 reduction / diagnosis method)",
-    deadline: "Round-based application (all applications go to a lottery when the budget is oversubscribed; not first-come, first-served)",
+    deadline: `Deadline: ${DATES.aircon.deadline} JST`,
     metaTitle: "How much does Tokyo pay to replace commercial AC? Up to 45M JPY at 3/4 rate; Round 4 open Sept 16–Oct 2",
     metaDesc: "Tokyo Zero-Emission energy-saving equipment grant: ≥28t CO2 cut → 3/4 rate, cap 45M; 3t or 30% cut after audit → cap 25M (2/3); self-planned → cap 10M (2/3). Sign contracts only after approval; lottery if oversubscribed. Round 4: 2026-09-16 to 10-02.",
     heroDesc: "Tokyo Metropolitan subsidy for updating energy-saving equipment such as air conditioners at small- and medium-scale establishments (Cool Net Tokyo). Tiered by CO2 reduction and diagnosis method, with a subsidy rate up to 3/4 and up to 45M JPY; round-based application, with a lottery when the budget is oversubscribed",
@@ -384,8 +385,8 @@ export const subsidiesEn: SubsidyData[] = [
       },
     ],
     officialName: "クール・ネット東京（公益財団法人東京都環境公社）(Cool Net Tokyo / Tokyo Metropolitan Environmental Public Service Corporation)",
-    officialUrl: "https://www.tokyo-co2down.jp/subsidy/zeroemi-shoene",
+    officialUrl: DATES.aircon.source,
     verifiedDate: "2026-08-01",
-    note: "This page reflects the Tokyo Metropolitan Reiwa 8 (FY2026) basis (the subsidy rates and the three-tier caps are unchanged from Reiwa 7). For Reiwa 8 (FY2026), acceptance increases from 5 to 6 rounds per year, the project period is extended through Reiwa 11 (FY2029), and the budget is about 10.2 billion JPY. Round-based lottery (when oversubscribed, all applications within the acceptance period go to a lottery, not first-come, first-served). As of the verification date, the 3rd acceptance period runs 7/31–8/14. Energy-saving subsidy programs outside Tokyo and at the national level vary and must be verified separately for your location. Amounts, subsidy rates, and acceptance periods are governed by the competent authority's latest announcements.",
+    note: `Round 4 runs from ${DATES.aircon.opens} to ${DATES.aircon.deadline} JST, with a lottery if oversubscribed. Dates and program duration checked on ${DATES.aircon.verifiedAt}: implementation continues through FY2026 and grant disbursement through FY2027. Amounts and eligibility retain the separate verification date shown below; confirm the latest guidelines before applying.`,
   },
 ];

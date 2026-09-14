@@ -9,6 +9,8 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  /** Last substantive revision; omit when the publication has not been revised. */
+  updated?: string;
   excerpt: string;
   keywords: string[];
   /** 发布状态：无字段=历史文章（视为已发布）；draft/pending_review 不上线 */
@@ -28,6 +30,13 @@ export interface Post extends PostMeta {
   content: string;
 }
 
+/** gray-matter may parse unquoted YAML dates as Date objects. */
+function postDate(value: unknown): string {
+  if (value instanceof Date) return Number.isNaN(value.getTime()) ? "" : value.toISOString().slice(0, 10);
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(value)) return "";
+  return Number.isNaN(Date.parse(value)) ? "" : value;
+}
+
 // 按 locale 解析文章目录：zh = content/posts；en/ja = content/posts/{locale}
 function dirFor(locale: Locale = "zh"): string {
   return locale === "zh" ? postsDirectory : path.join(postsDirectory, locale);
@@ -45,7 +54,8 @@ export async function getAllPostsLocalized(locale: Locale = "zh"): Promise<PostM
     return [{
       slug,
       title: data.title || slug,
-      date: data.date || "",
+      date: postDate(data.date),
+      updated: postDate(data.updated) || undefined,
       excerpt: data.excerpt || "",
       keywords: data.keywords || [],
       status: data.status,
@@ -66,7 +76,8 @@ export async function getPostLocalized(slug: string, locale: Locale = "zh"): Pro
   return {
     slug,
     title: data.title || slug,
-    date: data.date || "",
+    date: postDate(data.date),
+    updated: postDate(data.updated) || undefined,
     excerpt: data.excerpt || "",
     keywords: data.keywords || [],
     status: data.status,
