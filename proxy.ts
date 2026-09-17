@@ -13,15 +13,15 @@ export function proxy(_request: NextRequest) {
     `font-family:system-ui,"Noto Sans SC",sans-serif;background:#f6f4ef;color:#1a5c5a;text-align:center}` +
     `.b{max-width:520px;padding:40px}h1{font-size:22px;font-weight:700;margin:0 0 12px}` +
     `p{color:#555;line-height:1.7;margin:6px 0;font-size:15px}</style></head>` +
-    `<body><div class="b"><h1>サービス一時停止中</h1>` +
-    `<p>本サイトは現在一時的に公開を停止しています。</p>` +
-    `<p>本网站暂时停止对外公开，给您带来不便敬请谅解。</p></div></body></html>`
+    `<body><div class="b"><h1>サービス終了</h1>` +
+    `<p>本サイトは公開を終了いたしました。</p>` +
+    `<p>本网站已停止对外公开。</p></div></body></html>`
   return new NextResponse(body, {
-    status: 503,
+    status: 410,
     headers: {
       'content-type': 'text/html; charset=utf-8',
       'cache-control': 'no-store, max-age=0',
-      'retry-after': '86400',
+      'x-robots-tag': 'noindex, nofollow, noarchive',
     },
   })
 }
