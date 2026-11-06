@@ -1,2 +1,2 @@
 // Dify 临时隧道当前主机名（由 watchdog 自动更新，勿手改）
-export const TUNNEL_HOST = "marijuana-suzuki-documentation-edit.trycloudflare.com";
+export const TUNNEL_HOST = "revisions-howto-dispatched-herself.trycloudflare.com";
